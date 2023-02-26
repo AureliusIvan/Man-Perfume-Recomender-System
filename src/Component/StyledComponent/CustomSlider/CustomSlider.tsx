@@ -1,6 +1,8 @@
 // import React from 'react'
 // import { Button } from '@material-ui/core';
 import Slider from '@material-ui/core/Slider';
+import styled from '@emotion/styled';
+import withTheme from '@material-ui/core/styles/withTheme';
 
 
 const marks = [
@@ -35,11 +37,31 @@ const marks = [
   },
 ];
 
+const CSlider = styled(withTheme(Slider))((props: any) => ({
+  color: 'inherit',
+  markerColor: 'inherit',
+  markerSize: '100px',
+  "::marker": {
+    color: 'inherit',
+    markerColor: 'inherit',
+    markerSize: '100px',
+  },
+  marklabel: {
+    color: 'inherit',
+    markerColor: 'inherit',
+    markerSize: '100px',
+  },
+  'MuiSlider-markLabelActive': {
+    color: 'inherit',
+    markerColor: 'inherit',
+    markerSize: '100px',
+  }
+}));
 
 
 export default function CustomSlider(props: any) {
   return (
-    <Slider
+    <CSlider
       defaultValue={30}
       aria-labelledby="discrete-slider"
       valueLabelDisplay="auto"

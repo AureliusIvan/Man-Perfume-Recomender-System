@@ -1,3 +1,4 @@
+// APP
 import './App.scss'
 import React, { useContext, createContext, useMemo } from 'react';
 import { CustomButton as Button } from '../Component/StyledComponent/CustomButton/CustomButton';
@@ -21,7 +22,7 @@ export function Toogle() {
 }
 
 
-function App() {
+export default function App() {
   // const mode is the state of the theme
   const [mode, setMode] = React.useState<'light' | 'dark'>('light');
   // prevent the theme from changing when the component re-renders
@@ -45,6 +46,10 @@ function App() {
             default: mode === 'light' ? 'rgb(175, 194, 210)' : '#303030',
             paper: mode === 'light' ? '#fff' : '#424242',
           },
+          text: {
+            primary: mode === 'light' ? '#303030' : 'rgb(175, 194, 210)',
+            secondary: mode === 'light' ? '#303030' : 'rgb(175, 194, 210)',
+          }
         },
       }),
     [mode],
@@ -55,11 +60,13 @@ function App() {
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
+          {/* App can be added bellow here */}
           <UserPage />
+          {/*  */}
         </ThemeProvider>
       </ColorModeContext.Provider>
     </div>
   )
 }
 
-export default App;
+
