@@ -1,9 +1,20 @@
-import React from 'react'
+import style from "./CustomSpinner.module.scss";
 
-function CustomSpinner() {
+export default function CustomSpinner(props: any) {
+  let i = 12;
   return (
-    <div>CustomSpinner</div>
+    <div className={style.lds}
+      style={{
+        height: "80px",
+        width: "80px",
+        // backgroundColor: "black",
+      }}
+    >
+      {Array(i).fill(0).map((_, index) => {
+        return (
+          <div></div>
+        )
+      })}
+    </div>
   )
 }
-
-export default CustomSpinner

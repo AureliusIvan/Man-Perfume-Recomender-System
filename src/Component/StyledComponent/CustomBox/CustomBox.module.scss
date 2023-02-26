@@ -1,0 +1,38 @@
+.Box {
+    border-radius: 20px;
+    padding: 16px;
+    text-align: center;
+    margin: 20px;
+    width: 300px;
+    max-width: 80vw !important;
+    box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.BoxSection {
+    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    // border: 1px solid black;
+
+    @media screen and (min-width: 768px) {
+        &:hover {
+            transition: 0.5s;
+
+            &::after {
+                pointer-events: none;
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -10%;
+                right: 10%;
+                margin: auto;
+                width: 120%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.1);
+                z-index: 1;
+            }
+        }
+    }
+}

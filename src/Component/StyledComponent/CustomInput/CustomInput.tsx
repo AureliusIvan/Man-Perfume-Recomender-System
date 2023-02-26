@@ -1,9 +1,12 @@
-import React from 'react'
+// import { Button } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 
-function CustomInput() {
+export default function CustomInput(props: any) {
   return (
-    <div>CustomInput</div>
+    <TextField
+      id="standard-basic"
+      label={props.label ? props.label : "Enter Input"}
+      {...props}
+    />
   )
 }
-
-export default CustomInput

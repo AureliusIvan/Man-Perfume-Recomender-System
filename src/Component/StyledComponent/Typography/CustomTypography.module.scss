@@ -1,0 +1,15 @@
+// .Text {
+
+// }
+
+.Title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+    padding: 0;
+
+    @media screen and (min-width: 768px) {
+        font-size: 20px !important;
+    }
+}

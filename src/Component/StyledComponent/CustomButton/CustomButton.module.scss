@@ -1,0 +1,17 @@
+.button {
+    height: 40px;
+    min-width: 80px;
+    width: fit-content;
+    // background-color: rgb(6, 172, 172);
+    outline: 2px solid rgb(6, 172, 172);
+    color: rgb(6, 172, 172);
+    border-radius: 20px;
+    border: none;
+    transition: 0.6s;
+    position: relative;
+
+    // this is when button hover
+    &:hover {
+        opacity: 0.5;
+    }
+}
