@@ -10,7 +10,6 @@ const CBox = styled(Box)(() => ({
     flexDirection: 'column',
     alignItems: 'center',
     gap: '10px',
-    // paddingRight: '10px',
 }));
 
 export function CustomBox(props: any) {

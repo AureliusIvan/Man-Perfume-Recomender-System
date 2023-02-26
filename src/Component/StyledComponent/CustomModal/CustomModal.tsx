@@ -29,7 +29,9 @@ export function CustomModal(props: any) {
 
     return (
         <div>
-            <Button onClick={handleOpen}>Open modal</Button>
+            <Button onClick={handleOpen}>{
+                props.title
+            }</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -65,10 +67,11 @@ export function CustomModal(props: any) {
 // Modal Confirmation page
 export function Confirmations(props: any) {
     return (
-        <CustomModal>
-            {/* <Button>Yes</Button> */}
+        <CustomModal
+            title={props.title}
+        >
             <Typography id="modal-modal-title" variant="h6" component="h2">
-                {props.title ? props.title : "Title"}
+                {props.title ? props.title : "Title"}?
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                 {props.desc ? props.desc : "Description"}
@@ -78,7 +81,9 @@ export function Confirmations(props: any) {
             >Yes</Button>
             <Button
                 onClick={props.onCancel}
-            >No</Button>
+            >
+                No
+            </Button>
         </CustomModal>
     )
 }
