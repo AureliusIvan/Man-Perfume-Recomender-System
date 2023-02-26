@@ -1,9 +1,14 @@
-import React from 'react'
+import style from "./CustomButton.module.scss";
+import Button from "@mui/material/Button";
 
-function CustomButton() {
+export function CustomButton(props: any) {
   return (
-    <div>CustomButton</div>
+    <Button
+      variant="contained"
+      className={style.button}
+      {...props}
+    >
+      {props.children ? props.children : "Click Me!"}
+    </Button >
   )
 }
-
-export default CustomButton

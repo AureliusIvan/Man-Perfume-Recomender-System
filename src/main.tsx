@@ -2,7 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App/App'
-import './index.css'
+import './index.scss'
 
 // Main func start here
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -16,3 +16,18 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 // * Had moved App.tsx and App.scss to ./App to make cleaner directory.
 // * Don't forget to run [yarn add react-ts] or [npm install react-ts] to install node modules and dependencies 
 // * Issues : When run yarn add react-ts node sass not installed properly, but SCSS running ok
+
+// Module :
+// DarkMode / LightMode
+// CustomBox
+// CustomButton
+// CustomCard
+// CustomCenter
+// CustomInput
+// CustomModal
+// CustomSlider
+// CustomSpinner
+// Text
+// Footer
+// Header
+// FallBack (Loading Screen)
