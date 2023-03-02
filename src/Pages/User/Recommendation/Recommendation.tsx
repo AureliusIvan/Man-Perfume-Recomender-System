@@ -3,7 +3,7 @@ import { Paragraf, Text, Title } from "../../../Component/StyledComponent/Typogr
 import CustomSlider from "../../../Component/StyledComponent/CustomSlider/CustomSlider";
 import React, { useEffect, useState } from "react";
 import { get } from "../../../Component/FunctionComponent/axiosClient/axiosClient";
-import { CustomCard } from "../../../Component/StyledComponent/CustomCard/CustomCard";
+import { CustomCard, ResultCard } from "../../../Component/StyledComponent/CustomCard/CustomCard";
 import { Grid as G } from "@material-ui/core";
 import { styled } from '@mui/material/styles';
 import Center from "../../../Component/StyledComponent/CustomCenter/Center";
@@ -45,15 +45,30 @@ function Recommendation() {
             </Center>
             <Grid container>
                 {naruto.map((item: any, index) => {
-                    return (
-                        <GridItem item md={4}>
-                            <CustomCard
-                                title={item.name}
-                                image={item.images[0]}
-                                key={index} />
-                        </GridItem>
-                    )
+                    if (index < 6) {
+                        return (
+                            <GridItem item xs={12}>
+                                <ResultCard
+                                    title={item.name}
+                                    image={item.images[0]}
+                                    key={index} />
+                            </GridItem>
+                        )
+                    }
+
                 })}
+                {/* {naruto.map((item: any, index) => {
+                    if (index < 6) {
+                        return (
+                            <GridItem item md={4}>
+                                <CustomCard
+                                    title={item.name}
+                                    image={item.images[0]}
+                                    key={index} />
+                            </GridItem>
+                        )
+                    }
+                })} */}
             </Grid>
         </>
     )

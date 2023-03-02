@@ -6,6 +6,14 @@ import { Toogle } from "../../../App/App";
 import { Title } from "../Typography/CustomTypography";
 import { PROJTITLE } from "../../../data";
 import { CustomButton as Button } from "../CustomButton/CustomButton";
+import { LogoImage } from "../CustomImage/CustomImage";
+import { Text } from "../Typography/CustomTypography";
+import Spacer from "../../../Pages/User/Spacer/spacer";
+// import useMediaQuery from "@material-ui/material/useMediaQuery";
+import { useMediaQuery } from "@mui/material";
+
+
+const Margin = "35px";
 
 const GridContainer = styled(Grid)(() => ({
     // display: 'flex',
@@ -22,7 +30,7 @@ const GridItemLeft = styled(Grid)(() => ({
     position: 'relative',
     margin: '0px',
     padding: '0px',
-    paddingLeft: '5px',
+    paddingLeft: Margin,
 }));
 
 const GridItemRight = styled(Grid)(() => ({
@@ -33,7 +41,7 @@ const GridItemRight = styled(Grid)(() => ({
     position: 'relative',
     margin: '0px',
     padding: '0px',
-    paddingRight: '5px',
+    paddingRight: Margin,
 }));
 
 
@@ -49,11 +57,20 @@ const GridItemCenter = styled(Grid)(() => ({
 
 
 export default function Header(props: any) {
+    const isMobile = useMediaQuery('(min-width:600px)');
     return (
         <GridContainer container className={style.Header}>
-            <GridItemLeft item xs={4}>
-                <Toogle />
-            </GridItemLeft>
+            {isMobile &&
+                <GridItemLeft item xs={4}>
+                    <LogoImage />
+                    <Text width="70px" fontSize="10px" textalign="left" marginleft="10px">
+                        SISTEM PENDUKUNG KEPUTUSAN
+                    </Text>
+                    <Spacer y={"20px"} />
+                    <Toogle />
+                </GridItemLeft>
+            }
+
             <GridItemCenter item xs={4}>
                 {/* <Title>
                     {PROJTITLE}
