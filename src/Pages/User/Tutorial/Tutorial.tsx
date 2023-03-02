@@ -1,7 +1,8 @@
 import { CustomButton as Button } from "../../../Component/StyledComponent/CustomButton/CustomButton"
 import { CustomBox as Box } from "../../../Component/StyledComponent/CustomBox/CustomBox"
 import { Paragraf, Title } from "../../../Component/StyledComponent/Typography/CustomTypography"
-import { Grid as G } from "@material-ui/core"
+// import { Grid as G } from "@material-ui/core"
+import { Grid as G } from "@mui/material"
 import { styled } from "@material-ui/styles"
 
 const Grid = styled(G)(({ theme }) => ({
@@ -10,7 +11,7 @@ const Grid = styled(G)(({ theme }) => ({
 }));
 
 const GridItem = styled(G)(({ theme }) => ({
-    padding: '10px',
+    padding: '20px',
     width: '90%',
 }));
 
@@ -18,7 +19,9 @@ const GridItem = styled(G)(({ theme }) => ({
 
 function Card() {
     return (<>
-        <Box>
+        <Box style={{
+            width: '90%',
+        }}>
             <img />
             <Paragraf textAlign="left">
                 Dar Der Dor
@@ -40,7 +43,7 @@ function Tutorial() {
             {
                 Array(i).fill(0).map((item, index) => {
                     return (
-                        <GridItem item xs={6}>
+                        <GridItem key={index} item xs={2}>
                             <Card />
                         </GridItem>
                     )

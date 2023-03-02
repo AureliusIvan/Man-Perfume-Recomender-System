@@ -1,6 +1,6 @@
 import style from "./CustomTypography.module.scss"
 import { useTheme } from "@mui/material/styles";
-
+import { useMediaQuery } from "@mui/material";
 
 
 export function Text(props: any) {
@@ -11,13 +11,25 @@ export function Text(props: any) {
             {...props}
             style={{
                 ...props.style,
-                textAlign: props.textAlign ? props.textAlign : "center",
-                fontSize: props.fontSize ? props.fontSize : "1rem",
+                width: props.width ? props.width : "100%",
+                height: props.height ? props.height : "100%",
+                textAlign: props.textalign ? props.textalign : "center",
+                fontSize: props.fontSize ? props.fontSize : "15px",
                 fontWeight: props.fontWeight ? props.fontWeight : "normal",
                 color: theme.palette.mode === (props.reverse ? "light" : "dark") ? '#fff' : '#000',
-            }}
-
-        >
+                // margin
+                // margin: props.margin ? props.margin : "0px",
+                marginTop: props.margintop ? props.margintop : "0px",
+                marginBottom: props.marginbottom ? props.marginbottom : "0px",
+                marginLeft: props.marginleft ? props.marginleft : "0px",
+                marginRight: props.marginright ? props.marginright : "0px",
+                // padding
+                padding: props.padding ? props.padding : "0px",
+                paddingTop: props.paddingtop ? props.paddingtop : "0px",
+                paddingBottom: props.paddingbottom ? props.paddingbottom : "0px",
+                paddingLeft: props.paddingleft ? props.paddingleft : "0px",
+                paddingRight: props.paddingright ? props.paddingright : "0px",
+            }}>
             {props.children ? props.children : "Aroma lebih penting dari harga."}
         </div>
     );
@@ -25,16 +37,16 @@ export function Text(props: any) {
 
 export function Title(props: any) {
     const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.values.sm.toString());
     return (
         <div
             className={style.Title}
             {...props}
             style={{
                 ...props.style,
-                textAlign: props.textAlign ? props.textAlign : "left",
-                // textAlign: 'left',
+                textAlign: props.textalign ? props.textalign : "left",
                 color: theme.palette.mode === (props.reverse ? "light" : "dark") ? '#fff' : '#000',
-                fontSize: props.fontSize ? props.fontSize : "1.5rem",
+                fontSize: props.fontSize ? props.fontSize : "",
                 fontWeight: props.fontWeight ? props.fontWeight : "bold",
             }}
         >
@@ -46,7 +58,7 @@ export function Title(props: any) {
 export function Paragraf(props: any) {
     return (<>
         <Title
-            textAlign={props.textAlign ? props.textAlign : "left"}>
+            textalign={props.textalign ? props.textalign : "left"}>
             {props.title}
         </Title>
         <Text style={{ textAlign: props.textAlign ? props.textAlign : "center", }}>

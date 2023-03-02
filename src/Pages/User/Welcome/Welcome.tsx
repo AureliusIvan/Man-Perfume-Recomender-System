@@ -4,12 +4,13 @@ import { Grid } from "@material-ui/core"
 import welcomeimg from "../../../Assets/Image/welcome.png"
 import { Title } from "../../../Component/StyledComponent/Typography/CustomTypography"
 import Center from "../../../Component/StyledComponent/CustomCenter/Center"
+import { CustomImage as Img } from "../../../Component/StyledComponent/CustomImage/CustomImage"
 
 export default function WelcomePage() {
     return (
         <div>
             <Grid container>
-                <Grid item sm={12} md={6}>
+                <Grid item xs={12} md={5}>
                     <Center>
                         <Title style={{
                             marginBottom: '20px',
@@ -21,8 +22,10 @@ export default function WelcomePage() {
                         </Button>
                     </Center>
                 </Grid>
-                <Grid item sm={12} md={6}>
-                    <img src={welcomeimg} />
+                <Grid item xs={12} md={6}>
+                    <Center>
+                        <Img src={welcomeimg} />
+                    </Center>
                 </Grid>
             </Grid>
         </div>

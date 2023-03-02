@@ -21,7 +21,9 @@ export function CustomBox(props: any) {
             style={{
                 ...props.style,
                 backgroundColor: theme.palette.mode === (props.reverse ? 'light' : 'dark') ? "#1e1e1e" : '#f5f5f5',
-                width: props.width ? props.width : "100%",
+                width: props.width ? props.width : "90%",
+                padding: props.padding ? props.padding : "",
+                margin: props.margin ? props.margin : "",
             }}
         >
             {props.children}

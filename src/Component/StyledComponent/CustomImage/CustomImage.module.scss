@@ -1,0 +1,21 @@
+.img {
+    border-radius: 10px;
+    width: 100%;
+    height: fit-content;
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80% 80% !important;
+    overflow: visible;
+}
+
+.logo {
+    width: 100px;
+    height: 100%;
+    object-fit: 50%;
+    background-image: url(../../../Assets/image/logo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80% 80% !important;
+    overflow: visible;
+}

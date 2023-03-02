@@ -29,9 +29,7 @@ export function CustomInput(props: any) {
     <CInput
       id="standard-basic"
       label={props.label ? props.label : "Enter Input"}
-      sx={{
-      }}
-      color="inherit"
+      color="primary"
       {...props}
     />
   )

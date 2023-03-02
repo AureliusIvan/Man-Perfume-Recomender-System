@@ -12,6 +12,9 @@ export function CustomButton(props: any) {
       {...props}
       onClick={props.onClick}
       style={{
+        margin: props.margin ? props.margin : "0px",
+        padding: props.padding ? props.padding : "",
+        paddingInline: props.paddingInline ? props.paddingInline : "17px",
         ...props.style,
         backgroundColor: props.bgColor ? props.bgColor : theme.palette.background,
         color: "white",

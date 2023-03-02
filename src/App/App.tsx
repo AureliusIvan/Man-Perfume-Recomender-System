@@ -6,6 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import UserPage from '../Pages/User/UserPage';
 import AdminPage from '../Pages/Admin/AdminPage';
+import LoginPage from '../Pages/User/Login/LoginPage';
 
 // context for the theme
 const ColorModeContext = createContext({ toggleColorMode: () => { } });
@@ -15,7 +16,9 @@ export function Toogle() {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   return (
-    <Button sx={{ ml: 1 }} onClick={colorMode.toggleColorMode}>
+    <Button
+      margin={"20px"}
+      onClick={colorMode.toggleColorMode}>
       {theme.palette.mode === 'dark' ? "Dark" : "Light"}
     </Button>
   );
@@ -60,6 +63,15 @@ export default function App() {
             main: mode === 'light' ? '#fff' : '#303030',
           },
         },
+        breakpoints: {
+          values: {
+            xs: 0,
+            sm: 600,
+            md: 960,
+            lg: 1280,
+            xl: 1920,
+          },
+        },
       }),
     [mode],
   );
@@ -71,6 +83,7 @@ export default function App() {
           <CssBaseline />
           {/* App can be added bellow here */}
           <UserPage />
+          <LoginPage />
           <AdminPage />
           {/*  */}
         </ThemeProvider>

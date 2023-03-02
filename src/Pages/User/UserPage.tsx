@@ -7,16 +7,10 @@ import { CustomBox as Box, BoxSection } from "../../Component/StyledComponent/Cu
 import { Paragraf, Text, Title } from "../../Component/StyledComponent/Typography/CustomTypography"
 import CustomSlider from "../../Component/StyledComponent/CustomSlider/CustomSlider"
 import { CustomButton as Button } from "../../Component/StyledComponent/CustomButton/CustomButton"
-import { UserFooter } from "../../Component/StyledComponent/Footer/Footer"
-// import { Tooltip } from "@mui/material"
-import { useEffect, useState } from "react"
-import { get } from "../../Component/FunctionComponent/axiosClient/axiosClient"
 import style from "./UserPage.module.scss"
 import { useDispatch, useSelector } from "react-redux"
 import { selectData, selectPrivilage, selectToken, selectIsLogin } from "../../Redux/feature/dataSlice"
-import { setUserToken, setLogin, setLogout } from "../../Redux/feature/dataSlice"
-import LoadingScreen from "../../Component/StyledComponent/Fallback/LoadingScreen"
-import { Custommotion as M } from "../../Component/StyledComponent/CustomAnimation/Custommotion"
+import { Custommotion, Custommotion as M } from "../../Component/StyledComponent/CustomAnimation/Custommotion"
 import { Helmet } from "react-helmet-async"
 import { PROJDESC, PROJTITLE, PROJDOMAIN, MainTitle } from "./../../data"
 import Tutorial from "./Tutorial/Tutorial"
@@ -30,7 +24,6 @@ import { CustomInput } from "../../Component/StyledComponent/CustomInput/CustomI
 // main function
 export default function UserPage() {
     let i = 5;
-    const [loading, setLoading] = useState<boolean>(false);
     const islogin = useSelector(selectIsLogin);
 
     return (
@@ -47,7 +40,9 @@ export default function UserPage() {
             {/* Example of using dispatch */}
 
             {/* Content Start here */}
-            <WelcomePage />
+            <M>
+                <WelcomePage />
+            </M>
             {/* <Paragraf
                 title={"HELLO WORLD"}>
                 Test
@@ -86,8 +81,6 @@ export default function UserPage() {
                 <DescPage />
             </Center>
             <Spacer y={"100px"} />
-            {/* nanti bakal dipindahin ke login */}
-
             <Recommendation />
             {/* <UserFooter /> */}
         </div>
