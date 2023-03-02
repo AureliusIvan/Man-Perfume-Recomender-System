@@ -1,14 +1,41 @@
+$color : rgba(41, 69, 255, 1);
+
 .button {
+    margin-inline: 5px;
     height: 40px;
     min-width: 80px;
     width: fit-content;
-    // background-color: rgb(6, 172, 172);
-    outline: 2px solid rgb(6, 172, 172);
-    color: rgb(6, 172, 172);
-    border-radius: 20px;
+    outline: 2px solid $color;
+    // color: $color;
+    background-color: $color;
+    border-radius: 24px;
     border: none;
     transition: 0.6s;
     position: relative;
+    padding-inline: 24px;
+    font-weight: 500;
+
+    // this is when button hover
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+
+.buttonoutlined {
+    margin-inline: 5px;
+    height: 40px;
+    min-width: 80px;
+    width: fit-content;
+    // outline: 2px solid $color;
+    color: $color;
+    background-color: rgb(255, 255, 255, 0);
+    border-radius: 24px;
+    border: none;
+    transition: 0.6s;
+    position: relative;
+    padding-inline: 24px;
+    font-weight: 500;
 
     // this is when button hover
     &:hover {

@@ -7,10 +7,11 @@ import { CardActions } from '@material-ui/core';
 import Typography from '@mui/material/Typography';
 
 
-export default function CustomCard(props: any) {
+export function CustomCard(props: any) {
     return (
         <Card sx={{
-            maxWidth: 345,
+            width: props.width ? props.width : '95%',
+            // maxWidth: 345,
             margin: props.margin ? props.margin : '10px',
         }}>
             {/* <CardActionArea> */}

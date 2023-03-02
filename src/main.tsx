@@ -5,14 +5,17 @@ import App from './App/App'
 import './index.scss'
 import { Provider } from 'react-redux/es/exports'
 import { store } from './Redux/store'
+import { HelmetProvider } from 'react-helmet-async'
 
 
 // Main func start here
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <HelmetProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </HelmetProvider>
   </React.StrictMode>,
 )
 

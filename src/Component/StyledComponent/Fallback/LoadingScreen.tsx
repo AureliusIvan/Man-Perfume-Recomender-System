@@ -5,7 +5,7 @@ import style from "./LoadingScreen.module.scss"
 function LoadingScreen(props: any) {
     // Prevent scrolling when loading screen is active
     useEffect(() => {
-        document.body.style.overflow = "hidden";
+        // document.body.style.overflow = "hidden";
         return () => {
             document.body.style.overflow = "unset";
         }

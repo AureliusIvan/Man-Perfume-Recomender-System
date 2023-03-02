@@ -1,10 +1,11 @@
 // APP
 import './App.scss'
-import React, { useContext, createContext, useMemo } from 'react';
+import React, { useContext, createContext, useMemo, lazy, Suspense } from 'react';
 import { CustomButton as Button } from '../Component/StyledComponent/CustomButton/CustomButton';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import UserPage from '../Pages/User/UserPage';
+import AdminPage from '../Pages/Admin/AdminPage';
 
 // context for the theme
 const ColorModeContext = createContext({ toggleColorMode: () => { } });
@@ -42,13 +43,22 @@ export default function App() {
         palette: {
           mode,
           background: {
-            default: mode === 'light' ? 'rgb(175, 194, 210)' : '#303030',
+            default: mode === 'light' ? 'rgb(175, 194, 210)' : '#121217',
             paper: mode === 'light' ? '#fff' : '#424242',
           },
           text: {
-            primary: mode === 'light' ? '#303030' : 'rgb(175, 194, 210)',
+            primary: mode === 'light' ? '#303030' : '#fff',
             secondary: mode === 'light' ? '#303030' : 'rgb(175, 194, 210)',
-          }
+          },
+          primary: {
+            main: mode === 'light' ? '#303030' : '#fff',
+          },
+          secondary: {
+            main: mode === 'light' ? '#fff' : '#303030',
+          },
+          error: {
+            main: mode === 'light' ? '#fff' : '#303030',
+          },
         },
       }),
     [mode],
@@ -61,6 +71,7 @@ export default function App() {
           <CssBaseline />
           {/* App can be added bellow here */}
           <UserPage />
+          <AdminPage />
           {/*  */}
         </ThemeProvider>
       </ColorModeContext.Provider>

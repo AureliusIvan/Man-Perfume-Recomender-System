@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
-import userReducer from "./feature/dataSlice"
+import dataReducer from "./feature/dataSlice"
+import { applyMiddleware } from "@reduxjs/toolkit"
 
 export const store = configureStore({
   reducer: {
-    user: userReducer,
+    // user: userReducer,
+    userData: dataReducer,
   },
 })
