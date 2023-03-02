@@ -6,7 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import UserPage from '../Pages/User/UserPage';
 
-
 // context for the theme
 const ColorModeContext = createContext({ toggleColorMode: () => { } });
 
@@ -68,5 +67,3 @@ export default function App() {
     </div>
   )
 }
-
-

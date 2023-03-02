@@ -17,8 +17,9 @@ import { CustomRating as Rating } from "../../Component/StyledComponent/Rating/R
 import { useEffect, useState } from "react"
 import { get } from "../../Component/FunctionComponent/axiosClient/axiosClient"
 import style from "./UserPage.module.scss"
-
-
+// 
+import { useDispatch, useSelector } from "react-redux"
+import { setUserToken } from "../../Redux/feature/dataSlice"
 
 // main function
 export default function UserPage() {
@@ -35,9 +36,17 @@ export default function UserPage() {
             console.log(err)
         }
     }, [])
+
+    //  
+    const dispatch = useDispatch();
+    const token = useSelector((state: any) => state.user.token);
+
     return (
         <div id="User-Page" className={style.UserPage}>
             <Header />
+
+            <Button onClick={() => { dispatch(setUserToken("token")) }}>Token : {token}
+            </Button>
             <Center>
                 {/* Starter pack survey form, hope this help! */}
                 <Box>

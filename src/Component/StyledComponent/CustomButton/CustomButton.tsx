@@ -7,6 +7,7 @@ export function CustomButton(props: any) {
       variant="contained"
       className={style.button}
       {...props}
+      onClick={props.onClick}
     >
       {props.children ? props.children : "Click Me!"}
     </Button >
