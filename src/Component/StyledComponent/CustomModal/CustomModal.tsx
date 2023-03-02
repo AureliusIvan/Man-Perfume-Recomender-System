@@ -27,6 +27,7 @@ export function CustomModal(props: any) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+
     return (
         <div>
             <Button onClick={handleOpen}>{
@@ -34,7 +35,7 @@ export function CustomModal(props: any) {
             }</Button>
             <Modal
                 open={open}
-                onClose={handleClose}
+                onClose={props.onClose ? props.onClose : handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
@@ -74,16 +75,20 @@ export function Confirmations(props: any) {
                 {props.title ? props.title : "Title"}?
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                {props.desc ? props.desc : "Description"}
+                {props.desc ? props.desc : "Are you sure to " + props.title + "?"}
             </Typography>
             <Button
-                onClick={props.onConfirm}
-            >Yes</Button>
+                onClick={
+                    props.onConfirm
+                }
+            >
+                Yes
+            </Button>
             <Button
                 onClick={props.onCancel}
             >
                 No
             </Button>
-        </CustomModal>
+        </CustomModal >
     )
 }

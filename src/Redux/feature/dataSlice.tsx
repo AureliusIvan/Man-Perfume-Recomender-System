@@ -1,50 +1,45 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// const initialState = {
-//     name: "",
-//     email: "",
-//     password: "",
-//     alamat: "",
-//     nohp: "",
-//     role: "",
-//     status: "",
-//     id: "",
-//     token: "",
-//     isLogin: false,
-//     isRegister: false,
-//     isJoin: false,
-    
-// };
+const initialState = {
+    // for user token / bearer token
+    token: "",
+    // for separate user and admin
+    privilage: "guest",
+    // for login and logout method
+    isLogin: false,
+};
 
-// const userDataSlice = createSlice({
-//     name: "userData",
-//     initialState,
-//     reducers: {
-//         userLogin(state) {
-//             state.isLogin = true;
-//         },
-//         userRegister(state = [], action) {
-//             state.name = action.payload.name;
-//             state.email = action.payload.email;
-//             state.password = action.payload.password;
-//             state.alamat = action.payload.alamat;
-//             state.nohp = action.payload.nohp;
-//             state.role = action.payload.role;
-//             state.status = action.payload.status;
-//             state.id = action.payload.id;
-//             state.token = action.payload.token;
-//             state.isLogin = action.payload.isLogin;
-//             state.isRegister = action.payload.isRegister;
-//         },
-//         userSetJoin(state) {
-//             state.isJoin = true;
-//         }
-//     }
-// });
+const userDataSlice = createSlice({
+    name: "userData",
+    initialState,
+    reducers: {
+        setUserToken(state, action) {
+            state.token = action.payload;
+        },
+        setUserPrivilage(state, action) {
+            state.privilage = action.payload;
+        },
+        // for login and logout method
+        setLogin(state) {
+            state.isLogin = true;
+            state.privilage = "admin";
+            // add token cookie 
+        },
+        setLogout(state) {
+            state.isLogin = false;
+            state.privilage = "guest";
+            // delete token cookie
+        }
+    }
+});
 
+// export selector
+export const selectData = (state: any) => state.userData;
+export const selectToken = (state: any) => state.userData.token;
+export const selectPrivilage = (state: any) => state.userData.privilage;
+export const selectIsLogin = (state: any) => state.userData.isLogin;
 
-// export const selectUser = (state) => state.userData;
+// export action
+export const { setUserToken, setUserPrivilage, setLogin, setLogout } = userDataSlice.actions;
 
-// export const { userLogin, userRegister, setUserToken, userSetJoin } = userDataSlice.actions;
-
-// export default userDataSlice.reducer;
+export default userDataSlice.reducer;

@@ -37,7 +37,7 @@ const marks = [
   },
 ];
 
-const CSlider = styled(withTheme(Slider))((props: any) => ({
+const CSlider = styled(withTheme(Slider))((theme) => ({
   color: 'inherit',
   markerColor: 'inherit',
   markerSize: '100px',
@@ -51,11 +51,11 @@ const CSlider = styled(withTheme(Slider))((props: any) => ({
     markerColor: 'inherit',
     markerSize: '100px',
   },
-  'MuiSlider-markLabelActive': {
+  [`&.{MuiSlider-markLabelActive}`]: {
     color: 'inherit',
     markerColor: 'inherit',
     markerSize: '100px',
-  }
+  },
 }));
 
 
