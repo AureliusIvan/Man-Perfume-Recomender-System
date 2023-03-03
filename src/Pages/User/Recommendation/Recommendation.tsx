@@ -9,7 +9,7 @@ import { styled } from '@mui/material/styles';
 import Center from "../../../Component/StyledComponent/CustomCenter/Center";
 
 const Grid = styled(G)(({ theme }) => ({
-    padding: '100px',
+    // padding: '100px',
     paddingTop: '20px',
 }));
 

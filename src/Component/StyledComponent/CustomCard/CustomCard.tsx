@@ -17,6 +17,7 @@ const GridContainer = styled(Grid)(() => ({
     // display: 'flex',
     alignItems: 'left',
     gap: '20px',
+    padding: '5px',
     // paddingRight: '5px',
 }));
 
@@ -77,7 +78,7 @@ export function CustomCard(props: any) {
 export function ResultCard(props: any) {
     return (
         <GridContainer container>
-            <Grid item xs={3}>
+            <Grid item xs={5} md={3}>
                 <img
                     className={style.img}
                     src={props.image ? props.image : "https://cdn.pixabay.com/photo/2017/03/14/11/42/perfume-2142830_960_720.jpg"}

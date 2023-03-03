@@ -4,6 +4,7 @@ export function Custommotion(props: any) {
     return (
         <LazyMotion features={domAnimation}>
             <m.div
+                onScroll={props.onScroll}
                 initial={{
                     opacity: 0,
                     translateY: 50,

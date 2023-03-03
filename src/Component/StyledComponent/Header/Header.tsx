@@ -11,7 +11,8 @@ import { Text } from "../Typography/CustomTypography";
 import Spacer from "../../../Pages/User/Spacer/spacer";
 // import useMediaQuery from "@material-ui/material/useMediaQuery";
 import { useMediaQuery } from "@mui/material";
-
+import { Custommotion as M } from "../CustomAnimation/Custommotion";
+import { useState, useEffect } from "react";
 
 const Margin = "35px";
 
@@ -56,10 +57,40 @@ const GridItemCenter = styled(Grid)(() => ({
 }));
 
 
+
 export default function Header(props: any) {
     const isMobile = useMediaQuery('(min-width:600px)');
+
+    const [show, setShow] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const controlNavbar = () => {
+
+        if (typeof window !== 'undefined') {
+            if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
+                setShow(false);
+            } else { // if scroll up show the navbar
+                setShow(true);
+            }
+
+            // remember current page location to use in the next move
+            setLastScrollY(window.scrollY);
+        }
+    };
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            window.addEventListener('scroll', controlNavbar);
+
+            // cleanup function
+            return () => {
+                window.removeEventListener('scroll', controlNavbar);
+            };
+        }
+    }, [lastScrollY]);
+
     return (
-        <GridContainer container className={style.Header}>
+
+        <GridContainer container className={show ? style.Header : style.HeaderHide}>
             {isMobile &&
                 <GridItemLeft item xs={4}>
                     <LogoImage />
