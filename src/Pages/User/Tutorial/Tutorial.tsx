@@ -4,32 +4,50 @@ import { Paragraf, Title } from "../../../Component/StyledComponent/Typography/C
 // import { Grid as G } from "@material-ui/core"
 import { Grid as G } from "@mui/material"
 import { styled } from "@material-ui/styles"
+// import styled from "@emotion/styled/types/base"
+import { Text } from "../../../Component/StyledComponent/Typography/CustomTypography"
+import { TutorialData } from "./TutorialData"
+import style from "./Tutorial.module.scss"
 
 const Grid = styled(G)(({ theme }) => ({
     padding: '10px',
-    width: '90%',
+    // width: '90%',
 }));
 
 const GridItem = styled(G)(({ theme }) => ({
-    padding: '20px',
-    width: '90%',
+    // padding: '20px',
+    // width: '90%',
 }));
 
 
 
-function Card() {
+function Card(props: any) {
     return (<>
-        <Box style={{
-            width: '90%',
-        }}>
-            <img />
-            <Paragraf textAlign="left">
-                Dar Der Dor
-            </Paragraf>
-            <Button >
-                Learn More
-            </Button>
-        </Box>
+        <div className={style.card}>
+            <Grid container sx={{
+                width: '90%',
+                padding: '10px',
+            }}>
+                <Grid item xs={6}>
+                    <img src={props.img} className={style.img} />
+                </Grid>
+                <Grid item xs={6}>
+                    {/* <Title fontsize="10px">
+                        Dar Der Dor
+                    </Title> */}
+                    {/* <Text>
+                        Dar Der Dor
+                    </Text> */}
+                    <h3 className={style.h3}>Temukan</h3>
+                    <p className={style.p}>This is Desc</p>
+                    <Button variant="outlined" padding="0" margin="0"
+                        color="primary"
+                    >
+                        Learn More {'>>'}
+                    </Button>
+                </Grid>
+            </Grid>
+        </div>
     </>)
 }
 
@@ -38,14 +56,20 @@ function Card() {
 function Tutorial() {
     let i = 4;
     return (<>
-        <Paragraf />
-        <Grid container>
+        <Paragraf title="Cara Penggunaan">
+            Lorem Ipsum, sometimes referred to as 'lipsum', is the placeholder text used in design when creating content.
+        </Paragraf>
+        <Grid container sx={{
+            width: '90%',
+            padding: '10px',
+        }}>
             {
-                Array(i).fill(0).map((item, index) => {
-                    return (
-                        <GridItem key={index} item xs={2}>
-                            <Card />
+                TutorialData.map((item, index) => {
+                    return (<>
+                        <GridItem key={index} item xs={6}>
+                            <Card img={item.image} />
                         </GridItem>
+                    </>
                     )
                 })
             }

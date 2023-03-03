@@ -19,7 +19,7 @@ import WelcomePage from "./Welcome/Welcome"
 import DescPage from "./Desc/DescPage"
 import Spacer from "./Spacer/spacer"
 import { CustomInput } from "../../Component/StyledComponent/CustomInput/CustomInput"
-
+import { Grid } from "@material-ui/core"
 
 // main function
 export default function UserPage() {
@@ -58,14 +58,30 @@ export default function UserPage() {
                             {MainTitle}
                         </Title>
                     </M>
+
                     {Array(i).fill(0).map((_, index) => {
                         return (
                             <BoxSection key={index}>
-                                <Text>
-                                </Text>
-                                <CustomSlider />
-                            </BoxSection>)
+                                <Grid container spacing={2} key={index}>
+                                    <Text />
+                                    <Grid item xs={4} sm={3} md={2} xl={1}>
+                                        <Text>
+                                            Penting
+                                        </Text>
+                                    </Grid>
+                                    <Grid item xs={4} sm={6} md={8} xl={10}>
+                                        <CustomSlider />
+                                    </Grid>
+                                    <Grid item xs={4} sm={3} md={2} xl={1}>
+                                        <Text>
+                                            Tidak Penting
+                                        </Text>
+                                    </Grid>
+                                </Grid>
+                            </BoxSection>
+                        )
                     })}
+
                     <Button>
                         Submit
                     </Button>
@@ -83,7 +99,7 @@ export default function UserPage() {
             <Spacer y={"100px"} />
             <Recommendation />
             {/* <UserFooter /> */}
-        </div>
+        </div >
     )
 }
 

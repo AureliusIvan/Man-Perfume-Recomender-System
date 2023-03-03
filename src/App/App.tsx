@@ -7,6 +7,9 @@ import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import UserPage from '../Pages/User/UserPage';
 import AdminPage from '../Pages/Admin/AdminPage';
 import LoginPage from '../Pages/User/Login/LoginPage';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import { Icon } from '@material-ui/core';
 
 // context for the theme
 const ColorModeContext = createContext({ toggleColorMode: () => { } });
@@ -17,9 +20,14 @@ export function Toogle() {
   const colorMode = useContext(ColorModeContext);
   return (
     <Button
+      variant="outlined"
       margin={"20px"}
       onClick={colorMode.toggleColorMode}>
-      {theme.palette.mode === 'dark' ? "Dark" : "Light"}
+      {/* {theme.palette.mode === 'dark' ? "Dark" : "Light"} */}
+      {/* <Icon component={'image'} /> */}
+      {/* <svg src={DarkModeIcon} alt="" /> */}
+      {/* <DarkModeIcon /> */}
+      {theme.palette.mode === 'dark' ? <DarkModeIcon /> : <LightModeIcon color='primary' />}
     </Button>
   );
 }

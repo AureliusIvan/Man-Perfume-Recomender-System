@@ -3,7 +3,6 @@ import style from "./CustomButton.module.scss";
 // import { useTheme } from "@material-ui/core";
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 
-
 export function CustomButton(props: any) {
   const theme = useTheme();
   return (
@@ -17,7 +16,7 @@ export function CustomButton(props: any) {
         paddingInline: props.paddingInline ? props.paddingInline : "17px",
         ...props.style,
         backgroundColor: props.bgColor ? props.bgColor : theme.palette.background,
-        color: "white",
+        color: props.color ? theme.palette.text.primary : "white",
       }}
     >
       <b>

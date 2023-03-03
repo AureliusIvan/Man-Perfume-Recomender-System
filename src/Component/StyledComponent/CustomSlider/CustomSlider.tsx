@@ -66,7 +66,7 @@ export default function CustomSlider(props: any) {
       aria-labelledby="discrete-slider"
       valueLabelDisplay="auto"
       step={props.step ? props.step : 10}
-      marks={props.marks ? props.marks : marks}
+      // marks={props.marks ? props.marks : marks}
       min={props.min ? props.min : 0}
       max={props.max ? props.max : 100}
     />
