@@ -12,7 +12,8 @@ import Spacer from "../../../Pages/User/Spacer/spacer";
 // import useMediaQuery from "@material-ui/material/useMediaQuery";
 import { useMediaQuery } from "@mui/material";
 import { Custommotion as M } from "../CustomAnimation/Custommotion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 const Margin = "35px";
 
@@ -56,7 +57,27 @@ const GridItemCenter = styled(Grid)(() => ({
     padding: '0px',
 }));
 
+interface Props {
+    children ? : ReactNode,
+    pathTo : string;
+} 
 
+// ...props belom bisa dipake
+const NavLink = ({pathTo, children, ...props} : Props) => {
+    return (
+        <Link to={pathTo}>
+            <Button variant="outlined" {...props}>{children}</Button>
+        </Link>
+    )
+}
+
+const ButtonNavLink = ({pathTo, children, ...props} : Props) => {
+    return (
+        <Link to={pathTo}>
+            <Button {...props}>{children}</Button>
+        </Link>
+    )
+}
 
 export default function Header(props: any) {
     const isMobile = useMediaQuery('(min-width:600px)');
@@ -109,13 +130,10 @@ export default function Header(props: any) {
             </GridItemCenter>
             <GridItemRight item xs={4}>
                 {/* <Toogle /> */}
-                <Button variant="outlined">
-                    Home
-                </Button>
-                <Button>
-                    Admin Mode
-                </Button>
+                <NavLink pathTo="/">Home</NavLink>
+                <ButtonNavLink pathTo="/admin">Admin Mode</ButtonNavLink>
             </GridItemRight>
         </GridContainer>
     )
 }
+

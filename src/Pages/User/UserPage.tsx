@@ -1,6 +1,6 @@
 // [ This is user Page ]
 // this is import
-import Header from "../../Component/StyledComponent/Header/Header"
+
 // import CustomAlert from "../../Component/StyledComponent/CustomAlert/CustomAlert"
 import Center from "../../Component/StyledComponent/CustomCenter/Center"
 import { CustomBox as Box, BoxSection } from "../../Component/StyledComponent/CustomBox/CustomBox"
@@ -34,7 +34,6 @@ export default function UserPage() {
                 <meta name="description" content={PROJDESC} />
                 <link rel="canonical" href={`${PROJDOMAIN}`} />
             </Helmet>
-            <Header />{/*Include header on outlet if router done  */}
             <Spacer y={"100px"} />
             {/* example of paragraf component */}
             {/* Example of using dispatch */}
@@ -98,7 +97,6 @@ export default function UserPage() {
             </Center>
             <Spacer y={"100px"} />
             <Recommendation />
-            {/* <UserFooter /> */}
         </div >
     )
 }

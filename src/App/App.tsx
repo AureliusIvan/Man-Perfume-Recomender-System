@@ -1,15 +1,15 @@
 // APP
 import './App.scss'
 import React, { useContext, createContext, useMemo, lazy, Suspense } from 'react';
+import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import { CustomButton as Button } from '../Component/StyledComponent/CustomButton/CustomButton';
 import CssBaseline from '@mui/material/CssBaseline';
-import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
-import UserPage from '../Pages/User/UserPage';
-import AdminPage from '../Pages/Admin/AdminPage';
-import LoginPage from '../Pages/User/Login/LoginPage';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
+
+// import DarkModeIcon from '@mui/icons-material/DarkMode';
+// import LightModeIcon from '@mui/icons-material/LightMode';
 import { Icon } from '@material-ui/core';
+
+import PageLayout from '@/Component/RoutingComponent/PageLayout';
 
 // context for the theme
 const ColorModeContext = createContext({ toggleColorMode: () => { } });
@@ -27,7 +27,8 @@ export function Toogle() {
       {/* <Icon component={'image'} /> */}
       {/* <svg src={DarkModeIcon} alt="" /> */}
       {/* <DarkModeIcon /> */}
-      {theme.palette.mode === 'dark' ? <DarkModeIcon /> : <LightModeIcon color='primary' />}
+
+      {/* {theme.palette.mode === 'dark' ? <DarkModeIcon /> : <LightModeIcon color='primary' />} */}
     </Button>
   );
 }
@@ -89,13 +90,11 @@ export default function App() {
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          {/* App can be added bellow here */}
-          <UserPage />
-          <LoginPage />
-          <AdminPage />
-          {/*  */}
+          <PageLayout />
         </ThemeProvider>
       </ColorModeContext.Provider>
     </div>
   )
 }
+
+// nantinya kalo mau tambahin page bisa langsung import di Routing.tsx
