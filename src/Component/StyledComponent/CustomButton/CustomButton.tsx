@@ -9,8 +9,13 @@ export function CustomButton(props: any) {
     <button
       className={props.variant === "outlined" ? style.buttonoutlined : style.button}
       {...props}
-      onClick={props.onClick}
+      // onClick={props.onClick}
       style={{
+        // display: props.display ? props.display : "flex",
+        // justifyContent: props.justifyContent ? props.justifyContent : "center",
+        // alignItems: props.alignItems ? props.alignItems : "center",
+        // height: props.height ? props.height : "40px",
+        // width: props.width ? props.width : "100%",
         margin: props.margin ? props.margin : "0px",
         padding: props.padding ? props.padding : "",
         paddingInline: props.paddingInline ? props.paddingInline : "17px",

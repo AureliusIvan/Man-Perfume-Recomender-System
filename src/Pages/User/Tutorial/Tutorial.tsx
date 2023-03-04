@@ -3,11 +3,13 @@ import { CustomBox as Box } from "../../../Component/StyledComponent/CustomBox/C
 import { Paragraf, Title } from "../../../Component/StyledComponent/Typography/CustomTypography"
 // import { Grid as G } from "@material-ui/core"
 import { Grid as G } from "@mui/material"
-import { styled } from "@material-ui/styles"
+import { styled, useTheme } from "@material-ui/styles"
 // import styled from "@emotion/styled/types/base"
 import { Text } from "../../../Component/StyledComponent/Typography/CustomTypography"
 import { TutorialData } from "./TutorialData"
 import style from "./Tutorial.module.scss"
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+// import { useTheme } from "@mui/material"
 
 const Grid = styled(G)(({ theme }) => ({
     padding: '10px',
@@ -22,8 +24,15 @@ const GridItem = styled(G)(({ theme }) => ({
 
 
 function Card(props: any) {
+    const theme = useTheme();
     return (<>
-        <div className={style.card}>
+        <div className={style.card}
+            style={{
+                // border: theme.palette.mode === 'dark' ? '#1e1e1e' : '#f5f5f5',
+                border: '1px solid',
+                borderColor: theme === 'dark' ? '#1e1e1e' : '#f5f5f5',
+            }}
+        >
             <Grid container sx={{
                 width: '90%',
                 padding: '10px',
@@ -32,24 +41,26 @@ function Card(props: any) {
                     <img src={props.img} className={style.img} />
                 </Grid>
                 <Grid item xs={6}>
-                    {/* <Title fontsize="10px">
-                        Dar Der Dor
-                    </Title> */}
-                    {/* <Text>
-                        Dar Der Dor
-                    </Text> */}
-                    <h3 className={style.h3}>Temukan</h3>
-                    <p className={style.p}>This is Desc</p>
-                    <Button variant="outlined" padding="0" margin="0"
-                        color="primary"
+                    <h3 className={style.h3}>{
+                        props.title
+                    }</h3>
+                    <p className={style.p}>Lorem</p>
+                    <button
+                        className={style.button}
                     >
-                        Learn More {'>>'}
-                    </Button>
+                        <Text width={'fit-content'}>
+                            Learn More
+                        </Text>
+                        <ArrowForwardIcon color={
+                            theme === 'dark' ? 'secondary' : 'primary'
+                        } />
+                    </button>
                 </Grid>
             </Grid>
         </div>
     </>)
 }
+
 
 
 
@@ -65,11 +76,10 @@ function Tutorial() {
         }}>
             {
                 TutorialData.map((item, index) => {
-                    return (<>
+                    return (
                         <GridItem key={index} item xs={6}>
-                            <Card img={item.image} />
+                            <Card img={item.image} title={item.title} />
                         </GridItem>
-                    </>
                     )
                 })
             }

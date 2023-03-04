@@ -5,8 +5,13 @@ import welcomeimg from "../../../Assets/Image/welcome.png"
 import { Title } from "../../../Component/StyledComponent/Typography/CustomTypography"
 import Center from "../../../Component/StyledComponent/CustomCenter/Center"
 import { CustomImage as Img } from "../../../Component/StyledComponent/CustomImage/CustomImage"
+import { useNavigate } from "react-router-dom"
 
 export default function WelcomePage() {
+    const navigate = useNavigate()
+    const navigateToKuisioner = () => {
+        navigate('/start')
+    }
     return (
         <div>
             <Grid container>
@@ -17,7 +22,7 @@ export default function WelcomePage() {
                         }}>
                             Selamat Datang!
                         </Title>
-                        <Button>
+                        <Button onClick={navigateToKuisioner}>
                             Mulai Menentukan Parfum
                         </Button>
                     </Center>

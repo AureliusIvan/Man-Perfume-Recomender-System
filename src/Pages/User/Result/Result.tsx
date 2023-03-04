@@ -9,6 +9,7 @@ import { styled } from '@mui/material/styles';
 import Center from "../../../Component/StyledComponent/CustomCenter/Center";
 import { useDispatch, useSelector } from "react-redux";
 import { setDataEntry, selectDataEntry } from "@/Redux/feature/dataSlice";
+import Spacer from "../Spacer/spacer";
 
 const Grid = styled(G)(({ theme }) => ({
     // padding: '100px',
@@ -22,7 +23,7 @@ const GridItem = styled(G)(({ theme }) => ({
 
 
 
-function Recommendation() {
+export default function Result() {
     let i = 5;
     const [naruto, setNaruto] = useState<object[]>([])
     const [loading, setLoading] = useState<boolean>(false)
@@ -49,13 +50,15 @@ function Recommendation() {
 
     return (
         <>
+            <Spacer y={'20px'} />
             <Center>
-                <Paragraf title={"Parfum Viral 2023"} width={'300px'}>
-                    Lorem Ipsum, sometimes referred to as 'lipsum', is the placeholder text used in design when creating content.
-                </Paragraf>
+                {/* <Paragraf /> */}
+                <Title>
+                    Hasil Pencarian Parfum
+                </Title>
             </Center>
             <Grid container>
-                {/* {naruto.map((item: any, index) => {
+                {naruto.map((item: any, index) => {
                     if (index < 6) {
                         return (
                             <GridItem item xs={12} key={index}>
@@ -67,22 +70,9 @@ function Recommendation() {
                         )
                     }
 
-                })} */}
-                {naruto.map((item: any, index) => {
-                    if (index < 6) {
-                        return (
-                            <GridItem item md={4}>
-                                <CustomCard
-                                    title={item.name}
-                                    image={item.images[0]}
-                                    key={index} />
-                            </GridItem>
-                        )
-                    }
                 })}
             </Grid>
         </>
     )
 }
 
-export default Recommendation;

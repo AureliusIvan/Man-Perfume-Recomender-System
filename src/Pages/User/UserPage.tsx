@@ -20,6 +20,7 @@ import DescPage from "./Desc/DescPage"
 import Spacer from "./Spacer/spacer"
 import { CustomInput } from "../../Component/StyledComponent/CustomInput/CustomInput"
 import { Grid } from "@material-ui/core"
+import { useMemo } from "react"
 
 // main function
 export default function UserPage() {
@@ -42,58 +43,14 @@ export default function UserPage() {
             <M>
                 <WelcomePage />
             </M>
-            {/* <Paragraf
-                title={"HELLO WORLD"}>
-                Test
-            </Paragraf> */}
             <Spacer y={"200px"} />
-
-
             <Center>
-                {/* Starter pack survey form, hope this help! */}
-                <Box>
-                    <M>
-                        <Title>
-                            {MainTitle}
-                        </Title>
-                    </M>
-
-                    {Array(i).fill(0).map((_, index) => {
-                        return (
-                            <BoxSection key={index}>
-                                <Grid container spacing={2} key={index}>
-                                    <Text />
-                                    <Grid item xs={4} sm={3} md={2} xl={1}>
-                                        <Text>
-                                            Penting
-                                        </Text>
-                                    </Grid>
-                                    <Grid item xs={4} sm={6} md={8} xl={10}>
-                                        <CustomSlider />
-                                    </Grid>
-                                    <Grid item xs={4} sm={3} md={2} xl={1}>
-                                        <Text>
-                                            Tidak Penting
-                                        </Text>
-                                    </Grid>
-                                </Grid>
-                            </BoxSection>
-                        )
-                    })}
-
-                    <Button>
-                        Submit
-                    </Button>
-                </Box>
+                <DescPage />
                 <Spacer y={"100px"} />
-                <Box>
-                    <CustomInput label="test" />
-                    <CustomInput />
-                </Box>
                 <Spacer y={"100px"} />
                 <Tutorial />
                 <Spacer y={"100px"} />
-                <DescPage />
+
             </Center>
             <Spacer y={"100px"} />
             <Recommendation />

@@ -6,25 +6,25 @@ import Monit from "../../../Assets/Image/Monit.png";
 export const TutorialData = [
     {
         id: 1,
-        title: 'Tutorial 1',
+        title: 'Temukan',
         description: 'Tutorial 1 Description',
         image: Comp,
     },
     {
         id: 2,
-        title: 'Tutorial 2',
+        title: 'Semakin',
         description: 'Tutorial 2 Description',
         image: Learn,
     },
     {
-        id: 3,
-        title: 'Tutorial 3',
+        id: 3,  
+        title: 'Pilihlah',
         description: 'Tutorial 3 Description',
         image: Write,
     },
     {
         id: 4,
-        title: 'Tutorial 4',
+        title: 'Hasil',
         description: 'Tutorial 4 Description',
         image: Monit,
     },

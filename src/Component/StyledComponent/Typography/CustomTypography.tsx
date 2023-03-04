@@ -1,6 +1,7 @@
 import style from "./CustomTypography.module.scss"
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
+import Spacer from "@/Pages/User/Spacer/spacer";
 
 
 export function Text(props: any) {
@@ -61,7 +62,12 @@ export function Paragraf(props: any) {
             textalign={props.textalign ? props.textalign : "left"}>
             {props.title}
         </Title>
-        <Text style={{ textAlign: props.textAlign ? props.textAlign : "center", }}>
+        <Spacer y={props.spacer ? props.spacer : "20px"} />
+        <Text style={{
+            textAlign: props.textAlign ? props.textAlign : "center",
+        }}
+            width={props.width ? props.width : "100%"}
+        >
             {props.children ? props.children : "Aroma lebih penting dari harga. Ini adalah Paragraf"}
         </Text>
     </>

@@ -13,7 +13,7 @@ export default function PageLayout() {
       <div>
         <Header />
 				<Routing />
-        <UserFooter />
+        {/* <UserFooter /> */}
       </div>
     </>
   );
