@@ -39,7 +39,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 // CustomModal
 // CustomSlider
 // CustomSpinner
-// Text
+// Typography
+// CustomTable
 // Footer
 // Header
+// DarkMode / LightMode
 // FallBack (Loading Screen)

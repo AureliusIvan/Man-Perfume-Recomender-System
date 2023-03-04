@@ -12,7 +12,7 @@ export default function CustomSpinner(props: any) {
     >
       {Array(i).fill(0).map((_, index) => {
         return (
-          <div></div>
+          <div key={index}></div>
         )
       })}
     </div>

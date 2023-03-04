@@ -1,13 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { get } from "../../Component/FunctionComponent/axiosClient/axiosClient";
+
 
 const initialState = {
     // for user token / bearer token
+    dataEntry: [],
     token: "",
     // for separate user and admin
     privilage: "guest",
     // for login and logout method
     isLogin: false,
 };
+
+
+export const FetchData = createAsyncThunk('userData/fetchData',
+    async (data: any, thunkAPI) => {
+        await get('')
+            .then((res) => {
+                return res;
+            })
+        // return response.data;
+    }
+);
+
+
 
 const userDataSlice = createSlice({
     name: "userData",
@@ -29,7 +45,16 @@ const userDataSlice = createSlice({
             state.isLogin = false;
             state.privilage = "guest";
             // delete token cookie
+        },
+        setDataEntry(state, action) {
+            state.dataEntry = action.payload;
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(FetchData.fulfilled, (state: any, action) => {
+            // return action.payload;
+            state.dataEntry = action.payload;
+        });
     }
 });
 
@@ -38,8 +63,8 @@ export const selectData = (state: any) => state.userData;
 export const selectToken = (state: any) => state.userData.token;
 export const selectPrivilage = (state: any) => state.userData.privilage;
 export const selectIsLogin = (state: any) => state.userData.isLogin;
-
+export const selectDataEntry = (state: any) => state.userData.dataEntry;
 // export action
-export const { setUserToken, setUserPrivilage, setLogin, setLogout } = userDataSlice.actions;
+export const { setUserToken, setUserPrivilage, setLogin, setLogout, setDataEntry } = userDataSlice.actions;
 
 export default userDataSlice.reducer;

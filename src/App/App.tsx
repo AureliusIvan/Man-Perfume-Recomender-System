@@ -5,8 +5,8 @@ import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import { CustomButton as Button } from '../Component/StyledComponent/CustomButton/CustomButton';
 import CssBaseline from '@mui/material/CssBaseline';
 
-// import DarkModeIcon from '@mui/icons-material/DarkMode';
-// import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import { Icon } from '@material-ui/core';
 
 import PageLayout from '@/Component/RoutingComponent/PageLayout';
@@ -28,7 +28,7 @@ export function Toogle() {
       {/* <svg src={DarkModeIcon} alt="" /> */}
       {/* <DarkModeIcon /> */}
 
-      {/* {theme.palette.mode === 'dark' ? <DarkModeIcon /> : <LightModeIcon color='primary' />} */}
+      {theme.palette.mode === 'dark' ? <DarkModeIcon /> : <LightModeIcon color='primary' />}
     </Button>
   );
 }

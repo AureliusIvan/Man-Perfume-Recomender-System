@@ -1,9 +1,11 @@
+// Custom box is a component that allows you to create a box with custom style.
 import Box from "@material-ui/core/Box"
 import styled from "@emotion/styled"
 import style from "./CustomBox.module.scss"
 import { useTheme } from "@mui/material/styles";
 import { Divider } from "@mui/material";
 
+// our custom box style
 const CBox = styled(Box)(() => ({
     backgroundColor: '#f5f5f5',
     display: 'flex',
@@ -24,6 +26,7 @@ export function CustomBox(props: any) {
                 width: props.width ? props.width : "90%",
                 padding: props.padding ? props.padding : "",
                 margin: props.margin ? props.margin : "",
+                borderRadius: props.borderRadius ? props.borderRadius : "20px",
             }}
         >
             {props.children}

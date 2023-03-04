@@ -1,4 +1,7 @@
+@use "./../../../index.scss" as index;
+
 .img {
+    @include index.prevent-selection;
     border-radius: 10px;
     width: 100%;
     height: fit-content;
@@ -10,12 +13,15 @@
 }
 
 .logo {
+    // to disable selection on logo
+    @include index.prevent-selection;
     width: 100px;
     height: 100%;
     object-fit: 50%;
     background-image: url(../../../Assets/image/logo.png);
     background-position: center;
     background-repeat: no-repeat;
+    // adjust the size of the logo
     background-size: 80% 80% !important;
     overflow: visible;
 }

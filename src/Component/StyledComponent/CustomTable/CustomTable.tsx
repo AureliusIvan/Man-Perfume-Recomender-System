@@ -55,7 +55,7 @@ export default function CustomTable() {
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                 <TableHead>
                     <TableRow>
-                        <StyledTableCell>Dessert (100g serving)</StyledTableCell>
+                        <StyledTableCell>Nama Parfum</StyledTableCell>
                         <StyledTableCell align="right">Aroma</StyledTableCell>
                         <StyledTableCell align="right">Harga&nbsp;(g)</StyledTableCell>
                         <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>

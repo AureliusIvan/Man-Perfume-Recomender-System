@@ -17,11 +17,6 @@ export default function LoginPage() {
                 <LogoImage size="200px" />
                 <Input label="Username" />
                 <Input label="Password" />
-                {/* <Modal /> */}
-                {/* <Confirmations title="Submit" /> */}
-                {/* <Tooltip title="Rate your Experience!"> */}
-                {/* <Rating /> */}
-                {/* </Tooltip> */}
                 <Spacer y="20px" />
                 <Button>
                     LOGIN

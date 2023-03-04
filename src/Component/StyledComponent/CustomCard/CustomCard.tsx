@@ -17,7 +17,7 @@ const GridContainer = styled(Grid)(() => ({
     // display: 'flex',
     alignItems: 'left',
     gap: '20px',
-    padding: '5px',
+    padding: '20px',
     // paddingRight: '5px',
 }));
 
@@ -31,24 +31,56 @@ const GridItem = styled(Grid)(() => ({
 }));
 
 
+const CContent = styled(CardContent)(({ theme }) => ({
+    // display: 'flex',
+    // flexDirection: 'column',
+    // alignItems: 'left',
+    // justifyContent: 'left',
+    // gap: '20px',
+    // paddingRight: '5px',
+    // color: 'black',
+    // backgroundColor: theme === 'dark' ? theme.palette.grey[800] : theme.palette.grey[200],
+    backgroundColor: theme.palette.mode === 'dark' ? 'black' : 'white',
+    borderRadius: '20px',
+    transform: 'scaleY(1.2)',
+}));
+
+
+const CMedia = styled(CardMedia)(({ theme }) => ({
+    // backgroundColor: theme.palette.mode === 'dark' ? 'black' : 'white',
+    borderRadius: '20px',
+    // transform: 'scaleX(1.1)',
+}));
+
+
 export function CustomCard(props: any) {
     return (
         <Card sx={{
+            overflow: 'visible',
             width: props.width ? props.width : '95%',
+            backgroundColor: props.backgroundColor ? props.backgroundColor : 'rgba(254, 255, 255, 0)',
             // maxWidth: 345,
             margin: props.margin ? props.margin : '10px',
         }}>
             {/* <CardActionArea> */}
             {/* <CustomBox> */}
             <CardMedia
+                sx={{
+                    // borderRadius: '20px',
+                    // borderTopRightRadius: '20px',
+                    // borderTopLeftRadius: '20px',
+                }}
                 component="img"
-                height="140"
+                height="160"
                 image={props.image ? props.image : "https://cdn.pixabay.com/photo/2017/03/14/11/42/perfume-2142830_960_720.jpg"}
                 alt={props.title ? props.title : "Perfume"}
             />
 
-            <CardContent>
+            <CContent>
                 <Typography
+                    sx={{
+                        transform: 'scaleY(0.8)',
+                    }}
                     gutterBottom
                     variant="h5"
                     component="div"
@@ -57,17 +89,20 @@ export function CustomCard(props: any) {
                     {props.title ? props.title : "Perfume"}
                 </Typography>
                 <Typography
+                    sx={{
+                        transform: 'scaleY(0.8)',
+                    }}
                     variant="body2"
                     color="text.secondary"
                     textAlign={props.textAlign ? props.textAlign : "left"}
                 >
                     {props.description ? props.description : "Perfumes can be defined as substances that emit and diffuse a pleasant and fragrant odor. They consist of manmade mixtures of aromatic chemicals and essential oils."}
                 </Typography>
-            </CardContent>
-            <CardActions>
+            </CContent>
+            {/* <CardActions>
                 <Button color='primary' size="small">Share</Button>
                 <Button color='primary' size="small">Learn More</Button>
-            </CardActions>
+            </CardActions> */}
             {/* </CustomBox> */}
             {/* </CardActionArea> */}
         </Card>
