@@ -1,7 +1,7 @@
-import { BoxSection } from "../../../Component/StyledComponent/CustomBox/CustomBox";
+// import { BoxSection } from "../../../Component/StyledComponent/CustomBox/CustomBox";
 import { Paragraf, Text, Title } from "../../../Component/StyledComponent/Typography/CustomTypography";
-import CustomSlider from "../../../Component/StyledComponent/CustomSlider/CustomSlider";
-import React, { useEffect, useState } from "react";
+// import CustomSlider from "../../../Component/StyledComponent/CustomSlider/CustomSlider";
+import { useEffect, useState } from "react";
 import { get } from "../../../Component/FunctionComponent/axiosClient/axiosClient";
 import { CustomCard, ResultCard } from "../../../Component/StyledComponent/CustomCard/CustomCard";
 import { Grid as G } from "@material-ui/core";

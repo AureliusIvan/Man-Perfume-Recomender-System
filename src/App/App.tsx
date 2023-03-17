@@ -1,13 +1,12 @@
 // APP
 import './App.scss'
-import React, { useContext, createContext, useMemo, lazy, Suspense } from 'react';
+import { useState, useContext, createContext, useMemo, lazy, Suspense } from 'react';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import { CustomButton as Button } from '../Component/StyledComponent/CustomButton/CustomButton';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import { Icon } from '@material-ui/core';
 
 import PageLayout from '@/Component/RoutingComponent/PageLayout';
 
@@ -36,7 +35,7 @@ export function Toogle() {
 
 export default function App() {
   // const mode is the state of the theme
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+  const [mode, setMode] = useState<'light' | 'dark'>('dark');
   // prevent the theme from changing when the component re-renders
   const colorMode = useMemo(
     () => ({

@@ -6,9 +6,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
+// import { Button } from '@mui/material';
+import { CustomButton as Button } from '../CustomButton/CustomButton';
 import { CustomButton } from '../CustomButton/CustomButton';
-import { Confirmations } from '../CustomModal/CustomModal';
+import { Confirmations, CustomModal } from '../CustomModal/CustomModal';
+import { CustomInput } from '../CustomInput/CustomInput';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -47,7 +49,26 @@ const rows = [
     createData('Parfum Laki-laki', 262, 16.0, 24, 6.0),
     createData('Parfum refil', 305, 3.7, 67, 4.3),
     createData('Parfum jambu air', 356, 16.0, 49, 3.9),
+    createData('Parfum Bunga', 159, 6.0, 24, 4),
+    createData('Parfum Apa gitu', 237, 9.0, 37, 4.3),
+    createData('Parfum Laki-laki', 262, 16.0, 24, 6.0),
+    createData('Parfum refil', 305, 3.7, 67, 4.3),
+    createData('Parfum jambu air', 356, 16.0, 49, 3.9),
 ];
+
+
+function ModalContent() {
+    return (<>
+        <CustomInput />
+        <CustomInput />
+        <CustomInput />
+        <CustomInput />
+        <CustomInput />
+        <Button>
+            Submit
+        </Button>
+    </>)
+}
 
 export default function CustomTable() {
     return (
@@ -58,7 +79,7 @@ export default function CustomTable() {
                         <StyledTableCell>Nama Parfum</StyledTableCell>
                         <StyledTableCell align="right">Aroma</StyledTableCell>
                         <StyledTableCell align="right">Harga&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
+                        <StyledTableCell align="right">Merk&nbsp;(g)</StyledTableCell>
                         <StyledTableCell align="right">Edit</StyledTableCell>
                         <StyledTableCell align="right">Delete</StyledTableCell>
                     </TableRow>
@@ -74,7 +95,9 @@ export default function CustomTable() {
                             <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                             <StyledTableCell align="right">
                                 <CustomButton>
-                                    Edit
+                                    <CustomModal title="Edit">
+                                        <ModalContent />
+                                    </CustomModal>
                                 </CustomButton>
                             </StyledTableCell>
                             <StyledTableCell align="right">

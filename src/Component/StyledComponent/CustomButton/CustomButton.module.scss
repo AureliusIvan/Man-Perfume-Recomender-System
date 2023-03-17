@@ -1,4 +1,5 @@
 $color : rgba(41, 69, 255, 1);
+$text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.8);
 
 .button {
     margin-inline: 5px;
@@ -6,21 +7,31 @@ $color : rgba(41, 69, 255, 1);
     min-width: 80px;
     width: fit-content;
     outline: 2px solid $color;
-    // color: $color;
     background-color: $color;
     border-radius: 24px;
     border: none;
-    transition: 0.6s;
     position: relative;
     padding-inline: 24px;
-    font-weight: 500;
-    transition: 0.2s;
     pointer-events: all;
     cursor: pointer;
+    font-weight: 500;
+    transition: 400ms;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.2);
+    text-shadow: $text-shadow;
+    will-change: transfrom, opacity;
 
-    // this is when button hover
-    &:hover {
-        opacity: 0.5;
+    @media screen and (min-width: 768px) {
+        &:hover {
+            opacity: 0.5;
+            transform: translate(0, -2px) scale(1.04);
+            transition: all 100ms;
+
+        }
+    }
+
+    &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
     }
 }
 
@@ -30,7 +41,6 @@ $color : rgba(41, 69, 255, 1);
     height: 40px;
     min-width: 80px;
     width: fit-content;
-    // outline: 2px solid $color;
     color: $color;
     background-color: rgb(255, 255, 255, 0);
     border-radius: 24px;
@@ -42,9 +52,19 @@ $color : rgba(41, 69, 255, 1);
     transition: 0.2s;
     pointer-events: all;
     cursor: pointer;
+    text-shadow: $text-shadow;
 
-    // this is when button hover
-    &:hover {
-        opacity: 0.5;
+    @media screen and (min-width: 768px) {
+        &:hover {
+            opacity: 0.5;
+            transform: translate(0, -2px) scale(1.04);
+            transition: all 100ms;
+
+        }
+    }
+
+    &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
     }
 }

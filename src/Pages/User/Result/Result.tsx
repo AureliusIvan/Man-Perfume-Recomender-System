@@ -30,7 +30,7 @@ export default function Result() {
     const dispatch = useDispatch();
     const dataEntry = useSelector(selectDataEntry);
     useEffect(() => {
-        if (dataEntry) {
+        if (!dataEntry) {
             try {
                 setLoading(true);
                 get("")

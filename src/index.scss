@@ -27,3 +27,41 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+
+
+// animated border mixin
+@mixin animated-border {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::after {
+    content: "";
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    border-radius: 50px;
+    background: conic-gradient(#3a7cec 0%12.5%,
+        #2ca24c 12.5%25%,
+        #f1b500 25%37.5%,
+        #e33e2b 37.5%50%,
+        #3a7cec 50%62.5%,
+        #2ca24c 62.5%75%,
+        #f1b500 75%87.5%,
+        #e33e2b 87.5%100%);
+    animation: border-animation 5s linear infinite;
+    -webkit-animation: border-animation 5s linear infinite;
+  }
+
+  @keyframes border-animation {
+    to {
+      transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+    }
+  }
+
+}
