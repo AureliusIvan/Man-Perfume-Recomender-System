@@ -6,14 +6,36 @@
     bottom: 0;
     margin: auto;
     width: fit-content;
-    // min-width: ;
     border-radius: 10px;
     max-width: 90vw;
     height: fit-content;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
     z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
+
+
+}
+
+.closebtn {
+    cursor: pointer;
+    $size : 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: black;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: white;
+    border: none;
+    width: $size;
+    height: $size;
+    font-size: $size - 25px;
+    font-weight: 700;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        opacity: 0.5;
+    }
 }

@@ -16,13 +16,15 @@ const Routing = () => {
   return (
     <Routes>
       <Route path="/" element={<UserPage />} />
-      <Route path="/admin" element={<AdminPage />} />
+
+        <Route path="/admin" element={<AdminPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/start" element={
         <Suspense fallback={<LoadingScreen />}>
           <Kuisioner />
         </Suspense>}
       />
+      
       <Route path="/result" element={
         <Suspense fallback={<LoadingScreen />}>
           <Result />
@@ -33,3 +35,10 @@ const Routing = () => {
 };
 
 export default Routing;
+
+
+
+// user = get user state 
+// if user == admin
+// return children if condition true
+// else return navigate ./login

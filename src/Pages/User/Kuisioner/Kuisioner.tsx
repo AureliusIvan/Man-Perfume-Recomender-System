@@ -11,9 +11,14 @@ import { CustomButton as Button } from "@/Component/StyledComponent/CustomButton
 import { Custommotion as M } from "@/Component/StyledComponent/CustomAnimation/Custommotion";
 import { useNavigate } from "react-router-dom";
 import Spacer from "../Spacer/spacer";
+import { useEffect } from "react";
 
 
 export default function Kuisioner() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
     const navigate = useNavigate()
     const navigateToResult = () => {
         navigate('/result')

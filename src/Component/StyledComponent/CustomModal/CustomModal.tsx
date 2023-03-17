@@ -1,32 +1,16 @@
 import * as React from 'react';
-// import Box from '@mui/material/Box';
-import { CustomBox as Box } from '../CustomBox/CustomBox';
-// import Button from '@mui/material/Button';
+import { CustomBox as Box, Flex } from '../CustomBox/CustomBox';
 import { CustomButton as Button } from '../CustomButton/CustomButton';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import style from "./CustomModal.module.scss";
-
-// const style = {
-//     position: 'absolute' as 'absolute',
-//     top: '0',
-//     bottom: '0',
-//     left: '0',
-//     right: '0',
-//     margin: 'auto',
-//     transform: 'translate(-50%, -50%)',
-//     width: 400,
-//     borderRadius: '10px',
-//     bgcolor: 'background.paper',
-//     boxShadow: 24,
-//     p: 4,
-// };
+import { useTheme } from '@mui/material/styles';
 
 export function CustomModal(props: any) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
+    const theme = useTheme();
 
     return (
         <div>
@@ -39,11 +23,20 @@ export function CustomModal(props: any) {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <React.Fragment>
+                <>
                     <Box
-                        // sx={style}
+                        maxWidth="440px"
                         className={style.modal}
                     >
+                        <button
+                            className={style.closebtn}
+                            onClick={props.onClose ? props.onClose : handleClose}
+                            style={{
+                                color: theme.palette.mode === 'dark' ? "black" : "white",
+                                backgroundColor: theme.palette.mode === 'dark' ? "white" : "black",
+                                
+                            }}
+                        >X</button>
                         {
                             props.children ? props.children :
                                 <>
@@ -57,7 +50,7 @@ export function CustomModal(props: any) {
                         }
 
                     </Box>
-                </React.Fragment>
+                </>
             </Modal>
         </div>
     );
@@ -77,18 +70,20 @@ export function Confirmations(props: any) {
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                 {props.desc ? props.desc : "Are you sure to " + props.title + "?"}
             </Typography>
-            <Button
-                onClick={
-                    props.onConfirm
-                }
-            >
-                Yes
-            </Button>
-            <Button
-                onClick={props.onCancel}
-            >
-                No
-            </Button>
+            <Flex>
+                <Button
+                    onClick={
+                        props.onConfirm
+                    }
+                >
+                    Yes
+                </Button>
+                <Button
+                    onClick={props.onCancel}
+                >
+                    No
+                </Button>
+            </Flex>
         </CustomModal >
     )
 }
