@@ -6,9 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-// import { Button } from '@mui/material';
 import { CustomButton as Button } from '../CustomButton/CustomButton';
-import { CustomButton } from '../CustomButton/CustomButton';
 import { Confirmations, CustomModal } from '../CustomModal/CustomModal';
 import { CustomInput } from '../CustomInput/CustomInput';
 
@@ -94,11 +92,9 @@ export default function CustomTable() {
                             <StyledTableCell align="right">{row.fat}</StyledTableCell>
                             <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                             <StyledTableCell align="right">
-                                <CustomButton>
-                                    <CustomModal title="Edit">
-                                        <ModalContent />
-                                    </CustomModal>
-                                </CustomButton>
+                                <CustomModal title="Edit">
+                                    <ModalContent />
+                                </CustomModal>
                             </StyledTableCell>
                             <StyledTableCell align="right">
                                 <Confirmations title="Delete" onConfirm={""} onCancel={""}>
