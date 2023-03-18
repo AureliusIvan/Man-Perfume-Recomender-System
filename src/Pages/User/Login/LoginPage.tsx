@@ -8,8 +8,22 @@ import { LogoImage } from "../../../Component/StyledComponent/CustomImage/Custom
 import Center from "../../../Component/StyledComponent/CustomCenter/Center"
 import style from "./LoginPage.module.scss"
 import Spacer from "../Spacer/spacer"
+import { selectIsLogin, setLogin, setLogout } from "@/Redux/feature/dataSlice"
+import { useSelector, useDispatch } from "react-redux"
+
 
 export default function LoginPage() {
+    // example start here
+    const isLogin = useSelector(selectIsLogin);
+    const dispatch = useDispatch();
+    const handleLogin = () => {
+        if (isLogin) {
+            dispatch(setLogout())
+        } else {
+            dispatch(setLogin())
+        }
+    }
+    // end here
     return (
         <div className={style.LoginPage}>
             {/* <Center y> */}
@@ -21,6 +35,11 @@ export default function LoginPage() {
                 <Button>
                     LOGIN
                 </Button>
+                {/* example start here */}
+                <Button onClick={handleLogin}>
+                    status : {isLogin ? "true" : "false"}
+                </Button>
+                {/* example end here */}
             </Box>
             {/* </Center> */}
         </div>
