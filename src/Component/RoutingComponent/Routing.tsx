@@ -12,7 +12,7 @@ import { lazy, Suspense } from "react";
 import LoadingScreen from "../StyledComponent/Fallback/LoadingScreen";
 import Result from "@/Pages/User/Result/Result";
 
-// import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./ProtectedRoute";
 
 import { useSelector } from "react-redux";
 import { selectIsLogin } from "@/Redux/feature/dataSlice";
@@ -26,14 +26,19 @@ const Routing = () => {
     <Routes>
       <Route path="/" element={<UserPage />} />
       <Route path="/admin/login" element={<LoginPage />} />
-      {/* <ProtectedRoute path="/admin" element={<AdminPage />} /> */}
-
+      <Route path="/admin" element={
+        // yang mau di protect tinggal di bungkus aja
+        // nanti bisa di tambahin parameter lagi kalo butuh sih, semisal admin, user dll
+        <ProtectedRoute>
+          <AdminPage />
+        </ProtectedRoute>
+      } />
       {/* kalo ini bisa berarti yg auth harusnya bisa, tapi yg jadi masalah adalah statenya, dibalikinnya [object object], harusnya true atau false */}
-      {(1 == 1) ? (
+      {/* {(1 == 1) ? (
         <Route path="/admin" element={<AdminPage />} />
       ) : (
         <Navigate to="/admin/login" replace />
-      )}
+      )} */}
 
       {/* Nanti ada juga untuk ga perlu ke /admin/login kalo auth uda bisa */}
 
