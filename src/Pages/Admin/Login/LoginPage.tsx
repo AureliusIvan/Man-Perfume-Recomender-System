@@ -12,7 +12,10 @@ import Spacer from "../../User/Spacer/spacer";
 import { Formik, FormikProps, Form } from "formik";
 import * as Yup from "yup";
 
-function LoginPage() {
+import { useDispatch } from "react-redux";
+import { setLogin } from "@/Redux/feature/dataSlice";
+
+function LoginPage () {
   return (
     <div className={style.LoginPage}>
       {/* <Center y> */}
@@ -34,15 +37,21 @@ interface LoginForm {
 }
 
 const TheForm: React.FunctionComponent = () => {
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{
         username: "",
         password: "",
       }}
+
       onSubmit={(values: LoginForm, actions) => {
+        dispatch(setLogin())
         window.location.replace("/admin");
       }}
+
+      // validator
       validationSchema={Yup.object().shape({
         username: Yup.string().required("Username Required"),
         password: Yup.string()

@@ -7,7 +7,7 @@ const initialState = {
     dataEntry: [],
     token: "",
     // for separate user and admin
-    privilage: "guest",
+    privilege: "guest",
     // for login and logout method
     isLogin: false,
 };
@@ -32,18 +32,18 @@ const userDataSlice = createSlice({
         setUserToken(state, action) {
             state.token = action.payload;
         },
-        setUserPrivilage(state, action) {
-            state.privilage = action.payload;
+        setUserPrivilege(state, action) {
+            state.privilege = action.payload;
         },
         // for login and logout method
         setLogin(state) {
             state.isLogin = true;
-            state.privilage = "admin";
+            state.privilege = "admin";
             // add token cookie 
         },
         setLogout(state) {
             state.isLogin = false;
-            state.privilage = "guest";
+            state.privilege = "guest";
             // delete token cookie
         },
         setDataEntry(state, action) {
@@ -61,10 +61,11 @@ const userDataSlice = createSlice({
 // export selector
 export const selectData = (state: any) => state.userData;
 export const selectToken = (state: any) => state.userData.token;
-export const selectPrivilage = (state: any) => state.userData.privilage;
+export const selectprivilege = (state: any) => state.userData.privilege;
 export const selectIsLogin = (state: any) => state.userData.isLogin;
 export const selectDataEntry = (state: any) => state.userData.dataEntry;
+
 // export action
-export const { setUserToken, setUserPrivilage, setLogin, setLogout, setDataEntry } = userDataSlice.actions;
+export const { setUserToken, setUserPrivilege, setLogin, setLogout, setDataEntry } = userDataSlice.actions;
 
 export default userDataSlice.reducer;
