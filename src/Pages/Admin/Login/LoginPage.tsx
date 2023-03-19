@@ -5,17 +5,18 @@ import { CustomInput as Input } from "../../../Component/StyledComponent/CustomI
 // import { Rating } from "@mui/material"
 import { CustomButton as Button } from "../../../Component/StyledComponent/CustomButton/CustomButton";
 import { LogoImage } from "../../../Component/StyledComponent/CustomImage/CustomImage";
-import Center from "../../../Component/StyledComponent/CustomCenter/Center";
+// import Center from "../../../Component/StyledComponent/CustomCenter/Center";
 import style from "./LoginPage.module.scss";
 import Spacer from "../../User/Spacer/spacer";
 
 import { Formik, FormikProps, Form } from "formik";
 import * as Yup from "yup";
 
-import { useDispatch } from "react-redux";
-import { setLogin } from "@/Redux/feature/dataSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsLogin, setLogin } from "@/Redux/feature/dataSlice";
+import { Navigate, useNavigate } from "react-router-dom";
 
-function LoginPage () {
+function LoginPage() {
   return (
     <div className={style.LoginPage}>
       {/* <Center y> */}
@@ -38,6 +39,8 @@ interface LoginForm {
 
 const TheForm: React.FunctionComponent = () => {
   const dispatch = useDispatch();
+  const IsLogin = useSelector(selectIsLogin);
+  const navigate = useNavigate();
 
   return (
     <Formik
@@ -48,7 +51,9 @@ const TheForm: React.FunctionComponent = () => {
 
       onSubmit={(values: LoginForm, actions) => {
         dispatch(setLogin())
-        window.location.replace("/admin");
+        console.log(IsLogin);
+        navigate("/admin");
+        // window.location.replace("/admin");
       }}
 
       // validator
