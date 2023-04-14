@@ -21,131 +21,144 @@ import { selectIsLogin, setLogout } from "@/Redux/feature/dataSlice";
 const Margin = "35px";
 
 const GridContainer = styled(Grid)(() => ({
-    // display: 'flex',
-    alignItems: 'center',
-    // gap: '10px',
-    paddingRight: '5px',
+  // display: 'flex',
+  alignItems: "center",
+  // gap: '10px',
+  paddingRight: "5px",
 }));
 
 const GridItemLeft = styled(Grid)(() => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'left',
-    background: 'transparent',
-    position: 'relative',
-    margin: '0px',
-    padding: '0px',
-    paddingLeft: Margin,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "left",
+  background: "transparent",
+  position: "relative",
+  margin: "0px",
+  padding: "0px",
+  paddingLeft: Margin,
 }));
 
 const GridItemRight = styled(Grid)(() => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'right',
-    background: 'transparent',
-    position: 'relative',
-    margin: '0px',
-    padding: '0px',
-    paddingRight: Margin,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "right",
+  background: "transparent",
+  position: "relative",
+  margin: "0px",
+  padding: "0px",
+  paddingRight: Margin,
 }));
 
-
 const GridItemCenter = styled(Grid)(() => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    background: 'transparent',
-    position: 'relative',
-    margin: '0px',
-    padding: '0px',
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  background: "transparent",
+  position: "relative",
+  margin: "0px",
+  padding: "0px",
 }));
 
 interface Props {
-    children ? : ReactNode,
-    clicked ? : any,
-    pathTo : string;
-} 
+  children?: ReactNode;
+  clicked?: any;
+  pathTo: string;
+}
 
 // ...props belom bisa dipake (?)
-const NavLink = ({pathTo, children, ...props} : Props) => {
-    return (
-        <Link to={pathTo}>
-            <Button variant="outlined" {...props}>{children}</Button>
-        </Link>
-    )
-}
+const NavLink = ({ pathTo, children, ...props }: Props) => {
+  return (
+    <Link to={pathTo}>
+      <Button variant="outlined" {...props}>
+        {children}
+      </Button>
+    </Link>
+  );
+};
 
-const ButtonNavLink = ({pathTo, children, clicked, ...props} : Props) => {
-    return (
-        <Link to={pathTo} onClick={clicked}>
-            <Button {...props}>{children}</Button>
-        </Link>
-    )
-}
+const ButtonNavLink = ({ pathTo, children, clicked, ...props }: Props) => {
+  return (
+    <Link to={pathTo} onClick={clicked}>
+      <Button {...props}>{children}</Button>
+    </Link>
+  );
+};
 
 export default function Header(props: any) {
-    const isMobile = useMediaQuery('(min-width:600px)');
+  const isMobile = useMediaQuery("(min-width:600px)");
 
-    const loggedIn = useSelector(selectIsLogin);
-    const dispatch = useDispatch();
+  const loggedIn = useSelector(selectIsLogin);
+  const dispatch = useDispatch();
 
-    const [show, setShow] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
-    const controlNavbar = () => {
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const controlNavbar = () => {
+    if (typeof window !== "undefined") {
+      if (window.scrollY > lastScrollY) {
+        // if scroll down hide the navbar
+        setShow(false);
+      } else {
+        // if scroll up show the navbar
+        setShow(true);
+      }
 
-        if (typeof window !== 'undefined') {
-            if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
-                setShow(false);
-            } else { // if scroll up show the navbar
-                setShow(true);
-            }
+      // remember current page location to use in the next move
+      setLastScrollY(window.scrollY);
+    }
+  };
 
-            // remember current page location to use in the next move
-            setLastScrollY(window.scrollY);
-        }
-    };
+  useEffect(() => {
+    console.log("Logged in : " + loggedIn);
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", controlNavbar);
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            window.addEventListener('scroll', controlNavbar);
+      // cleanup function
+      return () => {
+        window.removeEventListener("scroll", controlNavbar);
+      };
+    }
+  }, [lastScrollY, loggedIn]);
 
-            // cleanup function
-            return () => {
-                window.removeEventListener('scroll', controlNavbar);
-            };
-        }
-    }, [lastScrollY]);
+  return (
+    <GridContainer container className={show ? style.Header : style.HeaderHide}>
+      {isMobile && (
+        <GridItemLeft item xs={4}>
+          <LogoImage />
+          <Text width="70px" fontSize="10px" textalign="left" marginleft="10px">
+            SISTEM PENDUKUNG KEPUTUSAN
+          </Text>
+          <Spacer y={"20px"} />
+          <Toogle />
+        </GridItemLeft>
+      )}
 
-    return (
-        <GridContainer container className={show ? style.Header : style.HeaderHide}>
-            {isMobile &&
-                <GridItemLeft item xs={4}>
-                    <LogoImage />
-                    <Text width="70px" fontSize="10px" textalign="left" marginleft="10px">
-                        SISTEM PENDUKUNG KEPUTUSAN
-                    </Text>
-                    <Spacer y={"20px"} />
-                    <Toogle />
-                </GridItemLeft>
-            }
-
-            <GridItemCenter item xs={4}>
-                {/* <Title>
+      <GridItemCenter item xs={4}>
+        {/* <Title>
                     {PROJTITLE}
                 </Title> */}
-            </GridItemCenter>
-            <GridItemRight item xs={4}>
-                {/* <Toogle /> */}
-                <NavLink pathTo="/">Home</NavLink>
+      </GridItemCenter>
+      <GridItemRight item xs={4}>
+        {/* <Toogle /> */}
 
-                {/* loggedIn value read as [object object] on console log */}
-                {loggedIn ?
-                <ButtonNavLink pathTo="/" clicked={() => {dispatch(setLogout()); console.log("logged in : " + {loggedIn})}}>Log Out</ButtonNavLink>
-                : 
-                <ButtonNavLink pathTo="/admin/login" clicked={() => console.log("now logged in : " + {loggedIn})}>Admin Mode</ButtonNavLink>
-                }
-            </GridItemRight>
-        </GridContainer>
-    )
+        {loggedIn ? (
+          <>
+            <NavLink pathTo="/admin">Home</NavLink>
+            <ButtonNavLink
+              pathTo="/"
+              clicked={() => {
+                dispatch(setLogout());
+              }}
+            >
+              Log Out
+            </ButtonNavLink>
+          </>
+        ) : (
+          <>
+            <NavLink pathTo="/">Home</NavLink>
+            <ButtonNavLink pathTo="/admin/login">Admin Mode</ButtonNavLink>
+          </>
+        )}
+      </GridItemRight>
+    </GridContainer>
+  );
 }
-

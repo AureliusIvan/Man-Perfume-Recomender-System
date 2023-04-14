@@ -12,9 +12,9 @@ import Spacer from "../../User/Spacer/spacer";
 import { Formik, FormikProps, Form } from "formik";
 import * as Yup from "yup";
 
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsLogin, setLogin } from "@/Redux/feature/dataSlice";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLogin } from "@/Redux/feature/dataSlice";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   return (
@@ -39,7 +39,6 @@ interface LoginForm {
 
 const TheForm: React.FunctionComponent = () => {
   const dispatch = useDispatch();
-  const IsLogin = useSelector(selectIsLogin);
   const navigate = useNavigate();
 
   return (
@@ -51,9 +50,7 @@ const TheForm: React.FunctionComponent = () => {
 
       onSubmit={(values: LoginForm, actions) => {
         dispatch(setLogin())
-        console.log(IsLogin);
         navigate("/admin");
-        // window.location.replace("/admin");
       }}
 
       // validator

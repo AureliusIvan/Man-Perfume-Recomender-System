@@ -26,6 +26,8 @@ const Routing = () => {
     <Routes>
       <Route path="/" element={<UserPage />} />
       <Route path="/admin/login" element={<LoginPage />} />
+      
+      {/* Setelah login, kalo misal ke home, terus manual ke /admin, dia malah balik ke halaman login (kyk langsung logged out of the account) */}
       <Route path="/admin" element={
         // yang mau di protect tinggal di bungkus aja
         // nanti bisa di tambahin parameter lagi kalo butuh sih, semisal admin, user dll
@@ -33,16 +35,6 @@ const Routing = () => {
           <AdminPage />
         </ProtectedRoute>
       } />
-      {/* kalo ini bisa berarti yg auth harusnya bisa, tapi yg jadi masalah adalah statenya, dibalikinnya [object object], harusnya true atau false */}
-      {/* {(1 == 1) ? (
-        <Route path="/admin" element={<AdminPage />} />
-      ) : (
-        <Navigate to="/admin/login" replace />
-      )} */}
-
-      {/* Nanti ada juga untuk ga perlu ke /admin/login kalo auth uda bisa */}
-
-      {/* <Route path="/admin" element={<AdminPage />} /> */}
       <Route
         path="/start"
         element={
