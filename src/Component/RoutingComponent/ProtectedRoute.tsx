@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectIsLogin } from "@/Redux/feature/dataSlice";
+import { selectIsLogin, selectprivilege } from "@/Redux/feature/dataSlice";
 import { Navigate, Route } from "react-router-dom";
 
 
@@ -22,14 +22,13 @@ interface Props {
 //     // ) : <Navigate to="/admin/login" />
 // }
 
-
 // gue agak bingung sama logic yang atas, jdi gue coba pake ini dulu
 const ProtectedRoute = ({ children }: { children?: ReactNode }) => {
-    const auth = useSelector(selectIsLogin);
+    const auth = useSelector(selectprivilege);
     useEffect(() => {
         console.log(auth);
     }, [auth])
-    return auth ?
+    return auth === "admin" ?
         <>{children}</>
         :
         <Navigate to="/admin/login" />

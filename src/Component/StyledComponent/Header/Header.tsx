@@ -61,13 +61,13 @@ const GridItemCenter = styled(Grid)(() => ({
 }));
 
 interface Props {
-    children ? : ReactNode,
-    clicked ? : any,
-    pathTo : string;
-} 
+    children?: ReactNode,
+    clicked?: any,
+    pathTo: string;
+}
 
 // ...props belom bisa dipake (?)
-const NavLink = ({pathTo, children, ...props} : Props) => {
+const NavLink = ({ pathTo, children, ...props }: Props) => {
     return (
         <Link to={pathTo}>
             <Button variant="outlined" {...props}>{children}</Button>
@@ -75,7 +75,7 @@ const NavLink = ({pathTo, children, ...props} : Props) => {
     )
 }
 
-const ButtonNavLink = ({pathTo, children, clicked, ...props} : Props) => {
+const ButtonNavLink = ({ pathTo, children, clicked, ...props }: Props) => {
     return (
         <Link to={pathTo} onClick={clicked}>
             <Button {...props}>{children}</Button>
@@ -140,9 +140,9 @@ export default function Header(props: any) {
 
                 {/* loggedIn value read as [object object] on console log */}
                 {loggedIn ?
-                <ButtonNavLink pathTo="/" clicked={() => {dispatch(setLogout()); console.log("logged in : " + {loggedIn})}}>Log Out</ButtonNavLink>
-                : 
-                <ButtonNavLink pathTo="/admin/login" clicked={() => console.log("now logged in : " + {loggedIn})}>Admin Mode</ButtonNavLink>
+                    <ButtonNavLink pathTo="/" clicked={() => { dispatch(setLogout()); console.log("logged in : " + { loggedIn }) }}>Log Out</ButtonNavLink>
+                    :
+                    <ButtonNavLink pathTo="/admin/login" clicked={() => console.log("now logged in : " + { loggedIn })}>Admin Mode</ButtonNavLink>
                 }
             </GridItemRight>
         </GridContainer>
