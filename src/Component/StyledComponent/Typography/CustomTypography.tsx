@@ -17,7 +17,7 @@ export function Text(props: any) {
                 textAlign: props.textalign ? props.textalign : "center",
                 fontSize: props.fontSize ? props.fontSize : "15px",
                 fontWeight: props.fontWeight ? props.fontWeight : "normal",
-                color: theme.palette.mode === (props.reverse ? "light" : "dark") ? '#fff' : '#000',
+                color: theme.palette.mode === (props.reverse === "true" ? "light" : "dark") ? '#fff' : '#000',
                 // margin
                 // margin: props.margin ? props.margin : "0px",
                 marginTop: props.margintop ? props.margintop : "0px",
@@ -46,7 +46,7 @@ export function Title(props: any) {
             style={{
                 ...props.style,
                 textAlign: props.textalign ? props.textalign : "left",
-                color: theme.palette.mode === (props.reverse ? "light" : "dark") ? '#fff' : '#000',
+                color: theme.palette.mode === (props.reverse === "true" ? "light" : "dark") ? '#fff' : '#000',
                 fontSize: props.fontSize ? props.fontSize : "",
                 fontWeight: props.fontWeight ? props.fontWeight : "bold",
             }}

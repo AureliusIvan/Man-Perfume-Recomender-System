@@ -9,16 +9,17 @@ export default function DescPage() {
             Lorem Ipsum, sometimes referred to as 'lipsum', is the placeholder text used in design when creating content.
         </Paragraf>
         <Spacer y={"100px"} />
-        <Box reverse
+        <Box reverse={"true"}
         // width="100%"
         >
-            <Title reverse
+            <Title
+                reverse={"true"}
                 style={{
                     alignSelf: 'left',
                 }}>
                 {WebDescTitle}
             </Title>
-            <Text reverse
+            <Text reverse={"true"}
                 style={{
                     alignSelf: 'left',
                     textAlign: 'left',

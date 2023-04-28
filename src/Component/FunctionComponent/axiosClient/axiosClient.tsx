@@ -1,8 +1,9 @@
 import axios from "axios";
 
-
 // Ini adalah base url dari server, kalo mau pake localhost tinggal ganti localhost:3000 nya aja
-const API = "https://naruto-api.fly.dev/api/v1/characters";
+const API = "https://penelitian-api.aureliusivan.my.id";
+
+var TOKEN = localStorage.getItem("TOKEN");
 
 // Ini adalah konfigurasi axios, kalo mau tambahin header atau apa bisa ditambahin disini
 const axiosClient = axios.create({
@@ -13,13 +14,13 @@ const axiosClient = axios.create({
         "Accept": "application/json",
         // ini untuk ngirim token ke server, kalo mau pake bearer bisa pake ini
         // Harus tanya farel pake sistem bearer atau apa?
-        Authorization: "Bearer " + localStorage.getItem("TOKEN"),
+        Authorization: TOKEN ? `Bearer ${TOKEN}` : "",
     },
     // Setting timeout nya => 10 detik, jika tidak ada respon dari server maka akan error
     // Jangan lupa dikasih fallback yaa 🥰
     timeout: 10000,
     // Kalo dinyalahin suka kepentok CORS nya, jadi harus di set false (cmiiw)
-    withCredentials: false,
+    // withCredentials: false,
 });
 
 

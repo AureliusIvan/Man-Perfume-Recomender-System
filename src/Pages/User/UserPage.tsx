@@ -9,7 +9,7 @@ import CustomSlider from "../../Component/StyledComponent/CustomSlider/CustomSli
 import { CustomButton as Button } from "../../Component/StyledComponent/CustomButton/CustomButton"
 import style from "./UserPage.module.scss"
 import { useDispatch, useSelector } from "react-redux"
-import { selectData, selectPrivilage, selectToken, selectIsLogin } from "../../Redux/feature/dataSlice"
+import { selectData, selectToken, selectIsLogin } from "../../Redux/feature/dataSlice"
 import { Custommotion, Custommotion as M } from "../../Component/StyledComponent/CustomAnimation/Custommotion"
 import { Helmet } from "react-helmet-async"
 import { PROJDESC, PROJTITLE, PROJDOMAIN, MainTitle } from "./../../data"
@@ -37,7 +37,6 @@ export default function UserPage() {
             <Spacer y={"100px"} />
             {/* example of paragraf component */}
             {/* Example of using dispatch */}
-
             {/* Content Start here */}
             <M>
                 <WelcomePage />

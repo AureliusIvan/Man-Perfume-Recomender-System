@@ -68,7 +68,7 @@ function Recommendation() {
                     }
 
                 })} */}
-                {naruto.map((item: any, index) => {
+                {/* {naruto.map((item: any, index) => {
                     if (index < 6) {
                         return (
                             <GridItem item md={4}>
@@ -79,7 +79,7 @@ function Recommendation() {
                             </GridItem>
                         )
                     }
-                })}
+                })} */}
             </Grid>
         </>
     )
