@@ -27,6 +27,9 @@ const Routing = () => {
       <Route path="/" element={<UserPage />} />
       <Route path="/admin/login" element={<LoginPage />} />
       
+      {/* Temporary back door */}
+      <Route path="/admint" element={<AdminPage />} />
+      
       {/* Setelah login, kalo misal ke home, terus manual ke /admin, dia malah balik ke halaman login (kyk langsung logged out of the account) */}
       <Route path="/admin" element={
         // yang mau di protect tinggal di bungkus aja

@@ -16,6 +16,9 @@ import { useDispatch } from "react-redux";
 import { setLogin } from "@/Redux/feature/dataSlice";
 import { useNavigate } from "react-router-dom";
 
+import { post } from "@/Component/FunctionComponent/axiosClient/axiosClient";
+import { setCookie } from "react-use-cookie";
+
 function LoginPage() {
   return (
     <div className={style.LoginPage}>
@@ -47,12 +50,25 @@ const TheForm: React.FunctionComponent = () => {
         username: "",
         password: "",
       }}
-
       onSubmit={(values: LoginForm, actions) => {
-        dispatch(setLogin())
-        navigate("/admin");
+        post("v1/admin/auth/login", {
+          username: values.username,
+          password: values.password,
+        }).then((res: any) => {
+          console.log(values);
+          console.log(res);
+          dispatch(setLogin());
+          if (res.status === 200) {
+            setCookie("TOKEN", res.data.data.token);
+            navigate("/admin");
+          } else {
+            alert("Wrong Username or Password");
+          }
+          // window.location.replace("/admin");
+        }
+        );
+        actions.setSubmitting(false);
       }}
-
       // validator
       validationSchema={Yup.object().shape({
         username: Yup.string().required("Username Required"),

@@ -158,6 +158,26 @@ export default function Header(props: any) {
             <ButtonNavLink pathTo="/admin/login">Admin Mode</ButtonNavLink>
           </>
         )}
+
+        {/* loggedIn value read as [object object] on console log
+        {loggedIn ? (
+          <ButtonNavLink
+            pathTo="/"
+            clicked={() => {
+              dispatch(setLogout());
+              console.log("logged in : " + { loggedIn });
+            }}
+          >
+            Log Out
+          </ButtonNavLink>
+        ) : (
+          <ButtonNavLink
+            pathTo="/admin/login"
+            clicked={() => console.log("now logged in : " + { loggedIn })}
+          >
+            Admin Mode
+          </ButtonNavLink>
+        )} */}
       </GridItemRight>
     </GridContainer>
   );
