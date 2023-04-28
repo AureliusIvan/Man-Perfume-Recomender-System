@@ -10,6 +10,7 @@ import { CustomButton as Button } from "@/Component/StyledComponent/CustomButton
 
 interface nyam {
   formName: string;
+  onSubmit: any;
 }
 
 const CustomFormik = (props : nyam) => {
@@ -19,17 +20,18 @@ const CustomFormik = (props : nyam) => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={props.onSubmit}
+      // onSubmit={(values) => console./log(values)}
     >
       <Form>
-        {inputs.map(({ label, name, type, value, ...props }) => {
+        {inputs.map(({ label, name, type, value, validations, ...inProps }) => {
           return (
             <>
               <CustomTextInput
                 key={name}
                 label={label}
                 name={name}
-                placeholder={props.placeholder}
+                placeholder={inProps.placeholder}
                 type={type}
               />
               <ErrorMessage name={name} component="div" className={style.error} />

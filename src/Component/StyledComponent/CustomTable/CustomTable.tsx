@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,7 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { CustomButton as Button } from "../CustomButton/CustomButton";
 import { Confirmations, CustomModal } from "../CustomModal/CustomModal";
-import { CustomInput } from "../CustomInput/CustomInput";
+
 import CustomFormik from "../CustomFormik/CustomFormik";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -41,6 +43,18 @@ function createData(
   return { name, calories, fat, carbs, protein };
 }
 
+// export const editPerfumeData = [
+//   name,
+//   cal,
+//   fat,
+//   carbs,
+//   pro,
+//   // { dataCal: cal },
+//   // { dataFat: fat },
+//   // { dataCarbs: carbs },
+//   // { dataPro: pro },
+// ];
+
 // JUST FOR EXAMPLE
 const rows = [
   createData("Parfum Bunga", 159, 6.0, 24, 4),
@@ -58,17 +72,26 @@ const rows = [
 function ModalContent() {
   return (
     <>
-			<CustomFormik formName="pop" />
-      {/* <CustomInput />
-      <CustomInput />
-      <CustomInput />
-      {/* <CustomInput />  */}
-      {/* <Button>Submit</Button> */}
+      <CustomFormik
+        formName="editParfume"
+        onSubmit={() => {
+          console.log("Submitted!");
+          // setOpen(false);
+          // how to close modal from outside its component?
+        }}
+      />
     </>
   );
 }
 
 export default function CustomTable() {
+  const [cal, setCal] = useState(0);
+  const [fat, setFat] = useState(0);
+  const [carbs, setCarbs] = useState(0);
+  const [pro, setPro] = useState(0);
+
+  let editPerfumeData = [cal, fat, carbs, pro];
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -93,7 +116,13 @@ export default function CustomTable() {
               <StyledTableCell align="right">{row.carbs}</StyledTableCell>
               <StyledTableCell align="right">
                 <CustomModal title="Edit">
-                  <ModalContent />
+                  <CustomFormik
+                    formName="editPerfume"
+                    onSubmit={() => {
+                      console.log(row.name + " submitted!");
+                      // how to close modal from outside its component?
+                    }}
+                  />
                 </CustomModal>
               </StyledTableCell>
               <StyledTableCell align="right">

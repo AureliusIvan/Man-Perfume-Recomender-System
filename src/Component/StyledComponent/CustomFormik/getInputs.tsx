@@ -47,10 +47,10 @@ export const getInputs = (section : string) => {
   for (const field of forms[section]) {
     initialValues[field.name] = field.value;
 
+    // get validation
     if (!field.validations) continue;
 
     const schema = generateValidations(field);
-
     validationsFields[field.name] = schema;
   }
 

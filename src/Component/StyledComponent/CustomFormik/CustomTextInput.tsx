@@ -11,11 +11,9 @@ interface Props {
 export const CustomTextInput = (props: Props) => {
   const [field] = useField(props);
 
-  {
-    return (
-      <div>
-        <CustomInput  {...field} {...props} />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <CustomInput {...field} {...props} />
+    </div>
+  );
 };
