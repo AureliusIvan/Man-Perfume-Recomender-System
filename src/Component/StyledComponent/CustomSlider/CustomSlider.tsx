@@ -7,45 +7,27 @@ import withTheme from '@material-ui/core/styles/withTheme';
 
 const marks = [
   {
-    value: 10,
+    value: 0,
   },
   {
-    value: 20,
+    value: 1,
     label: 'Tidak Penting',
   },
   {
-    value: 30,
+    value: 2,
   },
   {
-    value: 40,
+    value: 3,
   },
   {
-    value: 50,
+    value: 4,
   },
   {
-    value: 60,
-  },
-  {
-    value: 70,
-  },
-  {
-    value: 80,
-    label: 'Sangat Penting',
-  },
-  {
-    value: 90,
+    value: 5,
   },
 ];
 
 const CSlider = styled(withTheme(Slider))((theme) => ({
-  color: 'inherit',
-  markerColor: 'inherit',
-  markerSize: '100px',
-  "::marker": {
-    color: 'inherit',
-    markerColor: 'inherit',
-    markerSize: '100px',
-  },
   marklabel: {
     color: 'inherit',
     markerColor: 'inherit',
@@ -62,13 +44,13 @@ const CSlider = styled(withTheme(Slider))((theme) => ({
 export default function CustomSlider(props: any) {
   return (
     <CSlider
-      defaultValue={30}
+      defaultValue={3}
       aria-labelledby="discrete-slider"
       valueLabelDisplay="auto"
-      step={props.step ? props.step : 10}
+      step={props.step ? props.step : 1}
       // marks={props.marks ? props.marks : marks}
       min={props.min ? props.min : 0}
-      max={props.max ? props.max : 100}
+      max={props.max ? props.max : 6}
     />
   )
 }

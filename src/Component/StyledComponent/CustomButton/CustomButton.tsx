@@ -9,6 +9,7 @@ export function CustomButton(props: any) {
   const theme = useTheme();
   return (
     <button
+      type={props.type ? props.type : "button"}
       className={props.variant === "outlined" ? style.buttonoutlined : style.button}
       {...props}
       style={{
