@@ -35,9 +35,6 @@ export default function UserPage() {
                 <link rel="canonical" href={`${PROJDOMAIN}`} />
             </Helmet>
             <Spacer y={"100px"} />
-            {/* example of paragraf component */}
-            {/* Example of using dispatch */}
-            {/* Content Start here */}
             <M>
                 <WelcomePage />
             </M>

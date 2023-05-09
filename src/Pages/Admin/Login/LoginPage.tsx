@@ -8,7 +8,7 @@ import { LogoImage } from "../../../Component/StyledComponent/CustomImage/Custom
 // import Center from "../../../Component/StyledComponent/CustomCenter/Center";
 import style from "./LoginPage.module.scss";
 import Spacer from "../../User/Spacer/spacer";
-
+import { useState } from "react";
 import { Formik, FormikProps, Form } from "formik";
 import * as Yup from "yup";
 
@@ -18,6 +18,9 @@ import { useNavigate } from "react-router-dom";
 
 import { post } from "@/Component/FunctionComponent/axiosClient/axiosClient";
 import { setCookie } from "react-use-cookie";
+// import CustomSpinner from "@/Component/StyledComponent/CustomSpinner/CustomSpinner";
+import { CircularProgress } from "@mui/material";
+
 
 function LoginPage() {
   return (
@@ -43,6 +46,7 @@ interface LoginForm {
 const TheForm: React.FunctionComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   return (
     <Formik
@@ -51,22 +55,31 @@ const TheForm: React.FunctionComponent = () => {
         password: "",
       }}
       onSubmit={(values: LoginForm, actions) => {
-        post("v1/admin/auth/login", {
-          username: values.username,
-          password: values.password,
-        }).then((res: any) => {
-          console.log(values);
-          console.log(res);
-          dispatch(setLogin());
-          if (res.status === 200) {
-            setCookie("TOKEN", res.data.data.token);
-            navigate("/admin");
-          } else {
-            alert("Wrong Username or Password");
+        setLoading(true);
+        async function login() {
+          await post("v1/admin/auth/login", {
+            username: values.username,
+            password: values.password,
+          }).then((res: any) => {
+            // console.log(values);
+            // console.log(res);
+            dispatch(setLogin());
+            if (res.status === 200) {
+              setLoading(false);
+              setCookie("TOKEN", res.data.data.token);
+              navigate("/admin");
+            } else {
+              // alert("Wrong Username or Password");
+            }
+            // window.location.replace("/admin");
           }
-          // window.location.replace("/admin");
+          ).catch((err) => {
+            console.log(err);
+            setLoading(false);
+            // alert("Wrong Username or Password");
+          })
         }
-        );
+        login();
         actions.setSubmitting(false);
       }}
       // validator
@@ -109,8 +122,8 @@ const TheForm: React.FunctionComponent = () => {
               onBlur={handleBlur}
             />
             <Spacer y="20px" />
-            <Button type="submit" disabled={isSubmitting}>
-              Login
+            <Button type="submit" disabled={loading}>
+              {loading ? <CircularProgress /> : "Login"}
             </Button>
           </Form>
         );

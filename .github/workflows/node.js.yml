@@ -1,0 +1,33 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - Development # Or whichever branch you want to trigger the action on
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3.5.2
+        with:
+          persist-credentials: false
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: '16.x'
+      - name: Install dependencies
+        run: yarn install
+      - name: Build for production
+        run: yarn build
+      - name: Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /
+          exclude: .git*
+          args: --debug

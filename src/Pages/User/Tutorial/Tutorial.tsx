@@ -2,69 +2,79 @@ import { CustomButton as Button } from "../../../Component/StyledComponent/Custo
 import { CustomBox as Box } from "../../../Component/StyledComponent/CustomBox/CustomBox"
 import { Paragraf, Title } from "../../../Component/StyledComponent/Typography/CustomTypography"
 // import { Grid as G } from "@material-ui/core"
-import { Grid as G } from "@mui/material"
+import { Grid } from "@mui/material"
 import { styled, useTheme } from "@material-ui/styles"
 // import styled from "@emotion/styled/types/base"
 import { Text } from "../../../Component/StyledComponent/Typography/CustomTypography"
 import { TutorialData } from "./TutorialData"
 import style from "./Tutorial.module.scss"
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
+import useMediaQuery from "@mui/material/useMediaQuery"
 // import { useTheme } from "@mui/material"
 
-const Grid = styled(G)(({ theme }) => ({
-    padding: '10px',
-    // width: '90%',
-}));
+// const Grid = styled(G)(({ theme }) => ({
+//     padding: '10px',
+//     // width: '90%',
+// }));
 
-const GridItem = styled(G)(({ theme }) => ({
+const GridItem = styled(Grid)(({ theme }) => ({
     // padding: '20px',
     // width: '90%',
 }));
 
 
 
-function Card(props: any) {
+Card.defaultProps = {
+    text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+}
+
+interface defaulprops {
+    text: string,
+    title: string,
+    img: string,
+}
+
+function Card(props: defaulprops) {
+    const Mobile = useMediaQuery('(max-width:600px)');
     const theme = useTheme();
     return (<>
-        <div className={style.card}
-            style={{
-                // border: theme.palette.mode === 'dark' ? '#1e1e1e' : '#f5f5f5',
-                border: '1px solid',
-                borderColor: theme === 'dark' ? '#1e1e1e' : '#f5f5f5',
-            }}
+        <Grid container
+            className={style.card}
         >
-            <Grid container sx={{
-                width: '90%',
-                padding: '10px',
-            }}>
-                <Grid item xs={6}>
-                    <img src={props.img} className={style.img} />
-                </Grid>
-                <Grid item xs={6}>
+            <Grid item xs={12} sm={3} md={3} lg={2}>
+                <img src={props.img} className={style.img} />
+            </Grid>
+            {Mobile ? "" :
+                <Grid item sm={9} md={9} lg={10}>
                     <h3 className={style.h3}>{
                         props.title
                     }</h3>
-                    <p className={style.p}>Lorem</p>
-                    <button
-                        className={style.button}
-                    >
-                        <Text width={'fit-content'}>
-                            Learn More
-                        </Text>
-                        <ArrowForwardIcon color={
-                            theme === 'dark' ? 'secondary' : 'primary'
-                        } />
-                    </button>
-                </Grid>
-            </Grid>
-        </div>
+                    <p className={style.p}>
+                        {props.text}
+                    </p>
+                    {Mobile ?
+                        <button
+                            className={style.button}
+                        >
+                            <Text width={'fit-content'}>
+                                Learn More
+                            </Text>
+                            <ArrowForwardIcon color={
+                                theme === 'dark' ? 'secondary' : 'primary'
+                            } />
+                        </button>
+                        : ""}
+                </Grid>}
+        </Grid>
+
     </>)
 }
 
 
 
 
-function Tutorial() {
+export default function Tutorial() {
     let i = 4;
     return (<>
         <Paragraf title="Cara Penggunaan">
@@ -77,15 +87,13 @@ function Tutorial() {
             {
                 TutorialData.map((item, index) => {
                     return (
-                        <GridItem key={index} item xs={6}>
+                        <GridItem key={index} item xs={12}>
                             <Card img={item.image} title={item.title} />
                         </GridItem>
                     )
                 })
             }
-        </Grid>
+        </Grid >
     </>
     )
 }
-
-export default Tutorial

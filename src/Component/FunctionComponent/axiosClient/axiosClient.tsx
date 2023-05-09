@@ -28,14 +28,29 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(
     async (config) => {
         // alert("interceptor");
-        console.log("interceptor success");
+        // console.log("interceptor request success");
         // Do something before request is sent
         return config;
     },
     (error) => {
-        console.log("interceptor error");
+        // console.log("interceptor request error");
         // Do something with request error
-        return Promise.reject(error);
+        return Promise.reject("An error occurred on the client");
+    }
+);
+
+
+axiosClient.interceptors.response.use(
+    (response) => {
+        // alert("interceptor");
+        // console.log("interceptor response success");
+        // Do something before request is sent
+        return response;
+    },
+    (error) => {
+        // console.log("interceptor response error");
+        // Do something with request error
+        return Promise.reject("An error occurred on the server");
     }
 );
 

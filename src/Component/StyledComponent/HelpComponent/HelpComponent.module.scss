@@ -1,0 +1,60 @@
+.helpbtn {
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+
+    &:hover {
+        background-color: rgb(69, 69, 69);
+        color: black;
+        transform: scale(1.1);
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: fit-content;
+    border-radius: 10px;
+    max-width: 90vw;
+    height: fit-content;
+    padding: 20px;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+        // width: 50vw;
+        // height: 50vh;
+        max-width: 60vw;
+    }
+
+}
+
+
+.closebtn {
+    cursor: pointer;
+    $size : 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: black;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: white;
+    border: none;
+    width: $size;
+    height: $size;
+    font-size: $size - 25px;
+    font-weight: 700;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        opacity: 0.5;
+    }
+}

@@ -9,6 +9,7 @@ export function CustomButton(props: any) {
   const theme = useTheme();
   return (
     <button
+      disabled={props.disabled ? props.disabled : false}
       type={props.type ? props.type : "button"}
       className={props.variant === "outlined" ? style.buttonoutlined : style.button}
       {...props}
@@ -25,5 +26,30 @@ export function CustomButton(props: any) {
         {props.children ? props.children : "Click Me!"}
       </b>
     </button >
+  )
+}
+
+export function CustomButtonPlain(props: any) {
+  const theme = useTheme();
+  return (
+    <button
+      disabled={props.disabled ? props.disabled : false}
+      type={props.type ? props.type : "button"}
+      className={style.buttonplain}
+      {...props}
+      style={{
+
+        border: props.border ? props.border : "none",
+        pointerEvents: props.pointerEvents ? props.pointerEvents : "all",
+        margin: props.margin ? props.margin : "0px",
+        padding: props.padding ? props.padding : "",
+        paddingInline: props.paddingInline ? props.paddingInline : "17px",
+        ...props.style,
+        backgroundColor: props.bgColor ? props.bgColor : "transparent",
+        color: theme.palette.text.primary,
+      }}
+    >
+      {props.children ? props.children : "Click Me!"}
+    </button>
   )
 }

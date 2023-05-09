@@ -3,10 +3,15 @@ import { Title, Text, Paragraf } from "../../../Component/StyledComponent/Typogr
 import { WebDesc, WebDescTitle } from "../../../data"
 import Spacer from "../Spacer/spacer"
 
-export default function DescPage() {
+
+DescPage.defaultProps = {
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+}
+
+export default function DescPage(props: any) {
     return (<>
-        <Paragraf width={'300px'} title={'Lorem Header'}>
-            Lorem Ipsum, sometimes referred to as 'lipsum', is the placeholder text used in design when creating content.
+        <Paragraf width={'300px'} title={'Penelitian Parfum Pria'}>
+            {props.text}
         </Paragraf>
         <Spacer y={"100px"} />
         <Box reverse={"true"}

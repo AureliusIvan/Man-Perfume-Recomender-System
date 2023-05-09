@@ -92,32 +92,32 @@ export default function Header(props: any) {
 
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const controlNavbar = () => {
-    if (typeof window !== "undefined") {
-      if (window.scrollY > lastScrollY) {
-        // if scroll down hide the navbar
-        setShow(false);
-      } else {
-        // if scroll up show the navbar
-        setShow(true);
-      }
+  // const controlNavbar = () => {
+  //   if (typeof window !== "undefined") {
+  //     if (window.scrollY > lastScrollY) {
+  //       // if scroll down hide the navbar
+  //       setShow(false);
+  //     } else {
+  //       // if scroll up show the navbar
+  //       setShow(true);
+  //     }
 
-      // remember current page location to use in the next move
-      setLastScrollY(window.scrollY);
-    }
-  };
+  //     // remember current page location to use in the next move
+  //     setLastScrollY(window.scrollY);
+  //   }
+  // };
 
-  useEffect(() => {
-    console.log("Logged in : " + loggedIn);
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", controlNavbar);
+  // useEffect(() => {
+  //   console.log("Logged in : " + loggedIn);
+  //   if (typeof window !== "undefined") {
+  //     window.addEventListener("scroll", controlNavbar);
 
-      // cleanup function
-      return () => {
-        window.removeEventListener("scroll", controlNavbar);
-      };
-    }
-  }, [lastScrollY, loggedIn]);
+  //     // cleanup function
+  //     return () => {
+  //       window.removeEventListener("scroll", controlNavbar);
+  //     };
+  //   }
+  // }, [lastScrollY]);
 
   return (
     <GridContainer container className={show ? style.Header : style.HeaderHide}>
@@ -131,7 +131,7 @@ export default function Header(props: any) {
           <Toogle />
         </GridItemLeft>
       )}
-
+  
       <GridItemCenter item xs={4}>
         {/* <Title>
                     {PROJTITLE}

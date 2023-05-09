@@ -1,24 +1,27 @@
-import * as React from 'react';
-import { CustomBox as Box, Flex } from '../CustomBox/CustomBox';
-import { CustomButton as Button } from '../CustomButton/CustomButton';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+// import { CustomModal as Modal } from '../CustomModal/CustomModal'
+import style from "./HelpComponent.module.scss";
+// import { Modal } from '@mui/material';
+// import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import style from "./CustomModal.module.scss";
+import { CustomBox as Box } from '../CustomBox/CustomBox';
+import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { Flex } from '../CustomBox/CustomBox';
+import { CustomButton as Button } from '../CustomButton/CustomButton';
 
-export function CustomModal(props: any) {
+function HelpComponent(props: any) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const theme = useTheme();
-
     return (
-        <div>
-            {props.button ? props.button :
-                <Button onClick={handleOpen}>{
-                    props.title
-                }</Button>
-            }
+        <>
+            <button
+                className={style.helpbtn}
+                type='button'
+                onClick={handleOpen}
+            >?</button>
             <Modal
                 open={open}
                 onClose={props.onClose ? props.onClose : handleClose}
@@ -27,10 +30,10 @@ export function CustomModal(props: any) {
             >
                 <>
                     <Box
-                        maxWidth="440px"
+                        maxWidth="80vw"
                         className={style.modal}
                     >
-                        {props.xbutton ? <button
+                        <button
                             className={style.closebtn}
                             onClick={props.onClose ? props.onClose : handleClose}
                             style={{
@@ -38,15 +41,25 @@ export function CustomModal(props: any) {
                                 backgroundColor: theme.palette.mode === 'dark' ? "white" : "black",
 
                             }}
-                        >X</button> : null}
+                        >X</button>
                         {
                             props.children ? props.children :
                                 <>
                                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                                        {props.title ? props.title : "Title"}
+                                        {/* {props.title ? props.title : "Title"} */}
+                                        Bantuan
                                     </Typography>
-                                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                        {props.desc ? props.desc : "Description"}
+                                    <Typography id="modal-modal-description" sx={{
+                                        mt: 2,
+                                        wordWrap: "break-word",
+                                        overflow: "hidden",
+                                        wordBreak: "break-all",
+                                    }}>
+                                        {/* {props.desc ? props.desc : "Description"} */}
+                                        gagagkagkagkakakagka
+                                        gagagkagkagkakakagkagakgakgka
+                                        gagagkagkagkakakagkagakgakgkagkaga
+                                        gakgakgakakgak
                                     </Typography>
                                 </>
                         }
@@ -69,26 +82,9 @@ export function CustomModal(props: any) {
                     </Box>
                 </>
             </Modal>
-        </div>
-    );
-}
+        </>
 
-// Modal Confirmation page
-export function Confirmations(props: any) {
-    // const [ onClose, setOnClose ] = React.useState(false)
-    return (
-        <CustomModal
-            title={props.title ? props.title : "Submit"}
-            onConfirm={props.onConfirm}
-            confirmbutton={true}
-        >
-            {/* <Typography id="modal-modal-title" variant="h6" component="h2">
-                {props.title ? props.title : "Submit"}?
-            </Typography> */}
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                {props.desc ? props.desc : "Are you sure to " + (props.title ? props.title : "want to submit") + "?"}
-            </Typography>
-            {props.children}
-        </CustomModal >
     )
 }
+
+export default HelpComponent

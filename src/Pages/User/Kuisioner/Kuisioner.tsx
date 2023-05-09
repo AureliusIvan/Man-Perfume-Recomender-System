@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import { Text } from "@/Component/StyledComponent/Typography/CustomTypography";
 import { MainTitle } from "@/data";
 import CustomSlider from "@/Component/StyledComponent/CustomSlider/CustomSlider";
-import { CustomButton as Button } from "@/Component/StyledComponent/CustomButton/CustomButton";
+import { CustomButton as Button, CustomButton, CustomButtonPlain } from "@/Component/StyledComponent/CustomButton/CustomButton";
 import { Custommotion as M } from "@/Component/StyledComponent/CustomAnimation/Custommotion";
 import { useNavigate } from "react-router-dom";
 import Spacer from "../Spacer/spacer";
@@ -16,6 +16,12 @@ import { useMediaQuery } from "@mui/material";
 import { KuisionerData as question } from "./KuisionerData";
 import styled from '@emotion/styled';
 import { Formik } from "formik";
+import { post } from "@/Component/FunctionComponent/axiosClient/axiosClient";
+import CustomAlert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
+import { Confirmations } from "@/Component/StyledComponent/CustomModal/CustomModal";
+import { useState } from "react";
+import Tooltip from "@mui/material/Tooltip";
+import HelpComponent from "@/Component/StyledComponent/HelpComponent/HelpComponent";
 
 const CustomGrid = styled(Grid)({
     width: "100%",
@@ -40,26 +46,90 @@ const CustomGrid = styled(Grid)({
 
 
 
+// 
+function valueLabelFormat(value: number) {
+    switch (value) {
+        case 0:
+            // return 'Sangat Penting';
+            return '3';
+        case 1:
+            // return 'Penting';
+            return '2';
+        case 2:
+            // return 'Agak Penting';
+            return '1';
+        case 3:
+            // return 'Agak Tidak Penting';
+            return '0';
+        case 4:
+            // return 'Tidak Penting';
+            return '1';
+        case 5:
+            // return 'Sangat Tidak Penting';
+            return '2';
+        case 6:
+            return '3';
+        default:
+        // return 'Unknown';
+
+    }
+}
+function calculateValue(value: number) {
+    return value;
+}
+ 
+
 export default function Kuisioner() {
+    const [value, setValue] = useState<number>(10);
+    const handleChange = (event: Event, newValue: number | number[]) => {
+        if (typeof newValue === 'number') {
+            setValue(newValue);
+        }
+    };
+
+
     const navigate = useNavigate()
     const isMobile = useMediaQuery('(max-width:600px)');
-    let i = 5;
     const navigateToResult = () => {
         navigate('/result')
     }
+
+
     useEffect(() => {
         window.scrollTo(0, 0);
-    })
+        const unloadCallback = (event: any) => {
+            event.preventDefault();
+            event.returnValue = "";
+            return "";
+        };
+        window.addEventListener("beforeunload", unloadCallback);
+        return () => window.removeEventListener("beforeunload", unloadCallback);
+    }, []);
+
 
     return (
         <div>
             <Formik
                 // validationSchema={ }
                 initialValues={{
+                    input: [6],
                 }}
-                onSubmit={(values) => {
+                onSubmit={(values: any) => {
+                    const formData = new FormData();
+                    formData.append("input", values.input);
+                    // console.log("This is the data");
+                    console.log(formData.get("input"));
                     async function Submit() {
                         navigateToResult();
+                        try {
+                            post("v1/calculate", formData).then((res) => {
+                                console.log(res);
+                            }).catch((err) => {
+                                console.log(err);
+                            })
+                        } catch {
+                            console.log("error");
+                        }
                     }
                     Submit();
 
@@ -73,26 +143,29 @@ export default function Kuisioner() {
                 }) => (
                     <div>
                         <form noValidate onSubmit={handleSubmit}>
-
                             <Spacer y={"20px"} />
                             <Center>
                                 {/* Starter pack survey form, hope this help! */}
-                                <Box>
+                                <Box
+                                // overflow={"visible"}
+                                >
                                     <Spacer y={"20px"} />
                                     <M>
                                         <Title textalign={"center"}>
                                             {MainTitle}
                                         </Title>
+                                        <HelpComponent />
                                     </M>
                                     <Spacer y={"20px"} />
-                                    <Text fontWeight={"bold"} textalign={"center"}>Mana yang lebih penting bagi anda?</Text>
+                                    <Text fontWeight={"bold"} textalign={"center"}>Mana yang lebih penting bagi anda dalam memilih parfum?</Text>
                                     <Spacer y={"20px"} />
                                     {question.map((_, index) => {
                                         return (
-                                            <BoxSection key={index}>
+                                            <BoxSection key={index} paddingBottom={"0"}>
                                                 <Grid container spacing={2} key={index} sx={{
                                                     '&.MuiGrid-container': {
-                                                        paddingBottom: "10px",
+                                                        paddingBottom: isMobile ? "0px" : "10px",
+                                                        marginBottom: isMobile ? "0px" : "10px",
                                                     }
                                                 }}>
                                                     {/* <Text fontWeight={"bold"}>{question[index].question}</Text> */}
@@ -101,24 +174,39 @@ export default function Kuisioner() {
                                                             textAlign: "left",
                                                             padding: "0px",
                                                             display: "flex",
+                                                            flexDirection: "column",
                                                             justifyContent: "flex-start",
-                                                            alignItems: "start",
+                                                            // alignItems: "start",
+                                                            margin: "0px",
                                                         }
                                                     }}>
-                                                        <Text textalign={isMobile ? "left" : "center"}>
-                                                            {question[index].paramleft}
-                                                        </Text>
+                                                        <Tooltip title={question[index].paramleftdesc} placement="top">
+                                                            <CustomButtonPlain textalign={isMobile ? "left" : "center"}>
+                                                                {question[index].paramleft}
+                                                            </CustomButtonPlain>
+                                                        </Tooltip>
                                                     </Grid>
                                                     {!isMobile ?
                                                         <CustomGrid item xs={6} sm={6} md={8} xl={10}
                                                             sx={{
                                                                 '&.MuiGrid-item': {
-                                                                    textAlign: "left",
+                                                                    textAlign: "right",
                                                                     padding: "0px",
+                                                                    margin: "0px",
+                                                                    display: "flex",
+                                                                    justifyContent: "flex-start",
+                                                                    alignItems: "start",
                                                                 }
                                                             }}
                                                         >
-                                                            <CustomSlider />
+                                                            <CustomSlider
+                                                                name={`input.${index}`}
+                                                                // value={values.input[index]}
+                                                                onChange={handleChange}
+                                                                scale={calculateValue}
+                                                                getAriaValueText={valueLabelFormat}
+                                                                valueLabelFormat={valueLabelFormat}
+                                                            />
                                                         </CustomGrid>
                                                         : ""}
                                                     <Grid item xs={6} sm={3} md={2} xl={1} sx={{
@@ -127,9 +215,11 @@ export default function Kuisioner() {
                                                             padding: "0px",
                                                         }
                                                     }}>
-                                                        <Text textalign={isMobile ? "right" : "center"}>
-                                                            {question[index].paramright}
-                                                        </Text>
+                                                        <Tooltip title={question[index].paramrightdesc} placement="top">
+                                                            <CustomButtonPlain textalign={isMobile ? "right" : "center"}>
+                                                                {question[index].paramright}
+                                                            </CustomButtonPlain>
+                                                        </Tooltip>
                                                     </Grid>
                                                     {isMobile ?
                                                         <CustomGrid item xs={12} sm={12} md={12} xl={12} sx={{
@@ -137,7 +227,11 @@ export default function Kuisioner() {
                                                                 padding: "0px",
                                                             }
                                                         }}>
-                                                            <CustomSlider />
+                                                            <CustomSlider
+                                                                onChange={handleChange}
+                                                                scale={calculateValue}
+                                                                getAriaValueText={valueLabelFormat}
+                                                                valueLabelFormat={valueLabelFormat} />
                                                         </CustomGrid>
                                                         : ""}
                                                 </Grid>
@@ -145,10 +239,10 @@ export default function Kuisioner() {
                                             </BoxSection>
                                         )
                                     })}
-
-                                    <Button type="submit">
+                                    <Confirmations onConfirm={handleSubmit} />
+                                    {/* <Button type="submit">
                                         Submit
-                                    </Button>
+                                    </Button> */}
                                 </Box>
                             </Center>
                         </form>

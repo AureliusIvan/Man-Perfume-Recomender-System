@@ -58,7 +58,8 @@ export default function Result() {
                 </Title>
             </Center>
             <Grid container>
-                {naruto.map((item: any, index) => {
+                { }
+                {naruto && naruto.map((item: any, index) => {
                     if (index < 6) {
                         return (
                             <GridItem item xs={12} key={index}>

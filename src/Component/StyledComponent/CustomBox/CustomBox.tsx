@@ -23,12 +23,15 @@ export function CustomBox(props: any) {
             style={{
                 ...props.style,
                 backgroundColor: theme.palette.mode === (props.reverse === "true" ? 'light' : 'dark') ? "#1e1e1e" : '#f5f5f5',
-                width: props.width ? props.width : "90%",
+                width: props.width ? props.width : "100%",
                 padding: props.padding ? props.padding : "",
                 margin: props.margin ? props.margin : "",
                 borderRadius: props.borderRadius ? props.borderRadius : "20px",
                 maxWidth: props.maxWidth ? props.maxWidth : "100%",
                 maxHeight: props.maxHeight ? props.maxHeight : "100%",
+                overflow: props.overflow ? props.overflow : "hidden",
+                marginLeft: props.marginLeft ? props.marginLeft : "",
+                marginRight: props.marginRight ? props.marginRight : "",
             }}
         >
             {props.children}
@@ -61,6 +64,20 @@ export function BoxSection(props: any) {
         <div
             className={style.BoxSection}
             {...props}
+            style={{
+                ...props.style,
+                padding: props.padding ? props.padding : "20px",
+                paddingBottom: props.paddingBottom ? props.paddingBottom : "20px",
+                paddingTop: props.paddingTop ? props.paddingTop : "20px",
+                paddingLeft: props.paddingLeft ? props.paddingLeft : "20px",
+                paddingRight: props.paddingRight ? props.paddingRight : "20px",
+                margin: props.margin ? props.margin : "20px",
+                marginBottom: props.marginBottom ? props.marginBottom : "20px",
+                marginTop: props.marginTop ? props.marginTop : "20px",
+                marginLeft: props.marginLeft ? props.marginLeft : "20px",
+                marginRight: props.marginRight ? props.marginRight : "20px",
+                borderRadius: props.borderRadius ? props.borderRadius : "20px",
+            }}
         >
             {props.children}
             <Divider variant="middle" />

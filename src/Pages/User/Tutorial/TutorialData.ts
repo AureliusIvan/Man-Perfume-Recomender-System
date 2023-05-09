@@ -10,12 +10,12 @@ export const TutorialData = [
         description: 'Tutorial 1 Description',
         image: Comp,
     },
-    {
-        id: 2,
-        title: 'Semakin',
-        description: 'Tutorial 2 Description',
-        image: Learn,
-    },
+    // {
+    //     id: 2,
+    //     title: 'Semakin',
+    //     description: 'Tutorial 2 Description',
+    //     image: Learn,
+    // },
     {
         id: 3,  
         title: 'Pilihlah',

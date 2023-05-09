@@ -40,6 +40,8 @@ export function CustomInput(props: any) {
           color: theme.palette.mode === 'dark' ? "white" : "black",
           borderBlockEndColor: 'white',
           borderBlockEndStyle: 'solid',
+          borderRadius: '20px',
+          paddingInline: '10px',
           outline: 'none',
           '&:after ': {
             borderBottom: '2px solid red',

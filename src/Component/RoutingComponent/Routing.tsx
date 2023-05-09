@@ -25,19 +25,6 @@ const Routing = () => {
   return (
     <Routes>
       <Route path="/" element={<UserPage />} />
-      <Route path="/admin/login" element={<LoginPage />} />
-      
-      {/* Temporary back door */}
-      <Route path="/admint" element={<AdminPage />} />
-      
-      {/* Setelah login, kalo misal ke home, terus manual ke /admin, dia malah balik ke halaman login (kyk langsung logged out of the account) */}
-      <Route path="/admin" element={
-        // yang mau di protect tinggal di bungkus aja
-        // nanti bisa di tambahin parameter lagi kalo butuh sih, semisal admin, user dll
-        <ProtectedRoute>
-          <AdminPage />
-        </ProtectedRoute>
-      } />
       <Route
         path="/start"
         element={
@@ -47,15 +34,22 @@ const Routing = () => {
         }
       />
       <Route
-        path="/result"
+        path="result"
         element={
           <Suspense fallback={<LoadingScreen />}>
             <Result />
           </Suspense>
         }
       />
+      <Route path="/admint" element={<AdminPage />} />
+      <Route path="/admin/" element={
+        <ProtectedRoute>
+          <AdminPage />
+        </ProtectedRoute>}>
 
-      {/* To redirect any unavailable routes back to home page */}
+      </Route>
+      <Route path="/admin/login" element={<LoginPage />} />
+
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
