@@ -35,7 +35,7 @@ axiosClient.interceptors.request.use(
     (error) => {
         // console.log("interceptor request error");
         // Do something with request error
-        return Promise.reject("An error occurred on the client");
+        return Promise.reject("An error occurred on the client, check your internet connection");
     }
 );
 
@@ -50,7 +50,7 @@ axiosClient.interceptors.response.use(
     (error) => {
         // console.log("interceptor response error");
         // Do something with request error
-        return Promise.reject("An error occurred on the server");
+        return Promise.reject("Validation failed");
     }
 );
 

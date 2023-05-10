@@ -20,7 +20,7 @@ import { post } from "@/Component/FunctionComponent/axiosClient/axiosClient";
 import { setCookie } from "react-use-cookie";
 // import CustomSpinner from "@/Component/StyledComponent/CustomSpinner/CustomSpinner";
 import { CircularProgress } from "@mui/material";
-
+import Alert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
 
 function LoginPage() {
   return (
@@ -47,6 +47,14 @@ const TheForm: React.FunctionComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [message, setMessage] = useState("");
+  const showerror = () => {
+    setError(true);
+    setTimeout(() => {
+      setError(false);
+    }, 3000);
+  }
 
   return (
     <Formik
@@ -61,22 +69,23 @@ const TheForm: React.FunctionComponent = () => {
             username: values.username,
             password: values.password,
           }).then((res: any) => {
-            // console.log(values);
-            // console.log(res);
             dispatch(setLogin());
             if (res.status === 200) {
               setLoading(false);
               setCookie("TOKEN", res.data.data.token);
               navigate("/admin");
             } else {
-              // alert("Wrong Username or Password");
+              setLoading(false);
+              setMessage(res);
+              showerror();
+              console.log(res);
             }
-            // window.location.replace("/admin");
           }
           ).catch((err) => {
             console.log(err);
+            setMessage(err);
+            showerror();
             setLoading(false);
-            // alert("Wrong Username or Password");
           })
         }
         login();
@@ -86,9 +95,6 @@ const TheForm: React.FunctionComponent = () => {
       validationSchema={Yup.object().shape({
         username: Yup.string().required("Username Required"),
         password: Yup.string()
-          // .matches(
-          //   /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,20}\S$/
-          // )
           .required("Password Required"),
       })}
     >
@@ -98,6 +104,8 @@ const TheForm: React.FunctionComponent = () => {
 
         return (
           <Form>
+            {error &&
+              <Alert severity="error">{message}</Alert>}
             <Input
               name="username"
               label="Username"
@@ -122,7 +130,9 @@ const TheForm: React.FunctionComponent = () => {
               onBlur={handleBlur}
             />
             <Spacer y="20px" />
-            <Button type="submit" disabled={loading}>
+            <Button type="submit"
+              disabled={loading || isSubmitting || !props.isValid || !props.dirty}
+            >
               {loading ? <CircularProgress /> : "Login"}
             </Button>
           </Form>
