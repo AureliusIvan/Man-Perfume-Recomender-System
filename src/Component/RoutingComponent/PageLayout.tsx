@@ -1,7 +1,6 @@
 import Routing from "@/Component/RoutingComponent/Routing";
-
 import Header from "../StyledComponent/Header/Header";
-import Footer, { UserFooter } from "../StyledComponent/Footer/Footer";
+// import Footer from "../StyledComponent/Footer/Footer";
 
 // yang ditampilin di semua halaman bisa dibuat/import disini aja
 // layout tempate juga boleh disini aja nantinya
