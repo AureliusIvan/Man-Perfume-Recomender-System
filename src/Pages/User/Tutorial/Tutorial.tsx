@@ -42,30 +42,48 @@ function Card(props: defaulprops) {
         <Grid container
             className={style.card}
         >
-            <Grid item xs={12} sm={3} md={3} lg={2}>
-                <img src={props.img} className={style.img} />
-            </Grid>
-            {Mobile ? "" :
-                <Grid item sm={9} md={9} lg={10}>
-                    <h3 className={style.h3}>{
-                        props.title
-                    }</h3>
-                    <p className={style.p}>
-                        {props.text}
-                    </p>
-                    {Mobile ?
-                        <button
-                            className={style.button}
-                        >
-                            <Text width={'fit-content'}>
-                                Learn More
-                            </Text>
-                            <ArrowForwardIcon color={
-                                theme === 'dark' ? 'secondary' : 'primary'
-                            } />
-                        </button>
-                        : ""}
-                </Grid>}
+            {Mobile ?
+                <>
+                    <Grid item xs={12} sm={9} md={9} lg={10}
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                        }}
+                    >
+                        <h3 className={style.h3}>
+                            {props.title}
+                        </h3>
+                    </Grid>
+                    <br />
+                    <Grid item xs={12} sm={3} md={3} lg={2}
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                        }}
+                    >
+                        <img src={props.img} className={style.img} />
+                    </Grid>
+
+                </>
+                :
+                <>
+                    <Grid item xs={12} sm={3} md={3} lg={2}>
+                        <img src={props.img} className={style.img} />
+                    </Grid>
+                    <Grid item sm={9} md={9} lg={10}>
+                        <h3 className={style.h3}>
+                            {props.title}
+                        </h3>
+                        <p className={style.p}>
+                            {props.text}
+                        </p>
+                    </Grid>
+                </>
+            }
         </Grid>
 
     </>)

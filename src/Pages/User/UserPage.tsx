@@ -18,14 +18,11 @@ import Recommendation from "./Recommendation/Recommendation"
 import WelcomePage from "./Welcome/Welcome"
 import DescPage from "./Desc/DescPage"
 import Spacer from "./Spacer/spacer"
-import { CustomInput } from "../../Component/StyledComponent/CustomInput/CustomInput"
-import { Grid } from "@material-ui/core"
-import { useMemo } from "react"
+import Footer from "@/Component/StyledComponent/Footer/Footer"
 // main function
 export default function UserPage() {
     let i = 5;
     const islogin = useSelector(selectIsLogin);
-
     return (
         <div id="User-Page" className={style.UserPage}>
             {/* Helmet for SEO */}
@@ -35,9 +32,7 @@ export default function UserPage() {
                 <link rel="canonical" href={`${PROJDOMAIN}`} />
             </Helmet>
             <Spacer y={"100px"} />
-            <M>
                 <WelcomePage />
-            </M>
             <Spacer y={"200px"} />
             <Center>
                 <DescPage />
@@ -49,6 +44,7 @@ export default function UserPage() {
             </Center>
             <Spacer y={"100px"} />
             <Recommendation />
+            <Footer />
         </div >
     )
 }

@@ -10,6 +10,12 @@
     background-repeat: no-repeat;
     background-size: 80% 80% !important;
     overflow: visible;
+
+    @media screen and (max-width: 768px) {
+        margin-top: 60px;
+        width: 80%;
+        height: 80%;
+    }
 }
 
 .logo {

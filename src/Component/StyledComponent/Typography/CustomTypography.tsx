@@ -63,13 +63,16 @@ export function Paragraf(props: any) {
             {props.title}
         </Title>
         <Spacer y={props.spacer ? props.spacer : "20px"} />
-        <Text style={{
+        <div style={{
             textAlign: props.textAlign ? props.textAlign : "center",
+            // margin: props.margin ? props.margin : "10px",
+            // padding: props.padding ? props.padding : "60px",
+            paddingInline: props.paddingInline ? props.paddingInline : "20px",
+            // width: props.width ? props.width : "70%",
         }}
-            width={props.width ? props.width : "100%"}
         >
             {props.children ? props.children : "Aroma lebih penting dari harga. Ini adalah Paragraf"}
-        </Text>
+        </div>
     </>
     );
 }

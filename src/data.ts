@@ -1,5 +1,5 @@
 // SEO / HELMET
-export const PROJTITLE = 'Penelitian Pafrum';
+export const PROJTITLE = 'Penelitian Parfum';
 export const PROJDESC = 'ini adalah Penelitian Parfum';
 export const PROJDOMAIN = "masih kosong" //nanti tambahin domain web disini untuk SEO
 

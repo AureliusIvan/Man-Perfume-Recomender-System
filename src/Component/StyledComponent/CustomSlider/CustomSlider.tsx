@@ -4,7 +4,7 @@
 import Slider from '@mui/material/Slider';
 import styled from '@emotion/styled';
 import withTheme from '@material-ui/core/styles/withTheme';
-
+import "./CustomSlider.scss";
 
 const marks = [
   {
@@ -39,6 +39,10 @@ const CSlider = styled(withTheme(Slider))((theme) => ({
     markerColor: 'inherit',
     markerSize: '100px',
   },
+  // change slider line color
+  '& .MuiSlider-track': {
+    color: 'transparent',
+  },
 }));
 
 
@@ -49,15 +53,16 @@ export default function CustomSlider(props: any) {
       value={props.value}
       onChange={props.onChange ? props.onChange : ""}
       defaultValue={3}
-      // aria-labelledby="discrete-slider"
       valueLabelDisplay="auto"
       step={props.step ? props.step : 1}
-      // marks={props.marks ? props.marks : marks}
       min={props.min ? props.min : 0}
       max={props.max ? props.max : 6}
       scale={props.scale ? props.scale : x => x}
       getAriaValueText={props.getAriaValueText ? props.getAriaValueText : (value) => value}
       valueLabelFormat={props.valueLabelFormat ? props.valueLabelFormat : (value) => value}
+      classes={{
+        track: "slider-track",
+      }}
       // valueLabelDisplay="auto"
       aria-labelledby="non-linear-slider"
     />

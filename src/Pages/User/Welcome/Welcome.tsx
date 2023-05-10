@@ -1,11 +1,13 @@
 import { CustomBox as Box } from "../../../Component/StyledComponent/CustomBox/CustomBox"
 import { CustomButton as Button } from "../../../Component/StyledComponent/CustomButton/CustomButton"
 import { Grid } from "@material-ui/core"
-import welcomeimg from "../../../Assets/Image/welcome.png"
+import welcomeimg from "../../../Assets/Image/welcome.webp"
 import { Title } from "../../../Component/StyledComponent/Typography/CustomTypography"
 import Center from "../../../Component/StyledComponent/CustomCenter/Center"
 import { CustomImage as Img } from "../../../Component/StyledComponent/CustomImage/CustomImage"
 import { useNavigate } from "react-router-dom"
+import Spacer from "../Spacer/spacer"
+import { Custommotion as M } from "@/Component/StyledComponent/CustomAnimation/Custommotion"
 
 export default function WelcomePage() {
     const navigate = useNavigate()
@@ -13,7 +15,7 @@ export default function WelcomePage() {
         navigate('/start')
     }
     return (
-        <div>
+        <M>
             <Grid container>
                 <Grid item xs={12} md={5}>
                     <Center>
@@ -33,6 +35,6 @@ export default function WelcomePage() {
                     </Center>
                 </Grid>
             </Grid>
-        </div>
+        </M>
     )
 }

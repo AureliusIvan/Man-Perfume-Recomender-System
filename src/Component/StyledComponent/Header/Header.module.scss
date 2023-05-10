@@ -10,6 +10,10 @@
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
     will-change: transform;
 
+    @media screen and (max-width: 768px) {
+        justify-content: center;
+    }
+
     .Logo {
         width: 50px !important;
         height: 50px !important;

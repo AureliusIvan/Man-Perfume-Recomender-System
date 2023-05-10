@@ -131,7 +131,7 @@ export default function Header(props: any) {
           <Toogle />
         </GridItemLeft>
       )}
-  
+
       <GridItemCenter item xs={4}>
         {/* <Title>
                     {PROJTITLE}

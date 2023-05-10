@@ -4,14 +4,17 @@
     margin: 10px;
     border-radius: 10px;
     background-color: rgb(240, 248, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .img {
         height: 150px;
         width: 150px;
 
         @media screen and (max-width: 768px) {
-            height: 100px;
-            width: 100px;
+            height: 150px;
+            width: 150px;
         }
     }
 

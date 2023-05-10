@@ -25,7 +25,7 @@ export function Custommotion(props: any) {
                 transition={
                     props.transition ? props.transition :
                         {
-                            duration: 0.3,
+                            duration: 0.6,
                         }}
                 exit={props.exit}
                 {...props}
