@@ -7,14 +7,17 @@ import { getInputs } from "./getInputs";
 import Spacer from "@/Pages/User/Spacer/spacer";
 import Center from "../CustomCenter/Center";
 import { CustomButton as Button } from "@/Component/StyledComponent/CustomButton/CustomButton";
+import { CustomImageInput } from "./CustomImageInput";
 
 interface nyam {
   formName: string;
   onSubmit: any;
 }
 
-const CustomFormik = (props : nyam) => {
-  const { initialValues, inputs, validationSchema } = getInputs(`${props.formName}`);
+const CustomFormik = (props: nyam) => {
+  const { initialValues, inputs, validationSchema } = getInputs(
+    `${props.formName}`
+  );
 
   return (
     <Formik
@@ -25,19 +28,36 @@ const CustomFormik = (props : nyam) => {
     >
       <Form>
         {inputs.map(({ label, name, type, value, validations, ...inProps }) => {
-          return (
-            <>
-              <CustomTextInput
-                key={name}
-                label={label}
-                name={name}
-                placeholder={inProps.placeholder}
-                type={type}
-              />
-              <ErrorMessage name={name} component="div" className={style.error} />
-              <br />
-            </>
-          );
+          switch (type) {
+            case "file":
+              return (
+                <>
+                  <CustomImageInput
+                    key={name}
+                    label={label}
+                    name={name}
+                    placeholder={inProps.placeholder}
+                    type={type}
+                  />
+                  <Spacer y="10px" />
+                  <ErrorMessage name={name} component="div" className={style.error} />
+                  <Spacer y="10px" />
+                </>
+              );
+            default:
+              return (
+                <>
+                  <CustomTextInput
+                    key={name}
+                    label={label}
+                    name={name}
+                    placeholder={inProps.placeholder}
+                    type={type}
+                  />
+                  <Spacer y="10px" />
+                </>
+              );
+          }
         })}
         <Spacer y="20px" />
         <Center>

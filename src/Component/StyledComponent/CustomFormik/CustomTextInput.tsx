@@ -9,11 +9,16 @@ interface Props {
 }
 
 export const CustomTextInput = (props: Props) => {
-  const [field] = useField(props);
+  const [field, meta] = useField(props);
 
   return (
     <div>
-      <CustomInput {...field} {...props} />
+      <CustomInput
+        helperText={meta.error && meta.touched ? meta.error : ""}
+        error={meta.error && meta.touched ? true : false}
+        {...field}
+        {...props}
+      />
     </div>
   );
 };

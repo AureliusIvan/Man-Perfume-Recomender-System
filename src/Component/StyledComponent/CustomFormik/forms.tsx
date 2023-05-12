@@ -97,6 +97,19 @@ export const forms: { [x: string]: InputProps[] } = {
         },
       ],
     },
+    {
+      label: "",
+      type: "file",
+      name: "image",
+      placeholder: "",
+      value: "",
+      validations: [
+        {
+          type: "required",
+          message: "Perfume image is required",
+        },
+      ],
+    },
   ],
 
   // how to make use of other input styles
