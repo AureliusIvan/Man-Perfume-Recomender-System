@@ -3,13 +3,19 @@
 export interface InputProps {
   name: string;
   value: string | number | boolean;
-  placeholder?: string;
+  placeholder?: string ;
   label?: string;
   handleSubmit?: Function;
-  type: "text" | "number" | "file" | "radio-group" | "email" | "password" | "select" | "checkbox";
+  type: "text" | "number" | "file" | "range" | "radio-group" | "email" | "password" | "select" | "checkbox";
   typeValue?: "string" | "boolean";
   options?: Opt[];
   validations: Validation[];
+  
+  // additional props
+  name2?: string;
+  value2?: string | number | boolean;
+  placeholder2?: string ;
+  label2?: string;
 }
 
 export interface Opt {
@@ -20,13 +26,15 @@ export interface Opt {
 export interface Validation {
   type: "required" | "isEmail" | "minLength" | "isTrue";
   value?: string | number | boolean;
+  value2?: string | number | boolean;
   message: string;
+  message2?: string;
 }
 
 export const forms: { [x: string]: InputProps[] } = {
   editPerfume: [
     {
-      label: "Nama Parfum",
+      label: "Perfume Name",
       type: "text",
       name: "name",
       placeholder: "",
@@ -59,7 +67,7 @@ export const forms: { [x: string]: InputProps[] } = {
   ],
   newPerfume: [
     {
-      label: "Nama Parfum",
+      label: "Perfume Name",
       type: "text",
       name: "name",
       placeholder: "",
@@ -72,7 +80,7 @@ export const forms: { [x: string]: InputProps[] } = {
       ],
     },
     {
-      label: "Merk",
+      label: "Brand",
       type: "text",
       name: "merk",
       placeholder: "",
@@ -85,7 +93,20 @@ export const forms: { [x: string]: InputProps[] } = {
       ],
     },
     {
-      label: "Ukuran (ml)",
+      label: "Scent",
+      type: "text",
+      name: "scent",
+      placeholder: "",
+      value: "",
+      validations: [
+        {
+          type: "required",
+          message: "Scent is required",
+        },
+      ],
+    },
+    {
+      label: "Volume Size (ml)",
       type: "number",
       name: "size",
       placeholder: "",
@@ -93,7 +114,33 @@ export const forms: { [x: string]: InputProps[] } = {
       validations: [
         {
           type: "required",
-          message: "Size is required",
+          message: "Volume size is required",
+        },
+      ],
+    },
+    {
+      label: "Price Range (Min)",
+      type: "number",
+      name: "minPrice",
+      placeholder: "",
+      value: "",
+      validations: [
+        {
+          type: "required",
+          message: "Price range is required",
+        },
+      ],
+    },
+    {
+      label: "Price Range (Max)",
+      type: "number",
+      name: "maxPrice",
+      placeholder: "",
+      value: "",
+      validations: [
+        {
+          type: "required",
+          message: "Price range is required",
         },
       ],
     },

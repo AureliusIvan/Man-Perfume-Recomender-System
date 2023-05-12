@@ -3,6 +3,22 @@
   font-size: small;
 }
 
+.content {
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+}
+
+.content::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+.rangeInput {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .drop-container {
   position: relative;
   display: flex;

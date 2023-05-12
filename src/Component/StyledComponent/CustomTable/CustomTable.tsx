@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -12,6 +12,7 @@ import { CustomButton as Button } from "../CustomButton/CustomButton";
 import { Confirmations, CustomModal } from "../CustomModal/CustomModal";
 
 import CustomFormik from "../CustomFormik/CustomFormik";
+import { Typography } from "@material-ui/core";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -69,21 +70,6 @@ const rows = [
   createData("Parfum jambu air", 356, 16.0, 49, 3.9),
 ];
 
-function ModalContent() {
-  return (
-    <>
-      <CustomFormik
-        formName="editParfume"
-        onSubmit={() => {
-          console.log("Submitted!");
-          // setOpen(false);
-          // how to close modal from outside its component?
-        }}
-      />
-    </>
-  );
-}
-
 export default function CustomTable() {
   const [cal, setCal] = useState(0);
   const [fat, setFat] = useState(0);
@@ -115,7 +101,19 @@ export default function CustomTable() {
               <StyledTableCell align="right">{row.fat}</StyledTableCell>
               <StyledTableCell align="right">{row.carbs}</StyledTableCell>
               <StyledTableCell align="right">
-                <CustomModal title="Edit">
+                <CustomModal
+                  title="Edit"
+                  xbutton
+                  isOpen={isOpen}
+                  setOpen={setOpen}
+                >
+                  <Typography
+                    id="modal-modal-title"
+                    variant="h6"
+                    component="h2"
+                  >
+                    Edit Perfume
+                  </Typography>
                   <CustomFormik
                     formName="editPerfume"
                     onSubmit={() => {

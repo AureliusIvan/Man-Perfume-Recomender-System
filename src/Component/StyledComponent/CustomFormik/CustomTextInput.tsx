@@ -12,13 +12,14 @@ export const CustomTextInput = (props: Props) => {
   const [field, meta] = useField(props);
 
   return (
-    <div>
+    <>
       <CustomInput
         helperText={meta.error && meta.touched ? meta.error : ""}
         error={meta.error && meta.touched ? true : false}
+        style = {{width: "350px"}}
         {...field}
         {...props}
       />
-    </div>
+    </>
   );
 };

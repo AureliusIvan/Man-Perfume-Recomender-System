@@ -28,6 +28,7 @@ export function CustomModal(props: any) {
                 <>
                     <Box
                         maxWidth="440px"
+                        maxHeight="80vh"
                         className={style.modal}
                     >
                         {props.xbutton ? <button
