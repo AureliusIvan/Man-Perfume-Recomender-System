@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Routing from "@/Component/RoutingComponent/Routing";
 
 import Header from "../StyledComponent/Header/Header";
@@ -12,11 +11,9 @@ export default function PageLayout() {
     <>
       <div>
         <Header />
-				<Routing />
+        <Routing />
         {/* <UserFooter /> */}
       </div>
     </>
   );
 }
-
-// kalo nanti component Header sama Footer mau dipisah, bisa langsung import kesini lagi

@@ -12,8 +12,11 @@ import Spacer from "../../../Pages/User/Spacer/spacer";
 // import useMediaQuery from "@material-ui/material/useMediaQuery";
 import { useMediaQuery } from "@mui/material";
 import { Custommotion as M } from "../CustomAnimation/Custommotion";
+
 import { useState, useEffect, ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsLogin, setLogout } from "@/Redux/feature/dataSlice";
 
 const Margin = "35px";
 
@@ -59,10 +62,11 @@ const GridItemCenter = styled(Grid)(() => ({
 
 interface Props {
     children ? : ReactNode,
+    clicked ? : any,
     pathTo : string;
 } 
 
-// ...props belom bisa dipake
+// ...props belom bisa dipake (?)
 const NavLink = ({pathTo, children, ...props} : Props) => {
     return (
         <Link to={pathTo}>
@@ -71,9 +75,9 @@ const NavLink = ({pathTo, children, ...props} : Props) => {
     )
 }
 
-const ButtonNavLink = ({pathTo, children, ...props} : Props) => {
+const ButtonNavLink = ({pathTo, children, clicked, ...props} : Props) => {
     return (
-        <Link to={pathTo}>
+        <Link to={pathTo} onClick={clicked}>
             <Button {...props}>{children}</Button>
         </Link>
     )
@@ -81,6 +85,9 @@ const ButtonNavLink = ({pathTo, children, ...props} : Props) => {
 
 export default function Header(props: any) {
     const isMobile = useMediaQuery('(min-width:600px)');
+
+    const loggedIn = useSelector(selectIsLogin);
+    const dispatch = useDispatch();
 
     const [show, setShow] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -110,7 +117,6 @@ export default function Header(props: any) {
     }, [lastScrollY]);
 
     return (
-
         <GridContainer container className={show ? style.Header : style.HeaderHide}>
             {isMobile &&
                 <GridItemLeft item xs={4}>
@@ -131,7 +137,13 @@ export default function Header(props: any) {
             <GridItemRight item xs={4}>
                 {/* <Toogle /> */}
                 <NavLink pathTo="/">Home</NavLink>
-                <ButtonNavLink pathTo="/admin">Admin Mode</ButtonNavLink>
+
+                {/* loggedIn value read as [object object] on console log */}
+                {loggedIn ?
+                <ButtonNavLink pathTo="/" clicked={() => {dispatch(setLogout()); console.log("logged in : " + {loggedIn})}}>Log Out</ButtonNavLink>
+                : 
+                <ButtonNavLink pathTo="/admin/login" clicked={() => console.log("now logged in : " + {loggedIn})}>Admin Mode</ButtonNavLink>
+                }
             </GridItemRight>
         </GridContainer>
     )

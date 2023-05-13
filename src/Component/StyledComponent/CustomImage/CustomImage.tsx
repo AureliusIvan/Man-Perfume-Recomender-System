@@ -1,6 +1,7 @@
 import style from "./CustomImage.module.scss";
 // import { useTheme } from "@mui/material/styles";
 import IMG from "../../../Assets/image/logo.png"
+import { useNavigate } from "react-router-dom";
 
 export function CustomImage(props: any) {
     return (
@@ -11,13 +12,17 @@ export function CustomImage(props: any) {
 }
 
 export function LogoImage(props: any) {
+    const navigate = useNavigate()
+    function onClick() {
+        navigate('/');
+    }
     return (
-        <div className={style.logo} style={{
-            ...props.style,
-            width: props.width ? props.size : "50px",
-            height: props.height ? props.size : "50px",
-            // border: props.border ? props.border : "1px solid black",
-            // backgroundSize: props.backgroundSize ? props.backgroundSize : "90% 90%",
-        }} />
+        <div
+            onClick={props.onClick ? props.onClick : onClick}
+            className={style.logo} style={{
+                ...props.style,
+                width: props.width ? props.size : "50px",
+                height: props.height ? props.size : "50px",
+            }} />
     )
 }

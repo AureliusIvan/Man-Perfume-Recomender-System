@@ -5,7 +5,7 @@ import LoadingScreen from "../../Component/StyledComponent/Fallback/LoadingScree
 import { Title } from "@/Component/StyledComponent/Typography/CustomTypography";
 import Center from "@/Component/StyledComponent/CustomCenter/Center";
 import Spacer from "../User/Spacer/spacer";
-const Lazytable = lazy(() => import("../../Component/StyledComponent/CustomTable/CustomTable"))
+const Table = lazy(() => import("../../Component/StyledComponent/CustomTable/CustomTable"))
 
 function AdminPage() {
     return (
@@ -17,7 +17,7 @@ function AdminPage() {
                 </Title>
                 <Spacer y={"20px"} />
                 <Suspense fallback={<LoadingScreen />}>
-                    <Lazytable />
+                    <Table />
                 </Suspense>
             </Center>
         </div>

@@ -8,7 +8,6 @@ import withTheme from '@material-ui/core/styles/withTheme';
 
 const CInput = styled(withTheme(TextField))(({ theme }) => (
   {
-
     'label.MuiInputLabel-root': {
       color: 'inherit',
     },
@@ -21,15 +20,32 @@ const CInput = styled(withTheme(TextField))(({ theme }) => (
     'input.MuiInputBase-input.Mui-focused': {
       color: 'inherit',
     },
+    'input.MuiInputBase-input.Mui-disabled': {
+      color: 'inherit',
+    },
+
     // color: theme.palette.primary ? 'white' : 'black',
   }));
 
 export function CustomInput(props: any) {
+  const theme = useTheme();
   return (
     <CInput
       id="standard-basic"
       label={props.label ? props.label : "Enter Input"}
       color="primary"
+      inputProps={{
+        color: 'red',
+        style: {
+          color: theme.palette.mode === 'dark' ? "white" : "black",
+          borderBlockEndColor: 'white',
+          borderBlockEndStyle: 'solid',
+          outline: 'none',
+          '&:after ': {
+            borderBottom: '2px solid red',
+          },
+        }
+      }}
       {...props}
     />
   )

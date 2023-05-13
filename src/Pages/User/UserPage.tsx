@@ -21,7 +21,6 @@ import Spacer from "./Spacer/spacer"
 import { CustomInput } from "../../Component/StyledComponent/CustomInput/CustomInput"
 import { Grid } from "@material-ui/core"
 import { useMemo } from "react"
-
 // main function
 export default function UserPage() {
     let i = 5;

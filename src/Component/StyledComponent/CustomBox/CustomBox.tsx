@@ -27,10 +27,31 @@ export function CustomBox(props: any) {
                 padding: props.padding ? props.padding : "",
                 margin: props.margin ? props.margin : "",
                 borderRadius: props.borderRadius ? props.borderRadius : "20px",
+                maxWidth: props.maxWidth ? props.maxWidth : "100%",
+                maxHeight: props.maxHeight ? props.maxHeight : "100%",
             }}
         >
             {props.children}
         </CBox>
+    )
+}
+
+
+export function Flex(props: any) {
+    return (
+        <div style={{
+            ...props.style,
+            display: 'flex',
+            flexDirection: props.direction ? props.direction : 'row',
+            alignItems: props.align ? props.align : 'center',
+            justifyContent: props.justify ? props.justify : 'center',
+            gap: props.gap ? props.gap : '10px',
+
+        }}
+            {...props}
+        >
+            {props.children}
+        </div >
     )
 }
 
