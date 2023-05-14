@@ -1,6 +1,5 @@
 export interface InputProps {
   name: string;
-  value: string | number | boolean;
   placeholder?: string;
   label?: string;
   handleSubmit?: Function;
@@ -39,7 +38,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "text",
       name: "name",
       placeholder: "",
-      value: "Mangga",
       validations: [
         {
           type: "required",
@@ -52,7 +50,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "text",
       name: "merk",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
@@ -65,7 +62,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "text",
       name: "scent",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
@@ -78,7 +74,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "number",
       name: "size",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
@@ -95,7 +90,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "number",
       name: "minPrice",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
@@ -112,7 +106,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "number",
       name: "maxPrice",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
@@ -129,7 +122,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "file",
       name: "image",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
@@ -144,7 +136,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "text",
       name: "name",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
@@ -157,7 +148,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "text",
       name: "merk",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
@@ -170,7 +160,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "text",
       name: "scent",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
@@ -183,7 +172,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "number",
       name: "size",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
@@ -200,7 +188,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "number",
       name: "minPrice",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
@@ -217,7 +204,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "number",
       name: "maxPrice",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
@@ -234,7 +220,6 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "file",
       name: "image",
       placeholder: "",
-      value: "",
       validations: [
         {
           type: "required",
