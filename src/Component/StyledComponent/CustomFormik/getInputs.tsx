@@ -14,6 +14,12 @@ type YupString = Yup.StringSchema<
   string | undefined
 >;
 
+type YupNumber = Yup.NumberSchema<
+  number | undefined,
+  AnyObject,
+  number | undefined
+>;
+
 const generateValidations = (field: InputProps) => {
   let schema = Yup[field.typeValue ? field.typeValue : "string"]();
 
@@ -31,6 +37,14 @@ const generateValidations = (field: InputProps) => {
         schema = (schema as YupString).min(rule?.value as number, rule.message);
         break;
 
+      case "isPositive":
+        schema = (schema as YupNumber).test(
+          "is-positive",
+          rule.message,
+          (value) => value === undefined || value > 0
+        );
+        break;
+
       default:
         schema = schema.required(rule.message);
         break;
@@ -40,12 +54,12 @@ const generateValidations = (field: InputProps) => {
   return schema;
 };
 
-export const getInputs = (section : string) => {
-  let initialValues: { [key: string]: any } = {};
+export const getInputs = (section: string) => {
+  // let initialValues: { [key: string]: any } = {};
   let validationsFields: { [key: string]: any } = {};
 
   for (const field of forms[section]) {
-    initialValues[field.name] = field.value;
+    // initialValues[field.name] = field.value;
 
     // get validation
     if (!field.validations) continue;
@@ -56,7 +70,7 @@ export const getInputs = (section : string) => {
 
   return {
     validationSchema: Yup.object({ ...validationsFields }),
-    initialValues,
+    // initialValues,
     inputs: forms[section],
   };
 };

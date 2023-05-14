@@ -44,6 +44,12 @@
   color: #222;
 }
 
+.btnGroup {
+  display: flex;
+  width: 250px;
+  justify-content: space-around;
+}
+
 input[type="file"] {
   width: 350px;
   max-width: 100%;

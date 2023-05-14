@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import * as React from "react";
 
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -8,11 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { CustomButton as Button } from "../CustomButton/CustomButton";
 import { Confirmations, CustomModal } from "../CustomModal/CustomModal";
-
-import CustomFormik from "../CustomFormik/CustomFormik";
-import { Typography } from "@material-ui/core";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -71,13 +67,6 @@ const rows = [
 ];
 
 export default function CustomTable() {
-  const [cal, setCal] = useState(0);
-  const [fat, setFat] = useState(0);
-  const [carbs, setCarbs] = useState(0);
-  const [pro, setPro] = useState(0);
-
-  let editPerfumeData = [cal, fat, carbs, pro];
-
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -102,26 +91,20 @@ export default function CustomTable() {
               <StyledTableCell align="right">{row.carbs}</StyledTableCell>
               <StyledTableCell align="right">
                 <CustomModal
-                  title="Edit"
                   xbutton
-                  isOpen={isOpen}
-                  setOpen={setOpen}
-                >
-                  <Typography
-                    id="modal-modal-title"
-                    variant="h6"
-                    component="h2"
-                  >
-                    Edit Perfume
-                  </Typography>
-                  <CustomFormik
-                    formName="editPerfume"
-                    onSubmit={() => {
-                      console.log(row.name + " submitted!");
-                      // how to close modal from outside its component?
-                    }}
-                  />
-                </CustomModal>
+                  children
+                  useFormik
+                  formName="editPerfume"
+                  title="Edit"
+                  deletable
+                  fName={row.name}
+                  fMerk={row.calories}
+                  // fScent={}
+                  // fSize={}
+                  // fMinPrice={}
+                  // fMaxPrice={}
+                  // fImage={}
+                />
               </StyledTableCell>
               <StyledTableCell align="right">
                 <Confirmations

@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { CustomBox as Box, Flex } from '../CustomBox/CustomBox';
-import { CustomButton as Button } from '../CustomButton/CustomButton';
+import { useTheme } from '@mui/material/styles';
+
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+
+import { CustomBox as Box, Flex } from '../CustomBox/CustomBox';
+import { CustomButton as Button } from '../CustomButton/CustomButton';
+import CustomFormik from '../CustomFormik/CustomFormik';
+
 import style from "./CustomModal.module.scss";
-import { useTheme } from '@mui/material/styles';
 
 export function CustomModal(props: any) {
     const [open, setOpen] = React.useState(false);
@@ -51,6 +55,23 @@ export function CustomModal(props: any) {
                                     </Typography>
                                 </>
                         }
+                        {props.useFormik ? (
+                            <CustomFormik
+                                formName={props.formName}
+                                title={props.title ? props.title : "Title"}
+                                deletable={props.deletable}
+                                onSubmit={(value : any) => {
+                                    handleClose();
+                                    console.log(value);
+                                }}
+                                fName={props.fName ? props.fName : ""}
+                                fMerk={props.fMerk ? props.fMerk : ""}
+                                fScent={props.fScent ? props.fScent : ""}
+                                fSize={props.fSize ? props.fSize : null}
+                                fMinPrice={props.fMinPrice ? props.fMinPrice : null}
+                                fMaxPrice={props.fMaxPrice ? props.fMaxPrice : null}
+                                fImage={props.fImage ? props.fImage : null}
+                            /> ) : null}
                         <Flex>
                             {props.confirmbutton ?
                                 <><Button

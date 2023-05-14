@@ -1,21 +1,24 @@
-// bisa ambil value dari back end kahh? dari fe mumet belom bisa..
-
 export interface InputProps {
   name: string;
   value: string | number | boolean;
-  placeholder?: string ;
+  placeholder?: string;
   label?: string;
   handleSubmit?: Function;
-  type: "text" | "number" | "file" | "range" | "radio-group" | "email" | "password" | "select" | "checkbox";
-  typeValue?: "string" | "boolean";
+  type:
+    | "text"
+    | "number"
+    | "file"
+    | "range"
+    | "radio-group"
+    | "email"
+    | "password"
+    | "select"
+    | "checkbox";
+  typeValue?: "string" | "boolean" | "number";
   options?: Opt[];
   validations: Validation[];
-  
-  // additional props
-  name2?: string;
-  value2?: string | number | boolean;
-  placeholder2?: string ;
-  label2?: string;
+
+  [x: string | number | symbol]: unknown;
 }
 
 export interface Opt {
@@ -24,11 +27,9 @@ export interface Opt {
 }
 
 export interface Validation {
-  type: "required" | "isEmail" | "minLength" | "isTrue";
+  type: "required" | "isEmail" | "minLength" | "isTrue" | "isPositive";
   value?: string | number | boolean;
-  value2?: string | number | boolean;
   message: string;
-  message2?: string;
 }
 
 export const forms: { [x: string]: InputProps[] } = {
@@ -38,13 +39,8 @@ export const forms: { [x: string]: InputProps[] } = {
       type: "text",
       name: "name",
       placeholder: "",
-      value: "",
+      value: "Mangga",
       validations: [
-        {
-          type: "minLength",
-          value: 3,
-          message: "Min. 3 characters",
-        },
         {
           type: "required",
           message: "Perfume name is required",
@@ -52,15 +48,92 @@ export const forms: { [x: string]: InputProps[] } = {
       ],
     },
     {
-      label: "Password",
-      type: "password",
-      name: "password",
+      label: "Brand",
+      type: "text",
+      name: "merk",
       placeholder: "",
       value: "",
       validations: [
         {
           type: "required",
-          message: "Password is required",
+          message: "Brand is required",
+        },
+      ],
+    },
+    {
+      label: "Scent",
+      type: "text",
+      name: "scent",
+      placeholder: "",
+      value: "",
+      validations: [
+        {
+          type: "required",
+          message: "Scent is required",
+        },
+      ],
+    },
+    {
+      label: "Volume Size (ml)",
+      type: "number",
+      name: "size",
+      placeholder: "",
+      value: "",
+      validations: [
+        {
+          type: "required",
+          message: "Volume size is required",
+        },
+        {
+          type: "isPositive",
+          message: "Must be greater than 0",
+        },
+      ],
+    },
+    {
+      label: "Price Range (Min)",
+      type: "number",
+      name: "minPrice",
+      placeholder: "",
+      value: "",
+      validations: [
+        {
+          type: "required",
+          message: "Price range is required",
+        },
+        {
+          type: "isPositive",
+          message: "Must be greater than 0",
+        },
+      ],
+    },
+    {
+      label: "Price Range (Max)",
+      type: "number",
+      name: "maxPrice",
+      placeholder: "",
+      value: "",
+      validations: [
+        {
+          type: "required",
+          message: "Price range is required",
+        },
+        {
+          type: "isPositive",
+          message: "Must be greater than 0",
+        },
+      ],
+    },
+    {
+      label: "",
+      type: "file",
+      name: "image",
+      placeholder: "",
+      value: "",
+      validations: [
+        {
+          type: "required",
+          message: "Perfume image is required",
         },
       ],
     },
@@ -116,6 +189,10 @@ export const forms: { [x: string]: InputProps[] } = {
           type: "required",
           message: "Volume size is required",
         },
+        {
+          type: "isPositive",
+          message: "Must be greater than 0",
+        },
       ],
     },
     {
@@ -129,6 +206,10 @@ export const forms: { [x: string]: InputProps[] } = {
           type: "required",
           message: "Price range is required",
         },
+        {
+          type: "isPositive",
+          message: "Must be greater than 0",
+        },
       ],
     },
     {
@@ -141,6 +222,10 @@ export const forms: { [x: string]: InputProps[] } = {
         {
           type: "required",
           message: "Price range is required",
+        },
+        {
+          type: "isPositive",
+          message: "Must be greater than 0",
         },
       ],
     },
