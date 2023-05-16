@@ -48,7 +48,6 @@ function CustomInputImage(props: CustomInputImage) {
                         </label>
                         <input id="file" type="file" onChange={loadFile} />
                         <img src={!props.value ? "https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" : URL.createObjectURL(props.value)} id="output" width="200" />
-                        {/* {vaksin && vaksin.name} */}
                     </div>
                 </div>
             </FileUploader>
