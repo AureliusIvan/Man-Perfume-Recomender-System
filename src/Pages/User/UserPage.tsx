@@ -19,6 +19,8 @@ import WelcomePage from "./Welcome/Welcome"
 import DescPage from "./Desc/DescPage"
 import Spacer from "./Spacer/spacer"
 import Footer from "@/Component/StyledComponent/Footer/Footer"
+import CustomInputImage from "@/Component/CustomInputImage/CustomInputImage"
+import { useEffect, useState } from "react"
 // main function
 export default function UserPage() {
     let i = 5;
@@ -32,7 +34,7 @@ export default function UserPage() {
                 <link rel="canonical" href={`${PROJDOMAIN}`} />
             </Helmet>
             <Spacer y={"100px"} />
-                <WelcomePage />
+            <WelcomePage />
             <Spacer y={"200px"} />
             <Center>
                 <DescPage />
@@ -40,7 +42,6 @@ export default function UserPage() {
                 <Spacer y={"100px"} />
                 <Tutorial />
                 <Spacer y={"100px"} />
-
             </Center>
             <Spacer y={"100px"} />
             <Recommendation />
