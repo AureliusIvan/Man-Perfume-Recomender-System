@@ -11,6 +11,7 @@ import { Box, Typography } from "@mui/material";
 import { CustomButton as Button } from "@/Component/StyledComponent/CustomButton/CustomButton";
 import { CustomImageInput } from "./CustomImageInput";
 import { Confirmations } from "../CustomModal/CustomModal";
+import CustomProfile from "./CustomProfile";
 
 interface nyam {
   formName: string;
@@ -21,9 +22,8 @@ interface nyam {
   fName: string ;
   fMerk: string;
   fScent: string;
-  fSize: number | null;
-  fMinPrice: number | null;
-  fMaxPrice: number | null;
+  fSize: number;
+  fPrice: number;
   fImage: unknown;
 
   [x: string | number | symbol]: unknown;
@@ -37,8 +37,7 @@ const CustomFormik = (props: nyam) => {
     merk: props.fMerk,
     scent: props.fScent,
     size: props.fSize,
-    minPrice: props.fMinPrice,
-    maxPrice: props.fMaxPrice,
+    price: props.fPrice,
     image: props.fImage,
   }
   const onSubmit = (values: any) => console.log(values);
@@ -54,6 +53,7 @@ const CustomFormik = (props: nyam) => {
         {props.title}
       </Typography>
       <Box className={style.content}>
+        <CustomProfile />
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -84,31 +84,6 @@ const CustomFormik = (props: nyam) => {
                         <Spacer y="10px" />
                       </>
                     );
-                  // case "range":
-                  //   return (
-                  //     <>
-                  //       <Box sx={{ display: 'flex' }} className="rangeInput">
-                  //         <Spacer y="10px" />
-                  //         <CustomTextInput
-                  //           key={name}
-                  //           label={label}
-                  //           name={name}
-                  //           placeholder={inProps.placeholder}
-                  //           type="number"
-                  //           style = {{width: "30%"}}
-                  //         />
-                  //         <CustomTextInput
-                  //           key={name}
-                  //           label={label}
-                  //           name={name}
-                  //           placeholder={inProps.placeholder}
-                  //           type="number"
-                  //           style = {{width: "30%"}}
-                  //         />
-                  //         <Spacer y="10px" />
-                  //       </Box>
-                  //     </>
-                  //   );
                   default:
                     return (
                       <>

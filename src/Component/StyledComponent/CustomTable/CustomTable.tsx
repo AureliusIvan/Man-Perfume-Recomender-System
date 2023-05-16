@@ -10,6 +10,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Confirmations, CustomModal } from "../CustomModal/CustomModal";
 
+import { get } from "@/Component/FunctionComponent/axiosClient/axiosClient";
+
+
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -40,34 +44,58 @@ function createData(
   return { name, calories, fat, carbs, protein };
 }
 
-// export const editPerfumeData = [
-//   name,
-//   cal,
-//   fat,
-//   carbs,
-//   pro,
-//   // { dataCal: cal },
-//   // { dataFat: fat },
-//   // { dataCarbs: carbs },
-//   // { dataPro: pro },
-// ];
-
 // JUST FOR EXAMPLE
 const rows = [
   createData("Parfum Bunga", 159, 6.0, 24, 4),
   createData("Parfum Apa gitu", 237, 9.0, 37, 4.3),
   createData("Parfum Laki-laki", 262, 16.0, 24, 6.0),
   createData("Parfum refil", 305, 3.7, 67, 4.3),
-  createData("Parfum jambu air", 356, 16.0, 49, 3.9),
-  createData("Parfum Bunga", 159, 6.0, 24, 4),
-  createData("Parfum Apa gitu", 237, 9.0, 37, 4.3),
-  createData("Parfum Laki-laki", 262, 16.0, 24, 6.0),
-  createData("Parfum refil", 305, 3.7, 67, 4.3),
-  createData("Parfum jambu air", 356, 16.0, 49, 3.9),
+  // createData("Parfum jambu air", 356, 16.0, 49, 3.9),
+  // createData("Parfum Bunga", 159, 6.0, 24, 4),
+  // createData("Parfum Apa gitu", 237, 9.0, 37, 4.3),
+  // createData("Parfum Laki-laki", 262, 16.0, 24, 6.0),
+  // createData("Parfum refil", 305, 3.7, 67, 4.3),
+  // createData("Parfum jambu air", 356, 16.0, 49, 3.9),
 ];
 
 export default function CustomTable() {
+  const [perfume, setPerfume] = React.useState<any>([]);
+
+  async function fetchPerfume() {
+    await get("v1/parfums/view?random=1&qty=2"
+      ).then((res: any) => {
+
+        // console.log(res.data.data);
+        if (res.status === 200) {
+          console.log(res.data.data)
+          setPerfume(res.data.data);
+          // console.log(perfume);
+          // console.log("success! res: " + res.status)
+          // setLoading(false);
+          // setCookie("TOKEN", res.data.data.token);
+          // navigate("/admin");
+        } else {
+          // setLoading(false);
+          // setMessage(res);
+          // showerror();
+          console.log("error! res: " + res);
+        }
+      }
+      ).catch((err) => {
+        console.log(err);
+        // setMessage(err);
+        // showerror();
+        // setLoading(false);
+      })
+  }
+
+  React.useEffect(() => {
+    fetchPerfume();
+    // console.log(perfume)
+  }, []);
+
   return (
+    <>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
@@ -81,12 +109,13 @@ export default function CustomTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+          {perfume ? 
+          (perfume.map((row : any , i : any) => (
+            <StyledTableRow key={i}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {row.nama}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
+              {/* <StyledTableCell align="right">{row.calories}</StyledTableCell>
               <StyledTableCell align="right">{row.fat}</StyledTableCell>
               <StyledTableCell align="right">{row.carbs}</StyledTableCell>
               <StyledTableCell align="right">
@@ -101,8 +130,7 @@ export default function CustomTable() {
                   fMerk={row.calories}
                   // fScent={}
                   // fSize={}
-                  // fMinPrice={}
-                  // fMaxPrice={}
+                  // fPrice={}
                   // fImage={}
                 />
               </StyledTableCell>
@@ -112,11 +140,12 @@ export default function CustomTable() {
                   onConfirm={""}
                   onCancel={""}
                 ></Confirmations>
-              </StyledTableCell>
+              </StyledTableCell> */}
             </StyledTableRow>
-          ))}
+          ))) : "Entry Kosong" }
         </TableBody>
       </Table>
     </TableContainer>
+    </>
   );
 }

@@ -41,7 +41,6 @@ const Routing = () => {
           </Suspense>
         }
       />
-      <Route path="/admint" element={<AdminPage />} />
       <Route path="/admin/" element={
         <ProtectedRoute>
           <AdminPage />

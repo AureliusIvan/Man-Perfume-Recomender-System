@@ -34,86 +34,70 @@ export interface Validation {
 export const forms: { [x: string]: InputProps[] } = {
   editPerfume: [
     {
-      label: "Perfume Name",
+      label: "Nama Parfum",
       type: "text",
       name: "name",
       placeholder: "",
       validations: [
         {
           type: "required",
-          message: "Perfume name is required",
+          message: "Nama parfum wajib diisi",
         },
       ],
     },
     {
-      label: "Brand",
+      label: "Merek",
       type: "text",
       name: "merk",
       placeholder: "",
       validations: [
         {
           type: "required",
-          message: "Brand is required",
+          message: "Merek wajib diisi",
         },
       ],
     },
     {
-      label: "Scent",
+      label: "Aroma",
       type: "text",
       name: "scent",
       placeholder: "",
       validations: [
         {
           type: "required",
-          message: "Scent is required",
+          message: "Aroma wajib diisi",
         },
       ],
     },
     {
-      label: "Volume Size (ml)",
+      label: "Ukuran (ml)",
       type: "number",
       name: "size",
       placeholder: "",
       validations: [
         {
           type: "required",
-          message: "Volume size is required",
+          message: "Ukuran (ml) wajib diisi",
         },
         {
           type: "isPositive",
-          message: "Must be greater than 0",
+          message: "Ukuran harus bernilai positif",
         },
       ],
     },
     {
-      label: "Price Range (Min)",
+      label: "Harga",
       type: "number",
-      name: "minPrice",
+      name: "price",
       placeholder: "",
       validations: [
         {
           type: "required",
-          message: "Price range is required",
+          message: "Harga wajib diisi",
         },
         {
           type: "isPositive",
-          message: "Must be greater than 0",
-        },
-      ],
-    },
-    {
-      label: "Price Range (Max)",
-      type: "number",
-      name: "maxPrice",
-      placeholder: "",
-      validations: [
-        {
-          type: "required",
-          message: "Price range is required",
-        },
-        {
-          type: "isPositive",
-          message: "Must be greater than 0",
+          message: "Harga harus bernilai positif",
         },
       ],
     },
@@ -125,93 +109,77 @@ export const forms: { [x: string]: InputProps[] } = {
       validations: [
         {
           type: "required",
-          message: "Perfume image is required",
+          message: "Gambar parfum wajib diisi",
         },
       ],
     },
   ],
   newPerfume: [
     {
-      label: "Perfume Name",
+      label: "Nama Parfum",
       type: "text",
       name: "name",
       placeholder: "",
       validations: [
         {
           type: "required",
-          message: "Perfume name is required",
+          message: "Nama parfum wajib diisi",
         },
       ],
     },
     {
-      label: "Brand",
+      label: "Merek",
       type: "text",
       name: "merk",
       placeholder: "",
       validations: [
         {
           type: "required",
-          message: "Brand is required",
+          message: "Merek wajib diisi",
         },
       ],
     },
     {
-      label: "Scent",
+      label: "Aroma",
       type: "text",
       name: "scent",
       placeholder: "",
       validations: [
         {
           type: "required",
-          message: "Scent is required",
+          message: "Aroma wajib diisi",
         },
       ],
     },
     {
-      label: "Volume Size (ml)",
+      label: "Ukuran (ml)",
       type: "number",
       name: "size",
       placeholder: "",
       validations: [
         {
           type: "required",
-          message: "Volume size is required",
+          message: "Ukuran (ml) wajib diisi",
         },
         {
           type: "isPositive",
-          message: "Must be greater than 0",
+          message: "Ukuran harus bernilai positif",
         },
       ],
     },
     {
-      label: "Price Range (Min)",
+      label: "Harga",
       type: "number",
-      name: "minPrice",
+      name: "price",
       placeholder: "",
       validations: [
         {
           type: "required",
-          message: "Price range is required",
+          message: "Harga wajib diisi",
         },
         {
           type: "isPositive",
-          message: "Must be greater than 0",
-        },
-      ],
-    },
-    {
-      label: "Price Range (Max)",
-      type: "number",
-      name: "maxPrice",
-      placeholder: "",
-      validations: [
-        {
-          type: "required",
-          message: "Price range is required",
-        },
-        {
-          type: "isPositive",
-          message: "Must be greater than 0",
+          message: "Harga harus bernilai positif",
         },
       ],
     },
@@ -223,7 +191,7 @@ export const forms: { [x: string]: InputProps[] } = {
       validations: [
         {
           type: "required",
-          message: "Perfume image is required",
+          message: "Gambar parfum wajib diisi",
         },
       ],
     },

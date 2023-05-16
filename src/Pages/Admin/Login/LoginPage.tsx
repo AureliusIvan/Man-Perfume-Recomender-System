@@ -63,6 +63,7 @@ const TheForm: React.FunctionComponent = () => {
         password: "",
       }}
       onSubmit={(values: LoginForm, actions) => {
+        // const formdata = new FormData;
         setLoading(true);
         async function login() {
           await post("v1/admin/auth/login", {
@@ -99,7 +100,7 @@ const TheForm: React.FunctionComponent = () => {
       })}
     >
       {(props: FormikProps<LoginForm>) => {
-        const { touched, errors, handleChange, handleBlur, isSubmitting } =
+        const { touched, errors, handleChange, handleBlur, isSubmitting, values } =
           props;
 
         return (

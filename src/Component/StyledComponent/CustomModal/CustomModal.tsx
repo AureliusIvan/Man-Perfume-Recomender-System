@@ -63,14 +63,14 @@ export function CustomModal(props: any) {
                                 onSubmit={(value : any) => {
                                     handleClose();
                                     console.log(value);
+                                    // insert value here to api
                                 }}
                                 fName={props.fName ? props.fName : ""}
                                 fMerk={props.fMerk ? props.fMerk : ""}
                                 fScent={props.fScent ? props.fScent : ""}
-                                fSize={props.fSize ? props.fSize : null}
-                                fMinPrice={props.fMinPrice ? props.fMinPrice : null}
-                                fMaxPrice={props.fMaxPrice ? props.fMaxPrice : null}
-                                fImage={props.fImage ? props.fImage : null}
+                                fSize={props.fSize ? props.fSize : ""}
+                                fPrice={props.fPrice ? props.fPrice : ""}
+                                fImage={props.fImage ? props.fImage : ""}
                             /> ) : null}
                         <Flex>
                             {props.confirmbutton ?
