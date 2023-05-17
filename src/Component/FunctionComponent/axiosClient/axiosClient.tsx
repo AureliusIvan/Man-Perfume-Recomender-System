@@ -16,8 +16,7 @@ const axiosClient = axios.create({
         "Accept": "application/json",
         // ini untuk ngirim token ke server, kalo mau pake bearer bisa pake ini
         // Harus tanya farel pake sistem bearer atau apa?
-        // "Authorization": "lalal",
-        "Authorization": TOKEN ? `Bearer ${TOKEN}` : "",
+        Authorization: TOKEN ? `Bearer ${TOKEN}` : "",
     },
     // Setting timeout nya => 10 detik, jika tidak ada respon dari server maka akan error
     // Jangan lupa dikasih fallback yaa 🥰

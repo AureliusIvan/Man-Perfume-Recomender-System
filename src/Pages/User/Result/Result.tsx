@@ -25,28 +25,30 @@ const GridItem = styled(G)(({ theme }) => ({
 
 export default function Result() {
     let i = 5;
-    const [naruto, setNaruto] = useState<object[]>([])
+    const [data, setData] = useState<object[]>([])
     const [loading, setLoading] = useState<boolean>(false)
     const dispatch = useDispatch();
     const dataEntry = useSelector(selectDataEntry);
-    useEffect(() => {
-        if (!dataEntry) {
-            try {
-                setLoading(true);
-                get("")
-                    .then((res: any) => {
-                        setNaruto(res.data)
-                        dispatch(setDataEntry(res.data))
-                    })
-                setLoading(false);
-            }
-            catch (err) {
-                console.log(err)
-            }
-        } else {
-            setNaruto(dataEntry)
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (!dataEntry) {
+    //         try {
+    //             setLoading(true);
+    //             get("")
+    //                 .then((res: any) => {
+    //                     setNaruto(res.data)
+    //                     dispatch(setDataEntry(res.data))
+    //                 })
+    //             setLoading(false);
+    //         }
+    //         catch (err) {
+    //             console.log(err)
+    //         }
+    //     } else {
+    //         setData(dataEntry)
+    //     }
+    //     console.log(dataEntry);
+
+    // }, [])
 
     return (
         <>
@@ -59,18 +61,16 @@ export default function Result() {
             </Center>
             <Grid container>
                 { }
-                {naruto && naruto.map((item: any, index) => {
-                    if (index < 6) {
-                        return (
-                            <GridItem item xs={12} key={index}>
-                                <ResultCard
-                                    title={item.name}
-                                    image={item.images[0]}
-                                    key={index} />
-                            </GridItem>
-                        )
-                    }
-
+                {data && data.map((item: any, index) => {
+                    return (
+                        <GridItem item xs={12} key={index}>
+                            <ResultCard
+                                title={item.nama}
+                                image={item.foto}
+                                accuracy={item.preference_value}
+                                key={index} />
+                        </GridItem>
+                    )
                 })}
             </Grid>
         </>

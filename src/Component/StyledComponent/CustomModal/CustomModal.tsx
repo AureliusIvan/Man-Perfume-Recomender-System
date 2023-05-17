@@ -24,9 +24,11 @@ export function CustomModal(props: any) {
     return (
         <div>
             {props.button ? props.button :
-                <Button onClick={handleOpen}>{
-                    props.title
-                }</Button>
+                <Button
+                    disabled={props.disabled}
+                    onClick={handleOpen}>{
+                        props.title
+                    }</Button>
             }
             <Modal
                 open={open}
@@ -65,7 +67,7 @@ export function CustomModal(props: any) {
                                 formName={props.formName}
                                 title={props.title ? props.title : "Title"}
                                 deletable={props.deletable}
-                                onSubmit={(value : any) => {
+                                onSubmit={(value: any) => {
                                     handleClose();
                                     setTheValue(value);
                                     {props.editornew === "new" 
@@ -118,6 +120,7 @@ export function Confirmations(props: any) {
     // const [ onClose, setOnClose ] = React.useState(false)
     return (
         <CustomModal
+            disabled={props.disabled}
             title={props.title ? props.title : "Submit"}
             onConfirm={props.onConfirm}
             confirmbutton={true}

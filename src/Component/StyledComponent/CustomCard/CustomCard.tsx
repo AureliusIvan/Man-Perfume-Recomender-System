@@ -111,6 +111,7 @@ export function CustomCard(props: any) {
 
 
 export function ResultCard(props: any) {
+    const Akurasi = (((parseFloat(props.accuracy))) * 100)
     return (
         <GridContainer container>
             <Grid item xs={5} md={3}>
@@ -130,7 +131,7 @@ export function ResultCard(props: any) {
                 </CustomButton>
                 <Spacer y={"15px"} />
                 <Text textalign="left">
-                    Akurasi : {props.accuracy ? props.accuracy : "0.0"}
+                    Akurasi : {props.accuracy ? Akurasi : "0.0"} %
                 </Text>
             </GridItem>
         </GridContainer>
