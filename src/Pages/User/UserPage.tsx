@@ -21,10 +21,14 @@ import Spacer from "./Spacer/spacer"
 import Footer from "@/Component/StyledComponent/Footer/Footer"
 import CustomInputImage from "@/Component/CustomInputImage/CustomInputImage"
 import { useEffect, useState } from "react"
+import { CustomImage } from "@/Component/StyledComponent/CustomImage/CustomImage"
 // main function
 export default function UserPage() {
     let i = 5;
     const islogin = useSelector(selectIsLogin);
+
+    const [item, setItem] = useState<any>();
+
     return (
         <div id="User-Page" className={style.UserPage}>
             {/* Helmet for SEO */}
@@ -43,6 +47,10 @@ export default function UserPage() {
                 <Tutorial />
                 <Spacer y={"100px"} />
             </Center>
+            <CustomInputImage
+                value={item}
+                handleChange={(e: any) => setItem(e)} />
+            {item ? <CustomImage src={URL.createObjectURL(item)} /> : null}
             <Spacer y={"100px"} />
             <Recommendation />
             <Footer />

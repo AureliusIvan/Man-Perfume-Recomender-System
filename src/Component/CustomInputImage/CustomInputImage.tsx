@@ -24,7 +24,7 @@ function CustomInputImage(props: CustomInputImage) {
         "image/svg+xml",
         "image/avif",
     ]
-
+    
     return (
         <div
             className={style.input}>

@@ -22,6 +22,10 @@ import { Confirmations } from "@/Component/StyledComponent/CustomModal/CustomMod
 import { useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import HelpComponent from "@/Component/StyledComponent/HelpComponent/HelpComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { selectDataEntry } from "@/Redux/feature/dataSlice";
+import { setDataEntry } from "@/Redux/feature/dataSlice";
+
 
 const CustomGrid = styled(Grid)({
     width: "100%",
@@ -74,10 +78,11 @@ function valueLabelFormat(value: number) {
 
     }
 }
+
+
 function calculateValue(value: number) {
     return value;
 }
- 
 
 export default function Kuisioner() {
     const [value, setValue] = useState<number>(10);
@@ -86,14 +91,14 @@ export default function Kuisioner() {
             setValue(newValue);
         }
     };
-
+    const selectData = useSelector(selectDataEntry);
+    const dispatch = useDispatch();
 
     const navigate = useNavigate()
     const isMobile = useMediaQuery('(max-width:600px)');
     const navigateToResult = () => {
         navigate('/result')
     }
-
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -112,18 +117,24 @@ export default function Kuisioner() {
             <Formik
                 // validationSchema={ }
                 initialValues={{
-                    input: [6],
+                    input: [4, 4, 4, 4, 4, 4],
                 }}
                 onSubmit={(values: any) => {
+                    console.log(values.input);
                     const formData = new FormData();
-                    formData.append("input", values.input);
-                    // console.log("This is the data");
-                    console.log(formData.get("input"));
+                    // formData = [...values.input];
+                    values.input.forEach((value: any, index: any) => {
+                        formData.append(`input[${index}]`, value);
+                    });
                     async function Submit() {
-                        navigateToResult();
+                        // console.log(formData.get("input[0]"));
                         try {
-                            post("v1/calculate", formData).then((res) => {
+                            post("v1/calculate", formData).then((res: any) => {
                                 console.log(res);
+                                navigateToResult();
+                                if (res.status === 200) {
+                                    dispatch(setDataEntry(res.data));
+                                }
                             }).catch((err) => {
                                 console.log(err);
                             })
@@ -200,6 +211,7 @@ export default function Kuisioner() {
                                                             }}
                                                         >
                                                             <CustomSlider
+                                                                defaultValue={4}
                                                                 name={`input.${index}`}
                                                                 // value={values.input[index]}
                                                                 onChange={handleChange}
@@ -228,6 +240,7 @@ export default function Kuisioner() {
                                                             }
                                                         }}>
                                                             <CustomSlider
+                                                                defaultValue={4}
                                                                 onChange={handleChange}
                                                                 scale={calculateValue}
                                                                 getAriaValueText={valueLabelFormat}
@@ -250,7 +263,6 @@ export default function Kuisioner() {
                 )
                 }
             </Formik >
-
         </div >
     )
 }
