@@ -24,7 +24,7 @@ const GridItem = styled(G)(({ theme }) => ({
 
 function Recommendation() {
     let i = 5;
-    const [naruto, setNaruto] = useState<object[]>([])
+    const [item, setItem] = useState<object[]>([])
     const [loading, setLoading] = useState<boolean>(false)
     const dispatch = useDispatch();
     const dataEntry = useSelector(selectDataEntry);
@@ -32,10 +32,13 @@ function Recommendation() {
         if (dataEntry) {
             try {
                 setLoading(true);
-                get("")
+                get("v1/parfums/view?random=1&qty=2")
                     .then((res: any) => {
-                        setNaruto(res.data)
+                        console.log(res)
+                        setItem(res.data.data)
                         dispatch(setDataEntry(res.data))
+                    }).catch((err: any) => {
+                        console.log(err)
                     })
                 setLoading(false);
             }
@@ -43,7 +46,7 @@ function Recommendation() {
                 console.log(err)
             }
         } else {
-            setNaruto(dataEntry)
+            setItem(dataEntry)
         }
     }, [])
 
@@ -55,19 +58,19 @@ function Recommendation() {
                 </Paragraf>
             </Center>
             <Grid container>
-                {/* {naruto.map((item: any, index) => {
+                {item.map((item: any, index) => {
                     if (index < 6) {
                         return (
                             <GridItem item xs={12} key={index}>
                                 <ResultCard
                                     title={item.name}
-                                    image={item.images[0]}
+                                    image={item.images}
                                     key={index} />
                             </GridItem>
                         )
                     }
 
-                })} */}
+                })}
                 {/* {naruto.map((item: any, index) => {
                     if (index < 6) {
                         return (

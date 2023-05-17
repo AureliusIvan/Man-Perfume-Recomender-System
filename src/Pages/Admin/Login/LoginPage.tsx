@@ -77,14 +77,14 @@ const TheForm: React.FunctionComponent = () => {
               navigate("/admin");
             } else {
               setLoading(false);
-              setMessage(res);
+              setMessage("Something went wrong");
               showerror();
               console.log(res);
             }
           }
           ).catch((err) => {
             console.log(err);
-            setMessage(err);
+            setMessage("Something went wrong");
             showerror();
             setLoading(false);
           })
@@ -100,9 +100,7 @@ const TheForm: React.FunctionComponent = () => {
       })}
     >
       {(props: FormikProps<LoginForm>) => {
-        const { touched, errors, handleChange, handleBlur, isSubmitting, values } =
-          props;
-
+        const { touched, errors, handleChange, handleBlur, isSubmitting, values } = props;
         return (
           <Form>
             {error &&

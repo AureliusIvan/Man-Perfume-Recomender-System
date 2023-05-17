@@ -1,11 +1,12 @@
 import axios from "axios";
+import { getCookie } from "react-use-cookie";
 
 // Ini adalah base url dari server, kalo mau pake localhost tinggal ganti localhost:3000 nya aja
 const API = "https://api-server-v1-penelitian.pemilihanparfumkekinian.com";
 // const API = "https://penelitian-api.aureliusivan.my.id";
 
-var TOKEN = localStorage.getItem("TOKEN");
-
+// var TOKEN = localStorage.getItem("TOKEN");
+var TOKEN = getCookie("TOKEN");
 // Ini adalah konfigurasi axios, kalo mau tambahin header atau apa bisa ditambahin disini
 const axiosClient = axios.create({
     baseURL: API,
@@ -15,7 +16,7 @@ const axiosClient = axios.create({
         "Accept": "application/json",
         // ini untuk ngirim token ke server, kalo mau pake bearer bisa pake ini
         // Harus tanya farel pake sistem bearer atau apa?
-        Authorization: TOKEN ? `Bearer ${TOKEN}` : "",
+        // Authorization: TOKEN ? `Bearer ${TOKEN}` : "",
     },
     // Setting timeout nya => 10 detik, jika tidak ada respon dari server maka akan error
     // Jangan lupa dikasih fallback yaa 🥰
