@@ -17,15 +17,15 @@ import { KuisionerData as question } from "./KuisionerData";
 import styled from '@emotion/styled';
 import { Formik } from "formik";
 import { post } from "@/Component/FunctionComponent/axiosClient/axiosClient";
-import CustomAlert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
+import Alert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
 import { Confirmations } from "@/Component/StyledComponent/CustomModal/CustomModal";
 import { useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import HelpComponent from "@/Component/StyledComponent/HelpComponent/HelpComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { selectDataEntry } from "@/Redux/feature/dataSlice";
+import { selectDataEntry, selectData } from "@/Redux/feature/dataSlice";
 import { setDataEntry } from "@/Redux/feature/dataSlice";
-
+// import CustomAlert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
 
 const CustomGrid = styled(Grid)({
     width: "100%",
@@ -86,14 +86,9 @@ function calculateValue(value: number) {
 
 export default function Kuisioner() {
     const [value, setValue] = useState<number>(10);
-    const handleChange = (event: Event, newValue: number | number[]) => {
-        if (typeof newValue === 'number') {
-            setValue(newValue);
-        }
-    };
-    const selectData = useSelector(selectDataEntry);
+    const [error, setError] = useState<any>(false);
+    const [message, setMessage] = useState<any>(null);
     const dispatch = useDispatch();
-
     const navigate = useNavigate()
     const isMobile = useMediaQuery('(max-width:600px)');
     const navigateToResult = () => {
@@ -119,31 +114,35 @@ export default function Kuisioner() {
                 initialValues={{
                     input: [4, 4, 4, 4, 4, 4],
                 }}
+                
                 onSubmit={(values: any) => {
-                    console.log(values.input);
                     const formData = new FormData();
-                    // formData = [...values.input];
                     values.input.forEach((value: any, index: any) => {
                         formData.append(`input[${index}]`, value);
                     });
                     async function Submit() {
-                        // console.log(formData.get("input[0]"));
                         try {
-                            post("v1/calculate", formData).then((res: any) => {
-                                console.log(res);
-                                navigateToResult();
-                                if (res.status === 200) {
-                                    dispatch(setDataEntry(res.data));
-                                }
-                            }).catch((err) => {
-                                console.log(err);
-                            })
+                            post("v1/calculate", formData)
+                                .then((res: any) => {
+                                    if (res.status === 200 && res.data.data) {
+                                        console.log(res.data.data )
+                                        // const data = [...res.data];
+                                        dispatch(setDataEntry(res.data));
+                                        // console.log(useSelector(selectDataEntry));
+                                        navigateToResult();
+                                    } else {
+                                        // setError(true);
+                                        // setMessage(res)
+                                        console.log(res)
+                                    }
+                                }).catch((err) => {
+                                    console.log(err);
+                                })
                         } catch {
                             console.log("error");
                         }
                     }
                     Submit();
-
                 }}
             >
                 {({
@@ -154,6 +153,8 @@ export default function Kuisioner() {
                 }) => (
                     <div>
                         <form noValidate onSubmit={handleSubmit}>
+                            {error &&
+                                <Alert severity="error">{message}</Alert>}
                             <Spacer y={"20px"} />
                             <Center>
                                 {/* Starter pack survey form, hope this help! */}
@@ -252,6 +253,7 @@ export default function Kuisioner() {
                                             </BoxSection>
                                         )
                                     })}
+
                                     <Confirmations onConfirm={handleSubmit} />
                                     {/* <Button type="submit">
                                         Submit

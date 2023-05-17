@@ -13,17 +13,6 @@ const initialState = {
 };
 
 
-export const FetchData = createAsyncThunk('userData/fetchData',
-    async (data: any, thunkAPI) => {
-        await get('')
-            .then((res) => {
-                return res;
-            })
-        // return response.data;
-    }
-);
-
-
 
 const userDataSlice = createSlice({
     name: "userData",
@@ -49,12 +38,6 @@ const userDataSlice = createSlice({
         setDataEntry(state, action) {
             state.dataEntry = action.payload;
         }
-    },
-    extraReducers: (builder) => {
-        builder.addCase(FetchData.fulfilled, (state: any, action) => {
-            // return action.payload;
-            state.dataEntry = action.payload;
-        });
     }
 });
 
