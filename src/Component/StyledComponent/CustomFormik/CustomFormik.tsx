@@ -1,6 +1,6 @@
 import style from "./CustomFormik.module.scss";
 
-import { ErrorMessage, Form, Formik } from "formik";
+import { ErrorMessage, Form, Formik, FormikHelpers } from "formik";
 import { CustomTextInput } from "./CustomTextInput";
 import { getInputs } from "./getInputs";
 
@@ -11,7 +11,7 @@ import { Box, Typography } from "@mui/material";
 import { CustomButton as Button } from "@/Component/StyledComponent/CustomButton/CustomButton";
 import { CustomImageInput } from "./CustomImageInput";
 import { Confirmations } from "../CustomModal/CustomModal";
-import CustomProfile from "./CustomProfile";
+import CustomInputImage from "@/Component/CustomInputImage/CustomInputImage";
 
 interface nyam {
   formName: string;
@@ -19,7 +19,7 @@ interface nyam {
   title?: string;
 
   // Form values (hardcode :'D)
-  fName: string ;
+  fName: string;
   fMerk: string;
   fScent: string;
   fSize: number;
@@ -39,7 +39,9 @@ const CustomFormik = (props: nyam) => {
     size: props.fSize,
     price: props.fPrice,
     image: props.fImage,
-  }
+    link: props.fLink,
+  };
+
   const onSubmit = (values: any) => console.log(values);
 
   return (
@@ -53,12 +55,12 @@ const CustomFormik = (props: nyam) => {
         {props.title}
       </Typography>
       <Box className={style.content}>
-        <CustomProfile />
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={props.onSubmit ? props.onSubmit : onSubmit}
           enableReinitialize={true}
+          
         >
           <Form>
             {inputs.map(
@@ -68,18 +70,25 @@ const CustomFormik = (props: nyam) => {
                     return (
                       <>
                         <Spacer y="10px" />
-                        <CustomImageInput
+                        {/* <CustomImageInput
                           key={name}
                           label={label}
                           name={name}
                           placeholder={inProps.placeholder}
                           type={type}
+                        /> */}
+                        <CustomInputImage
+                            key={name}
+                            label={label}
+                            name={name}
+                            placeholder={inProps.placeholder}
+                            type={type}
                         />
                         <Spacer y="10px" />
                         <ErrorMessage
                           name={name}
                           component="div"
-                          className={style.error}
+                          className={style.errorImg}
                         />
                         <Spacer y="10px" />
                       </>

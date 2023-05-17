@@ -1,4 +1,5 @@
 import * as React from "react";
+import style from "./CustomTable.module.scss";
 
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -11,8 +12,8 @@ import Paper from "@mui/material/Paper";
 import { Confirmations, CustomModal } from "../CustomModal/CustomModal";
 
 import { get } from "@/Component/FunctionComponent/axiosClient/axiosClient";
-
-
+import { Box } from "@material-ui/core";
+import { getCookie } from "react-use-cookie";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -34,43 +35,28 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: any
-) {
-  return { name, calories, fat, carbs, protein };
-}
-
-// JUST FOR EXAMPLE
-const rows = [
-  createData("Parfum Bunga", 159, 6.0, 24, 4),
-  createData("Parfum Apa gitu", 237, 9.0, 37, 4.3),
-  createData("Parfum Laki-laki", 262, 16.0, 24, 6.0),
-  createData("Parfum refil", 305, 3.7, 67, 4.3),
-  // createData("Parfum jambu air", 356, 16.0, 49, 3.9),
-  // createData("Parfum Bunga", 159, 6.0, 24, 4),
-  // createData("Parfum Apa gitu", 237, 9.0, 37, 4.3),
-  // createData("Parfum Laki-laki", 262, 16.0, 24, 6.0),
-  // createData("Parfum refil", 305, 3.7, 67, 4.3),
-  // createData("Parfum jambu air", 356, 16.0, 49, 3.9),
-];
-
 export default function CustomTable() {
   const [perfume, setPerfume] = React.useState<any>([]);
 
-  async function fetchPerfume() {
-    await get("v1/parfums/view?random=1&qty=2"
-      ).then((res: any) => {
+  async function fetchh() {
+    const TOKEN = getCookie("TOKEN");
+    console.log(TOKEN);
+    await get("v1/admin/parfums/view")
+      .then((res: any) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
+  async function fetchPerfume() {
+    await get("v1/parfums/view?random=1&qty=2")
+      .then((res: any) => {
         // console.log(res.data.data);
         if (res.status === 200) {
-          console.log(res.data.data)
+          // console.log(res.data.data)
           setPerfume(res.data.data);
-          // console.log(perfume);
-          // console.log("success! res: " + res.status)
           // setLoading(false);
           // setCookie("TOKEN", res.data.data.token);
           // navigate("/admin");
@@ -80,72 +66,88 @@ export default function CustomTable() {
           // showerror();
           console.log("error! res: " + res);
         }
-      }
-      ).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         // setMessage(err);
         // showerror();
         // setLoading(false);
-      })
+      });
   }
 
   React.useEffect(() => {
     fetchPerfume();
-    // console.log(perfume)
   }, []);
 
   return (
     <>
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Nama Parfum</StyledTableCell>
-            <StyledTableCell align="right">Aroma</StyledTableCell>
-            <StyledTableCell align="right">Harga&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Merk&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Edit</StyledTableCell>
-            <StyledTableCell align="right">Delete</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {perfume ? 
-          (perfume.map((row : any , i : any) => (
-            <StyledTableRow key={i}>
-              <StyledTableCell component="th" scope="row">
-                {row.nama}
-              </StyledTableCell>
-              {/* <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">
-                <CustomModal
-                  xbutton
-                  children
-                  useFormik
-                  formName="editPerfume"
-                  title="Edit"
-                  deletable
-                  fName={row.name}
-                  fMerk={row.calories}
-                  // fScent={}
-                  // fSize={}
-                  // fPrice={}
-                  // fImage={}
-                />
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                <Confirmations
-                  title="Delete"
-                  onConfirm={""}
-                  onCancel={""}
-                ></Confirmations>
-              </StyledTableCell> */}
-            </StyledTableRow>
-          ))) : "Entry Kosong" }
-        </TableBody>
-      </Table>
-    </TableContainer>
+      <button onClick={fetchh}>display</button>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="center">Gambar</StyledTableCell>
+              <StyledTableCell align="center">Nama Parfum</StyledTableCell>
+              <StyledTableCell align="center">Merk</StyledTableCell>
+              <StyledTableCell align="center">Aroma</StyledTableCell>
+              <StyledTableCell align="center">Ukuran&nbsp;(ml)</StyledTableCell>
+              <StyledTableCell align="center">Tipe</StyledTableCell>
+              <StyledTableCell align="center">Edit</StyledTableCell>
+              <StyledTableCell align="center">Delete</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {perfume
+              ? perfume.map((row: any, i: any) => (
+                  <StyledTableRow key={i}>
+                    <StyledTableCell align="center">
+                      <Box className={style.imageWrap}>
+                        <img src={row.foto} className={style.image} />
+                      </Box>
+                    </StyledTableCell>
+                    <StyledTableCell component="th" scope="row">
+                      {row.nama}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">{}</StyledTableCell>
+                    <StyledTableCell align="left">
+                      {row.tipe_aroma}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">{}</StyledTableCell>
+                    <StyledTableCell align="left">
+                      {row.tipe_parfum}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      <CustomModal
+                        xbutton
+                        children
+                        useFormik
+                        formName="editPerfume"
+                        title="Edit"
+                        editornew="edit"
+                        deletable
+                        fName={row.nama}
+                        // fMerk={}
+                        fScent={row.tipe_aroma}
+                        // fSize={}
+                        // fPrice={}
+                        fImage={row.foto}
+                        // fLink={}
+                      />
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      <Confirmations
+                        title="Delete"
+                        toDelete
+                        rowID={row.id}
+                        // onConfirm={""}
+                      ></Confirmations>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))
+              : "Entry Kosong"}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 }

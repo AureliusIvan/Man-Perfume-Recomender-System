@@ -47,10 +47,12 @@ export default function UserPage() {
                 <Tutorial />
                 <Spacer y={"100px"} />
             </Center>
-            <CustomInputImage
+            {/* <CustomInputImage
+                name=""
+                type="file"
                 value={item}
                 handleChange={(e: any) => setItem(e)} />
-            {item ? <CustomImage src={URL.createObjectURL(item)} /> : null}
+            {item ? <CustomImage src={URL.createObjectURL(item)} /> : null} */}
             <Spacer y={"100px"} />
             <Recommendation />
             <Footer />

@@ -37,6 +37,10 @@ const generateValidations = (field: InputProps) => {
         schema = (schema as YupString).min(rule?.value as number, rule.message);
         break;
 
+      case "isLink":
+        schema = (schema as YupString).url(rule.message)
+        break;
+
       case "isPositive":
         schema = (schema as YupNumber).test(
           "is-positive",

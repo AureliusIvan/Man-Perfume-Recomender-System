@@ -26,7 +26,7 @@ export interface Opt {
 }
 
 export interface Validation {
-  type: "required" | "isEmail" | "minLength" | "isTrue" | "isPositive";
+  type: "required" | "isEmail" | "minLength" | "isTrue" | "isLink" | "isPositive";
   value?: string | number | boolean;
   message: string;
 }
@@ -34,6 +34,18 @@ export interface Validation {
 export const forms: { [x: string]: InputProps[] } = {
   editPerfume: [
     {
+      label: "",
+      type: "file",
+      name: "image",
+      placeholder: "",
+      validations: [
+        {
+          type: "required",
+          message: "Gambar parfum wajib diisi",
+        },
+      ],
+    },
+    {
       label: "Nama Parfum",
       type: "text",
       name: "name",
@@ -102,20 +114,36 @@ export const forms: { [x: string]: InputProps[] } = {
       ],
     },
     {
-      label: "",
-      type: "file",
-      name: "image",
+      label: "Tautan Pembelian",
+      type: "text",
+      name: "link",
       placeholder: "",
       validations: [
         {
           type: "required",
-          message: "Gambar parfum wajib diisi",
+          message: "Tautan pembelian wajib diisi",
         },
+        {
+          type: "isLink",
+          message: "Isi harus berformat tautan"
+        }
       ],
     },
   ],
   newPerfume: [
     {
+      label: "",
+      type: "file",
+      name: "image",
+      placeholder: "",
+      validations: [
+        {
+          type: "required",
+          message: "Gambar parfum wajib diisi",
+        },
+      ],
+    },
+    {
       label: "Nama Parfum",
       type: "text",
       name: "name",
@@ -168,7 +196,7 @@ export const forms: { [x: string]: InputProps[] } = {
       ],
     },
     {
-      label: "Harga",
+      label: "Harga (Rp)",
       type: "number",
       name: "price",
       placeholder: "",
@@ -184,15 +212,19 @@ export const forms: { [x: string]: InputProps[] } = {
       ],
     },
     {
-      label: "",
-      type: "file",
-      name: "image",
+      label: "Tautan Pembelian",
+      type: "text",
+      name: "link",
       placeholder: "",
       validations: [
         {
           type: "required",
-          message: "Gambar parfum wajib diisi",
+          message: "Tautan pembelian wajib diisi",
         },
+        {
+          type: "isLink",
+          message: "Isi harus berformat tautan"
+        }
       ],
     },
   ],
