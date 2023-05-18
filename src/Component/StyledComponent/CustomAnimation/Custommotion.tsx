@@ -1,8 +1,21 @@
 // [ Custom Motion Component ]
+import React from 'react'
 import { LazyMotion, m, domAnimation } from "framer-motion"
 
+type CustommotionProps = {
+    onScroll?: undefined,
+    initial?: void,
+    animate?: void,
+    transition?: void,
+    exit?: object,
+    className?: string,
+    style?: any,
+    children?: any,
+}
+
+
 // main component
-export function Custommotion(props: any) {
+export function Custommotion(props: CustommotionProps) {
     return (
         // LazyMotion is a component that allows you to load Framer Motion's DOM animation features on demand.
         // This is useful if you're using Framer Motion on a page that doesn't need to animate on the initial render.

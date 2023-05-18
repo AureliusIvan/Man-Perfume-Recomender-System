@@ -1,5 +1,5 @@
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-
 // User
 import UserPage from "@/Pages/User/UserPage";
 
@@ -14,14 +14,13 @@ import Result from "@/Pages/User/Result/Result";
 
 import ProtectedRoute from "./ProtectedRoute";
 
-import { useSelector } from "react-redux";
-import { selectIsLogin } from "@/Redux/feature/dataSlice";
+// import { useSelector } from "react-redux";
+// import { selectIsLogin } from "@/Redux/feature/dataSlice";
 
 const Kuisioner = lazy(() => import("@/Pages/User/Kuisioner/Kuisioner"));
 
 const Routing = () => {
-  const auth = useSelector(selectIsLogin);
-
+  // const auth = useSelector(selectIsLogin);
   return (
     <Routes>
       <Route path="/" element={<UserPage />} />

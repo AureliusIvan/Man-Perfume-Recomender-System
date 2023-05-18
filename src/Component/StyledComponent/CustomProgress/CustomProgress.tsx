@@ -41,7 +41,7 @@ const CProgress = styled(LinearProgressWithLabel)(() => ({
 
 
 export default function CustomProgress() {
-    const [progress, setProgress] = React.useState(10);
+    const [progress] = React.useState(10);
 
     // React.useEffect(() => {
     //     const timer = setInterval(() => {

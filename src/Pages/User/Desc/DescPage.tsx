@@ -1,3 +1,4 @@
+import React from "react"
 import { CustomBox as Box } from "../../../Component/StyledComponent/CustomBox/CustomBox"
 import { Title, Text, Paragraf } from "../../../Component/StyledComponent/Typography/CustomTypography"
 import { WebDesc, WebDescTitle } from "../../../data"
@@ -8,7 +9,11 @@ DescPage.defaultProps = {
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
 }
 
-export default function DescPage(props: any) {
+type DescPageProps = {
+    text?: string,
+}
+
+export default function DescPage(props: DescPageProps) {
     return (<>
         <Paragraf width={'300px'} title={'Penelitian Parfum Pria'}>
             {props.text}

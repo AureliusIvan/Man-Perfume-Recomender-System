@@ -1,6 +1,7 @@
+import React from 'react'
 import { Paragraf } from "../../../Component/StyledComponent/Typography/CustomTypography";
 import { useEffect, useState } from "react";
-import { get, getGuest } from "../../../Component/FunctionComponent/axiosClient/axiosClient";
+import { getGuest } from "../../../Component/FunctionComponent/axiosClient/axiosClient";
 import { ResultCard } from "../../../Component/StyledComponent/CustomCard/CustomCard";
 import { Grid as G } from "@material-ui/core";
 import { styled } from '@mui/material/styles';
@@ -8,11 +9,11 @@ import Center from "../../../Component/StyledComponent/CustomCenter/Center";
 import { useDispatch, useSelector } from "react-redux";
 import { setDataEntry, selectDataEntry } from "@/Redux/feature/dataSlice";
 
-const Grid = styled(G)(({ theme }) => ({
+const Grid = styled(G)(() => ({
     paddingTop: '20px',
 }));
 
-const GridItem = styled(G)(({ theme }) => ({
+const GridItem = styled(G)(() => ({
     padding: '10px',
 }));
 
@@ -20,22 +21,22 @@ const GridItem = styled(G)(({ theme }) => ({
 
 export default function Recommendation() {
     const [item, setItem] = useState<object[]>([])
-    const [loading, setLoading] = useState<boolean>(false)
+    // const [loading, setLoading] = useState<boolean>(false)
     const dispatch = useDispatch();
     const dataEntry = useSelector(selectDataEntry);
     useEffect(() => {
         if (dataEntry) {
             try {
-                setLoading(true);
-                getGuest("v1/parfums/view?random=1&qty=2")
+                // setLoading(true);
+                getGuest("v1/parfums/view?random=1&qty=5")
                     .then((res: any) => {
-                        console.log(res)
+                        // console.log(res)
                         setItem(res.data.data)
                         dispatch(setDataEntry(res.data))
-                    }).catch((err: any) => {
+                    }).catch((err: object) => {
                         console.log(err)
                     })
-                setLoading(false);
+                // setLoading(false);
             }
             catch (err) {
                 console.log(err)

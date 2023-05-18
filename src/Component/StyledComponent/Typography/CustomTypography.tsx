@@ -1,10 +1,33 @@
+import React from "react";
 import style from "./CustomTypography.module.scss"
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import Spacer from "@/Pages/User/Spacer/spacer";
 
 
-export function Text(props: any) {
+interface TextProps {
+    width?: string,
+    height?: string,
+    textalign?: string,
+    fontSize?: string,
+    fontWeight?: string,
+    reverse?: string,
+    margin?: string,
+    margintop?: string,
+    marginbottom?: string,
+    marginleft?: string,
+    marginright?: string,
+    padding?: string,
+    paddingtop?: string,
+    paddingbottom?: string,
+    paddingleft?: string,
+    paddingright?: string,
+    style?: React.CSSProperties,
+    children?: React.ReactNode,
+}
+
+
+export function Text(props: TextProps) {
     const theme = useTheme();
     return (
         <div

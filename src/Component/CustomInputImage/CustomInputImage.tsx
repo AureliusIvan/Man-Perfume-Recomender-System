@@ -7,18 +7,18 @@ interface CustomInputImage {
     name: string;
     type: string;
     placeholder?: string;
-    handleChange?: any,
+    handleChange?: void,
     value?: any
-
+    
     [x: string]: any;
 }
 
 function CustomInputImage(props: CustomInputImage) {
-    const loadFile = (e: any) => {
-        // var image = document.getElementById("output");
-        // // image.src = URL.createObjectURL(e.target.files[0]);
-        // setTheValue(URL.createObjectURL(image))
-    }
+    // const loadFile = (e: any) => {
+    // var image = document.getElementById("output");
+    // // image.src = URL.createObjectURL(e.target.files[0]);
+    // setTheValue(URL.createObjectURL(image))
+    // }
     const fileTypes = [
         "image/apng",
         "image/bmp",
@@ -38,7 +38,7 @@ function CustomInputImage(props: CustomInputImage) {
         // console.log("field value : " + field.value)
         input.setValue(theValue)
     }, [theValue])
-    
+
     return (
         <div
             className={style.input}>
@@ -52,7 +52,7 @@ function CustomInputImage(props: CustomInputImage) {
                 minFiles={0}
                 accept="image/*"
                 {...field}
-				{...props}
+                {...props}
                 handleChange={(file: any) => {
                     setTheValue(URL.createObjectURL(file));
                 }}

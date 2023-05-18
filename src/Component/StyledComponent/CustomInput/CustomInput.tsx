@@ -1,4 +1,4 @@
-// import { Button } from '@material-ui/core';
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import styled from '@emotion/styled';
 import { useTheme } from '@mui/material/styles';
@@ -6,7 +6,7 @@ import { useTheme } from '@mui/material/styles';
 // import { WithTheme } from '@material-ui/core';
 import withTheme from '@material-ui/core/styles/withTheme';
 
-const CInput = styled(withTheme(TextField))(({ theme }) => (
+const CInput = styled(withTheme(TextField))(() => (
   {
     'label.MuiInputLabel-root': {
       color: 'inherit',
@@ -26,6 +26,21 @@ const CInput = styled(withTheme(TextField))(({ theme }) => (
 
     // color: theme.palette.primary ? 'white' : 'black',
   }));
+
+
+interface CustomInputProps {
+  label?: string,
+  color?: string,
+  style?: React.CSSProperties,
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  value?: string,
+  type?: string,
+  name?: string,
+  placeholder?: string,
+  disabled?: boolean,
+  required?: boolean,
+}
+
 
 export function CustomInput(props: any) {
   const theme = useTheme();

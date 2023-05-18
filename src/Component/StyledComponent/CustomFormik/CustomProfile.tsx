@@ -1,3 +1,4 @@
+import React from 'react'
 // How to import jquery
 
 // on Terminal

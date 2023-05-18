@@ -2,9 +2,9 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import { CustomButton } from '../CustomButton/CustomButton';
-import { CardActions } from '@material-ui/core';
+// import { CardActions } from '@material-ui/core';
 import Typography from '@mui/material/Typography';
 import style from "./CustomCard.module.scss";
 import { Text, Title } from '../Typography/CustomTypography';
@@ -47,14 +47,29 @@ const CContent = styled(CardContent)(({ theme }) => ({
 }));
 
 
-const CMedia = styled(CardMedia)(({ theme }) => ({
+const CMedia = styled(CardMedia)(() => ({
     // backgroundColor: theme.palette.mode === 'dark' ? 'black' : 'white',
     borderRadius: '20px',
     // transform: 'scaleX(1.1)',
 }));
 
 
-export function CustomCard(props: any) {
+interface CustomCardProps {
+    title?: string;
+    description?: string;
+    image?: string;
+    width?: string;
+    backgroundColor?: string;
+    textAlign?: string;
+    margin?: string;
+    // children?: React.ReactNode;
+    // style?: React.CSSProperties;
+    // width?: string;
+    // padding?: string;
+}
+
+
+export function CustomCard(props: CustomCardProps) {
     return (
         <Card sx={{
             overflow: 'visible',
@@ -85,7 +100,7 @@ export function CustomCard(props: any) {
                     gutterBottom
                     variant="h5"
                     component="div"
-                    textAlign={props.textAlign ? props.textAlign : "left"}
+                    // textAlign={props.textAlign ? props.textAlign : "left"}
                 >
                     {props.title ? props.title : "Perfume"}
                 </Typography>
@@ -95,7 +110,7 @@ export function CustomCard(props: any) {
                     }}
                     variant="body2"
                     color="text.secondary"
-                    textAlign={props.textAlign ? props.textAlign : "left"}
+                    // textAlign={props.textAlign ? props.textAlign : "left"}
                 >
                     {props.description ? props.description : "Perfumes can be defined as substances that emit and diffuse a pleasant and fragrant odor. They consist of manmade mixtures of aromatic chemicals and essential oils."}
                 </Typography>
@@ -117,7 +132,7 @@ function ResultCardDetail(props: any) {
         console.log(props.data)
     }, [])
     // store object
-    var data = props.data
+    const data = props.data
     return (
         <>
             {data ?
@@ -128,6 +143,14 @@ function ResultCardDetail(props: any) {
                     <div><span>Brand : </span>{data.brand}</div>
                     <div><span>Tipe Aroma : </span>{data.tipe_aroma}</div>
                     <div><span>Ukuran : </span>{data.ukuran}</div>
+                    <div><span>Harga : </span>Rp {data.harga}</div>
+                    <div className={style.deskripsi}>{data.deskripsi}</div>
+
+                    <CustomButton
+                        bgcolor={'rgb(0,0,0,0)'}
+                    >
+                        <a className={style.linkondetail} href={data.link_pembelian}>Link Pembelian</a>
+                    </CustomButton>
                     {/* <div>ukuran : {data.ukuran}</div> */}
                 </div>
                 : "Error"}
@@ -160,9 +183,9 @@ export function ResultCard(props: any) {
                 />
             </Grid>
             <GridItem item xs={5}>
-                <Title 
-                textalign="left"
-                texttransform="capitalize"
+                <Title
+                    textalign="left"
+                    texttransform="capitalize"
                 >
                     {props.title ? props.title : "Perfume"}
                 </Title>
@@ -173,7 +196,7 @@ export function ResultCard(props: any) {
                     onClose={props.onClose ? props.onClose : handleClose}
                     button={<>
                         <CustomButton
-                            onClick={() => handleOpen()}
+                            onclick={() => handleOpen()}
                             height={"20px"}
                         >
                             Info Lanjut

@@ -1,5 +1,5 @@
 import Comp from "../../../Assets/Image/Comp.png";
-import Learn from "../../../Assets/Image/Learn.png";
+// import Learn from "../../../Assets/Image/Learn.png";
 import Write from "../../../Assets/Image/Write.png";
 import Monit from "../../../Assets/Image/Monit.png";
 

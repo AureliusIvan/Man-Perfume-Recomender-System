@@ -1,13 +1,14 @@
-import style from "./Kuisioner.module.scss";
+import React from "react";
+// import style from "./Kuisioner.module.scss";
 import Center from "@/Component/StyledComponent/CustomCenter/Center";
-import { CustomBox as Box, CustomBox, Flex } from "@/Component/StyledComponent/CustomBox/CustomBox";
+import { CustomBox as Box, Flex } from "@/Component/StyledComponent/CustomBox/CustomBox";
 import { Title } from "@/Component/StyledComponent/Typography/CustomTypography";
 import { BoxSection } from "@/Component/StyledComponent/CustomBox/CustomBox";
 import Grid from "@mui/material/Grid";
 import { Text } from "@/Component/StyledComponent/Typography/CustomTypography";
 import { MainTitle } from "@/data";
 import CustomSlider from "@/Component/StyledComponent/CustomSlider/CustomSlider";
-import { CustomButton as Button, CustomButton, CustomButtonPlain } from "@/Component/StyledComponent/CustomButton/CustomButton";
+import { CustomButton as Button, CustomButtonPlain } from "@/Component/StyledComponent/CustomButton/CustomButton";
 import { Custommotion as M } from "@/Component/StyledComponent/CustomAnimation/Custommotion";
 import { useNavigate } from "react-router-dom";
 import Spacer from "../Spacer/spacer";
@@ -16,17 +17,17 @@ import { useMediaQuery } from "@mui/material";
 import { KuisionerData as question } from "./KuisionerData";
 import styled from '@emotion/styled';
 import { Formik } from "formik";
-import { post, postGuest } from "@/Component/FunctionComponent/axiosClient/axiosClient";
+import { postGuest } from "@/Component/FunctionComponent/axiosClient/axiosClient";
 import Alert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
-import { Confirmations, CustomModal } from "@/Component/StyledComponent/CustomModal/CustomModal";
+import { CustomModal } from "@/Component/StyledComponent/CustomModal/CustomModal";
 import { useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import HelpComponent from "@/Component/StyledComponent/HelpComponent/HelpComponent";
-import { useDispatch, useSelector } from "react-redux";
-import { selectDataEntry, selectData } from "@/Redux/feature/dataSlice";
+import { useDispatch } from "react-redux";
+// import { selectDataEntry, selectData } from "@/Redux/feature/dataSlice";
 import { setDataEntry } from "@/Redux/feature/dataSlice";
 import Typography from '@mui/material/Typography';
-import { Modal } from "@material-ui/core";
+// import { Modal } from "@material-ui/core";
 import LoadingScreen from "@/Component/StyledComponent/Fallback/LoadingScreen";
 // import CustomAlert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
 
@@ -88,22 +89,19 @@ function calculateValue(value: number) {
 }
 
 export default function Kuisioner() {
-    const [value, setValue] = useState<number>(10);
-    const [error, setError] = useState<any>(false);
-    const [message, setMessage] = useState<any>(null);
+    // const [value, setValue] = useState<number>(10);
+    const [error, setError] = useState<boolean>(false);
+    const [message, setMessage] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
+    const [open, setOpen] = useState<boolean>(false);
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    const isMobile = useMediaQuery('(max-width:600px)');
-    const [open, setOpen] = useState(false);
+
+    const isMobile: boolean = useMediaQuery('(max-width:600px)');
+
     const handleOpen = () => setOpen(true);
-    const handleClose = () => {
-        setOpen(false);
-        console.log(open)
-    }
-    const navigateToResult = () => {
-        navigate('/result')
-    }
+    const handleClose = () => setOpen(false)
+    const navigateToResult = () => navigate('/result')
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -115,7 +113,6 @@ export default function Kuisioner() {
         window.addEventListener("beforeunload", unloadCallback);
         return () => window.removeEventListener("beforeunload", unloadCallback);
     }, []);
-
 
     return (
         <div>
@@ -150,13 +147,14 @@ export default function Kuisioner() {
                                         dispatch(setDataEntry(res.data));
                                         navigateToResult();
                                     } else {
-                                        console.log("This is error else")
+                                        // console.log("This is error else")
                                         setError(true);
                                         setMessage("An Error Occured")
                                         handleClose()
                                     }
                                     setLoading(false);
                                 }).catch((err) => {
+                                    console.log(err);
                                     setError(true);
                                     setMessage("An Error Occured")
                                     setLoading(false);
@@ -169,8 +167,8 @@ export default function Kuisioner() {
                 }}
             >
                 {({
-                    values,
-                    errors,
+                    // values,
+                    // errors,
                     handleSubmit,
                     handleChange,
                 }) => (
@@ -288,7 +286,7 @@ export default function Kuisioner() {
                                         </Button>
                                     </Modal> */}
                                     <Button
-                                        onClick={handleOpen}
+                                        onclick={handleOpen}
                                     >
                                         Submit
                                     </Button>
@@ -305,12 +303,12 @@ export default function Kuisioner() {
                                         <Flex>
                                             <><Button
                                                 type="submit"
-                                                onClick={handleSubmit}
+                                                onclick={handleSubmit}
                                             >
                                                 Yes
                                             </Button>
                                                 <Button
-                                                    onClick={() => handleClose()}
+                                                    onclick={handleClose}
                                                     bgcolor={"rgb(255, 255, 255, 0)"}
                                                 >
                                                     No

@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { useField } from "formik";
 
@@ -12,7 +13,6 @@ interface Props {
 
 export const CustomImageInput = (props: Props) => {
   const [field, meta] = useField(props);
-
   return (
     <>
       <label className="drop-container">

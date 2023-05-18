@@ -1,19 +1,19 @@
 // import
+import React from "react";
 import { Grid } from "@material-ui/core";
 import styled from "@emotion/styled";
 import style from "./Header.module.scss";
 import { Toogle } from "../../../App/App";
-import { Title } from "../Typography/CustomTypography";
-import { PROJTITLE } from "../../../data";
+// import { Title } from "../Typography/CustomTypography";
+// import { PROJTITLE } from "../../../data";
 import { CustomButton as Button } from "../CustomButton/CustomButton";
 import { LogoImage } from "../CustomImage/CustomImage";
 import { Text } from "../Typography/CustomTypography";
 import Spacer from "../../../Pages/User/Spacer/spacer";
 // import useMediaQuery from "@material-ui/material/useMediaQuery";
 import { useMediaQuery } from "@mui/material";
-import { Custommotion as M } from "../CustomAnimation/Custommotion";
-
-import { useState, useEffect, ReactNode } from "react";
+// import { Custommotion as M } from "../CustomAnimation/Custommotion";
+import { useState, ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLogin, setLogout } from "@/Redux/feature/dataSlice";
@@ -86,14 +86,14 @@ const ButtonNavLink = ({ pathTo, children, clicked, ...props }: Props) => {
   );
 };
 
-export default function Header(props: any) {
+export default function Header() {
   const isMobile = useMediaQuery("(min-width:600px)");
 
   const loggedIn = useSelector(selectIsLogin);
   const dispatch = useDispatch();
 
-  const [show, setShow] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [show] = useState<boolean>(true);
+  // const [lastScrollY, setLastScrollY] = useState(0);
   // const controlNavbar = () => {
   //   if (typeof window !== "undefined") {
   //     if (window.scrollY > lastScrollY) {

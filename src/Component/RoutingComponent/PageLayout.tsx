@@ -1,3 +1,4 @@
+import React from "react";
 import Routing from "@/Component/RoutingComponent/Routing";
 import Header from "../StyledComponent/Header/Header";
 // import Footer from "../StyledComponent/Footer/Footer";
