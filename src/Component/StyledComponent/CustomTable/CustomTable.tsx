@@ -126,12 +126,13 @@ export default function CustomTable() {
                         editornew="edit"
                         deletable
                         fName={row.nama}
-                        // fMerk={}
+                        fMerk={row.brand}
                         fScent={row.tipe_aroma}
-                        // fSize={}
-                        // fPrice={}
+                        fSize={row.ukuran}
+                        fPrice={row.harga}
                         fImage={row.foto}
-                        // fLink={}
+                        fLink={row.link_pembelian}
+                        fDesc={row.deskripsi}
                       />
                     </StyledTableCell>
                     <StyledTableCell align="center">

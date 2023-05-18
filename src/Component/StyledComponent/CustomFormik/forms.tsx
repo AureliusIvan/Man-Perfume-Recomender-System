@@ -98,6 +98,18 @@ export const forms: { [x: string]: InputProps[] } = {
       ],
     },
     {
+      label: "Deskripsi",
+      type: "text",
+      name: "desc",
+      placeholder: "",
+      validations: [
+        {
+          type: "required",
+          message: "Deskripsi wajib diisi",
+        },
+      ],
+    },
+    {
       label: "Harga",
       type: "number",
       name: "price",
@@ -192,6 +204,18 @@ export const forms: { [x: string]: InputProps[] } = {
         {
           type: "isPositive",
           message: "Ukuran harus bernilai positif",
+        },
+      ],
+    },
+    {
+      label: "Deskripsi",
+      type: "text",
+      name: "desc",
+      placeholder: "",
+      validations: [
+        {
+          type: "required",
+          message: "Deskripsi wajib diisi",
         },
       ],
     },
