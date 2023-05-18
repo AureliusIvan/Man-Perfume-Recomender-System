@@ -31,7 +31,7 @@ export function Text(props: any) {
                 paddingLeft: props.paddingleft ? props.paddingleft : "0px",
                 paddingRight: props.paddingright ? props.paddingright : "0px",
             }}>
-            {props.children ? props.children : "Aroma lebih penting dari harga."}
+            {props.children ? props.children : ""}
         </div>
     );
 }
@@ -45,6 +45,7 @@ export function Title(props: any) {
             {...props}
             style={{
                 ...props.style,
+                textTransform: props.texttransform && props.texttransform,
                 textAlign: props.textalign ? props.textalign : "left",
                 color: theme.palette.mode === (props.reverse === "true" ? "light" : "dark") ? '#fff' : '#000',
                 fontSize: props.fontSize ? props.fontSize : "",

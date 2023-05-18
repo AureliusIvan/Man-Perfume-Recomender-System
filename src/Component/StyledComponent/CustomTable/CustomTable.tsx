@@ -61,10 +61,9 @@ const rows = [
 export default function CustomTable() {
   const [perfume, setPerfume] = React.useState<any>([]);
 
-  async function fetchPerfume() {
-    await get("v1/parfums/view?random=1&qty=2"
-      ).then((res: any) => {
-
+  async function fetchPerfume() { 
+    await get("v1/admin/parfums/view"
+    ).then((res: any) => {
         // console.log(res.data.data);
         if (res.status === 200) {
           console.log(res.data.data)

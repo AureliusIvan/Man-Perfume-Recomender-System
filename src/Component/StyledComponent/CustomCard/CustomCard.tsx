@@ -12,6 +12,7 @@ import { Grid } from '@mui/material';
 // import styled from '@emotion/styled/types/base';
 import { styled } from '@mui/material/styles';
 import Spacer from '../../../Pages/User/Spacer/spacer';
+import { CustomModal } from '../CustomModal/CustomModal';
 
 const GridContainer = styled(Grid)(() => ({
     // display: 'flex',
@@ -110,9 +111,46 @@ export function CustomCard(props: any) {
 }
 
 
-export function ResultCard(props: any) {
-    const Akurasi = (((parseFloat(props.accuracy))) * 100)
+
+function ResultCardDetail(props: any) {
+    React.useEffect(() => {
+        console.log(props.data)
+    }, [])
+    // store object
+    var data = props.data
     return (
+        <>
+            {data ?
+                <div className={style.detail}>
+                    {/* <h1>Result Detail</h1> */}
+                    <img className={style.images} src={data.foto} />
+                    <div className={style.name}>{(data.nama)}</div>
+                    <div><span>Brand : </span>{data.brand}</div>
+                    <div><span>Tipe Aroma : </span>{data.tipe_aroma}</div>
+                    <div><span>Ukuran : </span>{data.ukuran}</div>
+                    {/* <div>ukuran : {data.ukuran}</div> */}
+                </div>
+                : "Error"}
+        </>
+    )
+}
+
+
+
+
+export function ResultCard(props: any) {
+    const sum = (((parseFloat(props.accuracy))) * 100);
+    const Akurasi = sum.toFixed(2);
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    React.useEffect(() => {
+        // console.log("this");
+        console.log(props.data);
+    }, [])
+
+    return (<>
+
         <GridContainer container>
             <Grid item xs={5} md={3}>
                 <img
@@ -122,19 +160,45 @@ export function ResultCard(props: any) {
                 />
             </Grid>
             <GridItem item xs={5}>
-                <Title textalign="left">
+                <Title 
+                textalign="left"
+                texttransform="capitalize"
+                >
                     {props.title ? props.title : "Perfume"}
                 </Title>
                 <Spacer y={"15px"} />
-                <CustomButton>
-                    Info Lanjut
-                </CustomButton>
+                <CustomModal
+                    open={open}
+                    xbutton={true}
+                    onClose={props.onClose ? props.onClose : handleClose}
+                    button={<>
+                        <CustomButton
+                            onClick={() => handleOpen()}
+                            height={"20px"}
+                        >
+                            Info Lanjut
+                        </CustomButton></>}
+                >
+                    <ResultCardDetail
+                        data={props.data}
+                    />
+                </CustomModal>
+                <a href={props.link ? props.link : "https://www.tokopedia.com/"} target="_blank" rel="noopener noreferrer">
+                    <CustomButton
+                        height={"20px"}
+                        bgcolor={"rgb(0,0,0,0)"}
+                        marginTop={"10px"}
+                    >
+                        Shop Now
+                    </CustomButton>
+                </a>
                 <Spacer y={"15px"} />
                 <Text textalign="left">
-                    Akurasi : {props.accuracy ? Akurasi : "0.0"} %
+                    {props.accuracy && `Akurasi : ${Akurasi}%`}
                 </Text>
             </GridItem>
-        </GridContainer>
+        </GridContainer >
+    </>
     );
 }
 

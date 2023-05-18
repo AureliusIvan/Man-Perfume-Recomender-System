@@ -1,6 +1,6 @@
 // APP
 import './App.scss'
-import { useState, useContext, createContext, useMemo, lazy, Suspense } from 'react';
+import { useState, useContext, useEffect, createContext, useMemo, lazy, Suspense } from 'react';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import { CustomButton as Button } from '../Component/StyledComponent/CustomButton/CustomButton';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,6 +9,11 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 
 import PageLayout from '@/Component/RoutingComponent/PageLayout';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectToken, setLogin } from '@/Redux/feature/dataSlice';
+import { post } from '@/Component/FunctionComponent/axiosClient/axiosClient';
+import { getCookie } from 'react-use-cookie';
+import { useNavigate } from 'react-router-dom';
 
 // context for the theme
 const ColorModeContext = createContext({ toggleColorMode: () => { } });
@@ -45,6 +50,20 @@ export default function App() {
     }),
     [],
   );
+
+
+  const Token = getCookie("TOKEN");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (Token) {
+      dispatch(setLogin());
+      navigate("/admin")
+    } else {
+      navigate("/")
+    }
+  }, [])
+
 
   // create a theme based on the state of the theme
   const theme = useMemo(
@@ -83,6 +102,7 @@ export default function App() {
       }),
     [mode],
   );
+
 
   return (
     <div className="App">

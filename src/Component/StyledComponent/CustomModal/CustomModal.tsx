@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 import { useTheme } from '@mui/material/styles';
 
 import Typography from '@mui/material/Typography';
@@ -23,16 +23,19 @@ export function CustomModal(props: any) {
 
     return (
         <div>
-            {props.button ? props.button :
-                <Button
-                    disabled={props.disabled}
-                    onClick={handleOpen}>{
-                        props.title
-                    }</Button>
+            {props.hideButton ? "" :
+                props.button ? props.button :
+                    <Button
+                        disabled={props.disabled}
+                        onClick={handleOpen}>{
+                            props.title
+                        }</Button>
+
             }
             <Modal
-                open={open}
+                open={props.open ? props.open : open}
                 onClose={props.onClose ? props.onClose : handleClose}
+                // onClose={props.onClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
@@ -102,7 +105,7 @@ export function CustomModal(props: any) {
                                     Yes
                                 </Button>
                                     <Button
-                                        bgColor={props.bgColor ? props.bgColor : "rgb(255, 255, 255, 0)"}
+                                        bgcolor={props.bgcolor ? props.bgcolor : "rgb(255, 255, 255, 0)"}
                                         onClick={props.onCancel ? props.onCancel : handleClose}
                                     >
                                         No
@@ -117,19 +120,17 @@ export function CustomModal(props: any) {
 
 // Modal Confirmation page
 export function Confirmations(props: any) {
-    // const [ onClose, setOnClose ] = React.useState(false)
     return (
         <CustomModal
+            onClose={props.onClose && props.onClose}
             disabled={props.disabled}
             title={props.title ? props.title : "Submit"}
             onConfirm={props.onConfirm}
+            open={props.open && props.open}
             confirmbutton={true}
             toDelete={props.toDelete}
             rowID={props.rowID}
         >
-            {/* <Typography id="modal-modal-title" variant="h6" component="h2">
-                {props.title ? props.title : "Submit"}?
-            </Typography> */}
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                 {props.desc ? props.desc : "Are you sure to " + (props.title ? props.title : "want to submit") + "?"}
             </Typography>
