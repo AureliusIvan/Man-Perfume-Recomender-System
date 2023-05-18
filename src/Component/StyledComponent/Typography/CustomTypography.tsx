@@ -8,7 +8,7 @@ import Spacer from "@/Pages/User/Spacer/spacer";
 interface TextProps {
     width?: string,
     height?: string,
-    textalign?: string,
+    textalign?: string | any,
     fontSize?: string,
     fontWeight?: string,
     reverse?: string,
@@ -37,7 +37,7 @@ export function Text(props: TextProps) {
                 ...props.style,
                 width: props.width ? props.width : "100%",
                 height: props.height ? props.height : "100%",
-                textAlign: props.textalign ? props.textalign : "center",
+                textAlign: props.textalign && props.textalign,
                 fontSize: props.fontSize ? props.fontSize : "15px",
                 fontWeight: props.fontWeight ? props.fontWeight : "normal",
                 color: theme.palette.mode === (props.reverse === "true" ? "light" : "dark") ? '#fff' : '#000',

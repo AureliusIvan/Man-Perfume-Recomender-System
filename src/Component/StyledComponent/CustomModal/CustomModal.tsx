@@ -91,7 +91,7 @@ export function CustomModal(props: any) {
                         <Flex>
                             {props.confirmbutton ?
                                 <><Button
-                                    onClick={props.onConfirm
+                                    onclick={props.onConfirm
                                         ? props.onConfirm
                                         : () => {
                                             handleClose();
