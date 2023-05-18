@@ -1,6 +1,6 @@
 import { Paragraf } from "../../../Component/StyledComponent/Typography/CustomTypography";
 import { useEffect, useState } from "react";
-import { get } from "../../../Component/FunctionComponent/axiosClient/axiosClient";
+import { get, getGuest } from "../../../Component/FunctionComponent/axiosClient/axiosClient";
 import { ResultCard } from "../../../Component/StyledComponent/CustomCard/CustomCard";
 import { Grid as G } from "@material-ui/core";
 import { styled } from '@mui/material/styles';
@@ -27,7 +27,7 @@ export default function Recommendation() {
         if (dataEntry) {
             try {
                 setLoading(true);
-                get("v1/parfums/view?random=1&qty=2")
+                getGuest("v1/parfums/view?random=1&qty=2")
                     .then((res: any) => {
                         console.log(res)
                         setItem(res.data.data)

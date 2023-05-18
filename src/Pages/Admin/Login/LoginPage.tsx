@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { setLogin } from "@/Redux/feature/dataSlice";
 import { useNavigate } from "react-router-dom";
 
-import { post } from "@/Component/FunctionComponent/axiosClient/axiosClient";
+import { post, postGuest } from "@/Component/FunctionComponent/axiosClient/axiosClient";
 import { setCookie } from "react-use-cookie";
 // import CustomSpinner from "@/Component/StyledComponent/CustomSpinner/CustomSpinner";
 import { CircularProgress } from "@mui/material";
@@ -66,16 +66,16 @@ const TheForm: React.FunctionComponent = () => {
         // const formdata = new FormData;
         setLoading(true);
         async function login() {
-          await post("v1/admin/auth/login", {
+          await postGuest("v1/admin/auth/login", {
             username: values.username,
             password: values.password,
           }).then((res: any) => {
+            dispatch(setLogin());
             if (res.status === 200) {
               setLoading(false);
               setCookie("TOKEN", res.data.data.token);
-              dispatch(setLogin());
-              navigate("/admin");
-
+              // navigate("/admin");
+              window.location.reload();
             } else {
               setLoading(false);
               setMessage("Something went wrong");
@@ -91,7 +91,7 @@ const TheForm: React.FunctionComponent = () => {
           })
         }
         login();
-        // actions.setSubmitting(false);
+        actions.setSubmitting(false);
       }}
       // validator
       validationSchema={Yup.object().shape({
