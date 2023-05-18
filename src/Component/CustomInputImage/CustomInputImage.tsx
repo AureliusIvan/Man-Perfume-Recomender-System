@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import style from "./CustomInputImage.module.scss"
 import { FileUploader } from 'react-drag-drop-files'
+import { useField } from 'formik';
 
 interface CustomInputImage {
-    handleChange: any,
-    value: any
-}
+    name: string;
+    type: string;
+    placeholder?: string;
+    handleChange?: any,
+    value?: any
 
+    [x: string]: any;
+}
 
 function CustomInputImage(props: CustomInputImage) {
     const loadFile = (e: any) => {
         // var image = document.getElementById("output");
-        // image.src = URL.createObjectURL(e.target.files[0]);
+        // // image.src = URL.createObjectURL(e.target.files[0]);
+        // setTheValue(URL.createObjectURL(image))
     }
     const fileTypes = [
         "image/apng",
@@ -24,13 +30,20 @@ function CustomInputImage(props: CustomInputImage) {
         "image/svg+xml",
         "image/avif",
     ]
+
+    const [field, meta, input] = useField(props);
+    const [theValue, setTheValue] = useState(meta.initialValue);
+
+    useEffect(() => {
+        // console.log("field value : " + field.value)
+        input.setValue(theValue)
+    }, [theValue])
     
     return (
         <div
             className={style.input}>
             <FileUploader
                 child
-                handleChange={(file: any) => props.handleChange ? props.handleChange(file) : null}
                 // types={fileTypes}
                 multiple={false}
                 maxFileSize={1000000}
@@ -38,16 +51,20 @@ function CustomInputImage(props: CustomInputImage) {
                 maxFiles={1}
                 minFiles={0}
                 accept="image/*"
+                {...field}
+				{...props}
+                handleChange={(file: any) => {
+                    setTheValue(URL.createObjectURL(file));
+                }}
             >
-                <div
-                >
+                <div>
                     <div className={style.profilepic}>
                         <label className={style.label}>
                             <span className={style.glyphicon}></span>
                             <span>Change Image</span>
                         </label>
-                        <input id="file" type="file" onChange={loadFile} />
-                        <img src={!props.value ? "https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" : URL.createObjectURL(props.value)} id="output" width="200" />
+                        <input id="file" type="file" accept="image/*" />
+                        <img src={theValue} id="output" width="200" />
                     </div>
                 </div>
             </FileUploader>

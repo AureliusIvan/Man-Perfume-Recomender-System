@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export function CustomImage(props: any) {
     return (
-        <img className={style.img}
+        <img src={props.src} className={style.img}
             {...props}
         />
     )

@@ -18,6 +18,8 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLogin, setLogout } from "@/Redux/feature/dataSlice";
 
+import { setCookie } from "react-use-cookie";
+
 const Margin = "35px";
 
 const GridContainer = styled(Grid)(() => ({
@@ -147,6 +149,9 @@ export default function Header(props: any) {
               pathTo="/"
               clicked={() => {
                 dispatch(setLogout());
+                // remove cookie
+                setCookie("TOKEN", "");
+                // Cookies.remove('TOKEN')
               }}
             >
               Log Out

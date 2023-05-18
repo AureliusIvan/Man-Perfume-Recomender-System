@@ -64,29 +64,28 @@ export default function CustomTable() {
   async function fetchPerfume() { 
     await get("v1/admin/parfums/view"
     ).then((res: any) => {
-
-      // console.log(res.data.data);
-      if (res.status === 200) {
-        console.log(res.data.data)
-        setPerfume(res.data.data);
-        // console.log(perfume);
-        // console.log("success! res: " + res.status)
-        // setLoading(false);
-        // setCookie("TOKEN", res.data.data.token);
-        // navigate("/admin");
-      } else {
-        // setLoading(false);
-        // setMessage(res);
-        // showerror();
-        console.log("error! res: " + res);
+        // console.log(res.data.data);
+        if (res.status === 200) {
+          console.log(res.data.data)
+          setPerfume(res.data.data);
+          // console.log(perfume);
+          // console.log("success! res: " + res.status)
+          // setLoading(false);
+          // setCookie("TOKEN", res.data.data.token);
+          // navigate("/admin");
+        } else {
+          // setLoading(false);
+          // setMessage(res);
+          // showerror();
+          console.log("error! res: " + res);
+        }
       }
-    }
-    ).catch((err) => {
-      console.log(err);
-      // setMessage(err);
-      // showerror();
-      // setLoading(false);
-    })
+      ).catch((err) => {
+        console.log(err);
+        // setMessage(err);
+        // showerror();
+        // setLoading(false);
+      })
   }
 
   React.useEffect(() => {
@@ -96,26 +95,26 @@ export default function CustomTable() {
 
   return (
     <>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Nama Parfum</StyledTableCell>
-              <StyledTableCell align="right">Aroma</StyledTableCell>
-              <StyledTableCell align="right">Harga&nbsp;(g)</StyledTableCell>
-              <StyledTableCell align="right">Merk&nbsp;(g)</StyledTableCell>
-              <StyledTableCell align="right">Edit</StyledTableCell>
-              <StyledTableCell align="right">Delete</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {perfume ?
-              (perfume.map((row: any, i: any) => (
-                <StyledTableRow key={i}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.nama}
-                  </StyledTableCell>
-                  {/* <StyledTableCell align="right">{row.calories}</StyledTableCell>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>Nama Parfum</StyledTableCell>
+            <StyledTableCell align="right">Aroma</StyledTableCell>
+            <StyledTableCell align="right">Harga&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="right">Merk&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="right">Edit</StyledTableCell>
+            <StyledTableCell align="right">Delete</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {perfume ? 
+          (perfume.map((row : any , i : any) => (
+            <StyledTableRow key={i}>
+              <StyledTableCell component="th" scope="row">
+                {row.nama}
+              </StyledTableCell>
+              {/* <StyledTableCell align="right">{row.calories}</StyledTableCell>
               <StyledTableCell align="right">{row.fat}</StyledTableCell>
               <StyledTableCell align="right">{row.carbs}</StyledTableCell>
               <StyledTableCell align="right">
@@ -141,11 +140,11 @@ export default function CustomTable() {
                   onCancel={""}
                 ></Confirmations>
               </StyledTableCell> */}
-                </StyledTableRow>
-              ))) : "Entry Kosong"}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </StyledTableRow>
+          ))) : "Entry Kosong" }
+        </TableBody>
+      </Table>
+    </TableContainer>
     </>
   );
 }

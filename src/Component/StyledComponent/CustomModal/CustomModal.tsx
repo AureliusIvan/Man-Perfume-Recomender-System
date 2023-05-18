@@ -10,8 +10,13 @@ import CustomFormik from '../CustomFormik/CustomFormik';
 
 import style from "./CustomModal.module.scss";
 
+import { get } from '@/Component/FunctionComponent/axiosClient/axiosClient';
+import { add, update, delData } from '../DataFunction/DataFunction';
+
 export function CustomModal(props: any) {
     const [open, setOpen] = React.useState(false);
+    const [theValue, setTheValue] = React.useState<any>([]);
+    
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const theme = useTheme();
@@ -67,8 +72,12 @@ export function CustomModal(props: any) {
                                 deletable={props.deletable}
                                 onSubmit={(value: any) => {
                                     handleClose();
-                                    console.log(value);
-                                    // insert value here to api
+                                    setTheValue(value);
+                                    {props.editornew === "new" 
+                                        ? add(theValue)
+                                        : update(theValue)
+                                    }
+                                    // console.log(value);
                                 }}
                                 fName={props.fName ? props.fName : ""}
                                 fMerk={props.fMerk ? props.fMerk : ""}
@@ -76,13 +85,22 @@ export function CustomModal(props: any) {
                                 fSize={props.fSize ? props.fSize : ""}
                                 fPrice={props.fPrice ? props.fPrice : ""}
                                 fImage={props.fImage ? props.fImage : ""}
-                            />) : null}
+                                fLink={props.fLink ? props.fLink : ""}
+                            /> ) : null}
                         <Flex>
                             {props.confirmbutton ?
                                 <><Button
-                                    onClick={
-                                        props.onConfirm ? props.onConfirm : handleClose
+                                    onClick={ props.onConfirm 
+                                        ? props.onConfirm 
+                                        : () => {
+                                            handleClose();
+                                            {props.toDelete 
+                                                ? delData(props.rowID)
+                                                // ? console.log("delete me")
+                                                : null}
+                                        }
                                     }
+                                    
                                 >
                                     Yes
                                 </Button>
@@ -110,6 +128,8 @@ export function Confirmations(props: any) {
             onConfirm={props.onConfirm}
             open={props.open && props.open}
             confirmbutton={true}
+            toDelete={props.toDelete}
+            rowID={props.rowID}
         >
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                 {props.desc ? props.desc : "Are you sure to " + (props.title ? props.title : "want to submit") + "?"}

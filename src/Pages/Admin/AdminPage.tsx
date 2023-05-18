@@ -26,6 +26,7 @@ function AdminPage() {
                     useFormik
                     formName="newPerfume"
                     title="Add new perfume"
+                    editornew="new"
                 />
                 <Spacer y={"20px"} />
                 <Center>
