@@ -16,7 +16,7 @@ import { add, update, delData } from '../DataFunction/DataFunction';
 export function CustomModal(props: any) {
     const [open, setOpen] = React.useState(false);
     const [theValue, setTheValue] = React.useState<any>([]);
-    
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const theme = useTheme();
@@ -27,7 +27,7 @@ export function CustomModal(props: any) {
                 props.button ? props.button :
                     <Button
                         disabled={props.disabled}
-                        onClick={handleOpen}>{
+                        onclick={handleOpen}>{
                             props.title
                         }</Button>
 
@@ -73,7 +73,8 @@ export function CustomModal(props: any) {
                                 onSubmit={(value: any) => {
                                     handleClose();
                                     setTheValue(value);
-                                    {props.editornew === "new" 
+                                    {
+                                        props.editornew === "new"
                                         ? add(theValue)
                                         : update(theValue)
                                     }
@@ -86,27 +87,29 @@ export function CustomModal(props: any) {
                                 fPrice={props.fPrice ? props.fPrice : ""}
                                 fImage={props.fImage ? props.fImage : ""}
                                 fLink={props.fLink ? props.fLink : ""}
-                            /> ) : null}
+                            />) : null}
                         <Flex>
                             {props.confirmbutton ?
                                 <><Button
-                                    onClick={ props.onConfirm 
-                                        ? props.onConfirm 
+                                    onclick={props.onConfirm
+                                        ? props.onConfirm
                                         : () => {
                                             handleClose();
-                                            {props.toDelete 
+                                            {
+                                                props.toDelete
                                                 ? delData(props.rowID)
                                                 // ? console.log("delete me")
-                                                : null}
+                                                : null
+                                            }
                                         }
                                     }
-                                    
+
                                 >
                                     Yes
                                 </Button>
                                     <Button
                                         bgcolor={props.bgcolor ? props.bgcolor : "rgb(255, 255, 255, 0)"}
-                                        onClick={props.onCancel ? props.onCancel : handleClose}
+                                        onclick={props.onCancel ? props.onCancel : handleClose}
                                     >
                                         No
                                     </Button></> : null}
