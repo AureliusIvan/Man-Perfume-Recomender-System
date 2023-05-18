@@ -10,12 +10,10 @@ import CustomFormik from '../CustomFormik/CustomFormik';
 
 import style from "./CustomModal.module.scss";
 
-import { get } from '@/Component/FunctionComponent/axiosClient/axiosClient';
 import { add, update, delData } from '../DataFunction/DataFunction';
 
 export function CustomModal(props: any) {
     const [open, setOpen] = React.useState(false);
-    const [theValue, setTheValue] = React.useState<any>([]);
     
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -70,14 +68,16 @@ export function CustomModal(props: any) {
                                 formName={props.formName}
                                 title={props.title ? props.title : "Title"}
                                 deletable={props.deletable}
-                                onSubmit={(value: any) => {
-                                    handleClose();
-                                    setTheValue(value);
+                                onSubmit={(value : any) => {
+                                    const formdata = new FormData();
+                                    formdata.append("nama", value.name);
+                                    formdata.append("nama", value.name);
                                     {props.editornew === "new" 
-                                        ? add(theValue)
-                                        : update(theValue)
+                                        ? add(value)
+                                        : update(value)
                                     }
                                     // console.log(value);
+                                    handleClose();
                                 }}
                                 fName={props.fName ? props.fName : ""}
                                 fMerk={props.fMerk ? props.fMerk : ""}
@@ -86,6 +86,7 @@ export function CustomModal(props: any) {
                                 fPrice={props.fPrice ? props.fPrice : ""}
                                 fImage={props.fImage ? props.fImage : ""}
                                 fLink={props.fLink ? props.fLink : ""}
+                                fDesc={props.fDesc ? props.fDesc : ""}
                             /> ) : null}
                         <Flex>
                             {props.confirmbutton ?
@@ -93,11 +94,11 @@ export function CustomModal(props: any) {
                                     onClick={ props.onConfirm 
                                         ? props.onConfirm 
                                         : () => {
-                                            handleClose();
                                             {props.toDelete 
                                                 ? delData(props.rowID)
                                                 // ? console.log("delete me")
                                                 : null}
+                                            handleClose();
                                         }
                                     }
                                     

@@ -100,52 +100,52 @@ export default function CustomTable() {
           <TableBody>
             {perfume
               ? perfume.map((row: any, i: any) => (
-                <StyledTableRow key={i}>
-                  <StyledTableCell align="center">
-                    <Box className={style.imageWrap}>
-                      <img src={row.foto} className={style.image} />
-                    </Box>
-                  </StyledTableCell>
-                  <StyledTableCell component="th" scope="row">
-                    {row.nama}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">{ }</StyledTableCell>
-                  <StyledTableCell align="left">
-                    {row.tipe_aroma}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">{ }</StyledTableCell>
-                  <StyledTableCell align="left">
-                    {row.tipe_parfum}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    <CustomModal
-                      xbutton
-                      children
-                      useFormik
-                      formName="editPerfume"
-                      title="Edit"
-                      editornew="edit"
-                      deletable
-                      fName={row.nama}
-                      fMerk={row.brand}
-                      fScent={row.tipe_aroma}
-                      fSize={row.ukuran}
-                      fPrice={row.harga}
-                      fImage={row.foto}
-                      fLink={row.link_pembelian}
-                      fDesc={row.deskripsi}
-                    />
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    <Confirmations
-                      title="Delete"
-                      toDelete
-                      rowID={row.id}
-                    // onConfirm={""}
-                    ></Confirmations>
-                  </StyledTableCell>
-                </StyledTableRow>
-              ))
+                  <StyledTableRow key={i}>
+                    <StyledTableCell align="center">
+                      <Box className={style.imageWrap}>
+                        <img src={row.foto} className={style.image} />
+                      </Box>
+                    </StyledTableCell>
+                    <StyledTableCell component="th" scope="row">
+                      {row.nama}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">{}</StyledTableCell>
+                    <StyledTableCell align="left">
+                      {row.tipe_aroma}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">{}</StyledTableCell>
+                    <StyledTableCell align="left">
+                      {row.tipe_parfum}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      <CustomModal
+                        xbutton
+                        children
+                        useFormik
+                        formName="editPerfume"
+                        title="Edit"
+                        editornew="edit"
+                        deletable
+                        fName={row.nama}
+                        fMerk={row.brand}
+                        fScent={row.tipe_aroma}
+                        fSize={row.ukuran}
+                        fPrice={row.harga}
+                        fImage={row.foto}
+                        fLink={row.link_pembelian}
+                        fDesc={row.deskripsi}
+                      />
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      <Confirmations
+                        title="Delete"
+                        toDelete
+                        rowID={row.id}
+                        // onConfirm={""}
+                      ></Confirmations>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))
               : "Entry Kosong"}
           </TableBody>
         </Table>

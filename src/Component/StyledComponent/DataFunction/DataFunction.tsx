@@ -9,7 +9,7 @@ export async function add(values : any) {
   })
     .then((res: any) => {
       if (res.status === 200) {
-        console.log("will be added : " + values.name);
+        console.log("will be added : " + values);
       } else {
 				
       }
@@ -39,7 +39,7 @@ export async function add(values : any) {
 		await get("v1/parfums/view?random=1&qty=2")
     .then((res: any) => {
 			if (res.status === 200) {
-        console.log("id to edit : " + values.name);
+        console.log("to be edited : " + values.name);
       } else {
 				
       }

@@ -40,6 +40,7 @@ const CustomFormik = (props: nyam) => {
     price: props.fPrice,
     image: props.fImage,
     link: props.fLink,
+    desc: props.fDesc,
   };
 
   const onSubmit = (values: any) => console.log(values);
