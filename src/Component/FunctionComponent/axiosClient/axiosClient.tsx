@@ -6,23 +6,26 @@ const API = "https://api-server-v1-penelitian.pemilihanparfumkekinian.com";
 // const API = "https://penelitian-api.aureliusivan.my.id";
 
 // var TOKEN = localStorage.getItem("TOKEN");
-var TOKEN = getCookie("TOKEN");
+var TOKEN: String = getCookie("TOKEN");
 // Ini adalah konfigurasi axios, kalo mau tambahin header atau apa bisa ditambahin disini
+
 const axiosClient = axios.create({
     baseURL: API,
     headers: {
-        // ini standard buat ngirim data ke server
         "Content-type": "application/json" || "multipart/form-data",
         "Accept": "application/json",
-        // ini untuk ngirim token ke server, kalo mau pake bearer bisa pake ini
-        // Harus tanya farel pake sistem bearer atau apa?
-        Authorization: TOKEN ? `Bearer ${TOKEN}` : "",  
+        Authorization: TOKEN && `Bearer ${TOKEN}`,
     },
-    // Setting timeout nya => 10 detik, jika tidak ada respon dari server maka akan error
-    // Jangan lupa dikasih fallback yaa 🥰
     timeout: 10000,
-    // Kalo dinyalahin suka kepentok CORS nya, jadi harus di set false (cmiiw)
-    // withCredentials: false,
+});
+
+const axiosClientGuest = axios.create({
+    baseURL: API,
+    headers: {
+        "Content-type": "application/json" || "multipart/form-data",
+        "Accept": "application/json",
+    },
+    timeout: 10000,
 });
 
 
@@ -56,38 +59,29 @@ const axiosClient = axios.create({
 //     }
 // );
 
-export async function get(url: string, params?: any) {
-    try {
-        const response = await axiosClient.get(url, { params });
-        return response;
-    } catch (error) {
-        return error;
-    }
+
+export async function get(URL: any) {
+    return axiosClient.get(`/${URL}`).then(response => response);
 }
 
-export async function post(url: string, data?: any) {
-    try {
-        const response = await axiosClient.post(url, data);
-        return response;
-    } catch (error) {
-        return error;
-    }
+
+export async function getGuest(URL: any) {
+    return axiosClientGuest.get(`/${URL}`).then(response => response);
 }
 
-export async function put(url: string, data?: any) {
-    try {
-        const response = await axiosClient.put(url, data);
-        return response;
-    } catch (error) {
-        return error;
-    }
+
+export async function post(URL: any, payload: any) {
+    return axiosClient.post(`/${URL}`, payload).then(response => response);
 }
 
-export async function del(url: string, params?: any) {
-    try {
-        const response = await axiosClient.delete(url, { params });
-        return response;
-    } catch (error) {
-        return error;
-    }
+export async function postGuest(URL: any, payload: any) {
+    return axiosClientGuest.post(`/${URL}`, payload).then(response => response);
+}
+
+export async function patch({ URL, payload }: any) {
+    return axiosClient.patch(`/${URL}`, payload).then(response => response);
+}
+
+export async function del(URL: any) {
+    return axiosClient.delete(`/${URL}`).then(response => response);
 }

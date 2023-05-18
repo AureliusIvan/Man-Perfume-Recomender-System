@@ -1,5 +1,5 @@
 // import CustomTable from "../../Component/StyledComponent/CustomTable/CustomTable";
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import style from "./AdminPage.module.scss";
 import LoadingScreen from "../../Component/StyledComponent/Fallback/LoadingScreen";
 import { Text, Title } from "@/Component/StyledComponent/Typography/CustomTypography";

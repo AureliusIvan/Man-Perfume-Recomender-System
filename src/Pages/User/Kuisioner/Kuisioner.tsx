@@ -16,7 +16,7 @@ import { useMediaQuery } from "@mui/material";
 import { KuisionerData as question } from "./KuisionerData";
 import styled from '@emotion/styled';
 import { Formik } from "formik";
-import { post } from "@/Component/FunctionComponent/axiosClient/axiosClient";
+import { post, postGuest } from "@/Component/FunctionComponent/axiosClient/axiosClient";
 import Alert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
 import { Confirmations, CustomModal } from "@/Component/StyledComponent/CustomModal/CustomModal";
 import { useState } from "react";
@@ -133,11 +133,11 @@ export default function Kuisioner() {
                     async function Submit() {
                         setLoading(true);
                         try {
-                            post("v1/calculate", formData)
+                            postGuest("v1/calculate", formData)
                                 .then((res: any) => {
                                     console.log(res);
                                     if (res.status === 200) {
-                                        console.log("OK")
+                                        // console.log("OK")
                                         // console.log(res.data.data.status);
                                         // ini response nya perlu di benerin di backend nya
                                         // if (res.data.data.status) {
