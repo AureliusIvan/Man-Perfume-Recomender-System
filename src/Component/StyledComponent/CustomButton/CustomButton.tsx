@@ -9,16 +9,21 @@ export function CustomButton(props: any) {
   const theme = useTheme();
   return (
     <button
+      onClick={props.onclick && props.onclick}
       disabled={props.disabled ? props.disabled : false}
       type={props.type ? props.type : "button"}
       className={props.variant === "outlined" ? style.buttonoutlined : style.button}
       {...props}
       style={{
+        height: props.height && props.height,
         margin: props.margin ? props.margin : "0px",
+        marginBottom: props.marginBottom && props.marginBottom,
+        marginTop: props.marginTop && props.marginTop,
         padding: props.padding ? props.padding : "",
         paddingInline: props.paddingInline ? props.paddingInline : "17px",
+        
         ...props.style,
-        backgroundColor: props.bgColor ? props.bgColor : theme.palette.background,
+        backgroundColor: props.bgcolor ? props.bgcolor : theme.palette.background,
         color: props.color ? theme.palette.text.primary : "white",
       }}
     >

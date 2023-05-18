@@ -7,7 +7,7 @@
     margin: auto;
     width: fit-content;
     border-radius: 10px;
-    max-width: 90vw;
+    // max-width: 90vw;
     height: fit-content;
     padding: 20px;
     z-index: 100;
@@ -15,6 +15,9 @@
     justify-content: center;
     align-items: center;
 
+    @media screen and (max-width : 700px) {
+        width: 80vw !important;
+    }
 
 }
 

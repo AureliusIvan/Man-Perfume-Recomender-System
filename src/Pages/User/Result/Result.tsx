@@ -4,7 +4,7 @@ import CustomSlider from "../../../Component/StyledComponent/CustomSlider/Custom
 import React, { useEffect, useState } from "react";
 import { get } from "../../../Component/FunctionComponent/axiosClient/axiosClient";
 import { CustomCard, ResultCard } from "../../../Component/StyledComponent/CustomCard/CustomCard";
-import { Grid as G } from "@material-ui/core";
+import { Grid as G, Typography } from "@material-ui/core";
 import { styled } from '@mui/material/styles';
 import Center from "../../../Component/StyledComponent/CustomCenter/Center";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,31 +24,11 @@ const GridItem = styled(G)(({ theme }) => ({
 
 
 export default function Result() {
-    let i = 5;
-    const [data, setData] = useState<object[]>([])
-    const [loading, setLoading] = useState<boolean>(false)
-    const dispatch = useDispatch();
+    const [length, setLenght] = useState<number>(0);
     const dataEntry = useSelector(selectDataEntry);
-    // useEffect(() => {
-    //     if (!dataEntry) {
-    //         try {
-    //             setLoading(true);
-    //             get("")
-    //                 .then((res: any) => {
-    //                     setNaruto(res.data)
-    //                     dispatch(setDataEntry(res.data))
-    //                 })
-    //             setLoading(false);
-    //         }
-    //         catch (err) {
-    //             console.log(err)
-    //         }
-    //     } else {
-    //         setData(dataEntry)
-    //     }
-    //     console.log(dataEntry);
-
-    // }, [])
+    useEffect(() => {
+        console.log(dataEntry);
+    }, [])
 
     return (
         <>
@@ -60,14 +40,14 @@ export default function Result() {
                 </Title>
             </Center>
             <Grid container>
-                { }
-                {data && data.map((item: any, index) => {
+                {dataEntry && dataEntry.map((item: any, index: any) => {
                     return (
                         <GridItem item xs={12} key={index}>
                             <ResultCard
                                 title={item.nama}
                                 image={item.foto}
                                 accuracy={item.preference_value}
+                                data={item}
                                 key={index} />
                         </GridItem>
                     )

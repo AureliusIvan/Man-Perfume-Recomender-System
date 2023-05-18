@@ -1,6 +1,6 @@
 import style from "./Kuisioner.module.scss";
 import Center from "@/Component/StyledComponent/CustomCenter/Center";
-import { CustomBox as Box } from "@/Component/StyledComponent/CustomBox/CustomBox";
+import { CustomBox as Box, CustomBox, Flex } from "@/Component/StyledComponent/CustomBox/CustomBox";
 import { Title } from "@/Component/StyledComponent/Typography/CustomTypography";
 import { BoxSection } from "@/Component/StyledComponent/CustomBox/CustomBox";
 import Grid from "@mui/material/Grid";
@@ -18,13 +18,16 @@ import styled from '@emotion/styled';
 import { Formik } from "formik";
 import { post } from "@/Component/FunctionComponent/axiosClient/axiosClient";
 import Alert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
-import { Confirmations } from "@/Component/StyledComponent/CustomModal/CustomModal";
+import { Confirmations, CustomModal } from "@/Component/StyledComponent/CustomModal/CustomModal";
 import { useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import HelpComponent from "@/Component/StyledComponent/HelpComponent/HelpComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { selectDataEntry, selectData } from "@/Redux/feature/dataSlice";
 import { setDataEntry } from "@/Redux/feature/dataSlice";
+import Typography from '@mui/material/Typography';
+import { Modal } from "@material-ui/core";
+import LoadingScreen from "@/Component/StyledComponent/Fallback/LoadingScreen";
 // import CustomAlert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
 
 const CustomGrid = styled(Grid)({
@@ -53,25 +56,25 @@ const CustomGrid = styled(Grid)({
 // 
 function valueLabelFormat(value: number) {
     switch (value) {
-        case 0:
+        case 1:
             // return 'Sangat Penting';
             return '3';
-        case 1:
+        case 2:
             // return 'Penting';
             return '2';
-        case 2:
+        case 3:
             // return 'Agak Penting';
             return '1';
-        case 3:
+        case 4:
             // return 'Agak Tidak Penting';
             return '0';
-        case 4:
+        case 5:
             // return 'Tidak Penting';
             return '1';
-        case 5:
+        case 6:
             // return 'Sangat Tidak Penting';
             return '2';
-        case 6:
+        case 7:
             return '3';
         default:
         // return 'Unknown';
@@ -88,9 +91,16 @@ export default function Kuisioner() {
     const [value, setValue] = useState<number>(10);
     const [error, setError] = useState<any>(false);
     const [message, setMessage] = useState<any>(null);
+    const [loading, setLoading] = useState<boolean>(false);
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const isMobile = useMediaQuery('(max-width:600px)');
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => {
+        setOpen(false);
+        console.log(open)
+    }
     const navigateToResult = () => {
         navigate('/result')
     }
@@ -114,29 +124,42 @@ export default function Kuisioner() {
                 initialValues={{
                     input: [4, 4, 4, 4, 4, 4],
                 }}
-                
+
                 onSubmit={(values: any) => {
                     const formData = new FormData();
                     values.input.forEach((value: any, index: any) => {
                         formData.append(`input[${index}]`, value);
                     });
                     async function Submit() {
+                        setLoading(true);
                         try {
                             post("v1/calculate", formData)
                                 .then((res: any) => {
-                                    if (res.status === 200 && res.data.data) {
-                                        console.log(res.data.data )
-                                        // const data = [...res.data];
+                                    console.log(res);
+                                    if (res.status === 200) {
+                                        console.log("OK")
+                                        // console.log(res.data.data.status);
+                                        // ini response nya perlu di benerin di backend nya
+                                        // if (res.data.data.status) {
+                                        //     // console.log("This is error")
+                                        //     setError(true);
+                                        //     handleClose();
+                                        //     console.log(open);
+                                        //     return;
+                                        // }
                                         dispatch(setDataEntry(res.data));
-                                        // console.log(useSelector(selectDataEntry));
                                         navigateToResult();
                                     } else {
-                                        // setError(true);
-                                        // setMessage(res)
-                                        console.log(res)
+                                        console.log("This is error else")
+                                        setError(true);
+                                        setMessage("An Error Occured")
+                                        handleClose()
                                     }
+                                    setLoading(false);
                                 }).catch((err) => {
-                                    console.log(err);
+                                    setError(true);
+                                    setMessage("An Error Occured")
+                                    setLoading(false);
                                 })
                         } catch {
                             console.log("error");
@@ -152,6 +175,7 @@ export default function Kuisioner() {
                     handleChange,
                 }) => (
                     <div>
+                        {loading && <LoadingScreen />}
                         <form noValidate onSubmit={handleSubmit}>
                             {error &&
                                 <Alert severity="error">{message}</Alert>}
@@ -169,7 +193,9 @@ export default function Kuisioner() {
                                         <HelpComponent />
                                     </M>
                                     <Spacer y={"20px"} />
-                                    <Text fontWeight={"bold"} textalign={"center"}>Mana yang lebih penting bagi anda dalam memilih parfum?</Text>
+                                    <Text fontWeight={"bold"} textalign={"center"}>
+                                        Mana yang lebih penting bagi anda dalam memilih parfum?
+                                    </Text>
                                     <Spacer y={"20px"} />
                                     {question.map((_, index) => {
                                         return (
@@ -180,7 +206,6 @@ export default function Kuisioner() {
                                                         marginBottom: isMobile ? "0px" : "10px",
                                                     }
                                                 }}>
-                                                    {/* <Text fontWeight={"bold"}>{question[index].question}</Text> */}
                                                     <Grid item xs={6} sm={3} md={2} xl={1} sx={{
                                                         '&.MuiGrid-item': {
                                                             textAlign: "left",
@@ -241,6 +266,7 @@ export default function Kuisioner() {
                                                             }
                                                         }}>
                                                             <CustomSlider
+                                                                name={`input.${index}`}
                                                                 defaultValue={4}
                                                                 onChange={handleChange}
                                                                 scale={calculateValue}
@@ -253,11 +279,44 @@ export default function Kuisioner() {
                                             </BoxSection>
                                         )
                                     })}
-
-                                    <Confirmations onConfirm={handleSubmit} />
-                                    {/* <Button type="submit">
+                                    {/* <Modal
+                                        open={open}
+                                        onClose={handleClose}
+                                    >
+                                        <Button>
+                                            Open
+                                        </Button>
+                                    </Modal> */}
+                                    <Button
+                                        onClick={handleOpen}
+                                    >
                                         Submit
-                                    </Button> */}
+                                    </Button>
+                                    <CustomModal
+                                        title={"Submit"}
+                                        open={open}
+                                        // onClose={handleClose}
+                                        closebtn={true}
+                                        hideButton={true}
+                                    >
+                                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                            Are you sure to want to submit ?
+                                        </Typography>
+                                        <Flex>
+                                            <><Button
+                                                type="submit"
+                                                onClick={handleSubmit}
+                                            >
+                                                Yes
+                                            </Button>
+                                                <Button
+                                                    onClick={() => handleClose()}
+                                                    bgcolor={"rgb(255, 255, 255, 0)"}
+                                                >
+                                                    No
+                                                </Button></>
+                                        </Flex>
+                                    </CustomModal>
                                 </Box>
                             </Center>
                         </form>

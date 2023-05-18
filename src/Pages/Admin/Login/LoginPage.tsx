@@ -70,11 +70,12 @@ const TheForm: React.FunctionComponent = () => {
             username: values.username,
             password: values.password,
           }).then((res: any) => {
-            dispatch(setLogin());
             if (res.status === 200) {
               setLoading(false);
               setCookie("TOKEN", res.data.data.token);
+              dispatch(setLogin());
               navigate("/admin");
+
             } else {
               setLoading(false);
               setMessage("Something went wrong");
@@ -90,7 +91,7 @@ const TheForm: React.FunctionComponent = () => {
           })
         }
         login();
-        actions.setSubmitting(false);
+        // actions.setSubmitting(false);
       }}
       // validator
       validationSchema={Yup.object().shape({

@@ -26,8 +26,11 @@ import { CustomImage } from "@/Component/StyledComponent/CustomImage/CustomImage
 export default function UserPage() {
     let i = 5;
     const islogin = useSelector(selectIsLogin);
+    // const [item, setItem] = useState<any>();
 
-    const [item, setItem] = useState<any>();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     return (
         <div id="User-Page" className={style.UserPage}>
@@ -47,10 +50,6 @@ export default function UserPage() {
                 <Tutorial />
                 <Spacer y={"100px"} />
             </Center>
-            <CustomInputImage
-                value={item}
-                handleChange={(e: any) => setItem(e)} />
-            {item ? <CustomImage src={URL.createObjectURL(item)} /> : null}
             <Spacer y={"100px"} />
             <Recommendation />
             <Footer />

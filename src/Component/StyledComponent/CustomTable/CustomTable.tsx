@@ -61,7 +61,7 @@ const rows = [
 export default function CustomTable() {
   const [perfume, setPerfume] = React.useState<any>([]);
 
-  async function fetchPerfume() {
+  async function fetchPerfume() { 
     await get("v1/admin/parfums/view"
     ).then((res: any) => {
 

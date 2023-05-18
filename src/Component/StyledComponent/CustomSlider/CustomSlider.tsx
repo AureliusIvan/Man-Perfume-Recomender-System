@@ -6,27 +6,7 @@ import styled from '@emotion/styled';
 import withTheme from '@material-ui/core/styles/withTheme';
 import "./CustomSlider.scss";
 
-const marks = [
-  {
-    value: 0,
-  },
-  {
-    value: 1,
-    label: 'Tidak Penting',
-  },
-  {
-    value: 2,
-  },
-  {
-    value: 3,
-  },
-  {
-    value: 4,
-  },
-  {
-    value: 5,
-  },
-];
+
 
 const CSlider = styled(withTheme(Slider))((theme) => ({
   marklabel: {
@@ -52,11 +32,11 @@ export default function CustomSlider(props: any) {
       name={props.name ? props.name : "slider"}
       value={props.value}
       onChange={props.onChange ? props.onChange : ""}
-      defaultValue={3}
+      defaultValue={4}
       valueLabelDisplay="auto"
       step={props.step ? props.step : 1}
-      min={props.min ? props.min : 0}
-      max={props.max ? props.max : 6}
+      min={props.min ? props.min : 1}
+      max={props.max ? props.max : 7}
       scale={props.scale ? props.scale : x => x}
       getAriaValueText={props.getAriaValueText ? props.getAriaValueText : (value) => value}
       valueLabelFormat={props.valueLabelFormat ? props.valueLabelFormat : (value) => value}
