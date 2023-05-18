@@ -10,7 +10,19 @@ import { useTheme } from '@mui/material/styles';
 import { Flex } from '../CustomBox/CustomBox';
 import { CustomButton as Button } from '../CustomButton/CustomButton';
 
-function HelpComponent(props: any) {
+interface HelpComponentProps {
+    children?: React.ReactNode;
+    title?: string;
+    desc?: string;
+    confirmbutton?: boolean;
+    onConfirm?: () => void;
+    onCancel?: () => void;
+    onClose?: () => void;
+    bgColor?: string;
+}
+
+
+function HelpComponent(props: HelpComponentProps) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -66,15 +78,15 @@ function HelpComponent(props: any) {
                         <Flex>
                             {props.confirmbutton ?
                                 <><Button
-                                    onClick={
+                                    onclick={
                                         props.onConfirm ? props.onConfirm : handleClose
                                     }
                                 >
                                     Yes
                                 </Button>
                                     <Button
-                                        bgColor={props.bgColor ? props.bgColor : "rgb(255, 255, 255, 0)"}
-                                        onClick={props.onCancel ? props.onCancel : handleClose}
+                                        bgcolor={props.bgColor ? props.bgColor : "rgb(255, 255, 255, 0)"}
+                                        onclick={props.onCancel ? props.onCancel : handleClose}
                                     >
                                         No
                                     </Button></> : null}

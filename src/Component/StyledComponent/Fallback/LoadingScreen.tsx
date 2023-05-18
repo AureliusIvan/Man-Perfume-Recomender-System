@@ -1,8 +1,15 @@
+import React from 'react'
 import { useEffect } from 'react'
 import CustomSpinner from '../CustomSpinner/CustomSpinner'
 import style from "./LoadingScreen.module.scss"
 
-function LoadingScreen(props: any) {
+
+interface LoadingScreenProps {
+    style?: React.CSSProperties,
+    backgroundColor?: string,
+}
+
+function LoadingScreen(props: LoadingScreenProps) {
     // Prevent scrolling when loading screen is active
     useEffect(() => {
         // document.body.style.overflow = "hidden";
@@ -15,6 +22,7 @@ function LoadingScreen(props: any) {
         <div
             className={style.loadingscreen}
             style={{
+                ...props.style,
                 backgroundColor: props.backgroundColor ? props.backgroundColor : "",
             }}
         >

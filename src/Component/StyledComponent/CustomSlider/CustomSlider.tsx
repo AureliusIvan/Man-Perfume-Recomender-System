@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from 'react'
 // import { Button } from '@material-ui/core';
 // import Slider from '@material-ui/core/Slider';
 import Slider from '@mui/material/Slider';
@@ -8,7 +8,7 @@ import "./CustomSlider.scss";
 
 
 
-const CSlider = styled(withTheme(Slider))((theme) => ({
+const CSlider = styled(withTheme(Slider))(() => ({
   marklabel: {
     color: 'inherit',
     markerColor: 'inherit',
@@ -26,7 +26,22 @@ const CSlider = styled(withTheme(Slider))((theme) => ({
 }));
 
 
-export default function CustomSlider(props: any) {
+
+interface CustomSliderProps {
+  name?: string,
+  value?: number,
+  onChange?: any,
+  defaultValue?: number,
+  valueLabelDisplay?: string,
+  step?: number,
+  min?: number,
+  max?: number,
+  scale?: any,
+  getAriaValueText?: any,
+  valueLabelFormat?:  any,
+}
+
+export default function CustomSlider(props: CustomSliderProps) {
   return (
     <CSlider
       name={props.name ? props.name : "slider"}

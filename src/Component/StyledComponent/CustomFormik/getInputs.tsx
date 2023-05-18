@@ -60,7 +60,7 @@ const generateValidations = (field: InputProps) => {
 
 export const getInputs = (section: string) => {
   // let initialValues: { [key: string]: any } = {};
-  let validationsFields: { [key: string]: any } = {};
+  const validationsFields: { [key: string]: any } = {};
 
   for (const field of forms[section]) {
     // initialValues[field.name] = field.value;

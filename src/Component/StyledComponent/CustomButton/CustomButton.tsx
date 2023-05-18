@@ -1,11 +1,31 @@
+import React from "react";
 import style from "./CustomButton.module.scss";
 // import Button from "@mui/material/Button";
 // import { useTheme } from "@material-ui/core";
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
-import { useState } from "react";
+// import { useState } from "react";
 // import CustomSpinner from "../CustomSpinner/CustomSpinner";
 
-export function CustomButton(props: any) {
+interface CustomButtonProps {
+  variant?: "outlined" | "contained" | "text";
+  color?: "primary" | "secondary" | "error" | "info" | "success" | "warning";
+  bgcolor?: string;
+  height?: string;
+  margin?: string;
+  marginTop?: string;
+  marginBottom?: string;
+  padding?: string;
+  paddingInline?: string;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
+  style?: React.CSSProperties;
+  onclick?: () => void;
+  children?: React.ReactNode;
+  loading?: boolean;
+}
+
+
+export function CustomButton(props: CustomButtonProps) {
   const theme = useTheme();
   return (
     <button
@@ -21,10 +41,10 @@ export function CustomButton(props: any) {
         marginTop: props.marginTop && props.marginTop,
         padding: props.padding ? props.padding : "",
         paddingInline: props.paddingInline ? props.paddingInline : "17px",
-        
-        ...props.style,
-        backgroundColor: props.bgcolor ? props.bgcolor : theme.palette.background,
+        // backgroundColor: "black",
+        backgroundColor: props.bgcolor && props.bgcolor,
         color: props.color ? theme.palette.text.primary : "white",
+        ...props.style,
       }}
     >
       <b>

@@ -1,8 +1,8 @@
 // import CustomTable from "../../Component/StyledComponent/CustomTable/CustomTable";
-import React, { lazy, Suspense, useEffect } from "react";
+import React, { lazy, Suspense } from "react";
 import style from "./AdminPage.module.scss";
 import LoadingScreen from "../../Component/StyledComponent/Fallback/LoadingScreen";
-import { Text, Title } from "@/Component/StyledComponent/Typography/CustomTypography";
+import { Title } from "@/Component/StyledComponent/Typography/CustomTypography";
 import Center from "@/Component/StyledComponent/CustomCenter/Center";
 import Spacer from "../User/Spacer/spacer";
 import { CustomModal } from "@/Component/StyledComponent/CustomModal/CustomModal";
@@ -22,7 +22,6 @@ function AdminPage() {
             <Suspense fallback={<LoadingScreen />}>
                 <CustomModal
                     xbutton
-                    children
                     useFormik
                     formName="newPerfume"
                     title="Add new perfume"

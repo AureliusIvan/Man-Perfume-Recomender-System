@@ -1,3 +1,4 @@
+import React from "react"
 // Custom box is a component that allows you to create a box with custom style.
 import Box from "@material-ui/core/Box"
 import styled from "@emotion/styled"
@@ -14,11 +15,28 @@ const CBox = styled(Box)(() => ({
     gap: '10px',
 }));
 
-export function CustomBox(props: any) {
+
+interface CustomBoxProps {
+    className?: string;
+    children?: React.ReactNode;
+    style?: React.CSSProperties;
+    width?: string;
+    padding?: string;
+    margin?: string;
+    borderRadius?: string;
+    maxWidth?: string;
+    maxHeight?: string;
+    overflow?: string;
+    marginLeft?: string;
+    marginRight?: string;
+    reverse?: string;
+}
+
+export function CustomBox(props: CustomBoxProps) {
     const theme = useTheme();
     return (
         <CBox
-            className={style.Box}
+            className={props.className ? props.className : style.Box}
             {...props}
             style={{
                 ...props.style,

@@ -1,37 +1,22 @@
 // [ This is user Page ]
 // this is import
-
-// import CustomAlert from "../../Component/StyledComponent/CustomAlert/CustomAlert"
+import React,{ useEffect } from "react"
 import Center from "../../Component/StyledComponent/CustomCenter/Center"
-import { CustomBox as Box, BoxSection } from "../../Component/StyledComponent/CustomBox/CustomBox"
-import { Paragraf, Text, Title } from "../../Component/StyledComponent/Typography/CustomTypography"
-import CustomSlider from "../../Component/StyledComponent/CustomSlider/CustomSlider"
-import { CustomButton as Button } from "../../Component/StyledComponent/CustomButton/CustomButton"
 import style from "./UserPage.module.scss"
-import { useDispatch, useSelector } from "react-redux"
-import { selectData, selectToken, selectIsLogin } from "../../Redux/feature/dataSlice"
-import { Custommotion, Custommotion as M } from "../../Component/StyledComponent/CustomAnimation/Custommotion"
 import { Helmet } from "react-helmet-async"
-import { PROJDESC, PROJTITLE, PROJDOMAIN, MainTitle } from "./../../data"
+import { PROJDESC, PROJTITLE, PROJDOMAIN } from "./../../data"
 import Tutorial from "./Tutorial/Tutorial"
 import Recommendation from "./Recommendation/Recommendation"
 import WelcomePage from "./Welcome/Welcome"
 import DescPage from "./Desc/DescPage"
 import Spacer from "./Spacer/spacer"
 import Footer from "@/Component/StyledComponent/Footer/Footer"
-import CustomInputImage from "@/Component/CustomInputImage/CustomInputImage"
-import { useEffect, useState } from "react"
-import { CustomImage } from "@/Component/StyledComponent/CustomImage/CustomImage"
+
 // main function
 export default function UserPage() {
-    let i = 5;
-    const islogin = useSelector(selectIsLogin);
-    // const [item, setItem] = useState<any>();
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
-
     return (
         <div id="User-Page" className={style.UserPage}>
             {/* Helmet for SEO */}

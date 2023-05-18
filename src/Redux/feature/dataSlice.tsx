@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { get } from "../../Component/FunctionComponent/axiosClient/axiosClient";
+import { createSlice } from "@reduxjs/toolkit";
+// import { get } from "../../Component/FunctionComponent/axiosClient/axiosClient";
 
 
 const initialState = {
@@ -24,16 +24,13 @@ const userDataSlice = createSlice({
         setUserPrivilege(state, action) {
             state.privilege = action.payload;
         },
-        // for login and logout method
         setLogin(state) {
             state.isLogin = true;
             state.privilege = "admin";
-            // add token cookie 
         },
         setLogout(state) {
             state.isLogin = false;
             state.privilege = "guest";
-            // delete token cookie
         },
         setDataEntry(state, action) {
             state.dataEntry = action.payload;
@@ -41,12 +38,25 @@ const userDataSlice = createSlice({
     }
 });
 
+
+
+type UserData = {
+    token: string;
+    privilege: string;
+    isLogin: boolean;
+    dataEntry: object[];
+};
+
+type AppState = {
+    userData: UserData;
+};
+
 // export selector
-export const selectData = (state: any) => state.userData;
-export const selectToken = (state: any) => state.userData.token;
-export const selectprivilege = (state: any) => state.userData.privilege;
-export const selectIsLogin = (state: any) => state.userData.isLogin;
-export const selectDataEntry = (state: any) => state.userData.dataEntry;
+export const selectData = (state: AppState) => state.userData;
+export const selectToken = (state: AppState) => state.userData.token;
+export const selectprivilege = (state: AppState) => state.userData.privilege;
+export const selectIsLogin = (state: AppState) => state.userData.isLogin;
+export const selectDataEntry = (state: AppState) => state.userData.dataEntry;
 
 // export action
 export const { setUserToken, setUserPrivilege, setLogin, setLogout, setDataEntry } = userDataSlice.actions;

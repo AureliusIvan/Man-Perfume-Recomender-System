@@ -1,6 +1,11 @@
+import React from "react"
 import { Rating } from "@mui/material"
 
-export function CustomRating(props: any) {
+interface CustomRatingProps {
+    value?: number,
+}
+
+export function CustomRating(props: CustomRatingProps) {
     return (
         <Rating name="read-only" value={props.value}
             {...props} />

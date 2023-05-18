@@ -19,7 +19,10 @@ $text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.8);
     box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.2);
     text-shadow: $text-shadow;
     will-change: transfrom, opacity;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     @media screen and (min-width: 768px) {
         &:hover {
             opacity: 0.5;
@@ -68,5 +71,3 @@ $text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.8);
         cursor: not-allowed;
     }
 }
-
-

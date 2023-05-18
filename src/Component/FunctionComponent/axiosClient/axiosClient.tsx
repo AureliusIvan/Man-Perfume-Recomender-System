@@ -6,7 +6,7 @@ const API = "https://api-server-v1-penelitian.pemilihanparfumkekinian.com";
 // const API = "https://penelitian-api.aureliusivan.my.id";
 
 // var TOKEN = localStorage.getItem("TOKEN");
-var TOKEN: String = getCookie("TOKEN");
+const TOKEN: string = getCookie("TOKEN");
 // Ini adalah konfigurasi axios, kalo mau tambahin header atau apa bisa ditambahin disini
 
 const axiosClient = axios.create({
@@ -60,28 +60,28 @@ const axiosClientGuest = axios.create({
 // );
 
 
-export async function get(URL: any) {
+export async function get(URL: string) {
     return axiosClient.get(`/${URL}`).then(response => response);
 }
 
 
-export async function getGuest(URL: any) {
+export async function getGuest(URL: string) {
     return axiosClientGuest.get(`/${URL}`).then(response => response);
 }
 
 
-export async function post(URL: any, payload: any) {
+export async function post(URL: string, payload: FormData | any) {
     return axiosClient.post(`/${URL}`, payload).then(response => response);
 }
 
-export async function postGuest(URL: any, payload: any) {
+export async function postGuest(URL: string, payload: FormData | any) {
     return axiosClientGuest.post(`/${URL}`, payload).then(response => response);
 }
 
-export async function patch({ URL, payload }: any) {
+export async function patch(URL: string, payload: FormData | any) {
     return axiosClient.patch(`/${URL}`, payload).then(response => response);
 }
 
-export async function del(URL: any) {
+export async function del(URL: string) {
     return axiosClient.delete(`/${URL}`).then(response => response);
 }

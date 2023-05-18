@@ -1,8 +1,9 @@
+import React from "react";
 export interface InputProps {
   name: string;
   placeholder?: string;
   label?: string;
-  handleSubmit?: Function;
+  handleSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
   type:
     | "text"
     | "number"
