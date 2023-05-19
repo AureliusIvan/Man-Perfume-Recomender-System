@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./CustomImage.module.scss";
 // import { useTheme } from "@mui/material/styles";
-import IMG from "../../../Assets/image/logo.png"
+import IMG from "@/Assets/Image/logo.png"
 import { useNavigate } from "react-router-dom";
 
 
