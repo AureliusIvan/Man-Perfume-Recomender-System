@@ -178,7 +178,7 @@ function TheForm(props: any) {
                                 placeholder="Foto"
                                 onChange={e => {
                                     handleChange
-                                    setFieldValue("foto", e.currentTarget.files[0]);
+                                    setFieldValue("foto", e.currentTarget.files?.[0]);
                                 }}
                                 type="file"
                                 accept='image/*'
