@@ -29,15 +29,16 @@ export function appendData(values: any) {
 // masalah ada di image input 
 // -> kolom harus diisi / image harus dalam bentuk .jpg, .jpeg, .png
 
-export async function add(values: any) {
-  // await post("v1/admin/parfums/create", values)
-  await get("v1/admin/parfums/view")
+export async function add(values: any, foto: any) {
+  await post("v1/admin/parfums/create", values)
+  // await get("v1/admin/parfums/view")
   .then((res: any) => {
     console.log(values.get("foto"))
+    console.log("foto : ", foto)
     if (res.status === 200) {
       console.log("creation done successfully!")
+      console.log("will be added : " , values.get("foto"));
       // window.location.reload();
-      // console.log("will be added : " , values.get("foto"));
     }
   })
   .catch((err) => {

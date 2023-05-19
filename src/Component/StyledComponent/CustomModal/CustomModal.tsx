@@ -11,6 +11,7 @@ import CustomFormik from '../CustomFormik/CustomFormik';
 import style from "./CustomModal.module.scss";
 
 import { add, update, delData, appendData } from '../DataFunction/DataFunction';
+import CustomInputImage from '@/Component/CustomInputImage/CustomInputImage';
 
 export function CustomModal(props: any) {
     const [open, setOpen] = React.useState(false);
@@ -71,7 +72,7 @@ export function CustomModal(props: any) {
                                 deletable={props.deletable}
                                 onSubmit={(values : any) => {
                                     {props.editornew === "new" 
-                                        ? add(appendData(values))
+                                        ? add(appendData(values), values.foto)
                                         : update(appendData(values), props.fId)
                                     }
                                     // console.log(formdata);

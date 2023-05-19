@@ -14,16 +14,6 @@ interface CustomInputImage {
 }
 
 function CustomInputImage(props: CustomInputImage) {
-    const loadFile = (e: any) => {
-        // var image = document.getElementById("output");
-        // // image.src = URL.createObjectURL(e.target.files[0]);
-        // setSrc(URL.createObjectURL(image))
-    }
-    const fileTypes = [
-        "image/jpg",
-        "image/jpeg",
-        "image/png",
-    ]
 
     const [field, meta, input] = useField(props);
     const [src, setSrc] = useState(meta.initialValue);
@@ -33,20 +23,19 @@ function CustomInputImage(props: CustomInputImage) {
             className={style.input}>
             <FileUploader
                 child
-                // types={fileTypes}
                 multiple={false}
                 maxFileSize={1000000}
                 minFileSize={0}
                 maxFiles={1}
                 minFiles={0}
-                // accept="image/*"
                 types={['png', 'jpeg', 'jpg']}
-                {...field}
-                {...props}
+                // {...field}
+                // {...props}
                 handleChange={(file: any) => {
                     input.setValue("image", file)
                     console.log(file)
                     setSrc(URL.createObjectURL(file));
+                    console.log("url : " + src);
                 }}
             >
                 <div>
@@ -55,8 +44,8 @@ function CustomInputImage(props: CustomInputImage) {
                             <span className={style.glyphicon}></span>
                             <span>Change Image</span>
                         </label>
-                        <input id="file" type="file" accept="image/*" />
-                        <img src={src} id="output" width="200" />
+                        <input type="file" accept="image/*" />
+                        <img src={src} width="200" />
                     </div>
                 </div>
             </FileUploader>

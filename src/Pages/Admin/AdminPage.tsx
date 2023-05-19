@@ -22,6 +22,7 @@ function AdminPage() {
             <Suspense fallback={<LoadingScreen />}>
                 <CustomModal
                     xbutton
+                    children
                     useFormik
                     formName="perfume"
                     title="Add new perfume"

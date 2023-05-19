@@ -97,7 +97,6 @@ export default function CustomTable() {
                         xbutton
                         children
                         useFormik
-                        // formName="editPerfume"
                         formName="perfume"
                         title="Edit"
                         editornew="edit"

@@ -1,6 +1,5 @@
-import React from "react";
 import style from "./CustomFormik.module.scss";
-import { ErrorMessage, Form, Formik, FormikHelpers } from "formik";
+import { ErrorMessage, Form, Formik } from "formik";
 import { CustomTextInput } from "./CustomTextInput";
 import { getInputs } from "./getInputs";
 
