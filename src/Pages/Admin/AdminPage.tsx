@@ -23,7 +23,7 @@ function AdminPage() {
                 <CustomModal
                     xbutton
                     useFormik
-                    formName="newPerfume"
+                    formName="perfume"
                     title="Add new perfume"
                     editornew="new"
                 />

@@ -14,30 +14,19 @@ interface CustomInputImage {
 }
 
 function CustomInputImage(props: CustomInputImage) {
-    // const loadFile = (e: any) => {
-    // var image = document.getElementById("output");
-    // // image.src = URL.createObjectURL(e.target.files[0]);
-    // setTheValue(URL.createObjectURL(image))
-    // }
+    const loadFile = (e: any) => {
+        // var image = document.getElementById("output");
+        // // image.src = URL.createObjectURL(e.target.files[0]);
+        // setSrc(URL.createObjectURL(image))
+    }
     const fileTypes = [
-        "image/apng",
-        "image/bmp",
-        "image/gif",
         "image/jpg",
         "image/jpeg",
         "image/png",
-        "image/pjpeg",
-        "image/svg+xml",
-        "image/avif",
     ]
 
     const [field, meta, input] = useField(props);
-    const [theValue, setTheValue] = useState(meta.initialValue);
-
-    useEffect(() => {
-        // console.log("field value : " + field.value)
-        input.setValue(theValue)
-    }, [theValue])
+    const [src, setSrc] = useState(meta.initialValue);
 
     return (
         <div
@@ -50,11 +39,14 @@ function CustomInputImage(props: CustomInputImage) {
                 minFileSize={0}
                 maxFiles={1}
                 minFiles={0}
-                accept="image/*"
+                // accept="image/*"
+                types={['png', 'jpeg', 'jpg']}
                 {...field}
                 {...props}
                 handleChange={(file: any) => {
-                    setTheValue(URL.createObjectURL(file));
+                    input.setValue("image", file)
+                    console.log(file)
+                    setSrc(URL.createObjectURL(file));
                 }}
             >
                 <div>
@@ -64,7 +56,7 @@ function CustomInputImage(props: CustomInputImage) {
                             <span>Change Image</span>
                         </label>
                         <input id="file" type="file" accept="image/*" />
-                        <img src={theValue} id="output" width="200" />
+                        <img src={src} id="output" width="200" />
                     </div>
                 </div>
             </FileUploader>
