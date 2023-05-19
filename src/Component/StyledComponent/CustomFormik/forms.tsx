@@ -27,123 +27,13 @@ export interface Opt {
 }
 
 export interface Validation {
-  type: "required" | "isEmail" | "minLength" | "isTrue" | "isLink" | "isPositive";
+  type: "required" | "isEmail" | "minLength" | "isTrue" | "isLink" | "isPositive" | "isIndex" | "image";
   value?: string | number | boolean;
   message: string;
 }
 
 export const forms: { [x: string]: InputProps[] } = {
-  editPerfume: [
-    {
-      label: "",
-      type: "file",
-      name: "image",
-      placeholder: "",
-      validations: [
-        {
-          type: "required",
-          message: "Gambar parfum wajib diisi",
-        },
-      ],
-    },
-    {
-      label: "Nama Parfum",
-      type: "text",
-      name: "name",
-      placeholder: "",
-      validations: [
-        {
-          type: "required",
-          message: "Nama parfum wajib diisi",
-        },
-      ],
-    },
-    {
-      label: "Merek",
-      type: "text",
-      name: "merk",
-      placeholder: "",
-      validations: [
-        {
-          type: "required",
-          message: "Merek wajib diisi",
-        },
-      ],
-    },
-    {
-      label: "Aroma",
-      type: "text",
-      name: "scent",
-      placeholder: "",
-      validations: [
-        {
-          type: "required",
-          message: "Aroma wajib diisi",
-        },
-      ],
-    },
-    {
-      label: "Ukuran (ml)",
-      type: "number",
-      name: "size",
-      placeholder: "",
-      validations: [
-        {
-          type: "required",
-          message: "Ukuran (ml) wajib diisi",
-        },
-        {
-          type: "isPositive",
-          message: "Ukuran harus bernilai positif",
-        },
-      ],
-    },
-    {
-      label: "Deskripsi",
-      type: "text",
-      name: "desc",
-      placeholder: "",
-      validations: [
-        {
-          type: "required",
-          message: "Deskripsi wajib diisi",
-        },
-      ],
-    },
-    {
-      label: "Harga",
-      type: "number",
-      name: "price",
-      placeholder: "",
-      validations: [
-        {
-          type: "required",
-          message: "Harga wajib diisi",
-        },
-        {
-          type: "isPositive",
-          message: "Harga harus bernilai positif",
-        },
-      ],
-    },
-    {
-      label: "Tautan Pembelian",
-      type: "text",
-      name: "link",
-      placeholder: "",
-      validations: [
-        {
-          type: "required",
-          message: "Tautan pembelian wajib diisi",
-        },
-        {
-          type: "isLink",
-          message: "Isi harus berformat tautan"
-        }
-      ],
-    },
-  ],
-  newPerfume: [
+  perfume: [
     {
       label: "",
       type: "file",
@@ -252,72 +142,70 @@ export const forms: { [x: string]: InputProps[] } = {
         }
       ],
     },
+    {
+      label: "Index Aroma",
+      type: "number",
+      name: "scentIdx",
+      placeholder: "",
+      divideHere: true,
+      validations: [
+        {
+          type: "required",
+          message: "Index aroma wajib diisi",
+        },
+        {
+          type: "isIndex",
+          message: "Index aroma wajib bernilai 1-5",
+        }
+      ],
+    },
+    {
+      label: "Index Durabilitas",
+      type: "number",
+      name: "durIdx",
+      placeholder: "",
+      validations: [
+        {
+          type: "required",
+          message: "Index durabilitas wajib diisi",
+        },
+        {
+          type: "isIndex",
+          message: "Index durabilitas wajib bernilai 1-5",
+        }
+      ],
+    },
+    {
+      label: "Index Harga",
+      type: "number",
+      name: "priceIdx",
+      placeholder: "",
+      validations: [
+        {
+          type: "required",
+          message: "Index harga wajib diisi",
+        },
+        {
+          type: "isIndex",
+          message: "Index harga wajib bernilai 1-5",
+        }
+      ],
+    },
+    {
+      label: "Index Kualitas",
+      type: "number",
+      name: "qualityIdx",
+      placeholder: "",
+      validations: [
+        {
+          type: "required",
+          message: "Index kualitas wajib diisi",
+        },
+        {
+          type: "isIndex",
+          message: "Index kualitas wajib bernilai 1-5",
+        }
+      ],
+    },
   ],
-
-  // how to make use of other input styles
-  // {
-  //   type: "select",
-  //   name: "rol",
-  //   label: "Select an option: ",
-  //   value: "",
-  //   options: [
-  //     {
-  //       value: "admin",
-  //       desc: "Admin",
-  //     },
-  //     {
-  //       value: "user",
-  //       desc: "User",
-  //     },
-  //     {
-  //       value: "super-admin",
-  //       desc: "Super Admin",
-  //     },
-  //   ],
-  //   validations: [
-  //     {
-  //       type: "required",
-  //       message: "Rol is required",
-  //     },
-  //   ],
-  // },
-  // {
-  //   type: "radio-group",
-  //   name: "gender",
-  //   label: "Gender: ",
-  //   value: "",
-  //   options: [
-  //     {
-  //       value: "man",
-  //       desc: "Man",
-  //     },
-  //     {
-  //       value: "woman",
-  //       desc: "Woman",
-  //     },
-  //     {
-  //       value: "other",
-  //       desc: "Other",
-  //     },
-  //   ],
-  //   validations: [
-  //     {
-  //       type: "required",
-  //       message: "Gender is required",
-  //     },
-  //   ],
-  // },
-  // {
-  //   type: "checkbox",
-  //   name: "terms",
-  //   typeValue: "boolean",
-  //   label: "Terms and Conditions",
-  //   value: false,
-  //   validations: [
-  //     {
-  //       type: "isTrue",
-  //       message: "Accept the terms!",
-  //     },
-  //   ],
-  // },
 };

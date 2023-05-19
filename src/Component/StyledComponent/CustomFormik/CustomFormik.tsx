@@ -9,22 +9,29 @@ import Center from "../CustomCenter/Center";
 import { Box, Typography } from "@mui/material";
 
 import { CustomButton as Button } from "@/Component/StyledComponent/CustomButton/CustomButton";
-import { CustomImageInput } from "./CustomImageInput";
 import { Confirmations } from "../CustomModal/CustomModal";
 import CustomInputImage from "@/Component/CustomInputImage/CustomInputImage";
+import { CustomImageInput } from "./CustomImageInput";
 
 interface nyam {
   formName: string;
   onSubmit?: any;
   title?: string;
 
-  // Form values (hardcode :'D)
+  // Form values
   fName: string;
   fMerk: string;
   fScent: string;
   fSize: number;
   fPrice: number;
-  fImage: unknown;
+  fImage: File;
+  fLink: string;
+  fDesc: string;
+
+  fscentIdx: number;
+  fdurIdx: number;
+  fpriceIdx: number;
+  fqualityIdx: number;
 
   [x: string | number | symbol]: unknown;
 }
@@ -41,6 +48,11 @@ const CustomFormik = (props: nyam) => {
     image: props.fImage,
     link: props.fLink,
     desc: props.fDesc,
+
+    scentIdx: props.fscentIdx,
+    durIdx: props.fdurIdx,
+    priceIdx: props.fpriceIdx,
+    qualityIdx: props.fqualityIdx,
   };
 
   const onSubmit = (values: any) => console.log(values);
@@ -61,7 +73,6 @@ const CustomFormik = (props: nyam) => {
           validationSchema={validationSchema}
           onSubmit={props.onSubmit ? props.onSubmit : onSubmit}
           enableReinitialize={true}
-          
         >
           <Form>
             {inputs.map(
@@ -79,11 +90,11 @@ const CustomFormik = (props: nyam) => {
                           type={type}
                         /> */}
                         <CustomInputImage
-                            key={name}
-                            label={label}
-                            name={name}
-                            placeholder={inProps.placeholder}
-                            type={type}
+                          key={name}
+                          label={label}
+                          name={name}
+                          placeholder={inProps.placeholder}
+                          type={type}
                         />
                         <Spacer y="10px" />
                         <ErrorMessage
@@ -97,6 +108,19 @@ const CustomFormik = (props: nyam) => {
                   default:
                     return (
                       <>
+                        {inProps.divideHere ? (
+                          <Box textAlign="center">
+                            <Spacer y="50px" />
+                            <Typography
+                              id="modal-modal-title"
+                              // fontWeight="bold"
+                              variant="h6"
+                              component="h2"
+                            >
+                              Indexing
+                            </Typography>
+                          </Box>
+                        ) : null}
                         <CustomTextInput
                           key={name}
                           label={label}

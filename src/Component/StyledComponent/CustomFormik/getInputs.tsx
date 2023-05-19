@@ -20,6 +20,15 @@ type YupNumber = Yup.NumberSchema<
   number | undefined
 >;
 
+type YupImage = Yup.AnySchema<
+  File | undefined,
+  AnyObject,
+  File | undefined
+>;
+
+type Yupi = typeof Yup.mixed extends (...args:any[]) => infer R ? R : never;
+
+
 const generateValidations = (field: InputProps) => {
   let schema = Yup[field.typeValue ? field.typeValue : "string"]();
 
@@ -48,6 +57,33 @@ const generateValidations = (field: InputProps) => {
           (value) => value === undefined || value > 0
         );
         break;
+
+      case "isIndex":
+        schema = (schema as YupNumber).test(
+          "between 1-5",
+          rule.message,
+          (value) => value === undefined || (value > 0 && value < 6)
+        );
+        break;
+
+      // case "image":
+      //   const format = [
+      //     "image/jpg",
+      //     "image/jpeg",
+      //     "image/png",
+      //   ]
+
+      //   const imageSchema = Yup.object().shape({
+      //     file: Yup.mixed()
+      //     .test(
+      //       "fileFormat",
+      //       rule.message,
+      //       value => value && format.includes(value.type)
+      //     )
+      //   })
+
+      //   schema = imageSchema;
+      //   break;
 
       default:
         schema = schema.required(rule.message);

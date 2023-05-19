@@ -10,11 +10,11 @@ import CustomFormik from '../CustomFormik/CustomFormik';
 
 import style from "./CustomModal.module.scss";
 
-import { add, update, delData } from '../DataFunction/DataFunction';
+import { add, update, delData, appendData } from '../DataFunction/DataFunction';
 
 export function CustomModal(props: any) {
     const [open, setOpen] = React.useState(false);
-    
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const theme = useTheme();
@@ -69,24 +69,15 @@ export function CustomModal(props: any) {
                                 formName={props.formName}
                                 title={props.title ? props.title : "Title"}
                                 deletable={props.deletable}
-                                onSubmit={(value: any) => {
-                                    handleClose();
-                                    setTheValue(value);
-                                    {
-                                        props.editornew === "new"
-                                            ? add(theValue)
-                                            : update(theValue)
-                                onSubmit={(value : any) => {
-                                    const formdata = new FormData();
-                                    formdata.append("nama", value.name);
-                                    formdata.append("nama", value.name);
+                                onSubmit={(values : any) => {
                                     {props.editornew === "new" 
-                                        ? add(value)
-                                        : update(value)
+                                        ? add(appendData(values))
+                                        : update(appendData(values), props.fId)
                                     }
-                                    // console.log(value);
+                                    // console.log(formdata);
                                     handleClose();
                                 }}
+                                
                                 fName={props.fName ? props.fName : ""}
                                 fMerk={props.fMerk ? props.fMerk : ""}
                                 fScent={props.fScent ? props.fScent : ""}
@@ -95,6 +86,11 @@ export function CustomModal(props: any) {
                                 fImage={props.fImage ? props.fImage : ""}
                                 fLink={props.fLink ? props.fLink : ""}
                                 fDesc={props.fDesc ? props.fDesc : ""}
+
+                                fscentIdx={props.fscentIdx ? props.fscentIdx : ""}
+                                fdurIdx={props.fdurIdx ? props.fdurIdx : ""}
+                                fpriceIdx={props.fpriceIdx ? props.fpriceIdx : ""}
+                                fqualityIdx={props.fqualityIdx ? props.fqualityIdx : ""}
                             /> ) : null}
                         <Flex>
                             {props.confirmbutton ?
@@ -137,6 +133,7 @@ export function Confirmations(props: any) {
             onConfirm={props.onConfirm}
             open={props.open && props.open}
             confirmbutton={true}
+            xbutton={props.xbutton ? props.xbutton : false}
             toDelete={props.toDelete}
             rowID={props.rowID}
         >

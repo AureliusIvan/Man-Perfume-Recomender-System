@@ -13,7 +13,6 @@ import { Confirmations, CustomModal } from "../CustomModal/CustomModal";
 
 import { get } from "@/Component/FunctionComponent/axiosClient/axiosClient";
 import { Box } from "@material-ui/core";
-import { getCookie } from "react-use-cookie";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -38,41 +37,18 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function CustomTable() {
   const [perfume, setPerfume] = React.useState<any>([]);
 
-  async function fetchh() {
-    const TOKEN = getCookie("TOKEN");
-    console.log(TOKEN);
-    await get("v1/admin/parfums/view")
-      .then((res: any) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   async function fetchPerfume() {
-    // const TOKEN = getCookie('TOKEN');
     await get("v1/admin/parfums/view")
       .then((res: any) => {
-        console.log(res);
+        // console.log(res);
         if (res.status === 200) {
-          // console.log(res.data.data)
           setPerfume(res.data.data);
-          // setLoading(false);
-          // setCookie("TOKEN", res.data.data.token);
-          // navigate("/admin");
         } else {
-          // setLoading(false);
-          // setMessage(res);
-          // showerror();
           console.log("error! res: " + res);
         }
       })
       .catch((err) => {
         console.log(err);
-        // setMessage(err);
-        // showerror();
-        // setLoading(false);
       });
   }
 
@@ -82,7 +58,6 @@ export default function CustomTable() {
 
   return (
     <>
-      <button onClick={fetchh}>display</button>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
@@ -109,11 +84,11 @@ export default function CustomTable() {
                     <StyledTableCell component="th" scope="row">
                       {row.nama}
                     </StyledTableCell>
-                    <StyledTableCell align="left">{}</StyledTableCell>
+                    <StyledTableCell align="left">{row.brand}</StyledTableCell>
                     <StyledTableCell align="left">
                       {row.tipe_aroma}
                     </StyledTableCell>
-                    <StyledTableCell align="left">{}</StyledTableCell>
+                    <StyledTableCell align="left">{row.ukuran}</StyledTableCell>
                     <StyledTableCell align="left">
                       {row.tipe_parfum}
                     </StyledTableCell>
@@ -122,10 +97,13 @@ export default function CustomTable() {
                         xbutton
                         children
                         useFormik
-                        formName="editPerfume"
+                        // formName="editPerfume"
+                        formName="perfume"
                         title="Edit"
                         editornew="edit"
                         deletable
+                        //
+                        fId={row.id}
                         fName={row.nama}
                         fMerk={row.brand}
                         fScent={row.tipe_aroma}
@@ -134,14 +112,19 @@ export default function CustomTable() {
                         fImage={row.foto}
                         fLink={row.link_pembelian}
                         fDesc={row.deskripsi}
+                        //
+                        fscentIdx={row.scentIdx}
+                        fdurIdx={row.durIdx}
+                        fpriceIdx={row.priceIdx}
+                        fqualityIdx={row.qualityIdx}
                       />
                     </StyledTableCell>
                     <StyledTableCell align="center">
                       <Confirmations
                         title="Delete"
                         toDelete
+                        xbutton
                         rowID={row.id}
-                        // onConfirm={""}
                       ></Confirmations>
                     </StyledTableCell>
                   </StyledTableRow>
