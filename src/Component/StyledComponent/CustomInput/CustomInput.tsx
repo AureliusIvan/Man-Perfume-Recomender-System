@@ -6,6 +6,7 @@ import { useTheme } from '@mui/material/styles';
 // import { WithTheme } from '@material-ui/core';
 import withTheme from '@material-ui/core/styles/withTheme';
 
+
 const CInput = styled(withTheme(TextField))(() => (
   {
     'label.MuiInputLabel-root': {
@@ -30,8 +31,8 @@ const CInput = styled(withTheme(TextField))(() => (
 
 interface CustomInputProps {
   label?: string,
-  color?: string,
-  style?: React.CSSProperties,
+  color?: any,
+  style?: any,
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void,
   value?: string,
   type?: string,
@@ -39,16 +40,31 @@ interface CustomInputProps {
   placeholder?: string,
   disabled?: boolean,
   required?: boolean,
+  error?: boolean,
+  helperText?: string,
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void,
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void,
+  innerRef?: any,
+  ref?: any,
+  defaultValue?: string,
 }
 
 
-export function CustomInput(props: any) {
+export function CustomInput(props: CustomInputProps) {
   const theme = useTheme();
   return (
     <CInput
+      innerRef={props.innerRef}
+      ref={props.ref}
+      onKeyDown={props.onKeyDown}
+      type={props.type ? props.type : "text"}
       id="standard-basic"
       label={props.label ? props.label : "Enter Input"}
+      helperText={props.helperText}
       color="primary"
+      onBlur={props.onBlur}
+      value={props.value}
+      defaultValue={props.defaultValue}
       inputProps={{
         color: 'red',
         style: {
@@ -58,9 +74,9 @@ export function CustomInput(props: any) {
           borderRadius: '20px',
           paddingInline: '10px',
           outline: 'none',
-          '&:after ': {
-            borderBottom: '2px solid red',
-          },
+          // '&:after ': {
+          //   borderBottom: '2px solid red',
+          // },
         }
       }}
       {...props}

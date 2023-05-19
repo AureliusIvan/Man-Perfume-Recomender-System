@@ -6,6 +6,8 @@ import { Title } from "@/Component/StyledComponent/Typography/CustomTypography";
 import Center from "@/Component/StyledComponent/CustomCenter/Center";
 import Spacer from "../User/Spacer/spacer";
 import { CustomModal } from "@/Component/StyledComponent/CustomModal/CustomModal";
+import AddMenu from "@/Component/StyledComponent/CustomFormik/NewFormik/AddMenu";
+
 
 const Table = lazy(() => import("../../Component/StyledComponent/CustomTable/CustomTable"))
 
@@ -20,14 +22,7 @@ function AdminPage() {
                 <Spacer y={"20px"} />
             </Center>
             <Suspense fallback={<LoadingScreen />}>
-                <CustomModal
-                    xbutton
-                    children
-                    useFormik
-                    formName="perfume"
-                    title="Add new perfume"
-                    editornew="new"
-                />
+                <AddMenu />
                 <Spacer y={"20px"} />
                 <Center>
                     <Table />

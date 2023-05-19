@@ -1,10 +1,6 @@
 import React from "react";
 import style from "./CustomButton.module.scss";
-// import Button from "@mui/material/Button";
-// import { useTheme } from "@material-ui/core";
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
-// import { useState } from "react";
-// import CustomSpinner from "../CustomSpinner/CustomSpinner";
 
 interface CustomButtonProps {
   variant?: "outlined" | "contained" | "text";
@@ -63,7 +59,6 @@ export function CustomButtonPlain(props: any) {
       className={style.buttonplain}
       {...props}
       style={{
-
         border: props.border ? props.border : "none",
         pointerEvents: props.pointerEvents ? props.pointerEvents : "all",
         margin: props.margin ? props.margin : "0px",

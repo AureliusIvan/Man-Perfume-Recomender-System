@@ -4,18 +4,18 @@ import { FileUploader } from 'react-drag-drop-files'
 import { useField } from 'formik';
 
 interface CustomInputImage {
-    name: string;
-    type: string;
+    name?: string;
+    type?: string;
     placeholder?: string;
-    handleChange?: void,
-    value?: any
-    
+    handleChange?: any,
+    value?: any,
+
     [x: string]: any;
 }
 
 function CustomInputImage(props: CustomInputImage) {
 
-    const [field, meta, input] = useField(props);
+    const [field, meta, input] = useField(props as any);
     const [src, setSrc] = useState(meta.initialValue);
 
     return (
@@ -32,10 +32,13 @@ function CustomInputImage(props: CustomInputImage) {
                 // {...field}
                 // {...props}
                 handleChange={(file: any) => {
-                    input.setValue("image", file)
-                    console.log(file)
+                    input.setValue("image", file);
+                    // console.log(file)
                     setSrc(URL.createObjectURL(file));
-                    console.log("url : " + src);
+                    // console.log("url : " + src);
+                    if (props.handleChange) {
+                        props.handleChange(file);
+                    }
                 }}
             >
                 <div>

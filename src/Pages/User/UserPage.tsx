@@ -33,8 +33,6 @@ export default function UserPage() {
             </Helmet>
             <Spacer y={"100px"} />
             <WelcomePage />
-            <Spacer y={"200px"} />
-
             <Center>
                 <Suspense fallback={<LoadingScreen />}>
                     <DescPage />
