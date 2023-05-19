@@ -138,7 +138,7 @@ function ResultCardDetail(props: any) {
             {data ?
                 <div className={style.detail}>
                     {/* <h1>Result Detail</h1> */}
-                    <img className={style.images} src={data.foto} />
+                    <img className={style.images} src={data.foto} alt={`Images from ${data.nama}`} />
                     <div className={style.name}>{(data.nama)}</div>
                     <div><span>Brand : </span>{data.brand}</div>
                     <div><span>Tipe Aroma : </span>{data.tipe_aroma}</div>

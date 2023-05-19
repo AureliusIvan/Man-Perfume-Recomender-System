@@ -106,9 +106,7 @@ const TheForm: React.FunctionComponent = () => {
               name="username"
               label="Username"
               type="text"
-              helperText={
-                errors.username && touched.username ? errors.username : ""
-              }
+              helperText={errors.username && touched.username ? errors.username : ""}
               error={errors.username && touched.username ? true : false}
               onChange={handleChange}
               onBlur={handleBlur}

@@ -34,7 +34,6 @@ export function CustomModal(props: any) {
             <Modal
                 open={props.open ? props.open : open}
                 onClose={props.onClose ? props.onClose : handleClose}
-                // onClose={props.onClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
@@ -70,15 +69,16 @@ export function CustomModal(props: any) {
                                 formName={props.formName}
                                 title={props.title ? props.title : "Title"}
                                 deletable={props.deletable}
-                                onSubmit={(values : any) => {
-                                    {props.editornew === "new" 
-                                        ? add(appendData(values), values.foto)
-                                        : update(appendData(values), props.fId)
+                                onSubmit={(values: any) => {
+                                    {
+                                        props.editornew === "new"
+                                            ? add(appendData(values), values.foto)
+                                            : update(appendData(values), props.fId)
                                     }
                                     // console.log(formdata);
                                     handleClose();
                                 }}
-                                
+
                                 fName={props.fName ? props.fName : ""}
                                 fMerk={props.fMerk ? props.fMerk : ""}
                                 fScent={props.fScent ? props.fScent : ""}
@@ -92,17 +92,19 @@ export function CustomModal(props: any) {
                                 fdurIdx={props.fdurIdx ? props.fdurIdx : ""}
                                 fpriceIdx={props.fpriceIdx ? props.fpriceIdx : ""}
                                 fqualityIdx={props.fqualityIdx ? props.fqualityIdx : ""}
-                            /> ) : null}
+                            />) : null}
                         <Flex>
                             {props.confirmbutton ?
                                 <><Button
                                     onclick={props.onConfirm
                                         ? props.onConfirm
                                         : () => {
-                                            {props.toDelete 
-                                                ? delData(props.rowID)
-                                                // ? console.log("delete me")
-                                                : null}
+                                            {
+                                                props.toDelete
+                                                    ? delData(props.rowID)
+                                                    // ? console.log("delete me")
+                                                    : null
+                                            }
                                             handleClose();
                                         }
                                     }

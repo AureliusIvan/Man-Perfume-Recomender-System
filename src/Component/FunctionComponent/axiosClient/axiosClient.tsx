@@ -11,7 +11,7 @@ const TOKEN: string = getCookie("TOKEN");
 const axiosClient = axios.create({
     baseURL: API,
     headers: {
-        "Content-type": "application/json" || "multipart/form-data",
+        "Content-type": "multipart/form-data",
         "Accept": "application/json",
         Authorization: TOKEN && `Bearer ${TOKEN}`,
     },
