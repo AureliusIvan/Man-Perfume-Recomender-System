@@ -3,7 +3,6 @@ import { getCookie } from "react-use-cookie";
 
 // Ini adalah base url dari server, kalo mau pake localhost tinggal ganti localhost:3000 nya aja
 const API = "https://api-server-v1-penelitian.pemilihanparfumkekinian.com";
-// const API = "https://penelitian-api.aureliusivan.my.id";
 
 // var TOKEN = localStorage.getItem("TOKEN");
 const TOKEN: string = getCookie("TOKEN");
