@@ -30,6 +30,7 @@ import Typography from '@mui/material/Typography';
 // import { Modal } from "@material-ui/core";
 import LoadingScreen from "@/Component/StyledComponent/Fallback/LoadingScreen";
 // import CustomAlert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
+import CheckIcon from '@mui/icons-material/Check';
 
 const CustomGrid = styled(Grid)({
     width: "100%",
@@ -132,18 +133,8 @@ export default function Kuisioner() {
                         try {
                             postGuest("v1/calculate", formData)
                                 .then((res: any) => {
-                                    console.log(res);
+                                    // console.log(res);
                                     if (res.status === 200) {
-                                        // console.log("OK")
-                                        // console.log(res.data.data.status);
-                                        // ini response nya perlu di benerin di backend nya
-                                        // if (res.data.data.status) {
-                                        //     // console.log("This is error")
-                                        //     setError(true);
-                                        //     handleClose();
-                                        //     console.log(open);
-                                        //     return;
-                                        // }
                                         dispatch(setDataEntry(res.data));
                                         navigateToResult();
                                     } else {
@@ -277,18 +268,19 @@ export default function Kuisioner() {
                                             </BoxSection>
                                         )
                                     })}
-                                    {/* <Modal
-                                        open={open}
-                                        onClose={handleClose}
-                                    >
-                                        <Button>
-                                            Open
-                                        </Button>
-                                    </Modal> */}
                                     <Button
                                         onclick={handleOpen}
                                     >
-                                        Submit
+                                        <span
+                                            style={{
+                                                color: "white",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                width: "100%",
+                                            }}>
+                                            Submit <CheckIcon style={{ marginLeft: "10px" }} />
+                                        </span>
                                     </Button>
                                     <CustomModal
                                         title={"Submit"}

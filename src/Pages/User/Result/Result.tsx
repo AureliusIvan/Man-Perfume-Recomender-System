@@ -12,6 +12,7 @@ import { selectDataEntry } from "@/Redux/feature/dataSlice";
 import Spacer from "../Spacer/spacer";
 import { CustomButton } from "@/Component/StyledComponent/CustomButton/CustomButton";
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import { useNavigate } from "react-router";
 
 const Grid = styled(G)(() => ({
     // padding: '100px',
@@ -40,6 +41,7 @@ export default function Result() {
     useEffect(() => {
         console.log(dataEntry);
     }, [])
+    const navigate = useNavigate();
 
     return (
         <>
@@ -49,10 +51,12 @@ export default function Result() {
                 <Title>
                     Hasil Pencarian Parfum
                 </Title>
+                <br />
                 <CustomButton
+                    bgcolor={'rgb(0,0,0,0)'}
                     onclick={
                         () => {
-                            window.location.reload()
+                            navigate('/start')
                         }
                     }
                 >
@@ -68,7 +72,7 @@ export default function Result() {
                 </CustomButton>
             </Center>
             <Grid container>
-                {dataEntry && dataEntry.map((item: any, index: number) => {
+                {Array.isArray(dataEntry) ? dataEntry.map((item: any, index: number) => {
                     return (
                         <GridItem item xs={12} key={index}>
                             <ResultCard
@@ -79,7 +83,21 @@ export default function Result() {
                                 key={index} />
                         </GridItem>
                     )
-                })}
+                })
+                    : <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '100%',
+                            height: '100%',
+                            minHeight: '50vh',
+                            fontSize: '20px',
+                            fontWeight: 'bold',
+                            color: 'rgb(255, 255, 255, 0.5)',
+                        }}
+                    >Hasil tidak konsisten, coba lagi!</div>
+                }
             </Grid>
         </>
     )

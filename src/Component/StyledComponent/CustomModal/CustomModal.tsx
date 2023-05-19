@@ -10,7 +10,7 @@ import CustomFormik from '../CustomFormik/CustomFormik';
 
 import style from "./CustomModal.module.scss";
 
-import { get } from '@/Component/FunctionComponent/axiosClient/axiosClient';
+// import { get } from '@/Component/FunctionComponent/axiosClient/axiosClient';
 import { add, update, delData } from '../DataFunction/DataFunction';
 
 export function CustomModal(props: any) {
@@ -43,6 +43,7 @@ export function CustomModal(props: any) {
                     <Box
                         maxWidth="440px"
                         maxHeight="80vh"
+                        overflowY={props.overflowY ? props.overflowY : "auto"}
                         className={style.modal}
                     >
                         {props.xbutton ? <button
@@ -75,8 +76,8 @@ export function CustomModal(props: any) {
                                     setTheValue(value);
                                     {
                                         props.editornew === "new"
-                                        ? add(theValue)
-                                        : update(theValue)
+                                            ? add(theValue)
+                                            : update(theValue)
                                     }
                                     // console.log(value);
                                 }}
@@ -97,9 +98,9 @@ export function CustomModal(props: any) {
                                             handleClose();
                                             {
                                                 props.toDelete
-                                                ? delData(props.rowID)
-                                                // ? console.log("delete me")
-                                                : null
+                                                    ? delData(props.rowID)
+                                                    // ? console.log("delete me")
+                                                    : null
                                             }
                                         }
                                     }
