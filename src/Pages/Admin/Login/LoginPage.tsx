@@ -126,11 +126,18 @@ const TheForm: React.FunctionComponent = () => {
               onBlur={handleBlur}
             />
             <Spacer y="20px" />
-            <Button type="submit"
-              disabled={loading || isSubmitting || !props.isValid || !props.dirty}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
             >
-              {loading ? <CircularProgress /> : "Login"}
-            </Button>
+              <Button type="submit"
+                disabled={loading || isSubmitting || !props.isValid || !props.dirty}
+              >
+                {loading ? <CircularProgress /> : "Login"}
+              </Button>
+            </div>
           </Form>
         );
       }}

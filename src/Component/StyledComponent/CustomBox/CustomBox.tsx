@@ -30,6 +30,7 @@ interface CustomBoxProps {
     marginLeft?: string;
     marginRight?: string;
     reverse?: string;
+    overflowY?: string;
 }
 
 export function CustomBox(props: CustomBoxProps) {
@@ -48,6 +49,7 @@ export function CustomBox(props: CustomBoxProps) {
                 maxWidth: props.maxWidth ? props.maxWidth : "100%",
                 maxHeight: props.maxHeight ? props.maxHeight : "100%",
                 overflow: props.overflow ? props.overflow : "hidden",
+                overflowY: props.overflowY ? props.overflowY : "hidden",
                 marginLeft: props.marginLeft ? props.marginLeft : "",
                 marginRight: props.marginRight ? props.marginRight : "",
             }}

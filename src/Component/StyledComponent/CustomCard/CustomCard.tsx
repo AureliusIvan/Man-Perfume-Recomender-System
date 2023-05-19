@@ -100,7 +100,7 @@ export function CustomCard(props: CustomCardProps) {
                     gutterBottom
                     variant="h5"
                     component="div"
-                    // textAlign={props.textAlign ? props.textAlign : "left"}
+                // textAlign={props.textAlign ? props.textAlign : "left"}
                 >
                     {props.title ? props.title : "Perfume"}
                 </Typography>
@@ -110,7 +110,7 @@ export function CustomCard(props: CustomCardProps) {
                     }}
                     variant="body2"
                     color="text.secondary"
-                    // textAlign={pndrops.textAlign ? props.textAlign : "left"}
+                // textAlign={pndrops.textAlign ? props.textAlign : "left"}
                 >
                     {props.description ? props.description : "Perfumes can be defined as substances that emit and diffuse a pleasant and fragrant odor. They consist of manmade mixtures of aromatic chemicals and essential oils."}
                 </Typography>
@@ -194,6 +194,7 @@ export function ResultCard(props: any) {
                     open={open}
                     xbutton={true}
                     onClose={props.onClose ? props.onClose : handleClose}
+                    overflowY={"scroll"}
                     button={<>
                         <CustomButton
                             onclick={() => handleOpen()}

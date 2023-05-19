@@ -6,7 +6,7 @@ import Spacer from "../Spacer/spacer"
 
 
 DescPage.defaultProps = {
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+    text: "&rdquo; Lorem ipsum dolor sit amet consectetur adipisicing elit."
 }
 
 type DescPageProps = {
