@@ -1,37 +1,28 @@
 // [ This is user Page ]
 // this is import
-
-// import CustomAlert from "../../Component/StyledComponent/CustomAlert/CustomAlert"
+import React, { useEffect, lazy, Suspense } from "react"
 import Center from "../../Component/StyledComponent/CustomCenter/Center"
-import { CustomBox as Box, BoxSection } from "../../Component/StyledComponent/CustomBox/CustomBox"
-import { Paragraf, Text, Title } from "../../Component/StyledComponent/Typography/CustomTypography"
-import CustomSlider from "../../Component/StyledComponent/CustomSlider/CustomSlider"
-import { CustomButton as Button } from "../../Component/StyledComponent/CustomButton/CustomButton"
 import style from "./UserPage.module.scss"
-import { useDispatch, useSelector } from "react-redux"
-import { selectData, selectToken, selectIsLogin } from "../../Redux/feature/dataSlice"
-import { Custommotion, Custommotion as M } from "../../Component/StyledComponent/CustomAnimation/Custommotion"
 import { Helmet } from "react-helmet-async"
-import { PROJDESC, PROJTITLE, PROJDOMAIN, MainTitle } from "./../../data"
-import Tutorial from "./Tutorial/Tutorial"
-import Recommendation from "./Recommendation/Recommendation"
+import { PROJDESC, PROJTITLE, PROJDOMAIN } from "./../../data"
+// import Tutorial from "./Tutorial/Tutorial"
+// import Recommendation from "./Recommendation/Recommendation"
 import WelcomePage from "./Welcome/Welcome"
-import DescPage from "./Desc/DescPage"
+// import DescPage from "./Desc/DescPage"
 import Spacer from "./Spacer/spacer"
-import Footer from "@/Component/StyledComponent/Footer/Footer"
-import CustomInputImage from "@/Component/CustomInputImage/CustomInputImage"
-import { useEffect, useState } from "react"
-import { CustomImage } from "@/Component/StyledComponent/CustomImage/CustomImage"
+// import Footer from "@/Component/StyledComponent/Footer/Footer"
+import LoadingScreen from "@/Component/StyledComponent/Fallback/LoadingScreen"
+
+const DescPage = lazy(() => import("./Desc/DescPage"));
+const Footer = lazy(() => import("@/Component/StyledComponent/Footer/Footer"));
+const Tutorial = lazy(() => import("./Tutorial/Tutorial"));
+const Recommendation = lazy(() => import("./Recommendation/Recommendation"));
+
 // main function
 export default function UserPage() {
-    let i = 5;
-    const islogin = useSelector(selectIsLogin);
-    // const [item, setItem] = useState<any>();
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
-
     return (
         <div id="User-Page" className={style.UserPage}>
             {/* Helmet for SEO */}
@@ -43,16 +34,23 @@ export default function UserPage() {
             <Spacer y={"100px"} />
             <WelcomePage />
             <Spacer y={"200px"} />
+
             <Center>
-                <DescPage />
+                <Suspense fallback={<LoadingScreen />}>
+                    <DescPage />
+                </Suspense>
                 <Spacer y={"100px"} />
                 <Spacer y={"100px"} />
                 <Tutorial />
                 <Spacer y={"100px"} />
             </Center>
             <Spacer y={"100px"} />
-            <Recommendation />
-            <Footer />
+            <Suspense fallback={<LoadingScreen />}>
+                <Recommendation />
+            </Suspense>
+            <Suspense fallback={<LoadingScreen />}>
+                <Footer />
+            </Suspense>
         </div >
     )
 }

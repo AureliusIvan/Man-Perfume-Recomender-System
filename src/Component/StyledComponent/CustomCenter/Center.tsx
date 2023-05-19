@@ -1,3 +1,4 @@
+import React from "react";
 import style from "./Center.module.scss";
 
 // Center Child Component

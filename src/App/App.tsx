@@ -1,6 +1,6 @@
 // APP
 import './App.scss'
-import { useState, useContext, useEffect, createContext, useMemo, lazy, Suspense } from 'react';
+import React, { useState, useContext, useEffect, createContext, useMemo } from 'react';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import { CustomButton as Button } from '../Component/StyledComponent/CustomButton/CustomButton';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,14 +9,18 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 
 import PageLayout from '@/Component/RoutingComponent/PageLayout';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectToken, setLogin } from '@/Redux/feature/dataSlice';
-import { post } from '@/Component/FunctionComponent/axiosClient/axiosClient';
+import { useDispatch } from 'react-redux';
+import { setLogin } from '@/Redux/feature/dataSlice';
+// import { post } from '@/Component/FunctionComponent/axiosClient/axiosClient';
 import { getCookie } from 'react-use-cookie';
 import { useNavigate } from 'react-router-dom';
 
 // context for the theme
-const ColorModeContext = createContext({ toggleColorMode: () => { } });
+const ColorModeContext = createContext({
+  toggleColorMode: () => {
+    console.log("toggleColorMode")
+  }
+});
 
 // just toogle for the theme
 export function Toogle() {
@@ -26,7 +30,7 @@ export function Toogle() {
     <Button
       variant="outlined"
       margin={"20px"}
-      onClick={colorMode.toggleColorMode}>
+      onclick={colorMode.toggleColorMode}>
       {/* {theme.palette.mode === 'dark' ? "Dark" : "Light"} */}
       {/* <Icon component={'image'} /> */}
       {/* <svg src={DarkModeIcon} alt="" /> */}

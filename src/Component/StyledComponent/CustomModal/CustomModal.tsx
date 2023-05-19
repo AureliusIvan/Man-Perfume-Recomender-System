@@ -25,7 +25,7 @@ export function CustomModal(props: any) {
                 props.button ? props.button :
                     <Button
                         disabled={props.disabled}
-                        onClick={handleOpen}>{
+                        onclick={handleOpen}>{
                             props.title
                         }</Button>
 
@@ -41,6 +41,7 @@ export function CustomModal(props: any) {
                     <Box
                         maxWidth="440px"
                         maxHeight="80vh"
+                        overflowY={props.overflowY ? props.overflowY : "auto"}
                         className={style.modal}
                     >
                         {props.xbutton ? <button
@@ -68,6 +69,13 @@ export function CustomModal(props: any) {
                                 formName={props.formName}
                                 title={props.title ? props.title : "Title"}
                                 deletable={props.deletable}
+                                onSubmit={(value: any) => {
+                                    handleClose();
+                                    setTheValue(value);
+                                    {
+                                        props.editornew === "new"
+                                            ? add(theValue)
+                                            : update(theValue)
                                 onSubmit={(value : any) => {
                                     const formdata = new FormData();
                                     formdata.append("nama", value.name);
@@ -91,8 +99,8 @@ export function CustomModal(props: any) {
                         <Flex>
                             {props.confirmbutton ?
                                 <><Button
-                                    onClick={ props.onConfirm 
-                                        ? props.onConfirm 
+                                    onclick={props.onConfirm
+                                        ? props.onConfirm
                                         : () => {
                                             {props.toDelete 
                                                 ? delData(props.rowID)
@@ -101,13 +109,13 @@ export function CustomModal(props: any) {
                                             handleClose();
                                         }
                                     }
-                                    
+
                                 >
                                     Yes
                                 </Button>
                                     <Button
                                         bgcolor={props.bgcolor ? props.bgcolor : "rgb(255, 255, 255, 0)"}
-                                        onClick={props.onCancel ? props.onCancel : handleClose}
+                                        onclick={props.onCancel ? props.onCancel : handleClose}
                                     >
                                         No
                                     </Button></> : null}

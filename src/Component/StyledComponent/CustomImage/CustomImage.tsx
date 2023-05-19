@@ -1,9 +1,29 @@
+import React from "react";
 import style from "./CustomImage.module.scss";
 // import { useTheme } from "@mui/material/styles";
-import IMG from "../../../Assets/image/logo.png"
+import IMG from "@/Assets/Image/logo.png"
 import { useNavigate } from "react-router-dom";
 
-export function CustomImage(props: any) {
+
+
+interface CustomImageProps {
+    src?: string,
+    width?: string,
+    height?: string,
+    size?: string,
+    style?: React.CSSProperties,
+    onClick?: () => void,
+}
+
+interface LogoImageProps {
+    width?: string,
+    height?: string,
+    size?: string,
+    style?: React.CSSProperties,
+    onClick?: () => void,
+}
+
+export function CustomImage(props: CustomImageProps) {
     return (
         <img src={props.src} className={style.img}
             {...props}
@@ -11,13 +31,13 @@ export function CustomImage(props: any) {
     )
 }
 
-export function LogoImage(props: any) {
+export function LogoImage(props: LogoImageProps) {
     const navigate = useNavigate()
     function onClick() {
         navigate('/');
     }
     return (
-        <div
+        <img src={IMG} alt="logo"
             onClick={props.onClick ? props.onClick : onClick}
             className={style.logo} style={{
                 ...props.style,

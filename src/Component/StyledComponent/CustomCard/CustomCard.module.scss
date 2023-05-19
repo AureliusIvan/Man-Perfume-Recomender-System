@@ -33,4 +33,25 @@
     span {
         color: rgba(255, 255, 255, 0.7);
     }
+
+    .linkondetail {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        // background-color: rgb(255, 255, 255);
+        padding: 2px;
+        padding-inline: 5px;
+        margin-top: 10px;
+        // width: 100cap;
+        border-radius: 20px;
+        // margin: 10px;
+    }
+
+    .deskripsi {
+        background-color: rgb(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 10px;
+        padding-inline: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }

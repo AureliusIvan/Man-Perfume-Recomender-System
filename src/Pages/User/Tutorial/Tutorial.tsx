@@ -1,14 +1,15 @@
-import { CustomButton as Button } from "../../../Component/StyledComponent/CustomButton/CustomButton"
-import { CustomBox as Box } from "../../../Component/StyledComponent/CustomBox/CustomBox"
-import { Paragraf, Title } from "../../../Component/StyledComponent/Typography/CustomTypography"
+import React from "react"
+// import { CustomButton as Button } from "../../../Component/StyledComponent/CustomButton/CustomButton"
+// import { CustomBox as Box } from "../../../Component/StyledComponent/CustomBox/CustomBox"
+import { Paragraf } from "../../../Component/StyledComponent/Typography/CustomTypography"
 // import { Grid as G } from "@material-ui/core"
 import { Grid } from "@mui/material"
-import { styled, useTheme } from "@material-ui/styles"
+import { styled } from "@material-ui/styles"
 // import styled from "@emotion/styled/types/base"
-import { Text } from "../../../Component/StyledComponent/Typography/CustomTypography"
+// import { Text } from "../../../Component/StyledComponent/Typography/CustomTypography"
 import { TutorialData } from "./TutorialData"
 import style from "./Tutorial.module.scss"
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import useMediaQuery from "@mui/material/useMediaQuery"
 // import { useTheme } from "@mui/material"
@@ -18,7 +19,7 @@ import useMediaQuery from "@mui/material/useMediaQuery"
 //     // width: '90%',
 // }));
 
-const GridItem = styled(Grid)(({ theme }) => ({
+const GridItem = styled(Grid)(() => ({
     // padding: '20px',
     // width: '90%',
 }));
@@ -37,7 +38,7 @@ interface defaulprops {
 
 function Card(props: defaulprops) {
     const Mobile = useMediaQuery('(max-width:600px)');
-    const theme = useTheme();
+    // const theme = useTheme();
     return (<>
         <Grid container
             className={style.card}
@@ -93,10 +94,10 @@ function Card(props: defaulprops) {
 
 
 export default function Tutorial() {
-    let i = 4;
+    // let i = 4;
     return (<>
         <Paragraf title="Cara Penggunaan">
-            Lorem Ipsum, sometimes referred to as 'lipsum', is the placeholder text used in design when creating content.
+            Lorem Ipsum, sometimes referred to as &apos;lipsum&apos;, is the placeholder text used in design when creating content.
         </Paragraf>
         <Grid container sx={{
             width: '90%',

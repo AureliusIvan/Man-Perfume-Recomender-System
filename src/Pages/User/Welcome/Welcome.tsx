@@ -1,4 +1,4 @@
-import { CustomBox as Box } from "../../../Component/StyledComponent/CustomBox/CustomBox"
+import React from "react"
 import { CustomButton as Button } from "../../../Component/StyledComponent/CustomButton/CustomButton"
 import { Grid } from "@material-ui/core"
 import welcomeimg from "../../../Assets/Image/welcome.webp"
@@ -6,14 +6,13 @@ import { Title } from "../../../Component/StyledComponent/Typography/CustomTypog
 import Center from "../../../Component/StyledComponent/CustomCenter/Center"
 import { CustomImage as Img } from "../../../Component/StyledComponent/CustomImage/CustomImage"
 import { useNavigate } from "react-router-dom"
-import Spacer from "../Spacer/spacer"
 import { Custommotion as M } from "@/Component/StyledComponent/CustomAnimation/Custommotion"
+// import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 export default function WelcomePage() {
     const navigate = useNavigate()
-    const navigateToKuisioner = () => {
-        navigate('/start')
-    }
+    const handler = () => navigate('/start');
     return (
         <M>
             <Grid container>
@@ -24,8 +23,14 @@ export default function WelcomePage() {
                         }}>
                             Selamat Datang!
                         </Title>
-                        <Button onClick={navigateToKuisioner}>
-                            Mulai Menentukan Parfum
+                        <Button onclick={handler}>
+                            <span style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                            }}>
+                                Mulai Menentukan Parfum<KeyboardArrowRightIcon />
+                            </span>
                         </Button>
                     </Center>
                 </Grid>
