@@ -1,0 +1,108 @@
+.fileinput {
+
+    $circleSize: 165px;
+    $radius: 100px;
+    $shadow: 0 0 10px 0 rgba(255, 255, 255, .35);
+    $fontColor: rgb(250, 250, 250);
+    position: relative;
+    height: $circleSize;
+    width: $circleSize;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: transparent;
+    box-shadow: $shadow;
+    transition: 1s;
+
+    input[type="file"] {
+        // display: none;
+        // position: absolute;
+        width: 200px;
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        display: none;
+        transition: 1s;
+
+
+        &:nth-child(1) {
+            opacity: 0;
+        }
+
+        #file-input-button {
+            opacity: 0;
+        }
+
+    }
+
+    label {
+        width: $circleSize;
+        height: $circleSize;
+        position: relative;
+        cursor: pointer;
+        // border: 2px solid red;
+        background-color: transparent;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s ease-in-out;
+
+        &::after {
+            transition: all 0.5s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            content: "Change Image";
+            position: absolute;
+            top: 0%;
+            // bottom: 50%;
+            left: 0%;
+            // right: 10%;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            color: rgb(250, 250, 250);
+            text-align: center;
+
+        }
+
+        &:hover {
+            transition: 0.5s;
+            // border: 2px solid rgb(255, 255, 255);
+            transition: all 0.5s ease-in-out;
+
+            &::after {
+                transition: all 0.5s ease-in-out;
+                pointer-events: none;
+                content: "Change Image";
+                position: absolute;
+                top: 0%;
+                // bottom: 50%;
+                left: 0%;
+                // right: 10%;
+                margin: auto;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                z-index: 1;
+                color: rgb(250, 250, 250);
+                text-align: center;
+
+            }
+        }
+    }
+
+    img {
+        width: $circleSize;
+        height: $circleSize;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+}

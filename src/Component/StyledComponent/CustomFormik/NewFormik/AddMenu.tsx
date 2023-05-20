@@ -20,14 +20,16 @@ import CustomInputImage from "@/Component/CustomInputImage/CustomInputImage";
 import { FileUploader } from "react-drag-drop-files";
 import style from "../../../CustomInputImage/CustomInputImage.module.scss";
 import compressImage from "@/Component/FunctionComponent/ImageCompressor/ImageCompressor";
+import "./Menu.scss";
 
 export default function AddMenu() {
     return (<>
         <Modal
             title={"Add +"}
+            xbutton={true}
         >
             <CustomBox>
-                <h1>Tambahkan Parfum</h1>
+                <h1>Tambah Data Parfum</h1>
                 <Box padding={"50px"}>
                     <TheForm />
                 </Box>
@@ -110,7 +112,6 @@ const TheForm: React.FunctionComponent = () => {
                     const formdata = new FormData;
                     formdata.append("nama", values.nama);
                     formdata.append("brand", values.brand);
-
                     formdata.append("harga", values.harga);
                     formdata.append("tipe_aroma", values.tipe_aroma);
                     formdata.append("tipe_parfum", values.tipe_parfum);
@@ -145,7 +146,6 @@ const TheForm: React.FunctionComponent = () => {
                                 price_index: values.price_index,
                                 ukuran: values.ukuran,
                                 link_pembelian: values.link_pembelian,
-
                             }
                         ).then((res: any) => {
                             if (res.status === 200) {
@@ -176,12 +176,22 @@ const TheForm: React.FunctionComponent = () => {
                 }
                 actions.setSubmitting(false);
             }}
-        // validator
-        // validationSchema={Yup.object().shape({
-        //     username: Yup.string().required("Username Required"),
-        //     password: Yup.string()
-        //         .required("Password Required"),
-        // })}
+            validationSchema={Yup.object().shape({
+                foto: Yup.string().required("foto Required"),
+                nama: Yup.string().required("nama Required"),
+                brand: Yup.string().required("brand Required"),
+                harga: Yup.string().required("harga Required"),
+                tipe_aroma: Yup.string().required("tipe_aroma Required"),
+                tipe_parfum: Yup.string().required("tipe_parfum Required"),
+                kategori: Yup.string().required("kategori Required"),
+                deskripsi: Yup.string().required("deskripsi Required"),
+                quality_index: Yup.string().required("quality_index Required").max(5, "quality_index must be less than 5").min(1, "quality_index must be more than 1"),
+                durability_index: Yup.string().required("durability_index Required").max(5, "durability_index must be less than 5").min(1, "durability_index must be more than 1"),
+                aroma_index: Yup.string().required("aroma_index Required").max(5, "aroma_index must be less than 5").min(1, "aroma_index must be more than 1"),
+                price_index: Yup.string().required("price_index Required").max(5, "price_index must be less than 5").min(1, "price_index must be more than 1"),
+                ukuran: Yup.string().required("ukuran Required"),
+                link_pembelian: Yup.string().required("link_pembelian Required"),
+            })}
         >
             {(props: FormikProps<LoginForm>) => {
                 const { touched, errors, handleChange, handleBlur, isSubmitting, values, setFieldValue } = props;
@@ -190,39 +200,43 @@ const TheForm: React.FunctionComponent = () => {
                         {error &&
                             <Alert severity="error">{message}</Alert>}
 
-                        <div className={style.input}>
-                            {values.foto &&
-                                <div className={style.profilepic}>
-                                    <img src={values.foto ? URL.createObjectURL(values.foto) : ""} alt="" />
-                                </div>
-                            }
-                            <input
-                                placeholder="Foto"
-                                onChange={e => {
-                                    handleChange
-                                    setFieldValue("foto", e.currentTarget.files?.[0]);
-                                }}
-                                type="file"
-                                accept='image/*'
-                                id={"foto"}
-                                name={"foto"}
-                            />
+                        <div className="fileinput">
+                            <label htmlFor="foto">
+                                {values.foto &&
+                                    <div className={style.profilepic}>
+                                        <img src={values.foto ? URL.createObjectURL(values.foto) : ""} alt="" />
+                                    </div>
+                                }
 
-
+                                <input
+                                    placeholder="Foto"
+                                    onChange={e => {
+                                        handleChange
+                                        setFieldValue("foto", e.currentTarget.files?.[0]);
+                                    }}
+                                    type="file"
+                                    accept='image/*'
+                                    id={"foto"}
+                                    name={"foto"}
+                                />
+                            </label>
                         </div>
                         {
                             Data.map((item, index) => {
                                 return (
-                                    <Input
-                                        ref={(el: any) => (inputRefs.current[index] = el)}
-                                        onKeyDown={(e: any) => handleKeyDown(e, index)}
-                                        key={index}
-                                        name={item.value}
-                                        label={item.value}
-                                        type={item.type}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                    />
+                                    <>
+                                        {errors[item.value as keyof LoginForm] && touched[item.value as keyof LoginForm] && (
+                                            <Alert severity="error">{errors[item.value as keyof LoginForm]?.toString()}</Alert>
+                                        )}
+                                        <Input
+                                            label={item.placeholder}
+                                            key={index}
+                                            name={item.value}
+                                            type={item.type}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                        />
+                                    </>
                                 )
                             }
                             )
@@ -235,7 +249,7 @@ const TheForm: React.FunctionComponent = () => {
                             }}
                         >
                             <Button type="submit"
-                                disabled={loading || isSubmitting || !props.isValid || !props.dirty}
+                                disabled={loading || isSubmitting || !props.isValid || !props.dirty || props.isSubmitting}
                             >
                                 {loading ? <CircularProgress /> : "Submit"}
                             </Button>

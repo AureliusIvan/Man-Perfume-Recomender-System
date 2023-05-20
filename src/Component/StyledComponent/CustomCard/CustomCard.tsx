@@ -15,32 +15,27 @@ import Spacer from '../../../Pages/User/Spacer/spacer';
 import { CustomModal } from '../CustomModal/CustomModal';
 
 const GridContainer = styled(Grid)(() => ({
-    // display: 'flex',
     alignItems: 'left',
     gap: '20px',
     padding: '20px',
-    // paddingRight: '5px',
+    maxWidth: '100%',
+    // border: '1px solid black',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
 }));
 
 const GridItem = styled(Grid)(() => ({
     display: 'flex',
     flexDirection: 'column',
-    // alignItems: 'left',
     justifyContent: 'left',
-    // gap: '20px',
-    // paddingRight: '5px',
+    alignItems: 'left',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
 }));
 
 
 const CContent = styled(CardContent)(({ theme }) => ({
-    // display: 'flex',
-    // flexDirection: 'column',
-    // alignItems: 'left',
-    // justifyContent: 'left',
-    // gap: '20px',
-    // paddingRight: '5px',
-    // color: 'black',
-    // backgroundColor: theme === 'dark' ? theme.palette.grey[800] : theme.palette.grey[200],
     backgroundColor: theme.palette.mode === 'dark' ? 'black' : 'white',
     borderRadius: '20px',
     transform: 'scaleY(1.2)',
@@ -48,9 +43,7 @@ const CContent = styled(CardContent)(({ theme }) => ({
 
 
 const CMedia = styled(CardMedia)(() => ({
-    // backgroundColor: theme.palette.mode === 'dark' ? 'black' : 'white',
     borderRadius: '20px',
-    // transform: 'scaleX(1.1)',
 }));
 
 
@@ -133,6 +126,10 @@ function ResultCardDetail(props: any) {
     }, [])
     // store object
     const data = props.data
+    const formattedAmount = data.harga.toLocaleString('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+    });
     return (
         <>
             {data ?
@@ -142,8 +139,8 @@ function ResultCardDetail(props: any) {
                     <div className={style.name}>{(data.nama)}</div>
                     <div><span>Brand : </span>{data.brand}</div>
                     <div><span>Tipe Aroma : </span>{data.tipe_aroma}</div>
-                    <div><span>Ukuran : </span>{data.ukuran}</div>
-                    <div><span>Harga : </span>Rp {data.harga}</div>
+                    <div><span>Ukuran : </span>{data.ukuran} ml</div>
+                    <div><span>Harga : </span>{formattedAmount}</div>
                     <div className={style.deskripsi}>{data.deskripsi}</div>
 
                     <CustomButton
@@ -168,60 +165,70 @@ export function ResultCard(props: any) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     React.useEffect(() => {
-        // console.log("this");
         console.log(props.data);
     }, [])
 
     return (<>
-
-        <GridContainer container>
-            <Grid item xs={5} md={3}>
-                <img
-                    className={style.img}
-                    src={props.image ? props.image : "https://cdn.pixabay.com/photo/2017/03/14/11/42/perfume-2142830_960_720.jpg"}
-                    alt={props.title ? props.title : "Perfume"}
-                />
-            </Grid>
-            <GridItem item xs={5}>
-                <Title
-                    textalign="left"
-                    texttransform="capitalize"
-                >
-                    {props.title ? props.title : "Perfume"}
-                </Title>
-                <Spacer y={"15px"} />
-                <CustomModal
-                    open={open}
-                    xbutton={true}
-                    onClose={props.onClose ? props.onClose : handleClose}
-                    overflowY={"scroll"}
-                    button={<>
-                        <CustomButton
-                            onclick={() => handleOpen()}
-                            height={"20px"}
+        <div className={style.card}>
+            <div className={style.cardcontent}>
+                <GridContainer container>
+                    <Grid item xs={5} md={3}>
+                        <img
+                            className={style.img}
+                            src={props.image ? props.image : "https://cdn.pixabay.com/photo/2017/03/14/11/42/perfume-2142830_960_720.jpg"}
+                            alt={props.title ? props.title : "Perfume"}
+                        />
+                    </Grid>
+                    <GridItem item xs={5}>
+                        <div
+                            // textalign="left"
+                            // texttransform="capitalize"
+                            style={{
+                                textAlign: 'left',
+                                textTransform: 'capitalize',
+                                wordBreak: 'break-word',
+                                whiteSpace: 'normal',
+                                hyphens: 'auto',
+                                fontWeight: 'bold',
+                            }}
                         >
-                            Info Lanjut
-                        </CustomButton></>}
-                >
-                    <ResultCardDetail
-                        data={props.data}
-                    />
-                </CustomModal>
-                <a href={props.link ? props.link : "https://www.tokopedia.com/"} target="_blank" rel="noopener noreferrer">
-                    <CustomButton
-                        height={"20px"}
-                        bgcolor={"rgb(0,0,0,0)"}
-                        marginTop={"10px"}
-                    >
-                        Shop Now
-                    </CustomButton>
-                </a>
-                <Spacer y={"15px"} />
-                <Text textalign="left">
-                    {props.accuracy && `Akurasi : ${Akurasi}%`}
-                </Text>
-            </GridItem>
-        </GridContainer >
+                            {props.title ? props.title : "Perfume"}
+                        </div>
+                        <Spacer y={"15px"} />
+                        <CustomModal
+                            open={open}
+                            xbutton={true}
+                            onClose={props.onClose ? props.onClose : handleClose}
+                            overflowY={"scroll"}
+                            button={<>
+                                <CustomButton
+                                    onclick={() => handleOpen()}
+                                    height={"20px"}
+                                >
+                                    Info Lanjut
+                                </CustomButton></>}
+                        >
+                            <ResultCardDetail
+                                data={props.data}
+                            />
+                        </CustomModal>
+                        <a href={props.link ? props.link : "https://www.tokopedia.com/"} target="_blank" rel="noopener noreferrer">
+                            <CustomButton
+                                height={"20px"}
+                                bgcolor={"rgb(0,0,0,0)"}
+                                marginTop={"10px"}
+                            >
+                                Shop Now
+                            </CustomButton>
+                        </a>
+                        <Spacer y={"15px"} />
+                        <Text textalign="left">
+                            {props.accuracy && `Akurasi : ${Akurasi}%`}
+                        </Text>
+                    </GridItem>
+                </GridContainer >
+            </div>
+        </div>
     </>
     );
 }

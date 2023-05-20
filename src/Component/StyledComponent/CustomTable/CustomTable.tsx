@@ -127,6 +127,7 @@ export default function CustomTable() {
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     <Confirmations
+                      
                       title="Delete"
                       toDelete
                       xbutton

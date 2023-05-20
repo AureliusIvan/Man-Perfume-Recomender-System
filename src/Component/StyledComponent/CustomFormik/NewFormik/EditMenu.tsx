@@ -20,11 +20,13 @@ import CustomInputImage from "@/Component/CustomInputImage/CustomInputImage";
 import { FileUploader } from "react-drag-drop-files";
 import style from "../../../CustomInputImage/CustomInputImage.module.scss";
 import compressImage from "@/Component/FunctionComponent/ImageCompressor/ImageCompressor";
+import "./Menu.scss";
 
 export default function EditMenu(props: any) {
     return (<>
         <Modal
             title={"Edit"}
+            xbutton={true}
         >
             <CustomBox>
                 <h1>Edit Data Parfum</h1>
@@ -172,7 +174,7 @@ function TheForm(props: any) {
                         {error &&
                             <Alert severity="error">{message}</Alert>}
 
-                        <div
+                        {/* <div
                             className={style.input}>
                             <input
                                 placeholder="Foto"
@@ -188,11 +190,32 @@ function TheForm(props: any) {
                             <div className={style.profilepic}>
                                 <img src={values.foto ? URL.createObjectURL(values.foto) : data.foto} alt="" />
                             </div>
-
+                        </div> */}
+                        {/*  */}
+                        <div className="fileinput">
+                            <label htmlFor="foto">
+                                Change Image
+                                <div className={style.profilepic}>
+                                    <img src={values.foto ? URL.createObjectURL(values.foto) : data.foto} alt="" />
+                                </div>
+                                <input
+                                    placeholder="Foto"
+                                    onChange={e => {
+                                        handleChange
+                                        setFieldValue("foto", e.currentTarget.files?.[0]);
+                                    }}
+                                    type="file"
+                                    accept='image/*'
+                                    id={"foto"}
+                                    name={"foto"}
+                                />
+                            </label>
                         </div>
+
+                        <br />
                         <Input
                             name={Data[0].value}
-                            label={Data[0].value}
+                            label={Data[0].placeholder}
                             type={Data[0].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -200,7 +223,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[1].value}
-                            label={Data[1].value}
+                            label={Data[1].placeholder}
                             type={Data[1].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -209,7 +232,7 @@ function TheForm(props: any) {
 
                         <Input
                             name={Data[2].value}
-                            label={Data[2].value}
+                            label={Data[2].placeholder}
                             type={Data[2].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -217,7 +240,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[3].value}
-                            label={Data[3].value}
+                            label={Data[3].placeholder}
                             type={Data[3].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -225,7 +248,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[4].value}
-                            label={Data[4].value}
+                            label={Data[4].placeholder}
                             type={Data[4].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -233,7 +256,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[5].value}
-                            label={Data[5].value}
+                            label={Data[5].placeholder}
                             type={Data[5].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -241,7 +264,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[6].value}
-                            label={Data[6].value}
+                            label={Data[6].placeholder}
                             type={Data[6].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -250,7 +273,7 @@ function TheForm(props: any) {
 
                         <Input
                             name={Data[7].value}
-                            label={Data[7].value}
+                            label={Data[7].placeholder}
                             type={Data[7].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -258,7 +281,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[8].value}
-                            label={Data[8].value}
+                            label={Data[8].placeholder}
                             type={Data[8].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -266,7 +289,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[9].value}
-                            label={Data[9].value}
+                            label={Data[9].placeholder}
                             type={Data[9].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -274,7 +297,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[10].value}
-                            label={Data[10].value}
+                            label={Data[10].placeholder}
                             type={Data[10].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -282,7 +305,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[11].value}
-                            label={Data[11].value}
+                            label={Data[11].placeholder}
                             type={Data[11].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -290,7 +313,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[12].value}
-                            label={Data[12].value}
+                            label={Data[12].placeholder}
                             type={Data[12].type}
                             onChange={handleChange}
                             onBlur={handleBlur}

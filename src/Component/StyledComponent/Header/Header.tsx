@@ -118,9 +118,8 @@ export default function Header() {
               pathTo="/"
               clicked={() => {
                 dispatch(setLogout());
-                // remove cookie
                 setCookie("TOKEN", "");
-                // Cookies.remove('TOKEN')
+                window.location.reload();
               }}
             >
               Log Out
