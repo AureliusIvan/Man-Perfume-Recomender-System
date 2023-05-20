@@ -128,7 +128,7 @@ export default function Header() {
         ) : (
           <>
             <NavLink pathTo="/">Home</NavLink>
-            <ButtonNavLink pathTo="/admin/login">Admin Mode</ButtonNavLink>
+            <ButtonNavLink pathTo="/admin/login">Admin</ButtonNavLink>
           </>
         )}
 

@@ -166,32 +166,30 @@ function TheForm(props: any) {
                 }
                 actions.setSubmitting(false);
             }}
+            validationSchema={Yup.object().shape({
+                // foto: Yup.string().required("foto Required"),
+                nama: Yup.string().required("nama Required"),
+                brand: Yup.string().required("brand Required"),
+                harga: Yup.string().required("harga Required"),
+                tipe_aroma: Yup.string().required("tipe_aroma Required"),
+                tipe_parfum: Yup.string().required("tipe_parfum Required"),
+                // kategori: Yup.string().required("kategori Required"),
+                deskripsi: Yup.string().required("deskripsi Required"),
+                quality_index: Yup.string().required("quality_index Required").max(5, "quality_index must be less than 5").min(1, "quality_index must be more than 1"),
+                durability_index: Yup.string().required("durability_index Required").max(5, "durability_index must be less than 5").min(1, "durability_index must be more than 1"),
+                aroma_index: Yup.string().required("aroma_index Required").max(5, "aroma_index must be less than 5").min(1, "aroma_index must be more than 1"),
+                price_index: Yup.string().required("price_index Required").max(5, "price_index must be less than 5").min(1, "price_index must be more than 1"),
+                ukuran: Yup.string().required("ukuran Required"),
+                link_pembelian: Yup.string().required("link_pembelian Required"),
+            })}
+
         >
             {(props: FormikProps<LoginForm>) => {
-                const { initialValues, touched, errors, handleChange, handleBlur, isSubmitting, values, setFieldValue } = props;
+                const { initialValues, touched, errors, handleChange, handleBlur, isSubmitting, values, setFieldValue, dirty } = props;
                 return (
                     <Form>
                         {error &&
                             <Alert severity="error">{message}</Alert>}
-
-                        {/* <div
-                            className={style.input}>
-                            <input
-                                placeholder="Foto"
-                                onChange={e => {
-                                    handleChange
-                                    setFieldValue("foto", e.currentTarget.files?.[0]);
-                                }}
-                                type="file"
-                                accept='image/*'
-                                id={"foto"}
-                                name={"foto"}
-                            />
-                            <div className={style.profilepic}>
-                                <img src={values.foto ? URL.createObjectURL(values.foto) : data.foto} alt="" />
-                            </div>
-                        </div> */}
-                        {/*  */}
                         <div className="fileinput">
                             <label htmlFor="foto">
                                 Change Image
@@ -213,6 +211,9 @@ function TheForm(props: any) {
                         </div>
 
                         <br />
+                        {errors.nama && touched.nama && (
+                            <Alert severity="error">{errors.nama?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[0].value}
                             label={Data[0].placeholder}
@@ -221,6 +222,9 @@ function TheForm(props: any) {
                             onBlur={handleBlur}
                             defaultValue={initialValues.nama}
                         />
+                        {errors.harga && touched.harga && (
+                            <Alert severity="error">{errors.harga?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[1].value}
                             label={Data[1].placeholder}
@@ -229,7 +233,9 @@ function TheForm(props: any) {
                             onBlur={handleBlur}
                             defaultValue={initialValues.harga}
                         />
-
+                        {errors.brand && touched.brand && (
+                            <Alert severity="error">{errors.brand?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[2].value}
                             label={Data[2].placeholder}
@@ -238,6 +244,9 @@ function TheForm(props: any) {
                             onBlur={handleBlur}
                             defaultValue={initialValues.brand}
                         />
+                        {errors.tipe_aroma && touched.tipe_aroma && (
+                            <Alert severity="error">{errors.tipe_aroma?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[3].value}
                             label={Data[3].placeholder}
@@ -246,6 +255,9 @@ function TheForm(props: any) {
                             onBlur={handleBlur}
                             defaultValue={initialValues.tipe_aroma}
                         />
+                        {errors.tipe_parfum && touched.tipe_parfum && (
+                            <Alert severity="error">{errors.tipe_parfum?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[4].value}
                             label={Data[4].placeholder}
@@ -254,6 +266,9 @@ function TheForm(props: any) {
                             onBlur={handleBlur}
                             defaultValue={initialValues.tipe_parfum}
                         />
+                        {errors.kategori && touched.kategori && (
+                            <Alert severity="error">{errors.kategori?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[5].value}
                             label={Data[5].placeholder}
@@ -262,6 +277,9 @@ function TheForm(props: any) {
                             onBlur={handleBlur}
                             defaultValue={initialValues.kategori}
                         />
+                        {errors.deskripsi && touched.deskripsi && (
+                            <Alert severity="error">{errors.deskripsi?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[6].value}
                             label={Data[6].placeholder}
@@ -270,7 +288,9 @@ function TheForm(props: any) {
                             onBlur={handleBlur}
                             defaultValue={initialValues.deskripsi}
                         />
-
+                        {errors.quality_index && touched.quality_index && (
+                            <Alert severity="error">{errors.quality_index?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[7].value}
                             label={Data[7].placeholder}
@@ -279,6 +299,9 @@ function TheForm(props: any) {
                             onBlur={handleBlur}
                             defaultValue={initialValues.quality_index}
                         />
+                        {errors.durability_index && touched.durability_index && (
+                            <Alert severity="error">{errors.durability_index?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[8].value}
                             label={Data[8].placeholder}
@@ -287,6 +310,9 @@ function TheForm(props: any) {
                             onBlur={handleBlur}
                             defaultValue={initialValues.durability_index}
                         />
+                        {errors.aroma_index && touched.aroma_index && (
+                            <Alert severity="error">{errors.aroma_index?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[9].value}
                             label={Data[9].placeholder}
@@ -295,6 +321,9 @@ function TheForm(props: any) {
                             onBlur={handleBlur}
                             defaultValue={initialValues.aroma_index}
                         />
+                        {errors.price_index && touched.price_index && (
+                            <Alert severity="error">{errors.price_index?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[10].value}
                             label={Data[10].placeholder}
@@ -303,6 +332,9 @@ function TheForm(props: any) {
                             onBlur={handleBlur}
                             defaultValue={initialValues.price_index}
                         />
+                        {errors.ukuran && touched.ukuran && (
+                            <Alert severity="error">{errors.ukuran?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[11].value}
                             label={Data[11].placeholder}
@@ -311,6 +343,9 @@ function TheForm(props: any) {
                             onBlur={handleBlur}
                             defaultValue={initialValues.ukuran}
                         />
+                        {errors.link_pembelian && touched.link_pembelian && (
+                            <Alert severity="error">{errors.link_pembelian?.toString()}</Alert>
+                        )}
                         <Input
                             name={Data[12].value}
                             label={Data[12].placeholder}
@@ -332,7 +367,7 @@ function TheForm(props: any) {
                             }}
                         >
                             <Button type="submit"
-                                disabled={loading || isSubmitting || !props.isValid}
+                                disabled={loading || isSubmitting || !props.isValid || !dirty}
                             >
                                 {loading ? <CircularProgress /> : "Submit"}
                             </Button>

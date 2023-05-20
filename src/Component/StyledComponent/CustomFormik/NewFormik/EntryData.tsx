@@ -49,20 +49,20 @@ export const EntryData = [
     },
     {
         id: 8,
-        value: "durability_index (1 - 5)",
-        placeholder: "Durability Index",
+        value: "durability_index",
+        placeholder: "Durability Index (1 - 5)",
         type: "number",
     },
     {
         id: 9,
-        value: "aroma_index (1 - 5)",
-        placeholder: "Aroma Index",
+        value: "aroma_index",
+        placeholder: "Aroma Index (1 - 5)",
         type: "number",
     },
     {
         id: 10,
-        value: "price_index (1 - 5)",
-        placeholder: "Price Index",
+        value: "price_index",
+        placeholder: "Price Index (1 - 5)",
         type: "number",
     },
     {

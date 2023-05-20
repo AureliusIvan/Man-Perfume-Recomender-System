@@ -34,23 +34,23 @@ interface defaulprops {
 
 function Card(props: defaulprops) {
     const Mobile = useMediaQuery('(max-width:600px)');
-    const [ref, inView] = useInView({
-        triggerOnce: true,
-        threshold: 0.1,
-    });
+    // const [ref, inView] = useInView({
+    //     triggerOnce: true,
+    //     threshold: 0.1,
+    // });
 
-    const animationVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0 },
-    };
+    // const animationVariants = {
+    //     hidden: { opacity: 0, y: 50 },
+    //     visible: { opacity: 1, y: 0 },
+    // };
 
 
     return (<motion.div
-        ref={ref}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        variants={animationVariants}
-        transition={{ duration: 0.5 }}
+        // ref={ref}
+        // initial="hidden"
+        // animate={inView ? "visible" : "hidden"}
+        // variants={animationVariants}
+        // transition={{ duration: 0.5 }}
     >
         <Grid container
             className={style.card}
