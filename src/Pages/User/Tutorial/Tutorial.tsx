@@ -12,12 +12,8 @@ import style from "./Tutorial.module.scss"
 // import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import useMediaQuery from "@mui/material/useMediaQuery"
-// import { useTheme } from "@mui/material"
-
-// const Grid = styled(G)(({ theme }) => ({
-//     padding: '10px',
-//     // width: '90%',
-// }));
+import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
 const GridItem = styled(Grid)(() => ({
     // padding: '20px',
@@ -38,8 +34,24 @@ interface defaulprops {
 
 function Card(props: defaulprops) {
     const Mobile = useMediaQuery('(max-width:600px)');
-    // const theme = useTheme();
-    return (<>
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
+
+    const animationVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+    };
+
+
+    return (<motion.div
+        ref={ref}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        variants={animationVariants}
+        transition={{ duration: 0.5 }}
+    >
         <Grid container
             className={style.card}
         >
@@ -86,18 +98,17 @@ function Card(props: defaulprops) {
                 </>
             }
         </Grid>
-
-    </>)
+    </motion.div>
+    )
 }
 
 
 
 
 export default function Tutorial() {
-    // let i = 4;
     return (<>
         <Paragraf title="Cara Penggunaan">
-            Lorem Ipsum, sometimes referred to as &apos;lipsum&apos;, is the placeholder text used in design when creating content.
+            <i>Berikut merupakan cara penggunaan aplikasi pendukung pemilihan keputusan parfum pria</i>
         </Paragraf>
         <Grid container sx={{
             width: '90%',

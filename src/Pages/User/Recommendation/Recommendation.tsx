@@ -34,12 +34,12 @@ export default function Recommendation() {
                         setItem(res.data.data)
                         dispatch(setDataEntry(res.data))
                     }).catch((err: object) => {
-                        console.log(err)
+                        // console.log(err)
                     })
                 // setLoading(false);
             }
             catch (err) {
-                console.log(err)
+                // console.log(err)
             }
         } else {
             setItem(dataEntry)
@@ -50,7 +50,9 @@ export default function Recommendation() {
         <>
             <Center>
                 <Paragraf title={"Parfum Kekinian 2023"} width={'300px'}>
-                    Daftar parfum yang mungkin anda sukai sebagai pria sejati
+                    <i>
+                        Daftar parfum yang mungkin anda sukai sebagai pria sejati
+                    </i>
                 </Paragraf>
             </Center>
             <Grid container>

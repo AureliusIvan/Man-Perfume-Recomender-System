@@ -16,7 +16,7 @@ export default function WelcomePage() {
     const handler = () => navigate('/start');
     return (
         <div style={{
-            minHeight: '100vh',
+            minHeight: '75vh',
             display: 'flex',
         }}>
             <M>
@@ -46,8 +46,10 @@ export default function WelcomePage() {
                     </Grid>
                 </Grid>
             </M>
-            <div className={style.down}>
-            </div>
+            <a className={style.a} href="#desc">
+                <div className={style.down}>
+                </div>
+            </a>
         </div>
     )
 }

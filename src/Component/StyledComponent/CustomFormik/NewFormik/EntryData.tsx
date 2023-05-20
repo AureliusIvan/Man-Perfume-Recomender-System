@@ -44,24 +44,24 @@ export const EntryData = [
     {
         id: 7,
         value: "quality_index",
-        placeholder: "Quality Index",
+        placeholder: "Quality Index (1 - 5)",
         type: "number",
     },
     {
         id: 8,
-        value: "durability_index",
+        value: "durability_index (1 - 5)",
         placeholder: "Durability Index",
         type: "number",
     },
     {
         id: 9,
-        value: "aroma_index",
+        value: "aroma_index (1 - 5)",
         placeholder: "Aroma Index",
         type: "number",
     },
     {
         id: 10,
-        value: "price_index",
+        value: "price_index (1 - 5)",
         placeholder: "Price Index",
         type: "number",
     },

@@ -80,12 +80,31 @@ export function Title(props: any) {
     );
 }
 
+
+export function StyledTitle(props: any) {
+    return (
+        <div className={style.StyledTitle}>
+            <h2>
+                <span>&rdquo;</span>
+                {props.children}
+                <span>&ldquo;</span>
+            </h2>
+        </div>
+    )
+}
+
+
 export function Paragraf(props: any) {
     return (<>
-        <Title
-            textalign={props.textalign ? props.textalign : "left"}>
-            {props.title}
-        </Title>
+        {props.styledTitle ?
+            <StyledTitle>
+                {props.title}
+            </StyledTitle> :
+            <Title
+                textalign={props.textalign ? props.textalign : "left"}>
+                {props.title}
+            </Title>
+        }
         <Spacer y={props.spacer ? props.spacer : "20px"} />
         <div style={{
             textAlign: props.textAlign ? props.textAlign : "center",
@@ -93,6 +112,7 @@ export function Paragraf(props: any) {
             // padding: props.padding ? props.padding : "60px",
             paddingInline: props.paddingInline ? props.paddingInline : "20px",
             // width: props.width ? props.width : "70%",
+            color: props.color ? props.color : "rgb(255, 255, 255, 0.6)",
         }}
         >
             {props.children ? props.children : "Aroma lebih penting dari harga. Ini adalah Paragraf"}
