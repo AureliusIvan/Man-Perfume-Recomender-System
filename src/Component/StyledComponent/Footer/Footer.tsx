@@ -11,7 +11,7 @@ export default function Footer(props: FooterProps) {
     return (
         <div className={style.footer}>
             {props.children}
-            @Copyright 2023 by Universitas Multimedia Nusantara
+            &copy; Copyright 2023 by Universitas Multimedia Nusantara
         </div>
     )
 }   

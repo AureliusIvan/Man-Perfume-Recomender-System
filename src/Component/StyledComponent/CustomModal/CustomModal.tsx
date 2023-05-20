@@ -25,6 +25,7 @@ export function CustomModal(props: any) {
             {props.hideButton ? "" :
                 props.button ? props.button :
                     <Button
+                        bgcolor={props.bgcolor}
                         disabled={props.disabled}
                         onclick={handleOpen}>{
                             props.title
@@ -130,6 +131,7 @@ export function CustomModal(props: any) {
 export function Confirmations(props: any) {
     return (
         <CustomModal
+            bgcolor={props.bgcolor}
             onClose={props.onClose && props.onClose}
             disabled={props.disabled}
             title={props.title ? props.title : "Submit"}

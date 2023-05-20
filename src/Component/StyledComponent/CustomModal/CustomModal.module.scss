@@ -13,8 +13,9 @@
     z-index: 100;
     display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     // overflow-y: scroll !important;
+    // padding-top: 10vh;
 
     @media screen and (max-width : 700px) {
         width: 80vw !important;
