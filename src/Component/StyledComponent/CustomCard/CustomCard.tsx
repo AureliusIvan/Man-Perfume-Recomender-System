@@ -60,7 +60,6 @@ export function CustomCard(props: CustomCardProps) {
                 overflow: 'visible',
                 width: props.width ? props.width : '95%',
                 backgroundColor: props.backgroundColor ? props.backgroundColor : 'rgba(254, 255, 255, 0)',
-                // maxWidth: 345,
                 margin: props.margin ? props.margin : '10px',
             }}>
                 <CardMedia
@@ -142,30 +141,30 @@ export function ResultCard(props: any) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const [ref, inView] = useInView({
-        triggerOnce: true,
-        threshold: 0.1,
-    });
+    // const [ref, inView] = useInView({
+    //     triggerOnce: true,
+    //     threshold: 0.1,
+    // });
 
-    const animationVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: (index: number) => ({
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: index * 0.2, // Add a delay based on the item index
-            },
-        }),
-    };
+    // const animationVariants = {
+    //     hidden: { opacity: 0, y: 50 },
+    //     visible: (index: number) => ({
+    //         opacity: 1,
+    //         y: 0,
+    //         transition: {
+    //             delay: index * 0.2, // Add a delay based on the item index
+    //         },
+    //     }),
+    // };
 
     return (
         <motion.div className={style.card}
-            key={props.key}
-            ref={ref}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            variants={animationVariants}
-            transition={{ duration: 0.5 }}
+            // key={props.key}
+            // ref={ref}
+            // initial="hidden"
+            // animate={inView ? "visible" : "hidden"}
+            // variants={animationVariants}
+            // transition={{ duration: 0.5 }}
         >
             <div className={style.cardcontent}>
                 <GridContainer container>
