@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 * {
   // font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --font-family: 'Montserrat', sans-serif !important;
-  font-family: 'Montserrat', sans-serif !important;
+  // --font-family: 'Montserrat', sans-serif !important;
+  // font-family: 'Montserrat', sans-serif !important;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  --font-family: 'Montserrat', sans-serif;
-  font-family: 'Montserrat', sans-serif;
+  // --font-family: 'Montserrat', sans-serif;
+  // font-family: 'Montserrat', sans-serif;
   margin: 0;
 }
 

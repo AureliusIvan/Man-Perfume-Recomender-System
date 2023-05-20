@@ -12,6 +12,7 @@ import WelcomePage from "./Welcome/Welcome"
 import Spacer from "./Spacer/spacer"
 // import Footer from "@/Component/StyledComponent/Footer/Footer"
 import LoadingScreen from "@/Component/StyledComponent/Fallback/LoadingScreen"
+import Background from "@/Component/StyledComponent/Background/Background"
 
 const DescPage = lazy(() => import("./Desc/DescPage"));
 const Footer = lazy(() => import("@/Component/StyledComponent/Footer/Footer"));
@@ -31,17 +32,20 @@ export default function UserPage() {
                 <meta name="description" content={PROJDESC} />
                 <link rel="canonical" href={`${PROJDOMAIN}`} />
             </Helmet>
+            <Background />
             <Spacer y={"100px"} />
             <WelcomePage />
-            <Center>
-                <Suspense fallback={<LoadingScreen />}>
-                    <DescPage />
-                </Suspense>
-                <Spacer y={"100px"} />
-                <Spacer y={"100px"} />
-                <Tutorial />
-                <Spacer y={"100px"} />
-            </Center>
+            <section id="desc">
+                <Center>
+                    <Suspense fallback={<LoadingScreen />}>
+                        <DescPage />
+                    </Suspense>
+                    <Spacer y={"100px"} />
+                    <Spacer y={"100px"} />
+                    <Tutorial />
+                    <Spacer y={"100px"} />
+                </Center>
+            </section>
             <Spacer y={"100px"} />
             <Suspense fallback={<LoadingScreen />}>
                 <Recommendation />

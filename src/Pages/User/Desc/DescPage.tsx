@@ -3,7 +3,8 @@ import { CustomBox as Box } from "../../../Component/StyledComponent/CustomBox/C
 import { Title, Text, Paragraf } from "../../../Component/StyledComponent/Typography/CustomTypography"
 import { WebDesc, WebDescTitle } from "../../../data"
 import Spacer from "../Spacer/spacer"
-
+import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
 DescPage.defaultProps = {
     text: "&rdquo; Lorem ipsum dolor sit amet consectetur adipisicing elit."
@@ -14,12 +15,33 @@ type DescPageProps = {
 }
 
 export default function DescPage(props: DescPageProps) {
-    return (<>
-        <Paragraf width={'300px'} title={'Penelitian Parfum Pria'}>
-            {props.text}
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
+
+    const animationVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+    };
+
+
+    return (<motion.div
+        ref={ref}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        variants={animationVariants}
+        transition={{ duration: 0.5 }}
+    >
+        <Spacer y={"100px"} />
+        <Paragraf
+            styledTitle={true}
+            width={'300px'} title={'Penelitian Parfum Pria'}>
+            {/* {props.text} */}
+            <i>{WebDesc}</i>
         </Paragraf>
         <Spacer y={"100px"} />
-        <Box reverse={"true"}
+        {/* <Box reverse={"true"}
         // width="100%"
         >
             <Title
@@ -37,7 +59,7 @@ export default function DescPage(props: DescPageProps) {
             >
                 {WebDesc}
             </Text>
-        </Box>
-    </>
+        </Box> */}
+    </motion.div>
     )
 }

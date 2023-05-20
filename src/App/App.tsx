@@ -14,6 +14,7 @@ import { setLogin } from '@/Redux/feature/dataSlice';
 // import { post } from '@/Component/FunctionComponent/axiosClient/axiosClient';
 import { getCookie } from 'react-use-cookie';
 import { useNavigate } from 'react-router-dom';
+import Background from '@/Component/StyledComponent/Background/Background';
 
 // context for the theme
 const ColorModeContext = createContext({
