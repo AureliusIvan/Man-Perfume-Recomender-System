@@ -179,7 +179,7 @@ function TheForm(props: any) {
                 aroma_index: Yup.number().required("Index Aroma wajib diisi").max(5, "Index Aroma tidak boleh lebih dari 5").min(1, "Index Aroma harus 1 atau lebih"),
                 price_index: Yup.number().required("Index Harga wajib diisi").max(5, "Index Harga tidak boleh lebih dari 5").min(1, "Index Harga harus 1 atau lebih"),
                 ukuran: Yup.string().required("Ukuran Parfum wajib diisi"),
-                link_pembelian: Yup.string().required("Link pembelian wajib diisi"),
+                link_pembelian: Yup.string().required("Link pembelian wajib diisi").url("Link pembelian wajib berformat tautan"),
             })}
 
         >
