@@ -40,7 +40,7 @@ export default function DescPage(props: DescPageProps) {
             {/* {props.text} */}
             <i>{WebDesc}</i>
         </Paragraf>
-        <Spacer y={"100px"} />
+        {/* <Spacer y={"100px"} /> */}
         {/* <Box reverse={"true"}
         // width="100%"
         >
