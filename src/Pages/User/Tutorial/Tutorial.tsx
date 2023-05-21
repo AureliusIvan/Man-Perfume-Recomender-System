@@ -34,23 +34,9 @@ interface defaulprops {
 
 function Card(props: defaulprops) {
     const Mobile = useMediaQuery('(max-width:600px)');
-    // const [ref, inView] = useInView({
-    //     triggerOnce: true,
-    //     threshold: 0.1,
-    // });
-
-    // const animationVariants = {
-    //     hidden: { opacity: 0, y: 50 },
-    //     visible: { opacity: 1, y: 0 },
-    // };
 
 
     return (<motion.div
-        // ref={ref}
-        // initial="hidden"
-        // animate={inView ? "visible" : "hidden"}
-        // variants={animationVariants}
-        // transition={{ duration: 0.5 }}
     >
         <Grid container
             className={style.card}
@@ -70,27 +56,19 @@ function Card(props: defaulprops) {
                         </h3>
                     </Grid>
                     <br />
-                    <Grid item xs={12} sm={3} md={3} lg={2}
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            textAlign: 'center',
-                        }}
-                    >
-                        <img src={props.img} className={style.img} />
-                    </Grid>
-
+                    <p className={style.p}>
+                        {props.text}
+                    </p>
                 </>
                 :
                 <>
-                    <Grid item xs={12} sm={3} md={3} lg={2}>
+                    {/* <Grid item xs={12} sm={3} md={3} lg={2}>
                         <img src={props.img} className={style.img} />
-                    </Grid>
-                    <Grid item sm={9} md={9} lg={10}>
-                        <h3 className={style.h3}>
-                            {props.title}
-                        </h3>
+                    </Grid> */}
+                    <Grid item sm={9} md={9} lg={12}>
+                            <h3 className={style.h3}>
+                                {props.title}
+                            </h3>
                         <p className={style.p}>
                             {props.text}
                         </p>
@@ -106,19 +84,23 @@ function Card(props: defaulprops) {
 
 
 export default function Tutorial() {
+    const Mobile = useMediaQuery('(max-width:600px)');
     return (<>
         <Paragraf title="Cara Penggunaan">
             <i>Berikut merupakan cara penggunaan aplikasi pendukung pemilihan keputusan parfum pria</i>
         </Paragraf>
         <Grid container sx={{
-            width: '90%',
+            width: Mobile ? '90%' : '50%',
             padding: '10px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
         }}>
             {
                 TutorialData.map((item, index) => {
                     return (
                         <GridItem key={index} item xs={12}>
-                            <Card img={item.image} title={item.title} />
+                            <Card img={item.image} title={item.title} text={item.description} />
                         </GridItem>
                     )
                 })

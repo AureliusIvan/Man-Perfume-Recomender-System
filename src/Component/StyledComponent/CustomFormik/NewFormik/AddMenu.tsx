@@ -169,7 +169,7 @@ const TheForm: React.FunctionComponent = () => {
 
                     login();
                 } catch (err) {
-                    console.log(err);
+                    // console.log(err);
                     setMessage("Something went wrong");
                     showerror();
                     setLoading(false);
@@ -193,7 +193,7 @@ const TheForm: React.FunctionComponent = () => {
             })}
         >
             {(props: FormikProps<LoginForm>) => {
-                const { touched, errors, handleChange, handleBlur, isSubmitting, values, setFieldValue } = props;
+                const { touched, errors, handleChange, handleBlur, isSubmitting, values, setFieldValue, dirty } = props;
                 return (
                     <Form>
                         {error &&
@@ -219,6 +219,7 @@ const TheForm: React.FunctionComponent = () => {
                         </div>
 
                         <br />
+                        {error && <Alert severity="error">{message}</Alert> && <br />}
                         <Input
                             name={Data[0].value}
                             label={Data[0].placeholder}
@@ -226,7 +227,7 @@ const TheForm: React.FunctionComponent = () => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             helperText={errors.nama && touched.nama ? errors.nama : ""}
-                            error={errors.nama && touched.nama ? true : false}
+                            error={errors.nama && touched.nama || dirty ? true : false}
                         />
                         <Input
                             name={Data[1].value}
@@ -344,7 +345,7 @@ const TheForm: React.FunctionComponent = () => {
                             }}
                         >
                             <Button type="submit"
-                                disabled={loading || isSubmitting || !props.isValid}
+                                disabled={loading || isSubmitting || !props.isValid || !dirty}
                             >
                                 {loading ? <CircularProgress /> : "Submit"}
                             </Button>

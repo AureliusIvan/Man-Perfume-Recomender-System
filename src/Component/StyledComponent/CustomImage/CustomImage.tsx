@@ -33,12 +33,12 @@ export function CustomImage(props: CustomImageProps) {
 
 export function LogoImage(props: LogoImageProps) {
     const navigate = useNavigate()
-    function onClick() {
-        navigate('/');
-    }
+    // function onClick() {
+    //     navigate('/');
+    // }
     return (
         <img src={IMG} alt="logo"
-            onClick={props.onClick ? props.onClick : onClick}
+            // onClick={props.onClick ? props.onClick : onClick}
             className={style.logo} style={{
                 ...props.style,
                 width: props.width ? props.size : "50px",

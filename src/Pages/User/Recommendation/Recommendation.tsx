@@ -49,9 +49,12 @@ export default function Recommendation() {
     return (
         <>
             <Center>
-                <Paragraf title={"Parfum Kekinian 2023"} width={'300px'}>
+                <Paragraf
+                    styledTitle={true}
+                    title={"Parfum Kekinian 2023"} width={'300px'}>
                     <i>
-                        Daftar parfum yang mungkin anda sukai sebagai pria sejati
+
+                        Perkenalkan koleksi parfum pria pilihan kami - sebuah rangkaian yang dirancang untuk meningkatkan kehadiran Anda dan memikat indera. Setiap aroma dirancang dengan teliti untuk mencerminkan essensi kemegahan, gaya, dan maskulinitas.
                     </i>
                 </Paragraf>
             </Center>

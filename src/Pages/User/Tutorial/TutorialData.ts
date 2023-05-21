@@ -6,26 +6,20 @@ import Monit from "../../../Assets/Image/Monit.png";
 export const TutorialData = [
     {
         id: 1,
-        title: 'Temukan',
-        description: 'Tutorial 1 Description',
+        title: 'Tekanlah',
+        description: 'Klik tombol "Mulai Menentukan Parfum" di halaman pertama. Anda akan langsung diarahkan ke halaman penentuan prioritas',
         image: Comp,
     },
-    // {
-    //     id: 2,
-    //     title: 'Semakin',
-    //     description: 'Tutorial 2 Description',
-    //     image: Learn,
-    // },
     {
-        id: 3,  
+        id: 2,
         title: 'Pilihlah',
-        description: 'Tutorial 3 Description',
+        description: 'Pilihlah prioritas dari 2 kriteria berbeda yang dibandingkan sesuai preferensi anda sebagai pria. Masing-Masing skala bernilai minimal 1 dan maksimal 3',
         image: Write,
     },
     {
-        id: 4,
-        title: 'Hasil',
-        description: 'Tutorial 4 Description',
+        id: 3,
+        title: 'Submit',
+        description: 'Setelah anda selesai, maka klik submit untuk melihat hasil dari penelitian kami!',
         image: Monit,
     },
 ] 

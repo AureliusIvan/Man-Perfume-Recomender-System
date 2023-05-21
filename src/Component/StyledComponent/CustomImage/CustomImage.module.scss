@@ -21,7 +21,7 @@
 .logo {
     // to disable selection on logo
     @include index.prevent-selection;
-    cursor: pointer;
+    // cursor: pointer;
     width: 100px;
     height: 100%;
     object-fit: 50%;
