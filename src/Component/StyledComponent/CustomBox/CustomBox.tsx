@@ -92,7 +92,7 @@ export function BoxSection(props: any) {
                 ...props.style,
                 padding: props.padding ? props.padding : "20px",
                 paddingBottom: props.paddingBottom ? props.paddingBottom : "20px",
-                paddingTop: props.paddingTop ? props.paddingTop : "20px",
+                paddingTop: props.paddingTop,
                 paddingLeft: props.paddingLeft ? props.paddingLeft : "20px",
                 paddingRight: props.paddingRight ? props.paddingRight : "20px",
                 margin: props.margin ? props.margin : "20px",
@@ -100,11 +100,11 @@ export function BoxSection(props: any) {
                 marginTop: props.marginTop ? props.marginTop : "20px",
                 marginLeft: props.marginLeft ? props.marginLeft : "20px",
                 marginRight: props.marginRight ? props.marginRight : "20px",
-                borderRadius: props.borderRadius ? props.borderRadius : "20px",
+                // borderRadius: props.borderRadius ? props.borderRadius : "20px",
             }}
         >
             {props.children}
-            <Divider variant="middle" />
+            {/* <Divider variant="middle" /> */}
         </div>
     )
 }

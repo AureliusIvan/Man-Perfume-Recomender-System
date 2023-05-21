@@ -159,12 +159,12 @@ export function ResultCard(props: any) {
 
     return (
         <motion.div className={style.card}
-            // key={props.key}
-            // ref={ref}
-            // initial="hidden"
-            // animate={inView ? "visible" : "hidden"}
-            // variants={animationVariants}
-            // transition={{ duration: 0.5 }}
+        // key={props.key}
+        // ref={ref}
+        // initial="hidden"
+        // animate={inView ? "visible" : "hidden"}
+        // variants={animationVariants}
+        // transition={{ duration: 0.5 }}
         >
             <div className={style.cardcontent}>
                 <GridContainer container>
@@ -199,7 +199,8 @@ export function ResultCard(props: any) {
                             button={<>
                                 <CustomButton
                                     onclick={() => handleOpen()}
-                                    height={"20px"}
+                                    height={"24px"}
+                                    width={"120px"}
                                 >
                                     Info Lanjut
                                 </CustomButton></>}
@@ -210,9 +211,10 @@ export function ResultCard(props: any) {
                         </CustomModal>
                         <a href={props.link ? props.link : "https://www.tokopedia.com/"} target="_blank" rel="noopener noreferrer">
                             <CustomButton
-                                height={"20px"}
+                                height={"24px"}
                                 bgcolor={"rgb(0,0,0,0)"}
                                 marginTop={"10px"}
+                                width={"120px"}
                             >
                                 Shop Now
                             </CustomButton>

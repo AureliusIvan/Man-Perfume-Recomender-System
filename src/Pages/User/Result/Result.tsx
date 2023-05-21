@@ -39,13 +39,14 @@ export default function Result() {
     // const [length, setLenght] = useState<number>(0);
     const dataEntry: object[] = useSelector(selectDataEntry);
     useEffect(() => {
-        console.log(dataEntry);
+        // console.log(dataEntry);
+        window.scrollTo(0, 0);
     }, [])
     const navigate = useNavigate();
 
     return (
         <>
-            <Spacer y={'20px'} />
+            <Spacer y={'40px'} />
             <Center>
                 {/* <Paragraf /> */}
                 <Title>

@@ -3,6 +3,8 @@ import style from "./CustomImage.module.scss";
 // import { useTheme } from "@mui/material/styles";
 import IMG from "@/Assets/Image/logo.png"
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectIsLogin } from "@/Redux/feature/dataSlice";
 
 
 
@@ -33,12 +35,14 @@ export function CustomImage(props: CustomImageProps) {
 
 export function LogoImage(props: LogoImageProps) {
     const navigate = useNavigate()
-    // function onClick() {
-    //     navigate('/');
-    // }
+    const Login = useSelector(selectIsLogin)
+    function onClick() {
+        if (Login) navigate('/admin')
+        else navigate('/');
+    }
     return (
         <img src={IMG} alt="logo"
-            // onClick={props.onClick ? props.onClick : onClick}
+            onClick={props.onClick ? props.onClick : onClick}
             className={style.logo} style={{
                 ...props.style,
                 width: props.width ? props.size : "50px",

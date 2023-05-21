@@ -1,7 +1,7 @@
-const Aroma = "Aroma adalah bla bla bla";
-const Kualitas = "Kualitas adalah bla bla bla";
-const DayaTahan = "Daya Tahan adalah bla bla bla";
-const Harga = "Harga adalah bla bla bla";
+const Aroma = "Aroma mempertimbangkan preferensi pengguna, kami menawarkan saran parfum dengan beragam aroma, mulai dari yang segar dan maskulin hingga yang elegan dan misterius.";
+const Kualitas = "Kualitas mempertimbangkan faktor-faktor seperti bahan-bahan, keaslian, dan reputasi merek, kami memberikan penilaian yang akurat mengenai kualitas parfum yang ditawarkan.";
+const DayaTahan = "Daya Tahan Parfum mempertimbangkan tidak ada yang lebih mengesankan daripada parfum yang tahan lama dan menemani Anda sepanjang hari.";
+const Harga = "Harga mempertimbangkan budget dari pengguna, kami menawarkan saran parfum dengan harga yang sesuai dengan anggaran Anda.";
 
 export const KuisionerData = [
     {
@@ -46,3 +46,18 @@ export const KuisionerData = [
         paramrightdesc: DayaTahan,
     }
 ]
+
+
+
+// <li>
+// <span>Kualitas: </span> Dengan mempertimbangkan faktor-faktor seperti bahan-bahan, keaslian, dan reputasi merek, kami memberikan penilaian yang akurat mengenai kualitas parfum yang ditawarkan.
+// </li>
+// <li>
+// <span>Aroma: </span> Dengan mempertimbangkan preferensi pengguna, kami menawarkan saran parfum dengan beragam aroma, mulai dari yang segar dan maskulin hingga yang elegan dan misterius.
+// </li>
+// <li>
+// <span>Harga: </span>Dengan mempertimbangkan budget dari pengguna, kami menawarkan saran parfum dengan harga yang sesuai dengan anggaran Anda.
+// </li>
+// <li>
+// <span>Daya Tahan: </span>Daya Tahan Parfum: Dengan mempertimbangkan tidak ada yang lebih mengesankan daripada parfum yang tahan lama dan menemani Anda sepanjang hari.
+// </li>
