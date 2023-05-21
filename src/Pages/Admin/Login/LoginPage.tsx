@@ -17,17 +17,17 @@ import { postGuest } from "@/Component/FunctionComponent/axiosClient/axiosClient
 import { setCookie } from "react-use-cookie";
 import { CircularProgress } from "@mui/material";
 import Alert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
+import Background from "@/Component/StyledComponent/Background/Background";
+import { Title } from "@/Component/StyledComponent/Typography/CustomTypography";
 
 function LoginPage() {
   return (
     <div className={style.LoginPage}>
-      {/* <Center y> */}
       <Box padding={"50px"}>
         <LogoImage size="200px" />
-        {/* if validation goes well, redirect to admin page */}
+        <Title variant="h4">Admin Login</Title>
         <TheForm />
       </Box>
-      {/* </Center> */}
     </div>
   );
 }
@@ -76,11 +76,11 @@ const TheForm: React.FunctionComponent = () => {
               setLoading(false);
               setMessage("Something went wrong");
               showerror();
-              console.log(res);
+              // console.log(res);
             }
           }
           ).catch((err) => {
-            console.log(err);
+            // console.log(err);
             setMessage("Something went wrong");
             showerror();
             setLoading(false);
@@ -100,6 +100,7 @@ const TheForm: React.FunctionComponent = () => {
         const { touched, errors, handleChange, handleBlur, isSubmitting, values } = props;
         return (
           <Form>
+            <Background />
             {error &&
               <Alert severity="error">{message}</Alert>}
             <Input

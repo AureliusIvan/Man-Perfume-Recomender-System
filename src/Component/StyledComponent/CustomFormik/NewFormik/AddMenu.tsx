@@ -177,20 +177,19 @@ const TheForm: React.FunctionComponent = () => {
                 actions.setSubmitting(false);
             }}
             validationSchema={Yup.object().shape({
-                foto: Yup.string().required("foto Required"),
-                nama: Yup.string().required("nama Required"),
-                brand: Yup.string().required("brand Required"),
-                harga: Yup.string().required("harga Required"),
-                tipe_aroma: Yup.string().required("tipe_aroma Required"),
-                tipe_parfum: Yup.string().required("tipe_parfum Required"),
-                kategori: Yup.string().required("kategori Required"),
-                deskripsi: Yup.string().required("deskripsi Required"),
-                quality_index: Yup.string().required("quality_index Required").max(5, "quality_index must be less than 5").min(1, "quality_index must be more than 1"),
-                durability_index: Yup.string().required("durability_index Required").max(5, "durability_index must be less than 5").min(1, "durability_index must be more than 1"),
-                aroma_index: Yup.string().required("aroma_index Required").max(5, "aroma_index must be less than 5").min(1, "aroma_index must be more than 1"),
-                price_index: Yup.string().required("price_index Required").max(5, "price_index must be less than 5").min(1, "price_index must be more than 1"),
-                ukuran: Yup.string().required("ukuran Required"),
-                link_pembelian: Yup.string().required("link_pembelian Required"),
+                foto: Yup.mixed().required("Foto wajib diisi"),
+                nama: Yup.string().required("Nama Parfum wajib diisi"),
+                brand: Yup.string().required("Merk Parfum wajib diisi"),
+                harga: Yup.string().required("Harga Parfum wajib diisi"),
+                tipe_aroma: Yup.string().required("Tipe Aroma wajib diisi"),
+                tipe_parfum: Yup.string().required("Tipe Parfum wajib diisi"),
+                deskripsi: Yup.string().required("Deskripsi wajib diisi"),
+                quality_index: Yup.number().required("Index Kualitas wajib diisi").max(5, "Index Kualitas tidak boleh lebih dari 5").min(1, "Index Kualitas harus 1 atau lebih"),
+                durability_index: Yup.number().required("Index Durabilitas wajib diisi").max(5, "Index Durabilitas tidak boleh lebih dari 5").min(1, "Index Durabilitas harus 1 atau lebih"),
+                aroma_index: Yup.number().required("Index Aroma wajib diisi").max(5, "Index Aroma tidak boleh lebih dari 5").min(1, "Index Aroma harus 1 atau lebih"),
+                price_index: Yup.number().required("Index Harga wajib diisi").max(5, "Index Harga tidak boleh lebih dari 5").min(1, "Index Harga harus 1 atau lebih"),
+                ukuran: Yup.string().required("Ukuran Parfum wajib diisi"),
+                link_pembelian: Yup.string().required("Link pembelian wajib diisi"),
             })}
         >
             {(props: FormikProps<LoginForm>) => {
@@ -199,15 +198,12 @@ const TheForm: React.FunctionComponent = () => {
                     <Form>
                         {error &&
                             <Alert severity="error">{message}</Alert>}
-
                         <div className="fileinput">
                             <label htmlFor="foto">
-                                {values.foto &&
-                                    <div className={style.profilepic}>
-                                        <img src={values.foto ? URL.createObjectURL(values.foto) : ""} alt="" />
-                                    </div>
-                                }
-
+                                Change Image
+                                <div className={style.profilepic}>
+                                    <img src={values.foto && URL.createObjectURL(values.foto)} alt="" />
+                                </div>
                                 <input
                                     placeholder="Foto"
                                     onChange={e => {
@@ -221,26 +217,125 @@ const TheForm: React.FunctionComponent = () => {
                                 />
                             </label>
                         </div>
-                        {
-                            Data.map((item, index) => {
-                                return (
-                                    <>
-                                        {errors[item.value as keyof LoginForm] && touched[item.value as keyof LoginForm] && (
-                                            <Alert severity="error">{errors[item.value as keyof LoginForm]?.toString()}</Alert>
-                                        )}
-                                        <Input
-                                            label={item.placeholder}
-                                            key={index}
-                                            name={item.value}
-                                            type={item.type}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                        />
-                                    </>
-                                )
-                            }
-                            )
-                        }
+
+                        <br />
+                        <Input
+                            name={Data[0].value}
+                            label={Data[0].placeholder}
+                            type={Data[0].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.nama && touched.nama ? errors.nama : ""}
+                            error={errors.nama && touched.nama ? true : false}
+                        />
+                        <Input
+                            name={Data[1].value}
+                            label={Data[1].placeholder}
+                            type={Data[1].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.harga && touched.harga ? errors.harga : ""}
+                            error={errors.harga && touched.harga ? true : false}
+                        />
+                        <Input
+                            name={Data[2].value}
+                            label={Data[2].placeholder}
+                            type={Data[2].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.brand && touched.brand ? errors.brand : ""}
+                            error={errors.brand && touched.brand ? true : false}
+                        />
+                        <Input
+                            name={Data[3].value}
+                            label={Data[3].placeholder}
+                            type={Data[3].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.tipe_aroma && touched.tipe_aroma ? errors.tipe_aroma : ""}
+                            error={errors.tipe_aroma && touched.tipe_aroma ? true : false}
+                        />
+                        <Input
+                            name={Data[4].value}
+                            label={Data[4].placeholder}
+                            type={Data[4].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.tipe_parfum && touched.tipe_parfum ? errors.tipe_parfum : ""}
+                            error={errors.tipe_parfum && touched.tipe_parfum ? true : false}
+                        />
+                        <Input
+                            name={Data[5].value}
+                            label={Data[5].placeholder}
+                            type={Data[5].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.kategori && touched.kategori ? errors.kategori : ""}
+                            error={errors.kategori && touched.kategori ? true : false}
+                        />
+                        <Input
+                            name={Data[6].value}
+                            label={Data[6].placeholder}
+                            type={Data[6].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.deskripsi && touched.deskripsi ? errors.deskripsi : ""}
+                            error={errors.deskripsi && touched.deskripsi ? true : false}
+                        />
+                        <Input
+                            name={Data[7].value}
+                            label={Data[7].placeholder}
+                            type={Data[7].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.quality_index && touched.quality_index ? errors.quality_index : ""}
+                            error={errors.quality_index && touched.quality_index ? true : false}
+                        />
+                        <Input
+                            name={Data[8].value}
+                            label={Data[8].placeholder}
+                            type={Data[8].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.durability_index && touched.durability_index ? errors.durability_index : ""}
+                            error={errors.durability_index && touched.durability_index ? true : false}
+                        />
+                        <Input
+                            name={Data[9].value}
+                            label={Data[9].placeholder}
+                            type={Data[9].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.aroma_index && touched.aroma_index ? errors.aroma_index : ""}
+                            error={errors.aroma_index && touched.aroma_index ? true : false}
+                        />
+                        <Input
+                            name={Data[10].value}
+                            label={Data[10].placeholder}
+                            type={Data[10].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.price_index && touched.price_index ? errors.price_index : ""}
+                            error={errors.price_index && touched.price_index ? true : false}
+                        />
+                        <Input
+                            name={Data[11].value}
+                            label={Data[11].placeholder}
+                            type={Data[11].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.ukuran && touched.ukuran ? errors.ukuran : ""}
+                            error={errors.ukuran && touched.ukuran ? true : false}
+                        />
+                        <Input
+                            name={Data[12].value}
+                            label={Data[12].placeholder}
+                            type={Data[12].type}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            helperText={errors.link_pembelian && touched.link_pembelian ? errors.link_pembelian : ""}
+                            error={errors.link_pembelian && touched.link_pembelian ? true : false}
+                        />
                         <Spacer y="20px" />
                         <div
                             style={{
@@ -249,7 +344,7 @@ const TheForm: React.FunctionComponent = () => {
                             }}
                         >
                             <Button type="submit"
-                                disabled={loading || isSubmitting || !props.isValid || !props.dirty || props.isSubmitting}
+                                disabled={loading || isSubmitting || !props.isValid}
                             >
                                 {loading ? <CircularProgress /> : "Submit"}
                             </Button>

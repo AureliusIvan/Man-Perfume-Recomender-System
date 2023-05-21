@@ -24,8 +24,45 @@ const CInput = styled(withTheme(TextField))(() => (
     'input.MuiInputBase-input.Mui-disabled': {
       color: 'inherit',
     },
-
-    // color: theme.palette.primary ? 'white' : 'black',
+    input: {
+      // borderRadius: 4,
+      // position: 'relative',
+      // backgroundColor: "white",
+      // border: '1px solid #ced4da',
+      // fontSize: 16,
+      // padding: '10px 12px',
+      // width: '100%',
+      // '&:focus': {
+      //   boxShadow: `blue 0 0 0 0.2rem`,
+      //   borderColor: 'blue',
+      // },
+      ":after": {
+        borderBottom: '2px solid red',
+        boxShadow: `blue 0 0 0 0.2rem`,
+        borderColor: 'blue',
+        display: 'none',
+      },
+      input: {
+        position: 'relative',
+        '&:before': {
+          content: '""',
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          borderBottom: '2px solid #ced4da',
+          // transition: theme.transitions.create('border-bottom-color'),
+        },
+        '&:hover:not($disabled):before': {
+          borderBottom: `2px solid red`,
+        },
+        '&$focused:before': {
+          borderBottom: `2px solid red`,
+        },
+      },
+      focused: {},
+      disabled: {},
+    }
   }));
 
 
@@ -54,7 +91,7 @@ export function CustomInput(props: CustomInputProps) {
   const theme = useTheme();
   return (
     <CInput
-      innerRef={props.innerRef}
+      // innerRef={props.innerRef}
       ref={props.ref}
       onKeyDown={props.onKeyDown}
       type={props.type ? props.type : "text"}
@@ -74,9 +111,7 @@ export function CustomInput(props: CustomInputProps) {
           borderRadius: '20px',
           paddingInline: '10px',
           outline: 'none',
-          // '&:after ': {
-          //   borderBottom: '2px solid red',
-          // },
+
         }
       }}
       {...props}
