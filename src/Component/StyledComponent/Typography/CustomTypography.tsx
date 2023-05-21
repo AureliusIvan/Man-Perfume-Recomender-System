@@ -24,6 +24,7 @@ interface TextProps {
     paddingright?: string,
     style?: React.CSSProperties,
     children?: React.ReactNode,
+    color?: string,
 }
 
 
@@ -40,9 +41,8 @@ export function Text(props: TextProps) {
                 textAlign: props.textalign && props.textalign,
                 fontSize: props.fontSize ? props.fontSize : "15px",
                 fontWeight: props.fontWeight ? props.fontWeight : "normal",
-                color: theme.palette.mode === (props.reverse === "true" ? "light" : "dark") ? '#fff' : '#000',
-                // margin
-                // margin: props.margin ? props.margin : "0px",
+                // color: theme.palette.mode === (props.reverse === "true" ? "light" : "dark") ? '#fff' : '#000',
+                color: props.color ? props.color : theme.palette.mode === (props.reverse === "true" ? "light" : "dark") ? '#fff' : '#000',
                 marginTop: props.margintop ? props.margintop : "0px",
                 marginBottom: props.marginbottom ? props.marginbottom : "0px",
                 marginLeft: props.marginleft ? props.marginleft : "0px",
@@ -73,6 +73,8 @@ export function Title(props: any) {
                 color: theme.palette.mode === (props.reverse === "true" ? "light" : "dark") ? '#fff' : '#000',
                 fontSize: props.fontSize ? props.fontSize : "",
                 fontWeight: props.fontWeight ? props.fontWeight : "bold",
+                marginLeft: props.marginleft ? props.marginleft : "0px",
+                marginRight: props.marginright ? props.marginright : "0px",
             }}
         >
             {props.children ? props.children : "Aroma lebih penting dari harga."}

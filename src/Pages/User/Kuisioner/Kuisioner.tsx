@@ -31,6 +31,7 @@ import Typography from '@mui/material/Typography';
 import LoadingScreen from "@/Component/StyledComponent/Fallback/LoadingScreen";
 // import CustomAlert from "@/Component/StyledComponent/CustomAlert/CustomAlert";
 import CheckIcon from '@mui/icons-material/Check';
+import style from "./Kuisioner.module.scss";
 
 const CustomGrid = styled(Grid)({
     width: "100%",
@@ -39,13 +40,10 @@ const CustomGrid = styled(Grid)({
     fontSize: "15px",
     fontWeight: "normal",
     color: "#000",
-    // margin
-    // margin: props.margin ? props.margin : "0px",
     marginTop: "0px",
     marginBottom: "0px",
     marginLeft: "0px",
     marginRight: "0px",
-    // padding
     padding: "0px",
     paddingTop: "0px",
     paddingBottom: "0px",
@@ -172,19 +170,32 @@ export default function Kuisioner() {
                             <Center>
                                 {/* Starter pack survey form, hope this help! */}
                                 <Box
-                                // overflow={"visible"}
                                 >
                                     <Spacer y={"20px"} />
-                                    <M>
-                                        <Title textalign={"center"}>
-                                            {MainTitle}
-                                        </Title>
-                                        <HelpComponent />
+                                    <M >
+                                        <span
+                                            style={{
+                                                display: "flex",
+                                                justifyContent: "space-between",
+                                                alignItems: "center",
+                                                // width: "100%",
+                                            }}
+                                        >
+                                            <Title
+                                                // marginleft={"20px"}
+                                                marginRight={"20px"}
+                                                textalign={"center"}>
+                                                {MainTitle}
+                                            </Title>
+                                        </span>
                                     </M>
-                                    <Spacer y={"20px"} />
-                                    <Text fontWeight={"bold"} textalign={"center"}>
+                                    {/* <Spacer y={"20px"} /> */}
+                                    <Text
+                                        color={"rgb(255, 255, 255, 0.7)"}
+                                        fontWeight={"bold"} textalign={"center"}>
                                         Mana yang lebih penting bagi anda dalam memilih parfum?
                                     </Text>
+                                    <HelpComponent />
                                     <Spacer y={"20px"} />
                                     {question.map((_, index) => {
                                         return (
@@ -228,7 +239,6 @@ export default function Kuisioner() {
                                                             <CustomSlider
                                                                 defaultValue={4}
                                                                 name={`input.${index}`}
-                                                                // value={values.input[index]}
                                                                 onChange={handleChange}
                                                                 scale={calculateValue}
                                                                 getAriaValueText={valueLabelFormat}
@@ -285,7 +295,6 @@ export default function Kuisioner() {
                                     <CustomModal
                                         title={"Submit"}
                                         open={open}
-                                        // onClose={handleClose}
                                         closebtn={true}
                                         hideButton={true}
                                     >

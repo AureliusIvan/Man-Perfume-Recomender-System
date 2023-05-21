@@ -18,6 +18,7 @@ interface CustomButtonProps {
   onclick?: () => void;
   children?: React.ReactNode;
   loading?: boolean;
+  width?: string;
 }
 
 
@@ -31,6 +32,7 @@ export function CustomButton(props: CustomButtonProps) {
       className={props.variant === "outlined" ? style.buttonoutlined : style.button}
       {...props}
       style={{
+        width: props.width,
         height: props.height && props.height,
         margin: props.margin ? props.margin : "0px",
         marginBottom: props.marginBottom && props.marginBottom,
@@ -59,6 +61,8 @@ export function CustomButtonPlain(props: any) {
       className={style.buttonplain}
       {...props}
       style={{
+        width: props.width ? props.width : "100%",
+        textAlign: props.textalign ? props.textalign : "left",
         border: props.border ? props.border : "none",
         pointerEvents: props.pointerEvents ? props.pointerEvents : "all",
         margin: props.margin ? props.margin : "0px",
