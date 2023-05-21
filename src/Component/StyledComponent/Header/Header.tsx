@@ -83,7 +83,7 @@ const ButtonNavLink = ({ pathTo, children, clicked, ...props }: Props) => {
 };
 
 export default function Header() {
-  const isMobile = useMediaQuery<boolean>("(min-width:600px)");
+  const isMobile = useMediaQuery<boolean>("(max-width:600px)");
 
   const loggedIn = useSelector(selectIsLogin);
   const dispatch = useDispatch();
@@ -92,25 +92,37 @@ export default function Header() {
 
   return (
     <GridContainer container className={show ? style.Header : style.HeaderHide}>
-      {isMobile && (
-        <GridItemLeft item xs={4}>
+
+      {!isMobile ? (
+        <Grid item sm={6}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "left",
+            paddingLeft: Margin,
+          }}
+        >
           <LogoImage />
           <Text width="70px" fontSize="10px" textalign="left" marginleft="10px">
             SISTEM PENDUKUNG KEPUTUSAN
           </Text>
           <Spacer y={"20px"} />
-          {/* <Toogle /> */}
-        </GridItemLeft>
-      )}
+        </Grid>
+      )
+        : ""
+      }
 
-      <GridItemCenter item xs={4}>
-        {/* <Title>
-                    {PROJTITLE}
-                </Title> */}
-      </GridItemCenter>
-      <GridItemRight item xs={4}>
-        {/* <Toogle /> */}
 
+
+      <Grid item xs={12} sm={6}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: isMobile ? "center" : "right",
+          paddingRight: isMobile ? "0px" : Margin,
+        }}
+
+      >
         {loggedIn ? (
           <>
             <NavLink pathTo="/admin">Home</NavLink>
@@ -131,27 +143,7 @@ export default function Header() {
             <ButtonNavLink pathTo="/admin/login">Admin</ButtonNavLink>
           </>
         )}
-
-        {/* loggedIn value read as [object object] on console log
-        {loggedIn ? (
-          <ButtonNavLink
-            pathTo="/"
-            clicked={() => {
-              dispatch(setLogout());
-              console.log("logged in : " + { loggedIn });
-            }}
-          >
-            Log Out
-          </ButtonNavLink>
-        ) : (
-          <ButtonNavLink
-            pathTo="/admin/login"
-            clicked={() => console.log("now logged in : " + { loggedIn })}
-          >
-            Admin Mode
-          </ButtonNavLink>
-        )} */}
-      </GridItemRight>
+      </Grid>
     </GridContainer>
   );
 }

@@ -60,3 +60,49 @@
         background-position: center;
     }
 }
+
+
+.HeaderMobile {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 6;
+    justify-content: right;
+    height: 80px;
+    transition: 0.4s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    will-change: transform;
+    width: 100%;
+    background-color: transparent;
+    background-color: #121217;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &::after {
+        content: "";
+        width: 100%;
+        position: absolute;
+        height: 1px;
+        bottom: 0;
+        background: rgb(2, 0, 36);
+        background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(58, 9, 121, 0.8374999658066351) 48%, rgba(0, 0, 0, 1) 100%);
+    }
+
+
+
+    @media screen and (max-width: 768px) {
+        justify-content: center;
+    }
+
+    .Logo {
+        width: 50px !important;
+        height: 50px !important;
+        background-size: cover;
+        position: absolute;
+        left: 0;
+        background-position: center;
+    }
+}
