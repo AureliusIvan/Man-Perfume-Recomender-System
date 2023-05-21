@@ -30,7 +30,7 @@ export default function EditMenu(props: any) {
         >
             <CustomBox>
                 <h1>Edit Data Parfum</h1>
-                <Box padding={"50px"}>
+                <Box padding={"50px"} className="content">
                     <TheForm
                         id={props.id}
                         data={props.data}
