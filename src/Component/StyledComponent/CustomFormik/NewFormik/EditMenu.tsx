@@ -27,6 +27,7 @@ export default function EditMenu(props: any) {
         <Modal
             title={"Edit"}
             xbutton={true}
+            buttonMarginBottom={"10px"}
         >
             <CustomBox>
                 <h1>Edit Data Parfum</h1>
@@ -72,17 +73,6 @@ function TheForm(props: any) {
             setError(false);
         }, 3000);
     }
-    const inputRefs = useRef<any>([]);
-
-    const handleKeyDown = (e: any, index: any) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            const nextIndex = index + 1;
-            if (inputRefs.current[nextIndex]) {
-                inputRefs.current[nextIndex].focus();
-            }
-        }
-    };
 
     const [data, setData] = useState<any>({});
     const [criteria, setCriteria] = useState<any>({});
@@ -97,7 +87,7 @@ function TheForm(props: any) {
         <Formik
             initialValues={{
                 nama: props.data.nama,
-                foto: data.foto,
+                foto: null,
                 image: data.foto,
                 brand: props.data.brand,
                 harga: props.data.harga,
@@ -116,27 +106,28 @@ function TheForm(props: any) {
                 try {
                     const formdata = new FormData;
                     setLoading(true);
+                    if (values.foto) {
+                        formdata.append("foto", values.foto);
+                    }
+                    console.log(formdata.get("foto"));
+                    formdata.append("nama", values.nama);
+                    formdata.append("brand", values.brand);
+                    formdata.append("harga", values.harga);
+                    formdata.append("tipe_aroma", values.tipe_aroma);
+                    formdata.append("tipe_parfum", values.tipe_parfum);
+                    formdata.append("kategori", values.kategori);
+                    formdata.append("deskripsi", values.deskripsi);
+                    formdata.append("quality_index", values.quality_index);
+                    formdata.append("durability_index", values.durability_index);
+                    formdata.append("aroma_index", values.aroma_index);
+                    formdata.append("price_index", values.price_index);
+                    formdata.append("ukuran", values.ukuran);
+                    formdata.append("link_pembelian", values.link_pembelian);
                     async function login() {
                         console.log(values);
-                        // const foto: any = await compressImage(values.foto);  
                         formdata.append("foto", values.foto);
                         await post(`v1/admin/parfums/update/${props.id}`,
-                            {
-                                foto: formdata.get("foto"),
-                                nama: values.nama,
-                                brand: values.brand,
-                                harga: values.harga,
-                                tipe_aroma: values.tipe_aroma,
-                                tipe_parfum: values.tipe_parfum,
-                                kategori: values.kategori,
-                                deskripsi: values.deskripsi,
-                                quality_index: values.quality_index,
-                                durability_index: values.durability_index,
-                                aroma_index: values.aroma_index,
-                                price_index: values.price_index,
-                                ukuran: values.ukuran,
-                                link_pembelian: values.link_pembelian,
-                            }
+                            formdata
                         ).then((res: any) => {
                             if (res.status === 200) {
                                 console.log(res);

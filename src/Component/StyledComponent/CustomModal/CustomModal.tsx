@@ -25,6 +25,12 @@ export function CustomModal(props: any) {
             {props.hideButton ? "" :
                 props.button ? props.button :
                     <Button
+                        outline={props.outline}
+                        height={props.buttonHeight}
+                        width={props.buttonWidth}
+                        margin={props.buttonMargin}
+                        marginBottom={props.buttonMarginBottom}
+                        padding={props.buttonPadding}
                         bgcolor={props.bgcolor}
                         disabled={props.disabled}
                         onclick={handleOpen}>{
@@ -42,18 +48,24 @@ export function CustomModal(props: any) {
                     <Box
                         maxWidth="440px"
                         maxHeight="80vh"
-                        overflowY={props.overflowY ? props.overflowY : "auto"}
+                        // overflowY={props.overflowY ? props.overflowY : "auto"}
                         className={style.modal}
                     >
-                        {props.xbutton ? <button
-                            className={style.closebtn}
-                            onClick={props.onClose ? props.onClose : handleClose}
-                            style={{
-                                color: theme.palette.mode === 'dark' ? "black" : "white",
-                                backgroundColor: theme.palette.mode === 'dark' ? "white" : "black",
+                        {props.xbutton ?
+                            <button
+                                className={style.closebtn}
+                                onClick={props.onClose ? props.onClose : handleClose}
+                                style={{
+                                    color: theme.palette.mode === 'dark' ? "black" : "white",
+                                    backgroundColor: theme.palette.mode === 'dark' ? "white" : "black",
 
-                            }}
-                        >X</button> : null}
+                                }}
+                            >
+                                <span className={style.closebtnspan}>
+                                    X
+                                </span>
+                            </button> :
+                            null}
                         {
                             props.children ? props.children :
                                 <>
@@ -114,7 +126,8 @@ export function CustomModal(props: any) {
                                     Yes
                                 </Button>
                                     <Button
-                                        bgcolor={props.bgcolor ? props.bgcolor : "rgb(255, 255, 255, 0)"}
+                                        variant='outlined'
+                                        // bgcolor={props.bgcolor ? props.bgcolor : "rgb(255, 255, 255, 0)"}
                                         onclick={props.onCancel ? props.onCancel : handleClose}
                                     >
                                         No
@@ -131,6 +144,7 @@ export function CustomModal(props: any) {
 export function Confirmations(props: any) {
     return (
         <CustomModal
+            outline={props.outline}
             bgcolor={props.bgcolor}
             onClose={props.onClose && props.onClose}
             disabled={props.disabled}
