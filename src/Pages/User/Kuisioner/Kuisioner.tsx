@@ -127,13 +127,14 @@ export default function Kuisioner() {
                         formData.append(`input[${index}]`, value);
                     });
                     async function Submit() {
+                        console.log(values);
                         setLoading(true);
                         try {
                             postGuest("v1/calculate", formData)
                                 .then((res: any) => {
-                                    // console.log(res);
+                                    console.log(res);
                                     if (res.status === 200) {
-                                        dispatch(setDataEntry(res.data));
+                                        dispatch(setDataEntry(res.data.result));
                                         navigateToResult();
                                     } else {
                                         // console.log("This is error else")

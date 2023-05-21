@@ -201,6 +201,7 @@ export function ResultCard(props: any) {
                                     onclick={() => handleOpen()}
                                     height={"24px"}
                                     width={"120px"}
+                                    marginInline='0px'
                                 >
                                     Info Lanjut
                                 </CustomButton></>}
@@ -211,6 +212,7 @@ export function ResultCard(props: any) {
                         </CustomModal>
                         <a href={props.link ? props.link : "https://www.tokopedia.com/"} target="_blank" rel="noopener noreferrer">
                             <CustomButton
+                                marginInline='0px'
                                 height={"24px"}
                                 bgcolor={"rgb(0,0,0,0)"}
                                 marginTop={"10px"}
