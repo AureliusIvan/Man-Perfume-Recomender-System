@@ -21,6 +21,7 @@ import { FileUploader } from "react-drag-drop-files";
 import style from "../../../CustomInputImage/CustomInputImage.module.scss";
 import compressImage from "@/Component/FunctionComponent/ImageCompressor/ImageCompressor";
 import "./Menu.scss";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function EditMenu(props: any) {
     return (<>
@@ -59,11 +60,10 @@ interface LoginForm {
     ukuran: string;
     link_pembelian: string;
     image: any;
+    deleteImg: boolean;
 }
 
 function TheForm(props: any) {
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [message, setMessage] = useState("");
@@ -76,16 +76,19 @@ function TheForm(props: any) {
 
     const [data, setData] = useState<any>({});
     const [criteria, setCriteria] = useState<any>({});
+    // const [deleteImg, setDeleteImg] = useState<boolean>(false);
 
     useEffect(() => {
         setData(props.data);
         setCriteria(props.data);
-        console.log(criteria);
+        // console.log(criteria);
     }, []);
+
 
     return (
         <Formik
             initialValues={{
+                deleteImg: false,
                 nama: props.data.nama,
                 foto: null,
                 image: data.foto,
@@ -106,10 +109,9 @@ function TheForm(props: any) {
                 try {
                     const formdata = new FormData;
                     setLoading(true);
-                    if (values.foto) {
-                        formdata.append("foto", values.foto);
+                    if (values.deleteImg === false) {
+                        values.foto ? formdata.append("foto", values.foto) : formdata.append("foto", "1");
                     }
-                    console.log(formdata.get("foto"));
                     formdata.append("nama", values.nama);
                     formdata.append("brand", values.brand);
                     formdata.append("harga", values.harga);
@@ -123,34 +125,32 @@ function TheForm(props: any) {
                     formdata.append("price_index", values.price_index);
                     formdata.append("ukuran", values.ukuran);
                     formdata.append("link_pembelian", values.link_pembelian);
-                    async function login() {
-                        console.log(values);
-                        formdata.append("foto", values.foto);
+                    // console.log(formdata.get("foto"));
+                    async function SubmitEdit() {
                         await post(`v1/admin/parfums/update/${props.id}`,
                             formdata
                         ).then((res: any) => {
                             if (res.status === 200) {
-                                console.log(res);
+                                // console.log(res);
                                 setLoading(false);
                                 window.location.reload();
                             } else {
                                 setLoading(false);
                                 setMessage("Something went wrong");
                                 showerror();
-                                console.log(res);
+                                // console.log(res);
                             }
                         }
                         ).catch((err) => {
-                            console.log(err);
+                            // console.log(err);
                             setMessage("Something went wrong");
                             showerror();
                             setLoading(false);
                         })
                     }
-
-                    login();
+                    SubmitEdit();
                 } catch (err) {
-                    console.log(err);
+                    // console.log(err);
                     setMessage("Something went wrong");
                     showerror();
                     setLoading(false);
@@ -158,7 +158,6 @@ function TheForm(props: any) {
                 actions.setSubmitting(false);
             }}
             validationSchema={Yup.object().shape({
-                // foto: Yup.string().required("foto Required"),
                 nama: Yup.string().required("Nama Parfum wajib diisi"),
                 brand: Yup.string().required("Merk Parfum wajib diisi"),
                 harga: Yup.string().required("Harga Parfum wajib diisi"),
@@ -184,7 +183,9 @@ function TheForm(props: any) {
                             <label htmlFor="foto">
                                 Change Image
                                 <div className={style.profilepic}>
-                                    <img src={values.foto ? URL.createObjectURL(values.foto) : data.foto} alt="" />
+                                    {values.deleteImg === false &&
+                                        <img src={values.foto ? URL.createObjectURL(values.foto) : data.foto} alt="" />
+                                    }
                                 </div>
                                 <input
                                     placeholder="Foto"
@@ -199,6 +200,12 @@ function TheForm(props: any) {
                                 />
                             </label>
                         </div>
+
+                        <button onClick={() => setFieldValue("deleteImg", true)}
+                            type="button"
+                            className={'delete'}>
+                            <DeleteForeverIcon />
+                        </button>
 
                         <br />
                         <Input
