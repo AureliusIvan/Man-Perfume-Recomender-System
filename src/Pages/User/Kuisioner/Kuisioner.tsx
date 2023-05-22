@@ -127,12 +127,12 @@ export default function Kuisioner() {
                         formData.append(`input[${index}]`, value);
                     });
                     async function Submit() {
-                        console.log(values);
+                        // console.log(values);
                         setLoading(true);
                         try {
                             postGuest("v1/calculate", formData)
                                 .then((res: any) => {
-                                    console.log(res);
+                                    // console.log(res);
                                     if (res.status === 200) {
                                         dispatch(setDataEntry(res.data.result));
                                         navigateToResult();
@@ -144,13 +144,13 @@ export default function Kuisioner() {
                                     }
                                     setLoading(false);
                                 }).catch((err) => {
-                                    console.log(err);
+                                    // console.log(err);
                                     setError(true);
                                     setMessage("An Error Occured")
                                     setLoading(false);
                                 })
                         } catch {
-                            console.log("error");
+                            // console.log("error");
                         }
                     }
                     Submit();
@@ -219,9 +219,17 @@ export default function Kuisioner() {
                                                         }
                                                     }}>
                                                         <Tooltip title={question[index].paramleftdesc} placement="top">
-                                                            <CustomButtonPlain textalign={isMobile ? "left" : "center"}>
+                                                            {/* <CustomButtonPlain textalign={isMobile ? "left" : "center"}> */}
+                                                            <div style={{
+                                                                // fontSize: "12px",
+                                                                fontWeight: "bold",
+                                                                // color: "rgb(255, 255, 255, 0.7)",
+                                                                textAlign: isMobile ? "left" : "center",
+                                                                textShadow: "0px 2px 5px blue",
+                                                            }}>
                                                                 {question[index].paramleft}
-                                                            </CustomButtonPlain>
+                                                            </div>
+                                                            {/* </CustomButtonPlain> */}
                                                         </Tooltip>
                                                     </Grid>
                                                     {!isMobile ?
@@ -254,9 +262,17 @@ export default function Kuisioner() {
                                                         }
                                                     }}>
                                                         <Tooltip title={question[index].paramrightdesc} placement="top">
-                                                            <CustomButtonPlain textalign={isMobile ? "right" : "center"}>
+                                                            {/* <CustomButtonPlain textalign={isMobile ? "right" : "center"}> */}
+                                                            <div style={{
+                                                                // fontSize: "12px",
+                                                                fontWeight: "bold",
+                                                                // color: "rgb(255, 255, 255, 0.7)",
+                                                                textAlign: isMobile ? "right" : "center",
+                                                                textShadow: "0px 2px 5px blue",
+                                                            }}>
                                                                 {question[index].paramright}
-                                                            </CustomButtonPlain>
+                                                            </div>
+                                                            {/* </CustomButtonPlain> */}
                                                         </Tooltip>
                                                     </Grid>
                                                     {isMobile ?

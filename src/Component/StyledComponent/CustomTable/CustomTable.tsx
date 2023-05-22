@@ -71,21 +71,21 @@ export default function CustomTable() {
       .then((res: any) => {
 
         if (res.status === 200) {
-          console.log(res.data.data);
+          // console.log(res.data.data);
           setPerfume(res.data.data);
         } else {
-          console.log("error! res: " + res);
+          // console.log("error! res: " + res);
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }
 
   React.useEffect(() => {
     fetchPerfume();
-    console.log("This is perfume:");
-    console.log(perfume);
+    // console.log("This is perfume:");
+    // console.log(perfume);
   }, []);
 
   return (

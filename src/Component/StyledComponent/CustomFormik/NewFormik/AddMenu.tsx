@@ -108,7 +108,7 @@ const TheForm: React.FunctionComponent = () => {
             }}
             onSubmit={(values: LoginForm, actions) => {
                 try {
-                    console.log(values.foto);
+                    // console.log(values.foto);
                     const formdata = new FormData;
                     formdata.append("nama", values.nama);
                     formdata.append("brand", values.brand);
@@ -128,7 +128,7 @@ const TheForm: React.FunctionComponent = () => {
                     async function login() {
                         const foto: any = await compressImage(values.foto);
                         formdata.append("foto", foto);
-                        console.log(formdata.get("foto"));
+                        // console.log(formdata.get("foto"));
                         // 
                         await post("v1/admin/parfums/create",
                             {
@@ -149,18 +149,18 @@ const TheForm: React.FunctionComponent = () => {
                             }
                         ).then((res: any) => {
                             if (res.status === 200) {
-                                console.log(res);
+                                // console.log(res);
                                 setLoading(false);
                                 window.location.reload();
                             } else {
                                 setLoading(false);
                                 setMessage("Something went wrong");
                                 showerror();
-                                console.log(res);
+                                // console.log(res);
                             }
                         }
                         ).catch((err) => {
-                            console.log(err);
+                            // console.log(err);
                             setMessage("Something went wrong");
                             showerror();
                             setLoading(false);

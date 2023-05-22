@@ -60,6 +60,7 @@ export function CustomButtonPlain(props: any) {
   const theme = useTheme();
   return (
     <button
+      onClick={props.onclick && props.onclick}
       disabled={props.disabled ? props.disabled : false}
       type={props.type ? props.type : "button"}
       className={style.buttonplain}

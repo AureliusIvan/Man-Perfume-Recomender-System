@@ -11,9 +11,9 @@ interface Props {
 
 const ProtectedRoute = ({ children }: { children?: ReactNode }) => {
   const auth = getCookie("TOKEN");
-  useEffect(() => {
-    console.log(auth);
-  }, [auth])
+  // useEffect(() => {
+  //   // console.log(auth);
+  // }, [auth])
   return auth ?
     <>{children}</>
     :
