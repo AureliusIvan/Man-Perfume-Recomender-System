@@ -10,6 +10,8 @@ import { useTheme } from '@mui/material/styles';
 import { Flex } from '../CustomBox/CustomBox';
 import { CustomButton as Button } from '../CustomButton/CustomButton';
 
+import { useTranslation } from "react-i18next"
+
 interface HelpComponentProps {
     children?: React.ReactNode;
     title?: string;
@@ -23,6 +25,8 @@ interface HelpComponentProps {
 
 
 function HelpComponent(props: HelpComponentProps) {
+    const { t } = useTranslation();
+
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -59,20 +63,20 @@ function HelpComponent(props: HelpComponentProps) {
                                 <CustomBox>
                                     <Typography id="modal-modal-title" variant="h6" component="h2">
                                         {/* {props.title ? props.title : "Title"} */}
-                                        Bantuan
+                                        {t("guide")}
                                     </Typography>
                                     <ul className={style.ul}>
                                         <li>
-                                            <span>Kualitas: </span> Dengan mempertimbangkan faktor-faktor seperti bahan-bahan, keaslian, dan reputasi merek, kami memberikan penilaian yang akurat mengenai kualitas parfum yang ditawarkan.
+                                            <span>{t("quality")}: </span> {t("qualityDesc")}
                                         </li>
                                         <li>
-                                            <span>Aroma: </span> Dengan mempertimbangkan preferensi pengguna, kami menawarkan saran parfum dengan beragam aroma, mulai dari yang segar dan maskulin hingga yang elegan dan misterius.
+                                            <span>{t("scent")}: </span> {t("scentDesc")}
                                         </li>
                                         <li>
-                                            <span>Harga: </span>Dengan mempertimbangkan budget dari pengguna, kami menawarkan saran parfum dengan harga yang sesuai dengan anggaran Anda.
+                                            <span>{t("price")}: </span> {t("priceDesc")}
                                         </li>
                                         <li>
-                                            <span>Daya Tahan: </span>Daya Tahan Parfum: Dengan mempertimbangkan tidak ada yang lebih mengesankan daripada parfum yang tahan lama dan menemani Anda sepanjang hari.
+                                            <span>{t("durability")}: </span> {t("durabilityDesc")}
                                         </li>
                                     </ul>
                                 </CustomBox>

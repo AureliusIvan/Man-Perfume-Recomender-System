@@ -1,32 +1,49 @@
 {
-    "title" : "Aplikasi Parfum",
-	"webName" : "SISTEM PENDUKUNG KEPUTUSAN",
-	"home" : "Beranda",
+  "title": "Aplikasi Parfum",
+  "webName": "SISTEM PENDUKUNG KEPUTUSAN",
+  "home": "Beranda",
 
-    "PROJTITLE" : "Penelitian Parfum Kekinian",
-    "PROJDESC" : "Selamat datang di penelitian parfum pria UMN, destinasi terbaik untuk menemukan parfum pria yang sesuai dengan keinginan dan kepribadian Anda. Di sini, kami menghadirkan pengalaman tak terlupakan dalam menjelajahi dunia keharuman yang khas untuk pria sejati",
-    
-    "MainTitle" : "Tentukan Prioritas anda untuk parfum pria",
+  "PROJTITLE": "Penelitian Parfum Kekinian",
+  "PROJDESC": "Selamat datang di penelitian parfum pria UMN, destinasi terbaik untuk menemukan parfum pria yang sesuai dengan keinginan dan kepribadian Anda. Di sini, kami menghadirkan pengalaman tak terlupakan dalam menjelajahi dunia keharuman yang khas untuk pria sejati",
 
-    "WebDescTitle" : "Apa yang kita lakukan?",
-    "WebDesc" : "Selamat datang di penelitian parfum pria UMN, destinasi terbaik untuk menemukan parfum pria yang sesuai dengan keinginan dan kepribadian Anda. Di sini, kami menghadirkan pengalaman tak terlupakan dalam menjelajahi dunia keharuman yang khas untuk pria sejati.",
+  "MainTitle": "Tentukan Prioritas anda untuk parfum pria",
 
-    "welcome" : "Selamat Datang!",
-    "start" : "Mulai Menentukan Parfum",
+  "WebDescTitle": "Apa yang kita lakukan?",
+  "WebDesc": "Selamat datang di penelitian parfum pria UMN, destinasi terbaik untuk menemukan parfum pria yang sesuai dengan keinginan dan kepribadian Anda. Di sini, kami menghadirkan pengalaman tak terlupakan dalam menjelajahi dunia keharuman yang khas untuk pria sejati.",
 
-    "homeTitle1" : "Penelitian Parfum Pria",
-    "homeTitle2" : "Cara Penggunaan",
-    "homeDesc2" : "Berikut merupakan cara penggunaan aplikasi pendukung pemilihan keputusan parfum pria",
-    "homeTitle3" : "Parfum Kekinian 2023",
-    "homeDesc3" : "Perkenalkan koleksi parfum pria pilihan kami - sebuah rangkaian yang dirancang untuk meningkatkan kehadiran Anda dan memikat indera. Setiap aroma dirancang dengan teliti untuk mencerminkan essensi kemegahan, gaya, dan maskulinitas.",
+  "welcome": "Selamat Datang!",
+  "start": "Mulai Menentukan Parfum",
 
-    "recDetail" : "Info Lanjut",
-    "recBuy" : "Beli Sekarang",
+  "homeTitle1": "Penelitian Parfum Pria",
+  "homeTitle2": "Cara Penggunaan",
+  "homeDesc2": "Berikut merupakan cara penggunaan aplikasi pendukung pemilihan keputusan parfum pria",
+  "homeTitle3": "Parfum Kekinian 2023",
+  "homeDesc3": "Perkenalkan koleksi parfum pria pilihan kami - sebuah rangkaian yang dirancang untuk meningkatkan kehadiran Anda dan memikat indera. Setiap aroma dirancang dengan teliti untuk mencerminkan essensi kemegahan, gaya, dan maskulinitas.",
 
-    "accuracy" : "Akurasi",
-    "brand" : "Merek",
-    "scent" : "Tipe Aroma",
-    "size" : "Ukuran",
-    "price" : "Harga",
-    "link" : "Link Pembelian"
+  "detail": "Info Lanjut",
+  "buy": "Beli Sekarang",
+	"guide": "Bantuan",
+
+  "accuracy": "Akurasi",
+  "brand": "Merek",
+  "scent": "Aroma",
+  "size": "Ukuran",
+  "price": "Harga",
+  "link": "Link Pembelian",
+  "quality": "Kualitas",
+  "durability": "Daya Tahan",
+
+  "testTitle": "Tentukan prioritas anda untuk parfum pria",
+  "testDesc": "Mana yang lebih penting bagi anda dalam memilih parfum?",
+	"qualityDesc" : "Melalui pertimbangan anda terhadap faktor-faktor seperti bahan-bahan, keaslian, dan reputasi, kami akan memberikan penilaian yang akurat mengenai kualitas parfum yang ditawarkan.",
+	"scentDesc" : "Pertimbangkan preferensi anda terhadap aroma parfum. Kami akan menawarkan saran parfum dengan beragam aroma, mulai dari yang segar dan maskulin hingga yang elegan dan misterius.",
+	"priceDesc" : "Melalui pertimbangan budget anda, kami akan menawarkan saran parfum dengn harga yang sesuai dengan anddaran Anda.",
+	"durabilityDesc" : "Tidak ada yang lebih mengesankan daripada parfum yang tahan lama dan menemani anda sepanjang hari.",
+
+	"restartTest" : "Ulangi Tes",
+	"sureSubmit" : "Apakah anda yakin ingin mengumpulkan?",
+	"sureDelete" : "",
+	"submit" : "Kumpul",
+	"yes" : "Ya",
+	"no" : "Tidak"
 }

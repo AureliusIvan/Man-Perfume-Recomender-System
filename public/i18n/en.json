@@ -1,32 +1,49 @@
 {
-    "title" : "Perfume App",
-	"webName" : "DECISION SUPPORT SYSTEM",
-	"home" : "Home",
+  "title": "Perfume App",
+  "webName": "DECISION SUPPORT SYSTEM",
+  "home": "Home",
 
-    "PROJTITLE" : "Latest Perfume Research",
-    "PROJDESC" : "Welcome to UMN's men's perfume research, the best destination to find men's perfumes that suit your desires and personality. Here, we will provide you an unforgettable experience in exploring the distinctive world of fragrances for true men.",
-    
-    "MainTitle" : "Define your priorities for men's perfume.",
-    
-    "WebDescTitle" : "What do we do?",
-    "WebDesc" : "Welcome to UMN's men's perfume research, the best destination to find men's perfumes that suit your desires and personality. Here, we will provide you an unforgettable experience in exploring the distinctive world of fragrances for true men.",
+  "PROJTITLE": "Latest Perfume Research",
+  "PROJDESC": "Welcome to UMN's men's perfume research, the best destination to find men's perfumes that suit your desires and personality. Here, we will provide you an unforgettable experience in exploring the distinctive world of fragrances for true men.",
 
-    "welcome" : "Welcome!",
-    "start" : "Start deciding on a perfume",
+  "MainTitle": "Define your priorities for men's perfume.",
 
-    "homeTitle1" : "Men's Perfume Research",
-    "homeTitle2" : "Tutorial",
-    "homeDesc2" : "Here is a quick guide on how to use this men's perfume decision support application.",
-    "homeTitle3" : "Trending Perfumes",
-    "homeDesc3" : "Let us introduce you to our curated collection of men's perfumes - a range designed to enhance your presence and captivate your senses. Each scent is carefully crafted to reflect the essence of luxury, style, and masculinity.",
+  "WebDescTitle": "What do we do?",
+  "WebDesc": "Welcome to UMN's men's perfume research, the best destination to find men's perfumes that suit your desires and personality. Here, we will provide you an unforgettable experience in exploring the distinctive world of fragrances for true men.",
 
-    "recDetail" : "Details",
-    "recBuy" : "Buy Now",
+  "welcome": "Welcome!",
+  "start": "Start deciding on a perfume",
 
-    "accuracy" : "Accuracy",
-    "brand" : "Brand",
-    "scent" : "Scent",
-    "size" : "Size",
-    "price" : "Price",
-    "link" : "Purchase Link"
+  "homeTitle1": "Men's Perfume Research",
+  "homeTitle2": "Tutorial",
+  "homeDesc2": "Here is a quick guide on how to use this men's perfume decision support application.",
+  "homeTitle3": "Trending Perfumes",
+  "homeDesc3": "Let us introduce you to our curated collection of men's perfumes - a range designed to enhance your presence and captivate your senses. Each scent is carefully crafted to reflect the essence of luxury, style, and masculinity.",
+
+  "detail": "Details",
+  "buy": "Buy Now",
+	"guide": "Guide",
+
+  "accuracy": "Accuracy",
+  "brand": "Brand",
+  "scent": "Scent",
+  "size": "Size",
+  "price": "Price",
+  "link": "Purchase Link",
+  "quality": "Quality",
+  "durability": "Durability",
+
+  "testTitle": "Define your priorities for men's perfume.",
+  "testDesc": "Which aspect is more important to you in choosing perfume?",
+	"qualityDesc" : "Consider factors such as ingredients, authenticity, and brand reputation. We will provide an accurate assessment of the quality of the offered perfumes.",
+	"scentDesc" : "Consider your prefered perfume fragrance. We will offer perfume suggestions with a variety of aromas, ranging from fresh and masculine to elegant and mysterious.",
+	"priceDesc" : "By considering your budget, we will offer perfume recommendations suitable for your budget.",
+	"durabilityDesc" : "Nothing is more impressive than a long-lasting perfume that will accompany you throughout the day.",
+
+	"restartTest" : "Restart Test",
+	"sureSubmit" : "Are you sure to submit?",
+	"sureDelete" : "",
+	"submit" : "Submit",
+	"yes" : "Yes",
+	"no" : "No"
 }

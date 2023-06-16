@@ -1,63 +1,31 @@
-const Aroma = "Aroma mempertimbangkan preferensi pengguna, kami menawarkan saran parfum dengan beragam aroma, mulai dari yang segar dan maskulin hingga yang elegan dan misterius.";
-const Kualitas = "Kualitas mempertimbangkan faktor-faktor seperti bahan-bahan, keaslian, dan reputasi merek, kami memberikan penilaian yang akurat mengenai kualitas parfum yang ditawarkan.";
-const DayaTahan = "Daya Tahan Parfum mempertimbangkan tidak ada yang lebih mengesankan daripada parfum yang tahan lama dan menemani Anda sepanjang hari.";
-const Harga = "Harga mempertimbangkan budget dari pengguna, kami menawarkan saran parfum dengan harga yang sesuai dengan anggaran Anda.";
-
 export const KuisionerData = [
     {
         id: 0,
-        paramleft: "Kualitas",
-        paramleftdesc: Kualitas,
-        paramright: "Aroma",
-        paramrightdesc: Aroma,
+        paramleft: "quality",
+        paramright: "scent",
     },
     {
         id: 1,
-        paramleft: "Kualitas",
-        paramleftdesc: Kualitas,
-        paramright: "Harga",
-        paramrightdesc: Harga,
+        paramleft: "quality",
+        paramright: "price",
     },
     {
         id: 2,
-        paramleft: "Kualitas",
-        paramleftdesc: Kualitas,
-        paramright: "Daya Tahan",
-        paramrightdesc: DayaTahan,
+        paramleft: "quality",
+        paramright: "durability",
     },
     {
         id: 3,
-        paramleft: "Aroma",
-        paramleftdesc: Aroma,
-        paramright: "Harga",
-        paramrightdesc: Harga,
+        paramleft: "scent",
+        paramright: "price",
     },
     {
         id: 4,
-        paramleft: "Aroma",
-        paramleftdesc: Aroma,
-        paramright: "Daya Tahan",
-        paramrightdesc: DayaTahan,
+        paramleft: "scent",
+        paramright: "durability",
     }, {
         id: 5,
-        paramleft: "Harga",
-        paramleftdesc: Harga,
-        paramright: "Daya Tahan",
-        paramrightdesc: DayaTahan,
+        paramleft: "price",
+        paramright: "durability",
     }
 ]
-
-
-
-// <li>
-// <span>Kualitas: </span> Dengan mempertimbangkan faktor-faktor seperti bahan-bahan, keaslian, dan reputasi merek, kami memberikan penilaian yang akurat mengenai kualitas parfum yang ditawarkan.
-// </li>
-// <li>
-// <span>Aroma: </span> Dengan mempertimbangkan preferensi pengguna, kami menawarkan saran parfum dengan beragam aroma, mulai dari yang segar dan maskulin hingga yang elegan dan misterius.
-// </li>
-// <li>
-// <span>Harga: </span>Dengan mempertimbangkan budget dari pengguna, kami menawarkan saran parfum dengan harga yang sesuai dengan anggaran Anda.
-// </li>
-// <li>
-// <span>Daya Tahan: </span>Daya Tahan Parfum: Dengan mempertimbangkan tidak ada yang lebih mengesankan daripada parfum yang tahan lama dan menemani Anda sepanjang hari.
-// </li>

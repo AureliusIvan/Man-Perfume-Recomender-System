@@ -33,6 +33,8 @@ import LoadingScreen from "@/Component/StyledComponent/Fallback/LoadingScreen";
 import CheckIcon from '@mui/icons-material/Check';
 import style from "./Kuisioner.module.scss";
 
+import { useTranslation } from "react-i18next"
+
 const CustomGrid = styled(Grid)({
     width: "100%",
     height: "100%",
@@ -88,6 +90,8 @@ function calculateValue(value: number) {
 }
 
 export default function Kuisioner() {
+    const { t } = useTranslation();
+
     // const [value, setValue] = useState<number>(10);
     const [error, setError] = useState<boolean>(false);
     const [message, setMessage] = useState<string | null>(null);
@@ -186,7 +190,7 @@ export default function Kuisioner() {
                                                 // marginleft={"20px"}
                                                 marginRight={"20px"}
                                                 textalign={"center"}>
-                                                {MainTitle}
+                                                {t("testTitle")}
                                             </Title>
                                         </span>
                                     </M>
@@ -194,7 +198,7 @@ export default function Kuisioner() {
                                     <Text
                                         color={"rgb(255, 255, 255, 0.7)"}
                                         fontWeight={"bold"} textalign={"center"}>
-                                        Mana yang lebih penting bagi anda dalam memilih parfum?
+                                        {t("testDesc")}
                                     </Text>
                                     <HelpComponent />
                                     <Spacer y={"20px"} />
@@ -218,7 +222,7 @@ export default function Kuisioner() {
                                                             margin: "0px",
                                                         }
                                                     }}>
-                                                        <Tooltip title={question[index].paramleftdesc} placement="top">
+                                                        <Tooltip title={t(question[index].paramleft + "Desc")} placement="top">
                                                             {/* <CustomButtonPlain textalign={isMobile ? "left" : "center"}> */}
                                                             <div style={{
                                                                 // fontSize: "12px",
@@ -227,7 +231,7 @@ export default function Kuisioner() {
                                                                 textAlign: isMobile ? "left" : "center",
                                                                 textShadow: "0px 2px 5px blue",
                                                             }}>
-                                                                {question[index].paramleft}
+                                                                {t(question[index].paramleft)}
                                                             </div>
                                                             {/* </CustomButtonPlain> */}
                                                         </Tooltip>
@@ -261,7 +265,7 @@ export default function Kuisioner() {
                                                             padding: "0px",
                                                         }
                                                     }}>
-                                                        <Tooltip title={question[index].paramrightdesc} placement="top">
+                                                        <Tooltip title={t(question[index].paramright + "Desc")} placement="top">
                                                             {/* <CustomButtonPlain textalign={isMobile ? "right" : "center"}> */}
                                                             <div style={{
                                                                 // fontSize: "12px",
@@ -270,7 +274,7 @@ export default function Kuisioner() {
                                                                 textAlign: isMobile ? "right" : "center",
                                                                 textShadow: "0px 2px 5px blue",
                                                             }}>
-                                                                {question[index].paramright}
+                                                                {t(question[index].paramright)}
                                                             </div>
                                                             {/* </CustomButtonPlain> */}
                                                         </Tooltip>
@@ -306,7 +310,7 @@ export default function Kuisioner() {
                                                 alignItems: "center",
                                                 width: "100%",
                                             }}>
-                                            Submit <CheckIcon style={{ marginLeft: "10px" }} />
+                                            {t("submit")} <CheckIcon style={{ marginLeft: "10px" }} />
                                         </span>
                                     </Button>
                                     <CustomModal
@@ -316,20 +320,20 @@ export default function Kuisioner() {
                                         hideButton={true}
                                     >
                                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                            Are you sure to want to submit ?
+                                            {t("sureSubmit")}
                                         </Typography>
                                         <Flex>
                                             <><Button
                                                 type="submit"
                                                 onclick={handleSubmit}
                                             >
-                                                Yes
+                                                {t("yes")}
                                             </Button>
                                                 <Button
                                                     onclick={handleClose}
                                                     bgcolor={"rgb(255, 255, 255, 0)"}
                                                 >
-                                                    No
+                                                    {t("no")}
                                                 </Button></>
                                         </Flex>
                                     </CustomModal>

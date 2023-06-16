@@ -14,6 +14,8 @@ import { CustomButton } from "@/Component/StyledComponent/CustomButton/CustomBut
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { useNavigate } from "react-router";
 
+import { useTranslation } from "react-i18next";
+
 const Grid = styled(G)(() => ({
     // padding: '100px',
     paddingTop: '20px',
@@ -24,10 +26,6 @@ const GridItem = styled(G)(() => ({
     // width: '90%',
 }));
 
-
-
-
-
 // interface itemType {
 //     nama: string,
 //     foto: string,
@@ -36,6 +34,8 @@ const GridItem = styled(G)(() => ({
 // }
 
 export default function Result() {
+    const { t } = useTranslation();
+
     // const [length, setLenght] = useState<number>(0);
     const dataEntry: object[] = useSelector(selectDataEntry);
     useEffect(() => {
@@ -68,7 +68,7 @@ export default function Result() {
                             justifyContent: 'center',
                         }}
                     >
-                        Restart Test <RestartAltIcon />
+                        {t("restartTest")} <RestartAltIcon />
                     </span>
                 </CustomButton>
             </Center>
