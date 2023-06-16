@@ -1,6 +1,6 @@
 // import
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { FormGroup, Grid, Switch } from "@material-ui/core";
 import styled from "@emotion/styled";
 import style from "./Header.module.scss";
 import { Toogle } from "../../../App/App";
@@ -15,6 +15,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsLogin, setLogout } from "@/Redux/feature/dataSlice";
 
 import { setCookie } from "react-use-cookie";
+
+import { LANGUAGES } from "@/Component/Constants";
+import { useTranslation } from "react-i18next";
 
 const Margin = "35px";
 
@@ -90,6 +93,13 @@ export default function Header() {
 
   const [show] = useState<boolean>(true);
 
+  const {i18n, t} = useTranslation();
+
+  const onChangeLang = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const lang_code = e.target.value;
+    i18n.changeLanguage(lang_code);
+  };
+
   return (
     <GridContainer container className={show ? style.Header : style.HeaderHide}>
 
@@ -104,7 +114,7 @@ export default function Header() {
         >
           <LogoImage />
           <Text width="70px" fontSize="10px" textalign="left" marginleft="10px">
-            SISTEM PENDUKUNG KEPUTUSAN
+            {t("webName")}
           </Text>
           <Spacer y={"20px"} />
         </Grid>
@@ -123,9 +133,20 @@ export default function Header() {
         }}
 
       >
+        <select defaultValue={i18n.language} onChange={onChangeLang}>
+          {LANGUAGES.map(({ code, label }) => (
+            <option key={code} value={code}>
+              {label}
+            </option>
+          ))}
+        </select>
+        {/* <FormGroup>
+          <Switch />
+        </FormGroup> */}
+        {/* nanti ganti sama toggle switch ae */}
         {loggedIn ? (
           <>
-            <NavLink pathTo="/admin">Home</NavLink>
+            <NavLink pathTo="/admin">{t("home")}</NavLink>
             <ButtonNavLink
               pathTo="/"
               clicked={() => {
@@ -139,7 +160,7 @@ export default function Header() {
           </>
         ) : (
           <>
-            <NavLink pathTo="/">Home</NavLink>
+            <NavLink pathTo="/">{t("home")}</NavLink>
             <ButtonNavLink pathTo="/admin/login">Admin</ButtonNavLink>
           </>
         )}

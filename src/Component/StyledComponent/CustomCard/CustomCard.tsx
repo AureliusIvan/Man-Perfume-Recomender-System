@@ -116,7 +116,7 @@ function ResultCardDetail(props: any) {
                     <div className={style.name}>{(data.nama)}</div>
                     <div><span>Brand : </span>{data.brand}</div>
                     <div><span>Tipe Aroma : </span>{data.tipe_aroma}</div>
-                    <div><span>Ukuran : </span>{data.ukuran} ml</div>
+                    <div><span>Ukuran : </span>{data.ukuran}</div>
                     <div><span>Harga : </span>{formattedAmount}</div>
                     <div className={style.deskripsi}>{data.deskripsi}</div>
 

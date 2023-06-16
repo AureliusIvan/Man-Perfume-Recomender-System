@@ -23,7 +23,6 @@ const AdminPage = lazy(() => import("@/Pages/Admin/AdminPage"));
 const Kuisioner = lazy(() => import("@/Pages/User/Kuisioner/Kuisioner"));
 
 const Routing = () => {
-  // const auth = useSelector(selectIsLogin);
   return (
     <Routes>
       <Route path="/" element={<UserPage />} />
