@@ -4,7 +4,7 @@ import React, { useEffect, lazy, Suspense } from "react"
 import Center from "../../Component/StyledComponent/CustomCenter/Center"
 import style from "./UserPage.module.scss"
 import { Helmet } from "react-helmet-async"
-import { PROJDESC, PROJTITLE, PROJDOMAIN } from "./../../data"
+import { PROJDOMAIN } from "./../../data"
 // import Tutorial from "./Tutorial/Tutorial"
 // import Recommendation from "./Recommendation/Recommendation"
 import WelcomePage from "./Welcome/Welcome"
@@ -13,6 +13,8 @@ import Spacer from "./Spacer/spacer"
 // import Footer from "@/Component/StyledComponent/Footer/Footer"
 import LoadingScreen from "@/Component/StyledComponent/Fallback/LoadingScreen"
 import Background from "@/Component/StyledComponent/Background/Background"
+
+import { useTranslation } from "react-i18next"
 
 const DescPage = lazy(() => import("./Desc/DescPage"));
 const Footer = lazy(() => import("@/Component/StyledComponent/Footer/Footer"));
@@ -24,12 +26,14 @@ export default function UserPage() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
+
+    const { t } = useTranslation();
     return (
         <div id="User-Page" className={style.UserPage}>
             {/* Helmet for SEO */}
             <Helmet>
-                <title> HOME | {PROJTITLE}</title>
-                <meta name="description" content={PROJDESC} />
+                <title> HOME | {t("PROJTITLE")}</title>
+                <meta name="description" content={t("PROJDESC")} />
                 <link rel="canonical" href={`${PROJDOMAIN}`} />
             </Helmet>
             <Background />

@@ -3,5 +3,14 @@
 	"webName" : "DECISION SUPPORT SYSTEM",
 	"home" : "Home",
 
-    "welcome" : "Welcome!"
+    "PROJTITLE" : "Latest Perfume Study",
+    "PROJDESC" : "Welcome to UMN's men's perfume research, the best destination to find men's perfumes that suit your desires and personality. Here, we will provide you an unforgettable experience in exploring the distinctive world of fragrances for true men.",
+    
+    "MainTitle" : "Define your priorities for men's perfume.",
+    
+    "WebDescTitle" : "What do we do?",
+    "WebDesc" : "Welcome to UMN's men's perfume research, the best destination to find men's perfumes that suit your desires and personality. Here, we will provide you an unforgettable experience in exploring the distinctive world of fragrances for true men.",
+
+    "welcome" : "Welcome!",
+    "start" : "Start deciding on a perfume"
 }
