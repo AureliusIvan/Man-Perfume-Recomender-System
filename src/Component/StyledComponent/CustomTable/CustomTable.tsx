@@ -17,6 +17,8 @@ import EditMenu from "../CustomFormik/NewFormik/EditMenu";
 import { Tooltip } from "@mui/material";
 import { CustomButton } from "../CustomButton/CustomButton";
 
+import { useTranslation } from "react-i18next"
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -30,7 +32,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     // whiteSpace: "nowrap",
   },
 }));
-
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
@@ -49,9 +50,6 @@ const Wrapper = styled("div")(({ theme }) => ({
   // whiteSpace: "nowrap",
 }));
 
-
-
-
 function CustomTooltip(props: any) {
   return (
     <Tooltip title={props.title}>
@@ -60,10 +58,8 @@ function CustomTooltip(props: any) {
   )
 }
 
-
-
-
 export default function CustomTable() {
+  const { t } = useTranslation();
   const [perfume, setPerfume] = React.useState<any>([]);
 
   async function fetchPerfume() {
@@ -94,34 +90,34 @@ export default function CustomTable() {
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">Gambar</StyledTableCell>
+              <StyledTableCell align="left">{t("image")}</StyledTableCell>
               <StyledTableCell align="left"
                 sx={{
                   maxWidth: "200px",
                 }}
-              >Nama dan Merk</StyledTableCell>
+              >{t("name")}</StyledTableCell>
               <StyledTableCell align="left"
                 sx={{
                   maxWidth: "50px",
                 }}
-              >Aroma</StyledTableCell>
+              >{t("scent")}</StyledTableCell>
               <StyledTableCell align="left"
                 sx={{
                   maxWidth: "50px",
                 }}
-              >Ukuran&nbsp;(ml)</StyledTableCell>
+              >{t("size")}&nbsp;(ml)</StyledTableCell>
               <StyledTableCell align="left"
                 sx={{
                   maxWidth: "50px",
                 }}
-              >Tipe</StyledTableCell>
+              >{t("type")}</StyledTableCell>
               <StyledTableCell align="left"
                 sx={{
                   maxWidth: "200px",
                 }}
-              >Deskripsi</StyledTableCell>
-              <StyledTableCell align="left">Link Pembelian</StyledTableCell>
-              <StyledTableCell align="left">Opsi</StyledTableCell>
+              >{t("desc")}</StyledTableCell>
+              <StyledTableCell align="left">{t("link")}</StyledTableCell>
+              <StyledTableCell align="left">{t("option")}</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -178,7 +174,7 @@ export default function CustomTable() {
                     <Confirmations
                       bgcolor="#b10810"
                       outline="1px solid #820006"
-                      title="Delete"
+                      title={`${t("delete")}`}
                       toDelete
                       xbutton
                       rowID={row.id}
@@ -186,7 +182,7 @@ export default function CustomTable() {
                   </StyledTableCell>
                 </StyledTableRow>
               ))
-              : "Entry Kosong"}
+              : t("emptyEntry")}
           </TableBody>
         </Table>
       </TableContainer >

@@ -52,6 +52,13 @@
   "yes": "Yes",
   "no": "No",
 
+	"image": "Image",
+	"name": "Name",
+	"type": "Type",
+	"option": "Option",
+	"desc": "Description",
+	"emptyEntry": "Empty Entry",
+
   "perfumeNamelbl": "Name",
   "perfumePricelbl": "Price",
   "perfumeBrandlbl": "Brand",

@@ -52,6 +52,13 @@
   "yes": "Ya",
   "no": "Tidak",
 
+	"image": "Gambar",
+	"name": "Nama",
+	"type": "Tipe",
+	"option": "Opsi",
+	"desc": "Deskripsi",
+	"emptyEntry": "Entri Kosong",
+
   "perfumeNamelbl": "Nama Parfum",
   "perfumePricelbl": "Harga Parfum",
   "perfumeBrandlbl": "Merek Parfum",
