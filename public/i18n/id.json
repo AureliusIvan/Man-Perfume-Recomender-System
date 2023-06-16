@@ -21,5 +21,12 @@
     "homeDesc3" : "Perkenalkan koleksi parfum pria pilihan kami - sebuah rangkaian yang dirancang untuk meningkatkan kehadiran Anda dan memikat indera. Setiap aroma dirancang dengan teliti untuk mencerminkan essensi kemegahan, gaya, dan maskulinitas.",
 
     "recDetail" : "Info Lanjut",
-    "recBuy" : "Beli Sekarang"
+    "recBuy" : "Beli Sekarang",
+
+    "accuracy" : "Akurasi",
+    "brand" : "Merek",
+    "scent" : "Tipe Aroma",
+    "size" : "Ukuran",
+    "price" : "Harga",
+    "link" : "Link Pembelian"
 }

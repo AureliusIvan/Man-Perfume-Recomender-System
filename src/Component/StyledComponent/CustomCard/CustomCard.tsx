@@ -99,6 +99,8 @@ export function CustomCard(props: CustomCardProps) {
 
 
 function ResultCardDetail(props: any) {
+    const { t } = useTranslation();
+    
     React.useEffect(() => {
         console.log(props.data)
     }, [])
@@ -115,16 +117,16 @@ function ResultCardDetail(props: any) {
                     {/* <h1>Result Detail</h1> */}
                     <img className={style.images} src={data.foto} alt={`Images from ${data.nama}`} />
                     <div className={style.name}>{(data.nama)}</div>
-                    <div><span>Brand : </span>{data.brand}</div>
-                    <div><span>Tipe Aroma : </span>{data.tipe_aroma}</div>
-                    <div><span>Ukuran : </span>{data.ukuran}</div>
-                    <div><span>Harga : </span>{formattedAmount}</div>
+                    <div><span>{t("brand")} : </span>{data.brand}</div>
+                    <div><span>{t("scent")} : </span>{data.tipe_aroma}</div>
+                    <div><span>{t("size")} : </span>{data.ukuran}</div>
+                    <div><span>{t("price")} : </span>{formattedAmount}</div>
                     <div className={style.deskripsi}>{data.deskripsi}</div>
 
                     <CustomButton
                         bgcolor={'rgb(0,0,0,0)'}
                     >
-                        <a className={style.linkondetail} href={data.link_pembelian}>Link Pembelian</a>
+                        <a className={style.linkondetail} href={data.link_pembelian}>{t("link")}</a>
                     </CustomButton>
                 </div>
                 : "Error"}
@@ -226,7 +228,7 @@ export function ResultCard(props: any) {
                         </a>
                         <Spacer y={"15px"} />
                         <Text textalign="left">
-                            {props.accuracy && `Akurasi : ${Akurasi}%`}
+                            {props.accuracy && `${t("accuracy")} : ${Akurasi}%`}
                         </Text>
                     </GridItem>
                 </GridContainer >

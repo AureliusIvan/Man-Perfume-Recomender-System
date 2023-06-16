@@ -21,5 +21,12 @@
     "homeDesc3" : "Let us introduce you to our curated collection of men's perfumes - a range designed to enhance your presence and captivate your senses. Each scent is carefully crafted to reflect the essence of luxury, style, and masculinity.",
 
     "recDetail" : "Details",
-    "recBuy" : "Buy Now"
+    "recBuy" : "Buy Now",
+
+    "accuracy" : "Accuracy",
+    "brand" : "Brand",
+    "scent" : "Scent",
+    "size" : "Size",
+    "price" : "Price",
+    "link" : "Purchase Link"
 }
