@@ -8,16 +8,19 @@ import Spacer from "../User/Spacer/spacer";
 import { CustomModal } from "@/Component/StyledComponent/CustomModal/CustomModal";
 import AddMenu from "@/Component/StyledComponent/CustomFormik/NewFormik/AddMenu";
 
+import { useTranslation } from "react-i18next"
 
 const Table = lazy(() => import("../../Component/StyledComponent/CustomTable/CustomTable"))
 
 function AdminPage() {
+    const { t } = useTranslation();
+
     return (
         <div className={style.AdminPage}>
             <Center>
                 <Spacer y={"20px"} />
                 <Title>
-                    Admin Page
+                    {t("adminPage")}
                 </Title>
                 <Spacer y={"20px"} />
             </Center>

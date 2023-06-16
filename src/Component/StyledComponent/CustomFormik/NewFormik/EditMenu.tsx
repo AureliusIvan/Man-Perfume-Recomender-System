@@ -23,7 +23,11 @@ import compressImage from "@/Component/FunctionComponent/ImageCompressor/ImageCo
 import "./Menu.scss";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
+import { useTranslation } from "react-i18next"
+
 export default function EditMenu(props: any) {
+    const { t } = useTranslation();
+
     return (<>
         <Modal
             title={"Edit"}
@@ -31,7 +35,7 @@ export default function EditMenu(props: any) {
             buttonMarginBottom={"10px"}
         >
             <CustomBox>
-                <h1>Edit Data Parfum</h1>
+                <h1>Edit {t("perfume")}</h1>
                 <Box padding={"50px"} className="content">
                     <TheForm
                         id={props.id}
@@ -64,6 +68,8 @@ interface LoginForm {
 }
 
 function TheForm(props: any) {
+    const { t } = useTranslation();
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [message, setMessage] = useState("");
@@ -158,18 +164,18 @@ function TheForm(props: any) {
                 actions.setSubmitting(false);
             }}
             validationSchema={Yup.object().shape({
-                nama: Yup.string().required("Nama Parfum wajib diisi"),
-                brand: Yup.string().required("Merk Parfum wajib diisi"),
-                harga: Yup.string().required("Harga Parfum wajib diisi"),
-                tipe_aroma: Yup.string().required("Tipe Aroma wajib diisi"),
-                tipe_parfum: Yup.string().required("Tipe Parfum wajib diisi"),
-                deskripsi: Yup.string().required("Deskripsi wajib diisi"),
-                quality_index: Yup.number().required("Index Kualitas wajib diisi").max(5, "Index Kualitas tidak boleh lebih dari 5").min(1, "Index Kualitas harus 1 atau lebih"),
-                durability_index: Yup.number().required("Index Durabilitas wajib diisi").max(5, "Index Durabilitas tidak boleh lebih dari 5").min(1, "Index Durabilitas harus 1 atau lebih"),
-                aroma_index: Yup.number().required("Index Aroma wajib diisi").max(5, "Index Aroma tidak boleh lebih dari 5").min(1, "Index Aroma harus 1 atau lebih"),
-                price_index: Yup.number().required("Index Harga wajib diisi").max(5, "Index Harga tidak boleh lebih dari 5").min(1, "Index Harga harus 1 atau lebih"),
-                ukuran: Yup.string().required("Ukuran Parfum wajib diisi"),
-                link_pembelian: Yup.string().required("Link pembelian wajib diisi").url("Link pembelian wajib berformat tautan"),
+                nama: Yup.string().required(`${t("rNameVld")}`),
+                brand: Yup.string().required(`${t("rBrandVld")}`),
+                harga: Yup.string().required(`${t("rPriceVld")}`),
+                tipe_aroma: Yup.string().required(`${t("rsTypeVld")}`),
+                tipe_parfum: Yup.string().required(`${t("rpTypeVld")}`),
+                deskripsi: Yup.string().required(`${t("rDescVld")}`),
+                quality_index: Yup.number().required(`${t("rQIndex")}`).max(5, `${t("maxQIndex")}`).min(1, `${t("minQIndex")}`),
+                durability_index: Yup.number().required(`${t("rDIndex")}`).max(5, `${t("maxDIndex")}`).min(1, `${t("maxDIndex")}`),
+                aroma_index: Yup.number().required(`${t("rSIndex")}`).max(5, `${t("maxSIndex")}`).min(1, `${t("maxSIndex")}`),
+                price_index: Yup.number().required(`${t("rPIndex")}`).max(5, `${t("maxPIndex")}`).min(1, `${t("maxPIndex")}`),
+                ukuran: Yup.string().required(`${t("rSizeVld")}`),
+                link_pembelian: Yup.string().required(`${t("rLinkVld")}`).url(`${t("urlLink")}`),
             })}
 
         >
@@ -210,7 +216,7 @@ function TheForm(props: any) {
                         <br />
                         <Input
                             name={Data[0].value}
-                            label={Data[0].placeholder}
+                            label={t(Data[0].label)}
                             type={Data[0].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -220,7 +226,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[1].value}
-                            label={Data[1].placeholder}
+                            label={t(Data[1].label)}
                             type={Data[1].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -230,7 +236,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[2].value}
-                            label={Data[2].placeholder}
+                            label={t(Data[2].label)}
                             type={Data[2].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -240,7 +246,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[3].value}
-                            label={Data[3].placeholder}
+                            label={t(Data[3].label)}
                             type={Data[3].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -250,7 +256,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[4].value}
-                            label={Data[4].placeholder}
+                            label={t(Data[4].label)}
                             type={Data[4].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -260,7 +266,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[5].value}
-                            label={Data[5].placeholder}
+                            label={t(Data[5].label)}
                             type={Data[5].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -270,7 +276,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[6].value}
-                            label={Data[6].placeholder}
+                            label={t(Data[6].label)}
                             type={Data[6].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -280,7 +286,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[7].value}
-                            label={Data[7].placeholder}
+                            label={t(Data[7].label)}
                             type={Data[7].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -290,7 +296,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[8].value}
-                            label={Data[8].placeholder}
+                            label={t(Data[8].label)}
                             type={Data[8].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -300,7 +306,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[9].value}
-                            label={Data[9].placeholder}
+                            label={t(Data[9].label)}
                             type={Data[9].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -310,7 +316,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[10].value}
-                            label={Data[10].placeholder}
+                            label={t(Data[10].label)}
                             type={Data[10].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -320,7 +326,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[11].value}
-                            label={Data[11].placeholder}
+                            label={t(Data[11].label)}
                             type={Data[11].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -330,7 +336,7 @@ function TheForm(props: any) {
                         />
                         <Input
                             name={Data[12].value}
-                            label={Data[12].placeholder}
+                            label={t(Data[12].label)}
                             type={Data[12].type}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -339,11 +345,6 @@ function TheForm(props: any) {
                             helperText={errors.link_pembelian && touched.link_pembelian ? errors.link_pembelian : ""}
                             error={errors.link_pembelian && touched.link_pembelian ? true : false}
                         />
-
-
-
-
-
                         <Spacer y="20px" />
                         <div
                             style={{
@@ -354,7 +355,7 @@ function TheForm(props: any) {
                             <Button type="submit"
                                 disabled={loading || isSubmitting || !props.isValid || !dirty}
                             >
-                                {loading ? <CircularProgress /> : "Submit"}
+                                {loading ? <CircularProgress /> : t("submit")}
                             </Button>
                         </div>
                     </Form>
