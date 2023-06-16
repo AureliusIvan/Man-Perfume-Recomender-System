@@ -5,8 +5,21 @@
 
     "PROJTITLE" : "Penelitian Parfum Kekinian",
     "PROJDESC" : "Selamat datang di penelitian parfum pria UMN, destinasi terbaik untuk menemukan parfum pria yang sesuai dengan keinginan dan kepribadian Anda. Di sini, kami menghadirkan pengalaman tak terlupakan dalam menjelajahi dunia keharuman yang khas untuk pria sejati",
-    "MainTitle" : "Apa yang kita lakukan?",
+    
+    "MainTitle" : "Tentukan Prioritas anda untuk parfum pria",
+
+    "WebDescTitle" : "Apa yang kita lakukan?",
     "WebDesc" : "Selamat datang di penelitian parfum pria UMN, destinasi terbaik untuk menemukan parfum pria yang sesuai dengan keinginan dan kepribadian Anda. Di sini, kami menghadirkan pengalaman tak terlupakan dalam menjelajahi dunia keharuman yang khas untuk pria sejati.",
 
-    "welcome" : "Selamat Datang!"
+    "welcome" : "Selamat Datang!",
+    "start" : "Mulai Menentukan Parfum",
+
+    "homeTitle1" : "Penelitian Parfum Pria",
+    "homeTitle2" : "Cara Penggunaan",
+    "homeDesc2" : "Berikut merupakan cara penggunaan aplikasi pendukung pemilihan keputusan parfum pria",
+    "homeTitle3" : "Parfum Kekinian 2023",
+    "homeDesc3" : "Perkenalkan koleksi parfum pria pilihan kami - sebuah rangkaian yang dirancang untuk meningkatkan kehadiran Anda dan memikat indera. Setiap aroma dirancang dengan teliti untuk mencerminkan essensi kemegahan, gaya, dan maskulinitas.",
+
+    "recDetail" : "Info Lanjut",
+    "recBuy" : "Beli Sekarang"
 }

@@ -3,6 +3,8 @@ import Comp from "../../../Assets/Image/Comp.png";
 import Write from "../../../Assets/Image/Write.png";
 import Monit from "../../../Assets/Image/Monit.png";
 
+import { useTranslation } from "react-i18next"
+
 export const TutorialData = [
     {
         id: 1,

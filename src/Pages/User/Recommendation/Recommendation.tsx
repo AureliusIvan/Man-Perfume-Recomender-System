@@ -9,6 +9,8 @@ import Center from "../../../Component/StyledComponent/CustomCenter/Center";
 import { useDispatch, useSelector } from "react-redux";
 import { setDataEntry, selectDataEntry } from "@/Redux/feature/dataSlice";
 
+import { useTranslation } from "react-i18next"
+
 const Grid = styled(G)(() => ({
     paddingTop: '20px',
 }));
@@ -17,9 +19,9 @@ const GridItem = styled(G)(() => ({
     padding: '10px',
 }));
 
-
-
 export default function Recommendation() {
+    const { t } = useTranslation();
+
     const [item, setItem] = useState<object[]>([])
     // const [loading, setLoading] = useState<boolean>(false)
     const dispatch = useDispatch();
@@ -51,11 +53,8 @@ export default function Recommendation() {
             <Center>
                 <Paragraf
                     styledTitle={true}
-                    title={"Parfum Kekinian 2023"} width={'300px'}>
-                    <i>
-
-                        Perkenalkan koleksi parfum pria pilihan kami - sebuah rangkaian yang dirancang untuk meningkatkan kehadiran Anda dan memikat indera. Setiap aroma dirancang dengan teliti untuk mencerminkan essensi kemegahan, gaya, dan maskulinitas.
-                    </i>
+                    title={t("homeTitle3")} width={'300px'}>
+                    <i>{t("homeDesc3")}</i>
                 </Paragraf>
             </Center>
             <Grid container>

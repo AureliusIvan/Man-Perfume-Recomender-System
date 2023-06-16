@@ -6,6 +6,8 @@ import Spacer from "../Spacer/spacer"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 
+import { useTranslation } from "react-i18next"
+
 DescPage.defaultProps = {
     text: "&rdquo; Lorem ipsum dolor sit amet consectetur adipisicing elit."
 }
@@ -25,6 +27,7 @@ export default function DescPage(props: DescPageProps) {
         visible: { opacity: 1, y: 0 },
     };
 
+    const { t } = useTranslation();
 
     return (<motion.div
         ref={ref}
@@ -36,9 +39,9 @@ export default function DescPage(props: DescPageProps) {
         <Spacer y={"100px"} />
         <Paragraf
             styledTitle={true}
-            width={'300px'} title={'Penelitian Parfum Pria'}>
+            width={'300px'} title={t("homeTitle1")}>
             {/* {props.text} */}
-            <i>{WebDesc}</i>
+            <i>{t("WebDesc")}</i>
         </Paragraf>
         {/* <Spacer y={"100px"} /> */}
         {/* <Box reverse={"true"}

@@ -13,6 +13,7 @@ import { CustomModal } from '../CustomModal/CustomModal';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+import { useTranslation } from "react-i18next"
 
 const GridContainer = styled(Grid)(() => ({
     alignItems: 'left',
@@ -135,6 +136,8 @@ function ResultCardDetail(props: any) {
 
 
 export function ResultCard(props: any) {
+    const { t } = useTranslation();
+
     const sum = (((parseFloat(props.accuracy))) * 100);
     const Akurasi = sum.toFixed(2);
     const [open, setOpen] = React.useState(false);
@@ -203,7 +206,7 @@ export function ResultCard(props: any) {
                                     width={"120px"}
                                     marginInline='0px'
                                 >
-                                    Info Lanjut
+                                    {t("recDetail")}
                                 </CustomButton></>}
                         >
                             <ResultCardDetail
@@ -218,7 +221,7 @@ export function ResultCard(props: any) {
                                 marginTop={"10px"}
                                 width={"120px"}
                             >
-                                Shop Now
+                                {t("recBuy")}
                             </CustomButton>
                         </a>
                         <Spacer y={"15px"} />

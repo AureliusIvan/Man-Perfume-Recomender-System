@@ -11,9 +11,13 @@ import { Custommotion as M } from "@/Component/StyledComponent/CustomAnimation/C
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import style from "./Welcome.module.scss"
 
+import { useTranslation } from "react-i18next"
+
 export default function WelcomePage() {
     const navigate = useNavigate()
     const handler = () => navigate('/start');
+
+    const { t } = useTranslation();
     return (
         <div style={{
             minHeight: '75vh',
@@ -26,7 +30,7 @@ export default function WelcomePage() {
                             <Title style={{
                                 marginBottom: '20px',
                             }}>
-                                Selamat Datang!
+                                {t("welcome")}
                             </Title>
                             <Button onclick={handler}>
                                 <span style={{
@@ -34,7 +38,7 @@ export default function WelcomePage() {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                 }}>
-                                    Mulai Menentukan Parfum<KeyboardArrowRightIcon />
+                                    {t("start")}<KeyboardArrowRightIcon />
                                 </span>
                             </Button>
                         </Center>

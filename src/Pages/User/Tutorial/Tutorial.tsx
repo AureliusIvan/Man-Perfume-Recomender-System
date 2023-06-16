@@ -15,6 +15,8 @@ import useMediaQuery from "@mui/material/useMediaQuery"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 
+import { useTranslation } from "react-i18next"
+
 const GridItem = styled(Grid)(() => ({
     // padding: '20px',
     // width: '90%',
@@ -72,14 +74,13 @@ function Card(props: defaulprops) {
     )
 }
 
-
-
-
 export default function Tutorial() {
+    const { t } = useTranslation();
     const Mobile = useMediaQuery('(max-width:600px)');
+    
     return (<>
-        <Paragraf title="Cara Penggunaan">
-            <i>Berikut merupakan cara penggunaan aplikasi pendukung pemilihan keputusan parfum pria</i>
+        <Paragraf title={t("homeTitle2")}>
+            <i>{t("homeDesc2")}</i>
         </Paragraf>
         <Grid container sx={{
             width: Mobile ? '90%' : '50%',
