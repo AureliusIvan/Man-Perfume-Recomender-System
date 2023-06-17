@@ -22,3 +22,5 @@ i18n
   });
 
 export default i18n;
+
+// reference : https://dev.to/franklin030601/building-a-multi-language-app-with-react-js-2och#1

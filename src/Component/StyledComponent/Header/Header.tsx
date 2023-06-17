@@ -16,8 +16,8 @@ import { selectIsLogin, setLogout } from "@/Redux/feature/dataSlice";
 
 import { setCookie } from "react-use-cookie";
 
-import { LANGUAGES } from "@/Component/Constants";
 import { useTranslation } from "react-i18next";
+import CustomToggle from "../CustomToggle/CustomToggle";
 
 const Margin = "35px";
 
@@ -70,7 +70,7 @@ interface Props {
 const NavLink = ({ pathTo, children, ...props }: Props) => {
   return (
     <Link to={pathTo}>
-      <Button variant="outlined" {...props}>
+      <Button variant="outlined" width="100px" {...props}>
         {children}
       </Button>
     </Link>
@@ -93,18 +93,25 @@ export default function Header() {
 
   const [show] = useState<boolean>(true);
 
-  const {i18n, t} = useTranslation();
+  const { i18n, t } = useTranslation();
 
-  const onChangeLang = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const lang_code = e.target.value;
+  const onChangeLang = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const checked = e.target.checked;
+    let lang_code = "";
+
+    if (checked) lang_code = "en";
+    else lang_code = "id";
+
     i18n.changeLanguage(lang_code);
+    // console.log(e.target.checked)
   };
 
   return (
     <GridContainer container className={show ? style.Header : style.HeaderHide}>
-
       {!isMobile ? (
-        <Grid item sm={6}
+        <Grid
+          item
+          sm={6}
           style={{
             display: "flex",
             alignItems: "center",
@@ -118,32 +125,22 @@ export default function Header() {
           </Text>
           <Spacer y={"20px"} />
         </Grid>
-      )
-        : ""
-      }
+      ) : (
+        ""
+      )}
 
-
-
-      <Grid item xs={12} sm={6}
+      <Grid
+        item
+        xs={12}
+        sm={6}
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: isMobile ? "center" : "right",
           paddingRight: isMobile ? "0px" : Margin,
         }}
-
       >
-        <select defaultValue={i18n.language} onChange={onChangeLang}>
-          {LANGUAGES.map(({ code, label }) => (
-            <option key={code} value={code}>
-              {label}
-            </option>
-          ))}
-        </select>
-        {/* <FormGroup>
-          <Switch />
-        </FormGroup> */}
-        {/* nanti ganti sama toggle switch ae */}
+        <CustomToggle defaultChecked onChange={onChangeLang} />
         {loggedIn ? (
           <>
             <NavLink pathTo="/admin">{t("home")}</NavLink>
@@ -155,7 +152,7 @@ export default function Header() {
                 window.location.reload();
               }}
             >
-              Log Out
+              {t("logout")}
             </ButtonNavLink>
           </>
         ) : (
