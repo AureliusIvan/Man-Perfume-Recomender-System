@@ -29,14 +29,14 @@ export default function AddMenu() {
     <>
         <Modal
             title={t("add")}
+            portrait
             xbutton={true}
+            buttonMarginBottom={"10px"}
         >
-            <CustomBox>
                 <h1>{t("add")}</h1>
-                <Box padding={"50px"} className="content">
+                <Box className="content">
                     <TheForm />
                 </Box>
-            </CustomBox>
         </Modal>
     </>
     );

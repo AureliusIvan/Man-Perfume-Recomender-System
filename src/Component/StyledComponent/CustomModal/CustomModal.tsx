@@ -46,8 +46,8 @@ export function CustomModal(props: any) {
             >
                 <>
                     <Box
-                        maxWidth="440px"
-                        maxHeight="80vh"
+                        maxWidth={props.portrait ? "440px" : "65vw"}
+                        maxHeight={props.portrait ? "80vh" : "70vh"}
                         // overflowY={props.overflowY ? props.overflowY : "auto"}
                         className={style.modal}
                     >

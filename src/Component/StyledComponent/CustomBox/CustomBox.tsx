@@ -73,7 +73,6 @@ export function Flex(props: any) {
             alignItems: props.align ? props.align : 'center',
             justifyContent: props.justify ? props.justify : 'center',
             gap: props.gap ? props.gap : '10px',
-
         }}
             {...props}
         >
