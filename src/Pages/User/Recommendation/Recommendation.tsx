@@ -143,7 +143,7 @@ export default function Recommendation() {
                 </Paragraf>
             </Center>
 
-            <div className={style.swiper}>
+            {/* <div className={style.swiper}>
                 {loaded && instanceRef.current && (
                     <div className={style.navigation}>
                         <button
@@ -185,7 +185,7 @@ export default function Recommendation() {
                         </button>
                     </div>
                 )}
-            </div>
+            </div> */}
 
             {/* <div className={style.swiper}>
                 <Swiper
@@ -251,6 +251,21 @@ export default function Recommendation() {
                     </button>
                 </Swiper>
             </div> */}
+
+            <Grid container>
+                {item.map((item: any, index) => {
+                    return (
+                        <GridItem item xs={12} key={index}>
+                            <ResultCard
+                                title={item.nama}
+                                image={item.foto}
+                                data={item}
+                                key={index}
+                            />
+                        </GridItem>
+                    );
+                })}
+            </Grid>
         </>
     );
 }
