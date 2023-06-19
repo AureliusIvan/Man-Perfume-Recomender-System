@@ -187,17 +187,11 @@ export function ResultCard1(props: any) {
     const handleClose = () => setOpen(false);
 
     return (
-        <Flex>
-            <CustomModal
-                open={open}
-                xbutton={true}
-                portrait={md ? true : false}
-                onClose={props.onClose ? props.onClose : handleClose}
-                overflowY={"scroll"}
-                button={
-                    <div className={style.imgContainer}>
+        <motion.div className={style.card}>
+            <div className={style.cardcontent}>
+                <GridContainer container>
+                    <Grid item xs={5} md={3}>
                         <img
-                            onClick={handleOpen}
                             className={style.img}
                             src={
                                 props.image
@@ -206,15 +200,76 @@ export function ResultCard1(props: any) {
                             }
                             alt={props.title ? props.title : "Perfume"}
                         />
-                    </div>
-                }
-            >
-                <ResultCardDetail data={props.data} />
-            </CustomModal>
-        </Flex>
+                    </Grid>
+                    <GridItem item xs={5}>
+                        <div
+                            // textalign="left"
+                            // texttransform="capitalize"
+                            style={{
+                                textAlign: "left",
+                                textTransform: "capitalize",
+                                wordBreak: "break-word",
+                                whiteSpace: "normal",
+                                hyphens: "auto",
+                                fontWeight: "bold",
+                            }}
+                        >
+                            {props.title ? props.title : "Perfume"}
+                        </div>
+                        <Spacer y={"15px"} />
+                        <CustomModal
+                            open={open}
+                            xbutton={true}
+                            // portrait
+                            portrait={md ? true : false}
+                            onClose={
+                                props.onClose ? props.onClose : handleClose
+                            }
+                            overflowY={"scroll"}
+                            button={
+                                <>
+                                    <CustomButton
+                                        onclick={() => handleOpen()}
+                                        height={"24px"}
+                                        width={"120px"}
+                                        marginInline="0px"
+                                    >
+                                        {t("detail")}
+                                    </CustomButton>
+                                </>
+                            }
+                        >
+                            <ResultCardDetail data={props.data} />
+                        </CustomModal>
+                        <a
+                            href={
+                                props.link
+                                    ? props.link
+                                    : "https://www.tokopedia.com/"
+                            }
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <CustomButton
+                                marginInline="0px"
+                                height={"24px"}
+                                bgcolor={"rgb(0,0,0,0)"}
+                                marginTop={"10px"}
+                                width={"120px"}
+                            >
+                                {t("buy")}
+                            </CustomButton>
+                        </a>
+                        <Spacer y={"15px"} />
+                        <Text textalign="left">
+                            {props.accuracy && `${t("accuracy")} : ${Akurasi}%`}
+                        </Text>
+                    </GridItem>
+                </GridContainer>
+            </div>
+        </motion.div>
     );
 }
-// {props.accuracy && `${t("accuracy")} : ${Akurasi}%`}
 
 export function ResultCard(props: any) {
     const { t } = useTranslation();

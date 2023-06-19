@@ -70,7 +70,6 @@ export function Flex(props: any) {
             ...props.style,
             display: 'flex',
             flexDirection: props.direction ? props.direction : 'row',
-            flexWrap: props.flexWrap ? props.flexWrap : 'nowrap',
             alignItems: props.align ? props.align : 'center',
             justifyContent: props.justify ? props.justify : 'center',
             gap: props.gap ? props.gap : '10px',
