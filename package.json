@@ -30,6 +30,7 @@
     "framer-motion": "^8.4.6",
     "i18next": "^23.0.2",
     "i18next-http-backend": "^2.2.1",
+    "keen-slider": "^6.8.5",
     "lint": "^0.8.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -42,6 +43,7 @@
     "react-use-cookie": "^1.4.0",
     "scss": "^0.2.4",
     "styled-components": "^5.3.6",
+    "swiper": "^9.4.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {
