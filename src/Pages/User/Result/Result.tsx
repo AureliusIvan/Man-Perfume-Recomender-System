@@ -74,6 +74,7 @@ export default function Result() {
             </Center>
             <Grid container>
                 {Array.isArray(dataEntry) ? dataEntry.map((item: any, index: number) => {
+                    if (index >= 5) return;
                     return (
                         <GridItem item xs={12} key={index}>
                             <ResultCard

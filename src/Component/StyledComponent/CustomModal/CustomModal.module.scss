@@ -7,7 +7,6 @@
     margin: auto;
     width: fit-content;
     border-radius: 10px;
-    // max-width: 90vw;
     height: fit-content;
     max-height: 90vh;
     padding: 20px;
@@ -17,6 +16,7 @@
 
     @media screen and (max-width : 700px) {
         width: 80vw !important;
+        // padding: 20px 50vw;
     }
 
 }

@@ -67,10 +67,7 @@ export default function CustomTable() {
       .then((res: any) => {
 
         if (res.status === 200) {
-          // console.log(res.data.data);
           setPerfume(res.data.data);
-        } else {
-          // console.log("error! res: " + res);
         }
       })
       .catch((err) => {
@@ -80,8 +77,6 @@ export default function CustomTable() {
 
   React.useEffect(() => {
     fetchPerfume();
-    // console.log("This is perfume:");
-    // console.log(perfume);
   }, []);
 
   return (
@@ -90,6 +85,7 @@ export default function CustomTable() {
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
+              <StyledTableCell align="center">No</StyledTableCell>
               <StyledTableCell align="left">{t("image")}</StyledTableCell>
               <StyledTableCell align="left"
                 sx={{
@@ -125,6 +121,9 @@ export default function CustomTable() {
               ? perfume.map((row: any, i: any) => (
                 <StyledTableRow key={i}>
                   <StyledTableCell align="center">
+                    {i+1}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
                     <Box className={style.imageWrap}>
                       <img src={row.foto} className={style.image} />
                     </Box>
@@ -136,7 +135,7 @@ export default function CustomTable() {
                   >
                     <CustomTooltip title={row.nama.concat(" - ").concat(row.brand)}>
                       <Wrapper>
-                        {row.nama} - {row.brand}
+                        {row.brand} - {row.nama}
                       </Wrapper>
                     </CustomTooltip>
                   </StyledTableCell>
