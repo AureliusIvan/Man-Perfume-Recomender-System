@@ -75,12 +75,22 @@
 .detail {
     width: 100%;
     height: 100%;
-    padding: 20px;
-    padding-top: 10px;
+    padding: 10px 0px;
+
+    @media only screen and (min-width: 600px) {
+        padding: 0px 7vw;
+    }
+
+    @media only screen and (min-width: 900px) {
+        padding: 0px;
+    }
 
     .images {
-        min-width: 365px;
-        max-height: 200px;
+        align-self: center;
+        min-width: calc(3 * 20vw);
+        max-width: calc(3 * 20vw);
+        min-height: calc(2 * 20vw);
+        max-height: calc(2 * 20vw);
         object-fit: cover;
         background-size: cover;
         // object-fit: contain;
@@ -88,6 +98,22 @@
         // -> bgnya pake semacem blurhashnya dia (?)
         border-radius: 20px;
         margin-bottom: 10px;
+
+        @media only screen and (min-width: 600px) {
+            min-width: calc(2 * 20vw);
+            max-width: calc(2 * 20vw);
+            min-height: calc(2.4 * 20vw);
+            max-height: calc(2.4 * 20vw);
+        }
+
+        @media only screen and (min-width: 900px) {
+            min-width: 300px;
+            max-width: 300px;
+            min-height: 350px;
+            max-height: 350px;
+            margin-right: 2vw;
+            margin-bottom: 0px;
+        }
     }
 
     .name {
@@ -97,10 +123,21 @@
         margin-top: 0;
         margin-bottom: 10px;
         text-transform: capitalize;
+
+        @media only screen and (min-width: 900px) {
+            text-align: left;
+        }
     }
 
     span {
         color: rgba(255, 255, 255, 0.7);
+    }
+
+    .prodDetail {
+        @media only screen and (max-width: 900px) {
+            justify-content: center;
+            padding-bottom: 10px;
+        }
     }
 
     .linkondetail {
@@ -122,23 +159,6 @@
         padding-inline: 20px;
         margin-top: 10px;
         margin-bottom: 10px;
-    }
-}
-
-@media only screen and (min-width: 900px) {
-    .detail {
-        .images {
-            min-width: 300px;
-            max-width: 300px;
-            min-height: 350px;
-            max-height: 350px;
-            margin-right: 2vw;
-            margin-bottom: 0px;
-        }
-
-        .name {
-            text-align: left;
-        }
     }
 }
 

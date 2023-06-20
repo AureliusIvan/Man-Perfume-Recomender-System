@@ -136,7 +136,7 @@ function ResultCardDetail(props: any) {
                         src={data.foto}
                         alt={`Images from ${data.nama}`}
                     />
-                    <Flex direction="column" align="left" width="100px">
+                    <Flex direction="column" align="left" className={style.prodDetail}>
                         {!md ? (
                             <h2 className={style.name}>
                                 {data.brand} - {data.nama}
