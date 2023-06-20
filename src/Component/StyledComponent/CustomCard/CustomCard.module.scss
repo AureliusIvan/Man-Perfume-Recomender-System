@@ -1,23 +1,41 @@
 .imgContainer {
-    min-width: 60vw;
-    // width: 10vw;
-    max-width: 60vw;
-    min-height: 80vw;
-    height: 38vw;
-    max-height: 38vw;
-    transition: .2s linear all;
-    
+    min-width: calc(3 * 18vw);
+    width: calc(3 * 18vw);
+    max-width: calc(3 * 18vw);
+    min-height: calc(4 * 18vw);
+    height: calc(4 * 18vw);
+    max-height: calc(4 * 18vw);
+    transition: 0.2s linear all;
+
     $color: linear-gradient(
         90deg,
         rgba(2, 0, 36, 1) 0%,
         rgba(58, 9, 121, 0.8374999658066351) 48%,
         rgba(0, 0, 0, 1) 100%
-        );
+    );
     :hover {
         transform: scale(1.05);
         box-shadow: 0px 0px 0px 2px rgba(58, 9, 121, 0.7);
-        transition: .2s linear all;
+        transition: 0.2s linear all;
         // filter: blur(1px);
+    }
+
+    @media only screen and (min-width: 600px) {
+        min-width: calc(3 * 10vw);
+        width: calc(3 * 10vw);
+        max-width: calc(3 * 10vw);
+        min-height: calc(4 * 10vw);
+        height: calc(4 * 10vw);
+        max-height: calc(4 * 10vw);
+    }
+
+    @media only screen and (min-width: 900px) {
+        min-width: calc(3 * 7vw);
+        width: calc(3 * 7vw);
+        max-width: calc(3 * 7vw);
+        min-height: calc(4 * 7vw);
+        height: calc(4 * 7vw);
+        max-height: calc(4 * 7vw);
     }
 }
 
@@ -36,7 +54,7 @@
     border-color: rgb(2, 0, 36);
     border: 2px solid $color;
     cursor: pointer;
-    :hover{
+    :hover {
         filter: blur(1000px);
     }
 }
@@ -66,7 +84,7 @@
         object-fit: cover;
         background-size: cover;
         // object-fit: contain;
-        // background-color: white; 
+        // background-color: white;
         // -> bgnya pake semacem blurhashnya dia (?)
         border-radius: 20px;
         margin-bottom: 10px;
@@ -122,17 +140,7 @@
             text-align: left;
         }
     }
-
-    .imgContainer {
-        min-width: 20vw;
-        width: 20vw;
-        max-width: 20vw;
-        min-height: 25vw;
-        height: 25vw;
-        max-height: 25vw;
-    }
 }
-
 
 .card {
     position: relative;
@@ -140,8 +148,6 @@
     height: 100%;
     min-height: 350px;
     max-height: 350px;
-
-    
 
     &::before {
         content: "";
