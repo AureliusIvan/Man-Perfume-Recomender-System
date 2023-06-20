@@ -1,19 +1,12 @@
-import React from "react"
-// import { CustomButton as Button } from "../../../Component/StyledComponent/CustomButton/CustomButton"
-// import { CustomBox as Box } from "../../../Component/StyledComponent/CustomBox/CustomBox"
 import { Paragraf } from "../../../Component/StyledComponent/Typography/CustomTypography"
-// import { Grid as G } from "@material-ui/core"
 import { Grid } from "@mui/material"
 import { styled } from "@material-ui/styles"
-// import styled from "@emotion/styled/types/base"
-// import { Text } from "../../../Component/StyledComponent/Typography/CustomTypography"
 import { TutorialData } from "./TutorialData"
+
 import style from "./Tutorial.module.scss"
-// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
 
 import { useTranslation } from "react-i18next"
 

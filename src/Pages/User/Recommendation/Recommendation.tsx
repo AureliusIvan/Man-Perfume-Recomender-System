@@ -1,16 +1,9 @@
 import React from "react";
-import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css"; // Import Swiper styles
-SwiperCore.use([Pagination, Navigation]);
 
 import { Paragraf } from "../../../Component/StyledComponent/Typography/CustomTypography";
 import { useEffect, useState } from "react";
 import { getGuest } from "../../../Component/FunctionComponent/axiosClient/axiosClient";
-import {
-    ResultCard,
-    ResultCard1,
-} from "../../../Component/StyledComponent/CustomCard/CustomCard";
+import { ResultCard } from "../../../Component/StyledComponent/CustomCard/CustomCard";
 import { Box, Button, Grid as G } from "@material-ui/core";
 import { styled } from "@mui/material/styles";
 import Center from "../../../Component/StyledComponent/CustomCenter/Center";
@@ -64,10 +57,10 @@ export default function Recommendation() {
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
         {
             loop: true,
-            mode: "free-snap",
+            // mode: "free-snap",
             slides: {
                 perView: 1,
-                spacing: 15,
+                // spacing: 15,
             },
             breakpoints: {
                 "(min-width: 600px)": {
@@ -159,8 +152,11 @@ export default function Recommendation() {
                             key={index}
                             className="keen-slider__slide zoom-out__slide"
                         >
-                            <div style={scaleStyle(index)} className={style.swiperItem}>
-                                <ResultCard1
+                            <div
+                                style={scaleStyle(index)}
+                                className={style.swiperItem}
+                            >
+                                <ResultCard
                                     title={item.brand + " - " + item.nama}
                                     image={item.foto}
                                     data={item}
@@ -169,6 +165,9 @@ export default function Recommendation() {
                             </div>
                         </div>
                     ))}
+                    {/* {useEffect(() => {
+                        window.dispatchEvent(new Event("resize"));
+                    }, [])} */}
                 </div>
 
                 {loaded && instanceRef.current && (
@@ -181,71 +180,6 @@ export default function Recommendation() {
                     </IconButton>
                 )}
             </div>
-
-            {/* <div className={style.swiper}>
-                <Swiper
-                    effect="coverflow"
-                    grabCursor
-                    mousewheel
-                    loop
-                    centeredSlides
-                    keyboard
-                    slidesPerView={3}
-                    spaceBetween={0}
-                    speed={300}
-                    autoplay={{
-                        delay: 3000,
-                    }}
-                    coverflowEffect={{
-                        rotate: 0,
-                        stretch: 0,
-                        depth: 0,
-                        modifier: 3,
-                        slideShadows: false,
-                    }}
-                    breakpoints={{
-                        1200: {
-                            slidesPerView: 3,
-                        },
-                        600: {
-                            //sm
-                            centeredSlides: false,
-                            slidesPerView: 2,
-                        },
-                        0: {
-                            //base
-                            slidesPerView: 1,
-                        },
-                    }}
-                    // simulateTouch
-                    // navigation
-                    // pagination={{
-                    //     clickable: true,
-                    // }}
-                    navigation={{
-                        nextEl: ".swiper-next",
-                        prevEl: ".swiper-prev",
-                    }}
-                    modules={[Autoplay, Pagination, Navigation]}
-                >
-                    {item.map((item: any, index) => (
-                        <SwiperSlide key={index} className={style.swiperItem}>
-                            <ResultCard1
-                                title={item.brand + " - " + item.nama}
-                                image={item.foto}
-                                data={item}
-                                key={index}
-                            />
-                        </SwiperSlide>
-                    ))}
-                    <button className="slider-prev">
-                        <ArrowBackIosIcon />
-                    </button>
-                    <button className="slider-next">
-                        <NavigateNextIcon />
-                    </button>
-                </Swiper>
-            </div> */}
         </>
     );
 }
