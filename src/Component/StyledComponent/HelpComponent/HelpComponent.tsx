@@ -46,7 +46,7 @@ function HelpComponent(props: HelpComponentProps) {
             >
                 <>
                     <Box
-                        maxWidth="80vw"
+                        maxWidth="60vw"
                         className={style.modal}
                     >
                         <button

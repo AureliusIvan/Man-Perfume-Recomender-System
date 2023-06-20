@@ -6,7 +6,7 @@ import { CustomButton } from "../CustomButton/CustomButton";
 import Typography from "@mui/material/Typography";
 import style from "./CustomCard.module.scss";
 import { Text, Title } from "../Typography/CustomTypography";
-import { Grid } from "@mui/material";
+import { Badge, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Spacer from "../../../Pages/User/Spacer/spacer";
 import { CustomModal } from "../CustomModal/CustomModal";
@@ -136,7 +136,11 @@ function ResultCardDetail(props: any) {
                         src={data.foto}
                         alt={`Images from ${data.nama}`}
                     />
-                    <Flex direction="column" align="left" className={style.prodDetail}>
+                    <Flex
+                        direction="column"
+                        align="left"
+                        className={style.prodDetail}
+                    >
                         {!md ? (
                             <h2 className={style.name}>
                                 {data.brand} - {data.nama}
@@ -195,9 +199,11 @@ export function ResultCard1(props: any) {
                 onClose={props.onClose ? props.onClose : handleClose}
                 overflowY={"scroll"}
                 button={
-                    <div className={style.imgContainer}>
+                    <div className={style.imgContainer} onClick={handleOpen}>
+                        {props.rank && (
+                            <Flex className={style.badge}><p>{props.rank}</p></Flex>
+                        )}
                         <img
-                            onClick={handleOpen}
                             className={style.img}
                             src={
                                 props.image
@@ -206,6 +212,30 @@ export function ResultCard1(props: any) {
                             }
                             alt={props.title ? props.title : "Perfume"}
                         />
+                        <Flex
+                            direction="column"
+                            justify="end"
+                            className={style.descOverlay}
+                        >
+                            <p>
+                                {props.data.brand} {props.data.nama}
+                            </p>
+                            {props.accuracy && (
+                                <p className={style.acc}>
+                                    {t("accuracy")} : {Akurasi}%
+                                </p>
+                            )}
+                        </Flex>
+                        <Flex direction="column" className={style.overlay}>
+                            <h3>
+                                {props.data.brand} {props.data.nama}
+                            </h3>
+                            {props.accuracy && (
+                                <p className={style.acc}>
+                                    {t("accuracy")} : {Akurasi}%
+                                </p>
+                            )}
+                        </Flex>
                     </div>
                 }
             >
@@ -214,7 +244,6 @@ export function ResultCard1(props: any) {
         </Flex>
     );
 }
-// {props.accuracy && `${t("accuracy")} : ${Akurasi}%`}
 
 export function ResultCard(props: any) {
     const { t } = useTranslation();

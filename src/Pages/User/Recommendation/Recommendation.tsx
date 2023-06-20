@@ -18,14 +18,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDataEntry, selectDataEntry } from "@/Redux/feature/dataSlice";
 
 import style from "./Recommendation.module.scss";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import Left from "@mui/icons-material/ArrowCircleLeftRounded";
+import Right from "@mui/icons-material/ArrowCircleRightRounded";
 
 import { useTranslation } from "react-i18next";
-import { Flex } from "@/Component/StyledComponent/CustomBox/CustomBox";
 
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider, TrackDetails } from "keen-slider/react";
+import { IconButton } from "@mui/material";
 
 const Grid = styled(G)(() => ({
     paddingTop: "20px",
@@ -70,10 +70,10 @@ export default function Recommendation() {
                 spacing: 15,
             },
             breakpoints: {
-                "(min-width: 400px)": {
+                "(min-width: 600px)": {
                     slides: { perView: 2, spacing: 5 },
                 },
-                "(min-width: 1000px)": {
+                "(min-width: 900px)": {
                     slides: { perView: 3, spacing: 10 },
                 },
             },
@@ -100,7 +100,7 @@ export default function Recommendation() {
                     if (mouseOver) return;
                     timeout = setTimeout(() => {
                         slider.next();
-                    }, 4000);
+                    }, 3000);
                 }
                 slider.on("created", () => {
                     slider.container.addEventListener("mouseover", () => {
@@ -143,18 +143,15 @@ export default function Recommendation() {
                 </Paragraf>
             </Center>
 
-            {/* <div className={style.swiper}>
+            <div className={style.swiper}>
                 {loaded && instanceRef.current && (
-                    <div className={style.navigation}>
-                        <button
-                            onClick={(e: any) =>
-                                e.stopPropagation() ||
-                                instanceRef.current?.prev()
-                            }
-                        >
-                            <ArrowBackIosIcon />
-                        </button>
-                    </div>
+                    <IconButton
+                        onClick={(e: any) =>
+                            e.stopPropagation() || instanceRef.current?.prev()
+                        }
+                    >
+                        <Left fontSize="large" />
+                    </IconButton>
                 )}
                 <div ref={sliderRef} className="keen-slider zoom-out">
                     {item.map((item: any, index) => (
@@ -162,7 +159,7 @@ export default function Recommendation() {
                             key={index}
                             className="keen-slider__slide zoom-out__slide"
                         >
-                            <div style={scaleStyle(index)}>
+                            <div style={scaleStyle(index)} className={style.swiperItem}>
                                 <ResultCard1
                                     title={item.brand + " - " + item.nama}
                                     image={item.foto}
@@ -173,19 +170,17 @@ export default function Recommendation() {
                         </div>
                     ))}
                 </div>
+
                 {loaded && instanceRef.current && (
-                    <div className={style.navigation}>
-                        <button
-                            onClick={(e: any) =>
-                                e.stopPropagation() ||
-                                instanceRef.current?.next()
-                            }
-                        >
-                            <NavigateNextIcon />
-                        </button>
-                    </div>
+                    <IconButton
+                        onClick={(e: any) =>
+                            e.stopPropagation() || instanceRef.current?.next()
+                        }
+                    >
+                        <Right fontSize="large" />
+                    </IconButton>
                 )}
-            </div> */}
+            </div>
 
             {/* <div className={style.swiper}>
                 <Swiper
@@ -251,21 +246,6 @@ export default function Recommendation() {
                     </button>
                 </Swiper>
             </div> */}
-
-            <Grid container>
-                {item.map((item: any, index) => {
-                    return (
-                        <GridItem item xs={12} key={index}>
-                            <ResultCard
-                                title={item.nama}
-                                image={item.foto}
-                                data={item}
-                                key={index}
-                            />
-                        </GridItem>
-                    );
-                })}
-            </Grid>
         </>
     );
 }
