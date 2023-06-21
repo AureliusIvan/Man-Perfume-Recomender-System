@@ -23,7 +23,13 @@
   "detail": "Info Lanjut",
   "buy": "Beli Sekarang",
   "guide": "Bantuan",
+  "step" : "Tahap",
 	"logout": "Keluar",
+
+  "stepDesc1" : "Klik tombol Mulai Menentukan Parfum di halaman pertama. Anda akan langsung diarahkan ke halaman penentuan prioritas",
+  "stepDesc2" : "Tentukan prioritas anda terhadap 2 kriteria berbeda di setiap soal sesuai preferensi anda sebagai pria. Masing-Masing skala bernilai minimal 1 dan maksimal 3.",
+  "stepDesc3" : "Setelah anda selesai, pastikan jawaban and sesuai kemudian klik tombol kumpul.",
+  "stepDesc4" : "Anda akan diarahkan ke halaman yang berisi dengan pilihan parfum yang sesuai untuk anda berdasarkan penelitian kami.",
 
 	"perfume": "Parfum",
   "accuracy": "Akurasi",

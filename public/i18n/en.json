@@ -23,7 +23,13 @@
   "detail": "Details",
   "buy": "Buy Now",
   "guide": "Guide",
+  "step" : "Step",
 	"logout": "Log Out",
+
+  "stepDesc1" : "Click the 'Start Perfume Selection' button on the first page. You will be immediately redirected to the priority determination page.",
+  "stepDesc2" : "Slide to determine your priority between two different criteria being compared according to your preferences as a man. Each scale ranges from a minimum value of 1 to a maximum of 3.",
+  "stepDesc3" : "After you're done, make sure your answers represent you choice correctly, then click teh submit button.",
+  "stepDesc4" : "You will then be directed to a page that contains a selection of perfumes that are suitable for you based on your answers.",
 
 	"perfume": "Perfume",
   "accuracy": "Accuracy",
