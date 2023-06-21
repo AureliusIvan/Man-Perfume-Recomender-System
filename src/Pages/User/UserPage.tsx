@@ -44,13 +44,11 @@ export default function UserPage() {
                     <Suspense fallback={<LoadingScreen />}>
                         <DescPage />
                     </Suspense>
-                    <Spacer y={"100px"} />
+                    {/* <Spacer y={"100px"} /> */}
                     <Spacer y={"100px"} />
                     <Tutorial />
-                    <Spacer y={"100px"} />
                 </Center>
             </section>
-            <Spacer y={"100px"} />
             <Suspense fallback={<LoadingScreen />}>
                 <Recommendation />
             </Suspense>

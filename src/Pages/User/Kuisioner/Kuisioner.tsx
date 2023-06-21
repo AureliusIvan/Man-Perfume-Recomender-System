@@ -167,6 +167,7 @@ export default function Kuisioner() {
                     handleChange,
                 }) => (
                     <div>
+                        <Spacer y="5vw" />
                         {loading && <LoadingScreen />}
                         <form noValidate onSubmit={handleSubmit}>
                             {error &&
@@ -340,6 +341,7 @@ export default function Kuisioner() {
                                 </Box>
                             </Center>
                         </form>
+                        <Spacer y="5vw" />
                     </div>
                 )
                 }

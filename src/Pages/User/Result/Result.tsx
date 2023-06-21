@@ -4,8 +4,7 @@ import { Title } from "../../../Component/StyledComponent/Typography/CustomTypog
 // import CustomSlider from "../../../Component/StyledComponent/CustomSlider/CustomSlider";
 // import { get } from "../../../Component/FunctionComponent/axiosClient/axiosClient";
 import {
-    ResultCard,
-    ResultCard1,
+    ResultCard
 } from "../../../Component/StyledComponent/CustomCard/CustomCard";
 import { Grid as G } from "@material-ui/core";
 import { styled } from "@mui/material/styles";
@@ -175,7 +174,7 @@ export default function Result() {
                                         style={scaleStyle(index)}
                                         className={style.swiperItem}
                                     >
-                                        <ResultCard1
+                                        <ResultCard
                                             title={
                                                 item.brand + " - " + item.nama
                                             }
@@ -218,40 +217,6 @@ export default function Result() {
                     </IconButton>
                 )}
             </div>
-            {/* <Grid container>
-                {Array.isArray(dataEntry) ? (
-                    dataEntry.map((item: any, index: number) => {
-                        if (index >= 5) return;
-                        return (
-                            <GridItem item xs={12} key={index}>
-                                <ResultCard
-                                    title={item.nama}
-                                    image={item.foto}
-                                    accuracy={item.preference_value}
-                                    data={item}
-                                    key={index}
-                                />
-                            </GridItem>
-                        );
-                    })
-                ) : (
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            width: "100%",
-                            height: "100%",
-                            minHeight: "50vh",
-                            fontSize: "20px",
-                            fontWeight: "bold",
-                            color: "rgb(255, 255, 255, 0.5)",
-                        }}
-                    >
-                        Hasil tidak konsisten, coba lagi!
-                    </div>
-                )}
-            </Grid> */}
         </>
     );
 }
