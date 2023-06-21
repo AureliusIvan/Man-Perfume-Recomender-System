@@ -1,19 +1,12 @@
 import { Paragraf } from "../../../Component/StyledComponent/Typography/CustomTypography";
-import { Grid } from "@mui/material";
-import { styled } from "@material-ui/styles";
 import { TutorialData } from "./TutorialData";
 
 import style from "./Tutorial.module.scss";
-
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { motion } from "framer-motion";
 
 import { useTranslation } from "react-i18next";
-import { Flex } from "@/Component/StyledComponent/CustomBox/CustomBox";
-import { useEffect, useState } from "react";
-import { CustomButton } from "@/Component/StyledComponent/CustomButton/CustomButton";
+import { useState } from "react";
 import { Button } from "@material-ui/core";
-import { max } from "lodash";
 
 export default function Tutorial() {
     const { t } = useTranslation();

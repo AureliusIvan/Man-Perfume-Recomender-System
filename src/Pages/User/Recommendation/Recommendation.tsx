@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useReducer } from "react";
 
 import { Paragraf } from "../../../Component/StyledComponent/Typography/CustomTypography";
 import { useEffect, useState } from "react";
 import { getGuest } from "../../../Component/FunctionComponent/axiosClient/axiosClient";
 import { ResultCard } from "../../../Component/StyledComponent/CustomCard/CustomCard";
-import { Box, Button, Grid as G } from "@material-ui/core";
-import { styled } from "@mui/material/styles";
 import Center from "../../../Component/StyledComponent/CustomCenter/Center";
 import { useDispatch, useSelector } from "react-redux";
 import { setDataEntry, selectDataEntry } from "@/Redux/feature/dataSlice";
@@ -20,18 +18,12 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider, TrackDetails } from "keen-slider/react";
 import { IconButton } from "@mui/material";
 
-const Grid = styled(G)(() => ({
-    paddingTop: "20px",
-}));
-
-const GridItem = styled(G)(() => ({
-    padding: "10px",
-}));
-
 export default function Recommendation() {
     const { t } = useTranslation();
+    const forceUpdate = useForceUpdate();
 
     const [item, setItem] = useState<object[]>([]);
+
     const dispatch = useDispatch();
     const dataEntry = useSelector(selectDataEntry);
     useEffect(() => {
@@ -49,15 +41,18 @@ export default function Recommendation() {
             setItem(dataEntry);
         }
     }, []);
-
+    
     const [details, setDetails] = React.useState<TrackDetails | null>(null);
     const [currentSlide, setCurrentSlide] = React.useState(0);
     const [loaded, setLoaded] = useState(false);
 
+    useEffect(() => {
+        window.dispatchEvent(new Event('resize'));
+    }, [])
+
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
         {
             loop: true,
-            // mode: "free-snap",
             slides: {
                 perView: 1,
                 // spacing: 15,
@@ -79,6 +74,7 @@ export default function Recommendation() {
             },
             created() {
                 setLoaded(true);
+                console.log("loaded");
             },
         },
         [
@@ -135,7 +131,6 @@ export default function Recommendation() {
                     <i>{t("homeDesc3")}</i>
                 </Paragraf>
             </Center>
-
             <div className={style.swiper}>
                 {loaded && instanceRef.current && (
                     <IconButton
@@ -165,11 +160,7 @@ export default function Recommendation() {
                             </div>
                         </div>
                     ))}
-                    {/* {useEffect(() => {
-                        window.dispatchEvent(new Event("resize"));
-                    }, [])} */}
                 </div>
-
                 {loaded && instanceRef.current && (
                     <IconButton
                         onClick={(e: any) =>
@@ -182,6 +173,11 @@ export default function Recommendation() {
             </div>
         </>
     );
+}
+
+function useForceUpdate() {
+    const [value, setValue] = useState(0);
+    return () => setValue(value + 1);
 }
 
 // recommendation reference : https://codepen.io/JavaScriptJunkie/pen/ZMMRRQ

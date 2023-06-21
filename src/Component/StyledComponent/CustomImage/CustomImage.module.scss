@@ -9,7 +9,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 80% 80% !important;
-    overflow: visible;
 
     @media screen and (max-width: 768px) {
         margin-top: 60px;
@@ -31,5 +30,4 @@
     object-fit: cover;
     // adjust the size of the logo
     background-size: 80% 80% !important;
-    overflow: visible;
 }
