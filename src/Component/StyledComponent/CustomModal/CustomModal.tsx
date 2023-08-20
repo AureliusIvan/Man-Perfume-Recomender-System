@@ -77,7 +77,7 @@ export function CustomModal(props: CustomModalProps) {
                         padding={props.buttonPadding}
                         bgcolor={props.bgcolor}
                         disabled={props.disabled}
-                        onclick={handleOpen}>{
+                        onClick={handleOpen}>{
                             props.title
                         }</Button>
 
@@ -150,7 +150,7 @@ export function CustomModal(props: CustomModalProps) {
                         <Flex>
                             {props.confirmbutton ?
                                 <><Button
-                                    onclick={props.onConfirm
+                                    onClick={props.onConfirm
                                         ? props.onConfirm
                                         : () => {
                                             {
@@ -169,7 +169,7 @@ export function CustomModal(props: CustomModalProps) {
                                     <Button
                                         variant='outlined'
                                         // bgcolor={props.bgcolor ? props.bgcolor : "rgb(255, 255, 255, 0)"}
-                                        onclick={props.onCancel ? props.onCancel : handleClose}
+                                        onClick={props.onCancel ? props.onCancel : handleClose}
                                     >
                                         No
                                     </Button></> : null}

@@ -28,7 +28,7 @@ export function CustomButton(props: CustomButtonProps) {
   const theme = useTheme();
   return (
     <button
-      onClick={props.onclick && props.onclick}
+      onClick={props.onClick && props.onClick}
       disabled={props.disabled ? props.disabled : false}
       type={props.type ? props.type : "button"}
       className={props.variant === "outlined" ? style.buttonoutlined : style.button}

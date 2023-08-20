@@ -301,7 +301,7 @@ export default function Kuisioner() {
                                         )
                                     })}
                                     <Button
-                                        onclick={handleOpen}
+                                        onClick={handleOpen}
                                     >
                                         <span
                                             style={{
@@ -326,12 +326,12 @@ export default function Kuisioner() {
                                         <Flex>
                                             <><Button
                                                 type="submit"
-                                                onclick={handleSubmit}
+                                                onClick={handleSubmit}
                                             >
                                                 {t("yes")}
                                             </Button>
                                                 <Button
-                                                    onclick={handleClose}
+                                                    onClick={handleClose}
                                                     bgcolor={"rgb(255, 255, 255, 0)"}
                                                 >
                                                     {t("no")}
