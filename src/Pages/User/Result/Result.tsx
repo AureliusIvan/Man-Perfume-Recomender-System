@@ -136,7 +136,7 @@ export default function Result() {
                 <br />
                 <CustomButton
                     bgcolor={"rgb(0,0,0,0)"}
-                    onclick={() => {
+                    onClick={() => {
                         navigate("/start");
                     }}
                 >

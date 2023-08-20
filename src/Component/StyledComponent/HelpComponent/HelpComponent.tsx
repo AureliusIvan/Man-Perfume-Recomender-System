@@ -84,7 +84,7 @@ function HelpComponent(props: HelpComponentProps) {
                         <Flex>
                             {props.confirmbutton ?
                                 <><Button
-                                    onclick={
+                                    onClick={
                                         props.onConfirm ? props.onConfirm : handleClose
                                     }
                                 >
@@ -92,7 +92,7 @@ function HelpComponent(props: HelpComponentProps) {
                                 </Button>
                                     <Button
                                         bgcolor={props.bgColor ? props.bgColor : "rgb(255, 255, 255, 0)"}
-                                        onclick={props.onCancel ? props.onCancel : handleClose}
+                                        onClick={props.onCancel ? props.onCancel : handleClose}
                                     >
                                         No
                                     </Button></> : null}

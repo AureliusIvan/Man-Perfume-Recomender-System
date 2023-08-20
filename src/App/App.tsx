@@ -31,7 +31,7 @@ export function Toogle() {
     <Button
       variant="outlined"
       margin={"20px"}
-      onclick={colorMode.toggleColorMode}>
+      onClick={colorMode.toggleColorMode}>
       {/* {theme.palette.mode === 'dark' ? "Dark" : "Light"} */}
       {/* <Icon component={'image'} /> */}
       {/* <svg src={DarkModeIcon} alt="" /> */}
