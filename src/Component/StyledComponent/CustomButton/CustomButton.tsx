@@ -15,7 +15,7 @@ interface CustomButtonProps {
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
   style?: React.CSSProperties;
-  onclick?: () => void;
+  onClick?: () => void;
   children?: React.ReactNode;
   loading?: boolean;
   width?: string;
@@ -60,7 +60,7 @@ export function CustomButtonPlain(props: any) {
   const theme = useTheme();
   return (
     <button
-      onClick={props.onclick && props.onclick}
+      onClick={props.onClick && props.onClick}
       disabled={props.disabled ? props.disabled : false}
       type={props.type ? props.type : "button"}
       className={style.buttonplain}

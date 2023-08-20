@@ -93,14 +93,14 @@ export default function ProductSection() {
               {'>'}
             </button>
             <div
-            className='ProductCardContainer'
+              className='ProductCardContainer'
             >
               <Swiper
-                slidesPerView={2}
-                spaceBetween={50}
-                pagination={{
-                  clickable: true,
-                }}
+                // slidesPerView={2}
+                // spaceBetween={50}
+                // pagination={{
+                //   clickable: true,
+                // }}
                 onSwiper={(swiper: any) => {
                   if (swiper) {
                     swiperRef.current = swiper;
