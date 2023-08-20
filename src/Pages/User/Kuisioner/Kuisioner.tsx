@@ -317,7 +317,7 @@ export default function Kuisioner() {
                                     <CustomModal
                                         title={"Submit"}
                                         open={open}
-                                        closebtn={true}
+                                        // closebtn={true}
                                         hideButton={true}
                                     >
                                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>

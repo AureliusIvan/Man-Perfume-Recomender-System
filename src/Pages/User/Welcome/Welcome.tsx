@@ -27,7 +27,8 @@ function WelcomePage() {
                 >
                     {t("welcome")}
                 </Title>
-                <Button onclick={handler}>
+                <Button
+                    onClick={handler}>
                     <span
                         style={{
                             display: "flex",
@@ -43,9 +44,9 @@ function WelcomePage() {
             <Center>
                 <Img src={welcomeimg} />
             </Center>
-            <a className={style.a} href="#desc">
+            {/* <a className={style.a} href="#desc">
                 <div className={style.down}></div>
-            </a>
+            </a> */}
         </div>
     );
 }
