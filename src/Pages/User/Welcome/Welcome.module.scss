@@ -3,10 +3,9 @@
     justify-content: center;
     align-items: center;
     min-height: "75vh";
-    width: 90vw;
-    padding-left: 2vw;
-    padding-right: 2vw;
-
+    // width: 90vw;
+    padding-inline: 2vw;
+    
     @media screen and (max-width: 900px) {
         flex-direction: column;
     }

@@ -13,6 +13,7 @@ import Background from "@/Component/StyledComponent/Background/Background";
 
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "@mui/material";
+import ProductSection from "./Recommendation/ProductSection";
 
 const DescPage = lazy(() => import("./Desc/DescPage"));
 const Footer = lazy(() => import("@/Component/StyledComponent/Footer/Footer"));
@@ -29,38 +30,31 @@ export default function UserPage() {
     const mobile = useMediaQuery<boolean>("(max-width:900px)");
 
     return (
-        <div id="User-Page" className={style.UserPage}>
-            {/* Helmet for SEO */}
+        <>
             <Helmet>
                 <title> HOME | {t("PROJTITLE")}</title>
                 <meta name="description" content={t("PROJDESC")} />
                 <link rel="canonical" href={`${PROJDOMAIN}`} />
             </Helmet>
-            <Background />
-            <Spacer y={"100px"} />
-            <WelcomePage />
-            <section id="desc">
-                <Center>
-                    <Suspense fallback={<LoadingScreen />}>
+            <div id="User-Page" className={style.UserPage}>
+                <Background />
+                <Spacer y={"100px"} />
+                <WelcomePage />
+                <section id="desc">
+                    <Center>
                         <DescPage />
-                    </Suspense>
-                    <Spacer y={"100px"} />
-                    <Tutorial />
-                    {/* {mobile ? null : (
-                        <>
-                            <Spacer y={"100px"} />
-                            <Tutorial />
-                        </>
-                    )} */}
-                </Center>
-            </section>
-            <Suspense fallback={<LoadingScreen />}>
-                <Recommendation />
-            </Suspense>
-            <Suspense fallback={<LoadingScreen />}>
-                <Footer />
-            </Suspense>
-        </div>
+                        <Spacer y={"100px"} />
+                        <Tutorial />
+                    </Center>
+                </section>
+                <Suspense fallback={<LoadingScreen />}>
+                    <ProductSection />
+                </Suspense>
+                <Suspense fallback={<LoadingScreen />}>
+                    <Footer />
+                </Suspense>
+            </div>
+        </>
     );
 }
 

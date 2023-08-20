@@ -35,34 +35,16 @@ export default function DescPage(props: DescPageProps) {
         animate={inView ? "visible" : "hidden"}
         variants={animationVariants}
         transition={{ duration: 0.5 }}
+        style={{
+            paddingInline: "10px",
+        }}
     >
         <Spacer y={"100px"} />
         <Paragraf
             styledTitle={true}
             width={'300px'} title={t("homeTitle1")}>
-            {/* {props.text} */}
             <i>{t("WebDesc")}</i>
         </Paragraf>
-        {/* <Spacer y={"100px"} /> */}
-        {/* <Box reverse={"true"}
-        // width="100%"
-        >
-            <Title
-                reverse={"true"}
-                style={{
-                    alignSelf: 'left',
-                }}>
-                {WebDescTitle}
-            </Title>
-            <Text reverse={"true"}
-                style={{
-                    alignSelf: 'left',
-                    textAlign: 'left',
-                }}
-            >
-                {WebDesc}
-            </Text>
-        </Box> */}
     </motion.div>
     )
 }

@@ -1,3 +1,23 @@
+.container {
+    // border-radius: 10px;
+    // border: 1px solid red;
+    border-radius: 20px;
+    width: fit-content !important;
+    overflow: hidden;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+
+}
+
+.ModalContainer {
+    // width: 60vw !important;
+    width: fit-content;
+    // border: 1px solid red;
+    width: fit-content;
+    height: fit-content;
+}
+
 .imgContainer {
     position: relative;
     min-width: calc(3 * 18vw);
@@ -9,12 +29,11 @@
 
     cursor: pointer;
     transition: 0.2s linear all;
-    $color: linear-gradient(
-        90deg,
+    $color: linear-gradient(90deg,
         rgba(2, 0, 36, 1) 0%,
         rgba(58, 9, 121, 0.8374999658066351) 48%,
-        rgba(0, 0, 0, 1) 100%
-    );
+        rgba(0, 0, 0, 1) 100%);
+
     :hover {
         transform: scale(1.05);
         box-shadow: 0px 0px 0px 2px rgba(58, 9, 121, 0.7);
@@ -42,14 +61,12 @@
 }
 
 .img {
-    $color: linear-gradient(
-        90deg,
+    $color: linear-gradient(90deg,
         rgba(2, 0, 36, 1) 0%,
         rgba(58, 9, 121, 0.8374999658066351) 48%,
-        rgba(0, 0, 0, 1) 100%
-    );
+        rgba(0, 0, 0, 1) 100%);
     // background: rgb(2,0,36);
-    border-radius: 10px;
+    // border-radius: 10px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -68,14 +85,9 @@
     height: 0;
 }
 
-.container {
-    width: 60vw;
-    overflow-y: scroll;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
 
 .detail {
+    // border: 1px solid red;
     width: 100%;
     height: 100%;
     padding: 10px 0px;
@@ -215,7 +227,7 @@
         margin: 0;
 
     }
-    
+
     .acc {
         font-size: small;
     }

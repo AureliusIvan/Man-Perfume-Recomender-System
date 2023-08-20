@@ -13,7 +13,51 @@ import style from "./CustomModal.module.scss";
 import { add, update, delData, appendData } from '../DataFunction/DataFunction';
 import CustomInputImage from '@/Component/CustomInputImage/CustomInputImage';
 
-export function CustomModal(props: any) {
+
+type CustomModalProps = {
+    children?: React.ReactNode;
+    title?: string;
+    desc?: string;
+    confirmbutton?: boolean;
+    onConfirm?: () => void;
+    onCancel?: () => void;
+    onClose?: () => void;
+    bgcolor?: string;
+    open?: boolean;
+    xbutton?: boolean;
+    toDelete?: boolean;
+    rowID?: string;
+    button?: React.ReactNode;
+    hideButton?: boolean;
+    buttonHeight?: string;
+    buttonWidth?: string;
+    buttonMargin?: string;
+    buttonMarginBottom?: string;
+    buttonPadding?: string;
+    disabled?: boolean;
+    useFormik?: boolean;
+    formName?: string | any;
+    editornew?: string;
+    fId?: string;
+    fName?: string;
+    fMerk?: string;
+    fScent?: string;
+    fSize?: string | any;
+    fPrice?: string | any;
+    fImage?: string | any;
+    fLink?: string | any;
+    fDesc?: string | any;
+    fscentIdx?: number | any;
+    fdurIdx?: number | any;
+    fpriceIdx?: number | any;
+    fqualityIdx?: number | any;
+    portrait?: boolean | any;
+    overflowY?: string | any;
+    outline?: string | any;
+    deletable?: boolean | any;
+};
+
+export function CustomModal(props: CustomModalProps) {
     const [open, setOpen] = React.useState(false);
 
     const handleOpen = () => setOpen(true);
@@ -45,10 +89,7 @@ export function CustomModal(props: any) {
                 aria-describedby="modal-modal-description"
             >
                 <>
-                    <Box
-                        maxWidth={props.portrait ? "440px" : "65vw"}
-                        maxHeight={props.portrait ? "80vh" : "70vh"}
-                        // overflowY={props.overflowY ? props.overflowY : "auto"}
+                    <div
                         className={style.modal}
                     >
                         {props.xbutton ?
@@ -133,7 +174,7 @@ export function CustomModal(props: any) {
                                         No
                                     </Button></> : null}
                         </Flex>
-                    </Box>
+                    </div>
                 </>
             </Modal>
         </div>

@@ -19,7 +19,7 @@ import { useKeenSlider, TrackDetails } from "keen-slider/react";
 import { IconButton } from "@mui/material";
 
 export default function Recommendation() {
-    const { t } = useTranslation();
+        const { t } = useTranslation();
     const forceUpdate = useForceUpdate();
 
     const [item, setItem] = useState<object[]>([]);
@@ -35,13 +35,13 @@ export default function Recommendation() {
                         setItem(res.data.data);
                         dispatch(setDataEntry(res.data));
                     })
-                    .catch((err: object) => {});
-            } catch (err) {}
+                    .catch((err: object) => { });
+            } catch (err) { }
         } else {
             setItem(dataEntry);
         }
     }, []);
-    
+
     const [details, setDetails] = React.useState<TrackDetails | null>(null);
     const [currentSlide, setCurrentSlide] = React.useState(0);
     const [loaded, setLoaded] = useState(false);
@@ -65,11 +65,11 @@ export default function Recommendation() {
                     slides: { perView: 3, spacing: 10 },
                 },
             },
-            detailsChanged(s) {
+            detailsChanged(s: any) {
                 setDetails(s.track.details);
             },
             initial: 2,
-            slideChanged(slider) {
+            slideChanged(slider: any) {
                 setCurrentSlide(slider.track.details.rel);
             },
             created() {
@@ -78,7 +78,7 @@ export default function Recommendation() {
             },
         },
         [
-            (slider) => {
+            (slider: any) => {
                 let timeout: ReturnType<typeof setTimeout>;
                 let mouseOver = false;
                 function clearNextTimeout() {
