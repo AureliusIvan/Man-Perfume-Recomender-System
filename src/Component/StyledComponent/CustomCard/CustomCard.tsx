@@ -118,7 +118,7 @@ function ResultCardDetail(props: any) {
         currency: "IDR",
     });
     return (
-        <div className={style.container}>
+        <div className={style.ModalContainer}>
             {data ? (
                 <Flex
                     direction={md ? "column" : "row"}
@@ -180,7 +180,7 @@ function ResultCardDetail(props: any) {
     );
 }
 
-export function ResultCard (props: any) {
+export function ResultCard(props: any) {
     const { t } = useTranslation();
 
     const md = useMediaQuery<boolean>("(max-width:900px)");
@@ -191,7 +191,9 @@ export function ResultCard (props: any) {
     const handleClose = () => setOpen(false);
 
     return (
-        <Flex>
+        <div
+            className={style.container}
+        >
             <CustomModal
                 open={open}
                 xbutton={true}
@@ -241,6 +243,6 @@ export function ResultCard (props: any) {
             >
                 <ResultCardDetail data={props.data} />
             </CustomModal>
-        </Flex>
+        </div>
     );
 }

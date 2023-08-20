@@ -13,6 +13,7 @@ import LoadingScreen from "../StyledComponent/Fallback/LoadingScreen";
 import Result from "@/Pages/User/Result/Result";
 
 import ProtectedRoute from "./ProtectedRoute";
+import ProductPage from "@/Pages/User/ProductPage/ProductPage";
 
 // import { useSelector } from "react-redux";
 // import { selectIsLogin } from "@/Redux/feature/dataSlice";
@@ -21,6 +22,7 @@ const LoginPage = lazy(() => import("@/Pages/Admin/Login/LoginPage"));
 const AdminPage = lazy(() => import("@/Pages/Admin/AdminPage"));
 // const UserPage = lazy(() => import("@/Pages/User/UserPage"));
 const Kuisioner = lazy(() => import("@/Pages/User/Kuisioner/Kuisioner"));
+
 
 const Routing = () => {
   return (
@@ -35,12 +37,24 @@ const Routing = () => {
         }
       />
       <Route
+        path="/perfume"
+        element={
+          <Suspense fallback={<LoadingScreen />}>
+            <Kuisioner />
+          </Suspense>
+        }
+      />
+      <Route
         path="result"
         element={
           <Suspense fallback={<LoadingScreen />}>
             <Result />
           </Suspense>
         }
+      />
+      <Route
+        path="/product"
+        element={<ProductPage />}
       />
       <Route path="/admin/" element={
         <ProtectedRoute>

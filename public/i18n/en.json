@@ -2,36 +2,28 @@
   "title": "Perfume App",
   "webName": "DECISION SUPPORT SYSTEM",
   "home": "Home",
-
   "PROJTITLE": "Latest Perfume Research",
   "PROJDESC": "Welcome to UMN's men's perfume research, the best destination to find men's perfumes that suit your desires and personality. Here, we will provide you an unforgettable experience in exploring the distinctive world of fragrances for true men.",
-
   "MainTitle": "Define your priorities for men's perfume.",
-
   "WebDescTitle": "What do we do?",
   "WebDesc": "Welcome to UMN's men's perfume research, the best destination to find men's perfumes that suit your desires and personality. Here, we will provide you an unforgettable experience in exploring the distinctive world of fragrances for true men.",
-
   "welcome": "Welcome!",
-  "start": "Start deciding on a perfume",
-
+  "start": "Start Pefume Test",
   "homeTitle1": "Men's Perfume Research",
   "homeTitle2": "Tutorial",
   "homeDesc2": "Here is a quick guide on how to use our men's perfume decision support application.",
   "homeTitle3": "Trending Perfumes",
   "homeDesc3": "Let us introduce you to our curated collection of men's perfumes - a range designed to enhance your presence and captivate your senses. Each scent is carefully crafted to reflect the essence of luxury, style, and masculinity.",
-
   "detail": "Details",
   "buy": "Buy Now",
   "guide": "Guide",
-  "step" : "Step",
-	"logout": "Log Out",
-
-  "stepDesc1" : "Click the 'Start Perfume Selection' button on the first page. You will be immediately redirected to the priority determination page.",
-  "stepDesc2" : "Slide to determine your priority between two different criteria being compared according to your preferences as a man. Each scale ranges from a minimum value of 1 to a maximum of 3.",
-  "stepDesc3" : "After you're done, make sure your answers represent you choice correctly, then click teh submit button.",
-  "stepDesc4" : "You will then be directed to a page that contains a selection of perfumes that are suitable for you based on your answers.",
-
-	"perfume": "Perfume",
+  "step": "Step",
+  "logout": "Log Out",
+  "stepDesc1": "Click the 'Start Perfume Selection' button on the first page. You will be immediately redirected to the priority determination page.",
+  "stepDesc2": "Slide to determine your priority between two different criteria being compared according to your preferences as a man. Each scale ranges from a minimum value of 1 to a maximum of 3.",
+  "stepDesc3": "After you're done, make sure your answers represent you choice correctly, then click teh submit button.",
+  "stepDesc4": "You will then be directed to a page that contains a selection of perfumes that are suitable for you based on your answers.",
+  "perfume": "Perfume",
   "accuracy": "Accuracy",
   "brand": "Brand",
   "scent": "Scent",
@@ -40,16 +32,13 @@
   "link": "Purchase Link",
   "quality": "Quality",
   "durability": "Durability",
-
   "testTitle": "Define your priorities for men's perfume.",
   "testDesc": "Which aspect is more important to you in choosing perfume?",
   "qualityDesc": "Consider factors such as ingredients, authenticity, and brand reputation. We will provide an accurate assessment of the quality of the offered perfumes.",
   "scentDesc": "Consider your prefered perfume fragrance. We will offer perfume suggestions with a variety of aromas, ranging from fresh and masculine to elegant and mysterious.",
   "priceDesc": "By considering your budget, we will offer perfume recommendations suitable for your budget.",
   "durabilityDesc": "Nothing is more impressive than a long-lasting perfume that will accompany you throughout the day.",
-
   "adminPage": "Admin Page",
-
   "result": "Search Result",
   "restartTest": "Restart Test",
   "sureSubmit": "Are you sure to submit?",
@@ -59,14 +48,12 @@
   "add": "Add Perfume",
   "yes": "Yes",
   "no": "No",
-
-	"image": "Image",
-	"name": "Name",
-	"type": "Type",
-	"option": "Option",
-	"desc": "Description",
-	"emptyEntry": "Empty Entry",
-
+  "image": "Image",
+  "name": "Name",
+  "type": "Type",
+  "option": "Option",
+  "desc": "Description",
+  "emptyEntry": "Empty Entry",
   "perfumeNamelbl": "Name",
   "perfumePricelbl": "Price",
   "perfumeBrandlbl": "Brand",
@@ -77,8 +64,7 @@
   "durabilityIndexlbl": "Durability Index (1-5)",
   "scentIndexlbl": "Scent Index (1-5)",
   "priceIndexlbl": "Price Index (1-5)",
-	"sizelbl": "Size (ml)",
-
+  "sizelbl": "Size (ml)",
   "rImageVld": "Perfume Image is required",
   "rNameVld": "Perfume Name is required",
   "rBrandVld": "Perfume Brand is required",
@@ -100,5 +86,6 @@
   "minPIndex": "Price Index must be between 1-5",
   "rSizeVld": "Size is required",
   "rLinkVld": "Link is required",
-  "urlLink": "Must be a link"
+  "urlLink": "Must be a link",
+  "productPageTitle": "Our parfume collection"
 }

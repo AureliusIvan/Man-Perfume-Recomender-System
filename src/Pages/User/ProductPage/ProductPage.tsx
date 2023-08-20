@@ -39,7 +39,6 @@ export default function ProductPage() {
         <>
             <Helmet>
                 <title>Product</title>
-{/* test */}
             </Helmet>
             <div
                 className='ProductPage'

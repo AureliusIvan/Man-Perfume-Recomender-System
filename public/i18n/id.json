@@ -100,5 +100,7 @@
   "minPIndex": "Index Harga harus 1 atau lebih",
   "rSizeVld": "Ukuran Parfum wajib diisi",
   "rLinkVld": "Link pembelian wajib diisi",
-  "urlLink": "Link pembelian wajib berformat tautan"
+  "urlLink": "Link pembelian wajib berformat tautan",
+
+  "productPageTitle": "Daftar Parfum Kami"
 }
