@@ -1,12 +1,12 @@
-import step1 from "@/Assets/Image/tutorial/step1.png";
-import step2 from "@/Assets/Image/tutorial/step2.png";
-import step3 from "@/Assets/Image/tutorial/step3.png";
-import step4 from "@/Assets/Image/tutorial/step4.png";
+import step1 from "@/Assets/Image/tutorial/step1.webp";
+import step2 from "@/Assets/Image/tutorial/step2.webp";
+import step3 from "@/Assets/Image/tutorial/step3.webp";
+import step4 from "@/Assets/Image/tutorial/step4.webp";
 
-import step1M from "@/Assets/Image/tutorial/mobile/step1-m.png";
-import step2M from "@/Assets/Image/tutorial/mobile/step2-m.png";
-import step3M from "@/Assets/Image/tutorial/mobile/step3-m.png";
-import step4M from "@/Assets/Image/tutorial/mobile/step4-m.png";
+import step1M from "@/Assets/Image/tutorial/mobile/step1-m.webp";
+import step2M from "@/Assets/Image/tutorial/mobile/step2-m.webp";
+import step3M from "@/Assets/Image/tutorial/mobile/step3-m.webp";
+import step4M from "@/Assets/Image/tutorial/mobile/step4-m.webp";
 
 export const TutorialData = [
     {
