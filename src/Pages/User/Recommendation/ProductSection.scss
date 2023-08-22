@@ -1,16 +1,33 @@
 .ProductSection {
     font-size: 16px;
 
-    .ProductContainer {
-        position: relative;
+    .btnContainer {
+        padding-bottom: 20px;
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        // margin-inline: 10rem;
-        padding-inline: 5rem;
-        padding-block: 5rem;
-        // border: 1px solid red;
+    }
 
+    .MoreProductButton {
+        width: 65vw;
+        background-color: #fff;
+        color: #000;
+        border-radius: 10px;
+        padding: 10px;
+        padding-inline: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        &:hover {
+            background-color: #000;
+            color: #fff;
+        }
+    }
+    
+    .ProductContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 10vw;
 
         @media screen and (max-width: 900px) {
             // margin-inline: 5rem;
@@ -18,63 +35,12 @@
             padding-block: 2rem;
         }
 
-        .buttonControl {
-            $size : 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff;
-            border-radius: 50%;
-            height: $size;
-            width: $size;
-            font-size: 1.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #000;
-            position: absolute;
-            pointer-events: all;
-            cursor: pointer;
-            z-index: 5;
-            transition: all 0.3s ease-in-out;
-            -moz-transition: all 0.3s ease-in-out;
-            -webkit-transition: all 0.3s ease-in-out;
-            -o-transition: all 0.3s ease-in-out;
-            top: 0;
-            bottom: 0;
-            margin-block: auto;
-
-            &:hover {
-                opacity: 0.5;
-            }
-
-            &.buttonLeft {
-                left: 0;
-            }
-
-            &.buttonRight {
-                right: 0;
-            }
-
-        }
-
-        .MoreProductButton {
-            background-color: #fff;
-            color: #000;
-            border-radius: 10px;
-            padding: 10px;
-            padding-inline: 20px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-
-            &:hover {
-                background-color: #000;
-                color: #fff;
-            }
+        .navbutton {
+            color:#fff;
+            padding: 8px;
         }
 
         .ProductCardContainer {
-            // border: 1px solid blue;
             width: 100%;
             display: flex;
             flex-direction: row;
@@ -90,6 +56,4 @@
     // height: 100%;
     width: 100%;
     aspect-ratio: 1/1;
-
-
 }
