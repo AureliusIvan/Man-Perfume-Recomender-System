@@ -29,14 +29,14 @@ export default function ProductSection() {
   useEffect(() => {
     if (dataEntry) {
       try {
-        getGuest("v1/parfums/view?random=1&qty=5")
+        getGuest("v1/parfums/view?random=1&qty=10")
           .then((res: any) => {
             console.log(res);
             setItem(res.data.data);
             dispatch(setDataEntry(res.data));
           })
-          .catch((err: object) => {});
-      } catch (err) {}
+          .catch((err: object) => { });
+      } catch (err) { }
     } else {
       setItem(dataEntry);
     }
@@ -103,18 +103,26 @@ export default function ProductSection() {
                 },
               }}
             >
-              {item.map((item: any, index) => {
-                return (
-                  <SwiperSlide key={index}>
-                    <ResultCard
-                      title={item.brand + " - " + item.nama}
-                      image={item.foto}
-                      data={item}
-                      key={index}
-                    />
-                  </SwiperSlide>
-                );
-              })}
+
+              {
+                item ?
+                  item.map((item: any, index) => {
+                    return (
+                      <SwiperSlide key={index}>
+                        <ResultCard
+                          title={item.brand + " - " + item.nama}
+                          image={item.foto}
+                          data={item}
+                          key={index}
+                        />
+                      </SwiperSlide>
+                    );
+                  })
+
+                  : <div>
+                    Loading
+                  </div>
+              }
             </Swiper>
             <IconButton
               className="navbutton"
