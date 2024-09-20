@@ -62,7 +62,7 @@ function TheForm(props: any) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("");
-  const showerror = () => {
+  const showError = () => {
     setError(true);
     setTimeout(() => {
       setError(false);
@@ -135,12 +135,12 @@ function TheForm(props: any) {
                       } else {
                         setLoading(false);
                         setMessage("Something went wrong");
-                        showerror();
+                        showError();
                       }
                     })
                     .catch((err) => {
                       setMessage("Something went wrong");
-                      showerror();
+                      showError();
                       setLoading(false);
                     });
               }
@@ -148,7 +148,7 @@ function TheForm(props: any) {
               SubmitEdit();
             } catch (err) {
               setMessage("Something went wrong");
-              showerror();
+              showError();
               setLoading(false);
             }
             actions.setSubmitting(false);
@@ -350,9 +350,7 @@ function TheForm(props: any) {
                             : ""
                       }
                       error={
-                        errors.deskripsi && touched.deskripsi
-                            ? true
-                            : false
+                        !!(errors.deskripsi && touched.deskripsi)
                       }
                   />
                   <Input
@@ -369,10 +367,8 @@ function TheForm(props: any) {
                             : ""
                       }
                       error={
-                        errors.quality_index &&
-                        touched.quality_index
-                            ? true
-                            : false
+                        !!(errors.quality_index &&
+                            touched.quality_index)
                       }
                   />
                   <Input
@@ -389,10 +385,8 @@ function TheForm(props: any) {
                             : ""
                       }
                       error={
-                        errors.durability_index &&
-                        touched.durability_index
-                            ? true
-                            : false
+                        !!(errors.durability_index &&
+                            touched.durability_index)
                       }
                   />
                   <Input
@@ -408,9 +402,7 @@ function TheForm(props: any) {
                             : ""
                       }
                       error={
-                        errors.aroma_index && touched.aroma_index
-                            ? true
-                            : false
+                        !!(errors.aroma_index && touched.aroma_index)
                       }
                   />
                   <Input
@@ -426,9 +418,7 @@ function TheForm(props: any) {
                             : ""
                       }
                       error={
-                        errors.price_index && touched.price_index
-                            ? true
-                            : false
+                        !!(errors.price_index && touched.price_index)
                       }
                   />
                   <Input
@@ -444,9 +434,7 @@ function TheForm(props: any) {
                             : ""
                       }
                       error={
-                        errors.ukuran && touched.ukuran
-                            ? true
-                            : false
+                        !!(errors.ukuran && touched.ukuran)
                       }
                   />
                   <Input
@@ -464,10 +452,8 @@ function TheForm(props: any) {
                             : ""
                       }
                       error={
-                        errors.link_pembelian &&
-                        touched.link_pembelian
-                            ? true
-                            : false
+                        !!(errors.link_pembelian &&
+                            touched.link_pembelian)
                       }
                   />
                   <Spacer y="20px"/>
