@@ -1,62 +1,61 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: "75vh";
-    // width: 90vw;
-    padding-inline: 2vw;
-    
-    @media screen and (max-width: 900px) {
-        flex-direction: column;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 75vh;
+  padding-inline: 2vw;
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+  }
 }
 
 .img {
-    width: "90vw";
+  width: 90vw;
 }
 
 .a {
-    pointer-events: all;
-    cursor: pointer;
+  pointer-events: all;
+  cursor: pointer;
 }
 
 .down {
-    $color: rgb(255, 255, 255, 0.8);
-    border-radius: 50%;
-    background-color: rgb(245, 245, 245, 0);
-    border: 3px solid $color;
+  $color: rgb(255, 255, 255, 0.8);
+  border-radius: 50%;
+  background-color: rgb(245, 245, 245, 0);
+  border: 3px solid $color;
+  position: absolute;
+  bottom: 10vh;
+  margin: auto;
+  left: 0;
+  right: 0;
+  height: 40px;
+  width: 40px;
+  animation: move 2s infinite;
+
+  &::after {
+    content: "";
     position: absolute;
-    bottom: 10vh;
-    margin: auto;
-    left: 0;
-    right: 0;
-    height: 40px;
-    width: 40px;
-    animation: move 2s infinite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    border-right: 3px solid $color;
+    border-bottom: 3px solid $color;
+  }
 
-    &::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(45deg);
-        width: 10px;
-        height: 10px;
-        border-right: 3px solid $color;
-        border-bottom: 3px solid $color;
+  @keyframes move {
+    0% {
+      bottom: 10vh;
     }
 
-    @keyframes move {
-        0% {
-            bottom: 10vh;
-        }
-
-        50% {
-            bottom: 15vh;
-        }
-
-        100% {
-            bottom: 10vh;
-        }
+    50% {
+      bottom: 15vh;
     }
+
+    100% {
+      bottom: 10vh;
+    }
+  }
 }

@@ -1,17 +1,17 @@
 .Kuisioner {
-    position: relative;
+  position: relative;
 
-    &::after {
-        position: absolute;
-        content: "";
-        display: block;
-        clear: both;
-        height: 400px;
-        width: 1px;
-        color: red;
-        background-color: red;
-        top: 0;
-        left: 0;
+  &::after {
+    position: absolute;
+    content: "";
+    display: block;
+    clear: both;
+    height: 400px;
+    width: 1px;
+    color: red;
+    background-color: red;
+    top: 0;
+    left: 0;
 
-    }
+  }
 }

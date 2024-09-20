@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./CustomTypography.module.scss"
 import { useTheme } from "@mui/material/styles";
-import { useMediaQuery } from "@mui/material";
 import Spacer from "@/Pages/User/Spacer/spacer";
 
 
@@ -41,13 +40,11 @@ export function Text(props: TextProps) {
                 textAlign: props.textalign && props.textalign,
                 fontSize: props.fontSize ? props.fontSize : "15px",
                 fontWeight: props.fontWeight ? props.fontWeight : "normal",
-                // color: theme.palette.mode === (props.reverse === "true" ? "light" : "dark") ? '#fff' : '#000',
                 color: props.color ? props.color : theme.palette.mode === (props.reverse === "true" ? "light" : "dark") ? '#fff' : '#000',
                 marginTop: props.margintop ? props.margintop : "0px",
                 marginBottom: props.marginbottom ? props.marginbottom : "0px",
                 marginLeft: props.marginleft ? props.marginleft : "0px",
                 marginRight: props.marginright ? props.marginright : "0px",
-                // padding
                 padding: props.padding ? props.padding : "0px",
                 paddingTop: props.paddingtop ? props.paddingtop : "0px",
                 paddingBottom: props.paddingbottom ? props.paddingbottom : "0px",
@@ -61,7 +58,6 @@ export function Text(props: TextProps) {
 
 export function Title(props: any) {
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.values.sm.toString());
     return (
         <div
             className={style.Title}
@@ -110,10 +106,7 @@ export function Paragraf(props: any) {
         <Spacer y={props.spacer ? props.spacer : "20px"} />
         <div style={{
             textAlign: props.textAlign ? props.textAlign : "center",
-            // margin: props.margin ? props.margin : "10px",
-            // padding: props.padding ? props.padding : "60px",
             paddingInline: props.paddingInline ? props.paddingInline : "20px",
-            // width: props.width ? props.width : "70%",
             color: props.color ? props.color : "rgb(255, 255, 255, 0.6)",
         }}
         >

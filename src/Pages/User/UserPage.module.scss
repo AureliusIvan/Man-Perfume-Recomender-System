@@ -1,14 +1,12 @@
 .UserPage {
-    height: 100%;
-    width: 100%;
-    // background-image: url('https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_960_720.png');
-    background-position: center;
-    background-repeat: repeat-y;
-    background-size: 100%;
-    padding: 10px;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: repeat-y;
+  background-size: 100%;
+  padding: 10px;
 
-    @media screen and (max-width: 768px) {
-        padding: 0;
-    }
-    
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
 }

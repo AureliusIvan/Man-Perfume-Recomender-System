@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./CustomImage.module.scss";
-// import { useTheme } from "@mui/material/styles";
 import IMG from "@/Assets/Image/logo.png"
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -29,7 +28,7 @@ export function CustomImage(props: CustomImageProps) {
     return (
         <img src={props.src} className={style.img}
             {...props}
-        />
+         alt={"Custom Images"}/>
     )
 }
 

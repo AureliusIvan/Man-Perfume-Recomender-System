@@ -1,59 +1,59 @@
 .ProductSection {
-    font-size: 16px;
+  font-size: 16px;
 
-    .btnContainer {
-        padding-bottom: 20px;
-        display: flex;
-        justify-content: center;
+  .btnContainer {
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .MoreProductButton {
+    width: 65vw;
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+    padding: 10px;
+    padding-inline: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+
+  .ProductContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10vw;
+
+    @media screen and (max-width: 900px) {
+      // margin-inline: 5rem;
+      // padding-inline: 2rem;
+      padding-block: 2rem;
     }
 
-    .MoreProductButton {
-        width: 65vw;
-        background-color: #fff;
-        color: #000;
-        border-radius: 10px;
-        padding: 10px;
-        padding-inline: 20px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-
-        &:hover {
-            background-color: #000;
-            color: #fff;
-        }
+    .navbutton {
+      color: #fff;
+      padding: 8px;
     }
-    
-    .ProductContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px 10vw;
 
-        @media screen and (max-width: 900px) {
-            // margin-inline: 5rem;
-            // padding-inline: 2rem;
-            padding-block: 2rem;
-        }
-
-        .navbutton {
-            color:#fff;
-            padding: 8px;
-        }
-
-        .ProductCardContainer {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-        }
+    .ProductCardContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
     }
+  }
 }
 
 .ProductCard {
-    background-color: #fff;
-    border-radius: 10px;
-    // height: 100%;
-    width: 100%;
-    aspect-ratio: 1/1;
+  background-color: #fff;
+  border-radius: 10px;
+  // height: 100%;
+  width: 100%;
+  aspect-ratio: 1/1;
 }

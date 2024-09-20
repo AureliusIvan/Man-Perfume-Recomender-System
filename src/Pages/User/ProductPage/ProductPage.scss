@@ -1,22 +1,22 @@
 .ProductPage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 5vw;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 5vw;
+  gap: 20px;
 
-    .CardContainer {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 20px;
+  .CardContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
 
-        @media screen and (max-width: 900px) {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        @media screen and (max-width: 600px) {
-            grid-template-columns: 1fr;
-        }
+    @media screen and (max-width: 900px) {
+      grid-template-columns: 1fr 1fr;
     }
+
+    @media screen and (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
 }

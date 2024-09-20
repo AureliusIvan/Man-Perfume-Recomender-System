@@ -1,63 +1,24 @@
-// import
-import React from "react";
-import { FormGroup, Grid, Switch } from "@material-ui/core";
+import React, {ReactNode, useState} from "react";
+import {Grid} from "@material-ui/core";
 import styled from "@emotion/styled";
 import style from "./Header.module.scss";
-import { Toogle } from "../../../App/App";
-import { CustomButton as Button } from "../CustomButton/CustomButton";
-import { LogoImage } from "../CustomImage/CustomImage";
-import { Text } from "../Typography/CustomTypography";
+import {CustomButton as Button} from "../CustomButton/CustomButton";
+import {LogoImage} from "../CustomImage/CustomImage";
+import {Text} from "../Typography/CustomTypography";
 import Spacer from "../../../Pages/User/Spacer/spacer";
-import { useMediaQuery } from "@mui/material";
-import { useState, ReactNode } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsLogin, setLogout } from "@/Redux/feature/dataSlice";
-
-import { setCookie } from "react-use-cookie";
-
-import { useTranslation } from "react-i18next";
+import {useMediaQuery} from "@mui/material";
+import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {selectIsLogin, setLogout} from "@/Redux/feature/dataSlice";
+import {setCookie} from "react-use-cookie";
+import {useTranslation} from "react-i18next";
 import CustomToggle from "../CustomToggle/CustomToggle";
 
 const Margin = "35px";
 
 const GridContainer = styled(Grid)(() => ({
-  // display: 'flex',
   alignItems: "center",
-  // gap: '10px',
   paddingRight: "5px",
-}));
-
-const GridItemLeft = styled(Grid)(() => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "left",
-  background: "transparent",
-  position: "relative",
-  margin: "0px",
-  padding: "0px",
-  paddingLeft: Margin,
-}));
-
-const GridItemRight = styled(Grid)(() => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "right",
-  background: "transparent",
-  position: "relative",
-  margin: "0px",
-  padding: "0px",
-  paddingRight: Margin,
-}));
-
-const GridItemCenter = styled(Grid)(() => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  background: "transparent",
-  position: "relative",
-  margin: "0px",
-  padding: "0px",
 }));
 
 interface Props {
@@ -67,21 +28,21 @@ interface Props {
 }
 
 // ...props belom bisa dipake (?)
-const NavLink = ({ pathTo, children, ...props }: Props) => {
+const NavLink = ({pathTo, children, ...props}: Props) => {
   return (
-    <Link to={pathTo}>
-      <Button variant="outlined" width="100px" {...props}>
-        {children}
-      </Button>
-    </Link>
+      <Link to={pathTo}>
+        <Button variant="outlined" width="100px" {...props}>
+          {children}
+        </Button>
+      </Link>
   );
 };
 
-const ButtonNavLink = ({ pathTo, children, clicked, ...props }: Props) => {
+const ButtonNavLink = ({pathTo, children, clicked, ...props}: Props) => {
   return (
-    <Link to={pathTo} onClick={clicked}>
-      <Button {...props}>{children}</Button>
-    </Link>
+      <Link to={pathTo} onClick={clicked}>
+        <Button {...props}>{children}</Button>
+      </Link>
   );
 };
 
@@ -93,7 +54,7 @@ export default function Header() {
 
   const [show] = useState<boolean>(true);
 
-  const { i18n, t } = useTranslation();
+  const {i18n, t} = useTranslation();
 
   const onChangeLang = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked;
@@ -103,65 +64,64 @@ export default function Header() {
     else lang_code = "id";
 
     i18n.changeLanguage(lang_code);
-    // console.log(e.target.checked)
   };
 
   return (
-    <GridContainer container className={show ? style.Header : style.HeaderHide}>
-      {!isMobile ? (
-        <Grid
-          item
-          sm={6}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "left",
-            paddingLeft: Margin,
-          }}
-        >
-          <LogoImage />
-          <Text width="70px" fontSize="10px" textalign="left" marginleft="10px">
-            {t("webName")}
-          </Text>
-          <Spacer y={"20px"} />
-        </Grid>
-      ) : (
-        ""
-      )}
-
-      <Grid
-        item
-        xs={12}
-        sm={6}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: isMobile ? "center" : "right",
-          paddingRight: isMobile ? "0px" : Margin,
-        }}
-      >
-        <CustomToggle defaultChecked onChange={onChangeLang} />
-        {loggedIn ? (
-          <>
-            <NavLink pathTo="/admin">{t("home")}</NavLink>
-            <ButtonNavLink
-              pathTo="/"
-              clicked={() => {
-                dispatch(setLogout());
-                setCookie("TOKEN", "");
-                window.location.reload();
-              }}
+      <GridContainer container className={show ? style.Header : style.HeaderHide}>
+        {!isMobile ? (
+            <Grid
+                item
+                sm={6}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "left",
+                  paddingLeft: Margin,
+                }}
             >
-              {t("logout")}
-            </ButtonNavLink>
-          </>
+              <LogoImage/>
+              <Text width="70px" fontSize="10px" textalign="left" marginleft="10px">
+                {t("webName")}
+              </Text>
+              <Spacer y={"20px"}/>
+            </Grid>
         ) : (
-          <>
-            <NavLink pathTo="/">{t("home")}</NavLink>
-            <ButtonNavLink pathTo="/admin/login">Admin</ButtonNavLink>
-          </>
+            ""
         )}
-      </Grid>
-    </GridContainer>
+
+        <Grid
+            item
+            xs={12}
+            sm={6}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: isMobile ? "center" : "right",
+              paddingRight: isMobile ? "0px" : Margin,
+            }}
+        >
+          <CustomToggle defaultChecked onChange={onChangeLang}/>
+          {loggedIn ? (
+              <>
+                <NavLink pathTo="/admin">{t("home")}</NavLink>
+                <ButtonNavLink
+                    pathTo="/"
+                    clicked={() => {
+                      dispatch(setLogout());
+                      setCookie("TOKEN", "");
+                      window.location.reload();
+                    }}
+                >
+                  {t("logout")}
+                </ButtonNavLink>
+              </>
+          ) : (
+              <>
+                <NavLink pathTo="/">{t("home")}</NavLink>
+                <ButtonNavLink pathTo="/admin/login">Admin</ButtonNavLink>
+              </>
+          )}
+        </Grid>
+      </GridContainer>
   );
 }

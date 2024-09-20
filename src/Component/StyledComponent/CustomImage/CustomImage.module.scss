@@ -1,33 +1,29 @@
 @use "./../../../index.scss" as index;
 
 .img {
-    @include index.prevent-selection;
-    border-radius: 10px;
-    width: 100%;
-    height: fit-content;
-    object-fit: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 80% 80% !important;
+  @include index.prevent-selection;
+  border-radius: 10px;
+  width: 100%;
+  height: fit-content;
+  object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80% 80% !important;
 
-    @media screen and (max-width: 768px) {
-        margin-top: 60px;
-        width: 80%;
-        height: 80%;
-    }
+  @media screen and (max-width: 768px) {
+    margin-top: 60px;
+    width: 80%;
+    height: 80%;
+  }
 }
 
 .logo {
-    // to disable selection on logo
-    @include index.prevent-selection;
-    cursor: pointer;
-    width: 100px;
-    height: 100%;
-    object-fit: 50%;
-    // background-image: url(../../../Assets/image/logo.webp);
-    background-position: center;
-    background-repeat: no-repeat;
-    object-fit: cover;
-    // adjust the size of the logo
-    background-size: 80% 80% !important;
+  @include index.prevent-selection;
+  cursor: pointer;
+  width: 100px;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-size: 80% 80% !important;
 }
