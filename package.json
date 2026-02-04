@@ -24,7 +24,7 @@
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
     "axios": "^1.2.2",
-    "eslint": "^8.40.0",
+    "eslint": "^9.26.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "flowbite": "^1.8.1",
     "flowbite-react": "^0.5.0",
