@@ -30,7 +30,7 @@
     "flowbite-react": "^0.5.0",
     "formik": "^2.2.9",
     "framer-motion": "^8.4.6",
-    "i18next": "^23.0.2",
+    "i18next": "^27.0.0",
     "i18next-http-backend": "^2.2.1",
     "keen-slider": "^6.8.5",
     "lint": "^0.8.19",
